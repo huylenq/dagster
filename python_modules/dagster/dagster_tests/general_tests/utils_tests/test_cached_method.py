@@ -1,4 +1,5 @@
 # mypy: disable-error-code=annotation-unchecked
+from __future__ import annotations
 
 import gc
 from typing import NamedTuple

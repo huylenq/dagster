@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import pytest
 from dagster import DagsterInstance, GraphDefinition, op, resource
 from dagster._core.definitions.job_base import InMemoryJob

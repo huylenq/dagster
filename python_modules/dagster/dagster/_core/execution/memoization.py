@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import dagster._check as check
 from dagster._core.errors import DagsterInvariantViolationError
 from dagster._core.execution.context.system import IPlanContext

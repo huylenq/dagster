@@ -23,6 +23,7 @@
 """General information about Amazon Web Services, such as region-to-endpoint
 mappings. Also includes basic utilities for working with boto3.
 """
+from __future__ import annotations
 
 import socket
 import ssl

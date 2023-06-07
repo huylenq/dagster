@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster_pandas.constraints import (
     all_unique_validator,
     categorical_column_validator_factory,

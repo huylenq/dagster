@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from airflow.models import BaseOperatorLink, TaskInstance
 
 LINK_FMT = "https://dagster.cloud/{organization_id}/{deployment_name}/runs/{run_id}"

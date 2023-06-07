@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster import Field, Noneable, Permissive, ScalarUnion, Selector, Shape
 from dagster._config import (
     DagsterEvaluationErrorReason,

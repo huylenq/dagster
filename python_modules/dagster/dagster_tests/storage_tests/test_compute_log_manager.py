@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import tempfile
 from contextlib import contextmanager
 from typing import IO, Generator, Optional, Sequence

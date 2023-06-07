@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import pytest
 from dagster._utils.test.schedule_storage import TestScheduleStorage
 from dagster_postgres.schedule_storage import PostgresScheduleStorage

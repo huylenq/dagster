@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import hashlib
 from abc import ABC, abstractmethod
 from typing import (
@@ -791,8 +793,6 @@ class FromMultipleSources(
 def _load_input_with_input_manager(
     input_manager: "InputManager", context: "InputContext"
 ) -> Iterator[object]:
-    from dagster._core.execution.context.system import StepExecutionContext
-
     step_context = cast(StepExecutionContext, context.step_context)
     with op_execution_error_boundary(
         DagsterExecutionLoadInputError,

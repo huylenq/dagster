@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster import AssetIn, asset
 
 key_prefix1 = ["s3", "superdomain_1", "subdomain_1", "subsubdomain_1"]

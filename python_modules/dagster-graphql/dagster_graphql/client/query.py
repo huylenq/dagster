@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 ERROR_FRAGMENT = """
 fragment errorFragment on PythonError {
   message

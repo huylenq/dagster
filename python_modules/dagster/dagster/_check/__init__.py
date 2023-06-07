@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import collections.abc
 import inspect
 from os import PathLike, fspath

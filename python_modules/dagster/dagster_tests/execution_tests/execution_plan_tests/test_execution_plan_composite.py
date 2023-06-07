@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster import Field, Int, String, job, op
 from dagster._core.definitions.config import ConfigMapping
 from dagster._core.definitions.decorators.graph_decorator import graph

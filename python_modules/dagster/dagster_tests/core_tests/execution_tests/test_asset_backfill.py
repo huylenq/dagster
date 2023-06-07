@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import datetime
 from typing import Iterable, Mapping, NamedTuple, Optional, Sequence, Set, Union, cast
 from unittest.mock import MagicMock, patch

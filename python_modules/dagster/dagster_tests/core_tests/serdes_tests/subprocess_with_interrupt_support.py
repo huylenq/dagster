@@ -1,4 +1,6 @@
 """Test interrupt handling."""
+from __future__ import annotations
+
 import sys
 import time
 

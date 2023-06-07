@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import inspect
 from types import ModuleType
 from typing import Callable, NamedTuple, Optional, Sequence, Tuple, Type, Union

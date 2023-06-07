@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster_aws.ssm.parameters import get_parameters_by_paths, get_parameters_by_tags
 
 

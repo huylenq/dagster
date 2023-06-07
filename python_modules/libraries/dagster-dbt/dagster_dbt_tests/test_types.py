@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import pickle
 
 from dagster_dbt.types import DbtOutput

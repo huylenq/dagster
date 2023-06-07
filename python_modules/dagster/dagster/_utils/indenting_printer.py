@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from contextlib import contextmanager
 from io import StringIO
 from textwrap import TextWrapper

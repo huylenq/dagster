@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import warnings
 from concurrent.futures import as_completed
 from contextvars import ContextVar

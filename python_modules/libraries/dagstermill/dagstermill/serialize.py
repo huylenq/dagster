@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster import _seven
 
 PICKLE_PROTOCOL = 2

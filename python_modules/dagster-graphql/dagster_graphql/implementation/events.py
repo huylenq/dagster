@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from math import isnan
 from typing import Any, Iterator, Mapping, Sequence, cast, no_type_check
 

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster import Bool, Field, Noneable, Permissive, String
 from dagster._core.types.dagster_type import Array
 

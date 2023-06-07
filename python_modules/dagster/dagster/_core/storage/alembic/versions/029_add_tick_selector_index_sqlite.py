@@ -5,6 +5,8 @@ Revises: b601eb913efa
 Create Date: 2022-03-25 10:28:29.065161
 
 """
+from __future__ import annotations
+
 from dagster._core.storage.migration.utils import create_tick_selector_index
 
 # revision identifiers, used by Alembic.

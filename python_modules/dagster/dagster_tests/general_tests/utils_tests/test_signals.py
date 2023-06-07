@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from signal import Signals
 
 from dagster._utils import get_run_crash_explanation, get_terminate_signal

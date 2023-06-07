@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster import Definitions
 from dagster._core.definitions.executor_definition import in_process_executor
 

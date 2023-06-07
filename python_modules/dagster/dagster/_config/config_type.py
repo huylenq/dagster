@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import typing
 from enum import Enum as PythonEnum
 from typing import TYPE_CHECKING, Dict, Iterator, Optional, Sequence, cast

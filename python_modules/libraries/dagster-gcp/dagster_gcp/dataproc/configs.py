@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster import Field, StringSource
 
 from .configs_dataproc_cluster import define_dataproc_cluster_config

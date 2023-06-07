@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import boto3
 import pytest
 from moto import mock_s3, mock_secretsmanager, mock_ssm

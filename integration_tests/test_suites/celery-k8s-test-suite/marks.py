@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import pytest
 
 mark_user_code_deployment_subchart = pytest.mark.mark_user_code_deployment_subchart

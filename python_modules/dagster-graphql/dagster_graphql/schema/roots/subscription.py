@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import graphene
 from dagster._core.storage.compute_log_manager import ComputeIOType
 

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster_k8s.client import DagsterKubernetesClient
 
 

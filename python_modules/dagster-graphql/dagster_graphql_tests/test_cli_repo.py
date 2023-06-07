@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster import ScheduleDefinition, job, op, repository
 
 

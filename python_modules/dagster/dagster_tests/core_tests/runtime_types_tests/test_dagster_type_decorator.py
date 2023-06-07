@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import collections
 
 from dagster import PythonObjectDagsterType, usable_as_dagster_type

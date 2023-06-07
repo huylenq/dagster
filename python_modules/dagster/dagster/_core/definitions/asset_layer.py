@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections import defaultdict
 from typing import (
     TYPE_CHECKING,
@@ -522,8 +524,6 @@ class AssetLayer:
                 )
 
                 def partitions_fn(context: "OutputContext") -> AbstractSet[str]:
-                    from dagster._core.definitions.partition import PartitionsDefinition
-
                     if context.has_partition_key:
                         return {context.partition_key}
 
@@ -812,8 +812,6 @@ def _subset_assets_defs(
     """Given a list of asset key selection queries, generate a set of AssetsDefinition objects
     representing the included/excluded definitions.
     """
-    from dagster._core.definitions import AssetsDefinition
-
     included_assets: Set[AssetsDefinition] = set()
     excluded_assets: Set[AssetsDefinition] = set()
 

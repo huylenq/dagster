@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster._core.execution.plan.handle import (
     ResolvedFromDynamicStepHandle,
     StepHandle,

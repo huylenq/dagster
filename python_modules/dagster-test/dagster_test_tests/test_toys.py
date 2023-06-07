@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import pytest
 from dagster import DagsterResourceFunctionError, DagsterTypeCheckDidNotPass, multiprocess_executor
 from dagster._core.definitions.definitions_class import Definitions

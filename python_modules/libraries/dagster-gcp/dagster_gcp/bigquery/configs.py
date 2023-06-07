@@ -3,6 +3,7 @@
 See the BigQuery Python API documentation for reference:
     https://googleapis.github.io/google-cloud-python/latest/bigquery/reference.html
 """
+from __future__ import annotations
 
 from dagster import Array, Bool, Field, IntSource, String, StringSource
 

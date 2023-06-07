@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from .client import DagsterGraphQLClient as DagsterGraphQLClient
 from .utils import (
     DagsterGraphQLClientError as DagsterGraphQLClientError,

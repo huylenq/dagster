@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import inspect
 import json
 from collections import OrderedDict, defaultdict
@@ -230,7 +232,6 @@ class MultiAssetSensorEvaluationContext(SensorEvaluationContext):
     ):
         from dagster._core.definitions.definitions_class import Definitions
         from dagster._core.definitions.repository_definition import RepositoryDefinition
-        from dagster._core.storage.event_log.base import EventLogRecord
 
         self._repository_def = normalize_to_repository(
             check.opt_inst_param(definitions, "definitions", Definitions),
@@ -388,8 +389,6 @@ class MultiAssetSensorEvaluationContext(SensorEvaluationContext):
             materialization event for the asset. If there is no materialization event for the asset,
             the value in the mapping will be None.
         """
-        from dagster._core.storage.event_log.base import EventLogRecord
-
         # Do not evaluate unconsumed events, only events newer than the cursor
         # if there are no new events after the cursor, the cursor points to the most
         # recent event.
@@ -495,7 +494,7 @@ class MultiAssetSensorEvaluationContext(SensorEvaluationContext):
 
         """
         from dagster._core.events import DagsterEventType
-        from dagster._core.storage.event_log.base import EventLogRecord, EventRecordsFilter
+        from dagster._core.storage.event_log.base import EventRecordsFilter
 
         asset_key = check.inst_param(asset_key, "asset_key", AssetKey)
 
@@ -662,8 +661,6 @@ class MultiAssetSensorEvaluationContext(SensorEvaluationContext):
         )
 
     def _get_asset(self, asset_key: AssetKey, fn_name: str) -> AssetsDefinition:
-        from dagster._core.definitions.repository_definition import RepositoryDefinition
-
         repo_def = cast(RepositoryDefinition, self._repository_def)
         repository_assets = repo_def.assets_defs_by_key
         if asset_key in self._assets_by_key:

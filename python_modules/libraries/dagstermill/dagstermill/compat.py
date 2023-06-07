@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import papermill
 from packaging.version import Version, parse
 from papermill.exceptions import PapermillExecutionError

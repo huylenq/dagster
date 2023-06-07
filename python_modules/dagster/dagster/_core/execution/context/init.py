@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from typing import Any, Mapping, Optional, Union
 
 import dagster._check as check

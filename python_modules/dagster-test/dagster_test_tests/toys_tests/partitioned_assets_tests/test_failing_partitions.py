@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster import Definitions, load_assets_from_modules
 from dagster_test.toys.partitioned_assets import failing_partitions
 

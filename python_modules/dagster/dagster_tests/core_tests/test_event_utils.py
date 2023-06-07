@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import dagster._check as check
 from dagster._core.events import DagsterEvent
 from dagster._core.events.utils import filter_dagster_events_from_cli_logs

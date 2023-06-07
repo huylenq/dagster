@@ -5,6 +5,7 @@ in user processes and containers.  e.g. ExternalPipeline.
 It also contains classes that represent historical representations
 that have been persisted. e.g. HistoricalPipeline
 """
+from __future__ import annotations
 
 from .external import (
     ExternalExecutionPlan as ExternalExecutionPlan,

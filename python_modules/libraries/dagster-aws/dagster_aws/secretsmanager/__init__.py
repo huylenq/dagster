@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from .resources import (
     SecretsManagerResource as SecretsManagerResource,
     SecretsManagerSecretsResource as SecretsManagerSecretsResource,

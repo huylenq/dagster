@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import typing
 
 from dagster._utils.typing_api import (

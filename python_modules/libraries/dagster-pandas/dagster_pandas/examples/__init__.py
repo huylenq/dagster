@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster import (
     FilesystemIOManager,
     config_from_files,

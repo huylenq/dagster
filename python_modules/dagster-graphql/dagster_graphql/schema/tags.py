@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import graphene
 
 from .util import non_null_list

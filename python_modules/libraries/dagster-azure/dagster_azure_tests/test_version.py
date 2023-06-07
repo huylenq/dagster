@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster_azure.version import __version__
 
 

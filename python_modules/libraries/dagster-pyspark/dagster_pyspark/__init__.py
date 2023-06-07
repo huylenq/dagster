@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster._core.libraries import DagsterLibraryRegistry
 
 from .resources import LazyPySparkResource, PySparkResource, lazy_pyspark_resource, pyspark_resource

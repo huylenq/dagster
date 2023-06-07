@@ -5,6 +5,8 @@ Revises: 1a2d72f6b24e
 Create Date: 2021-07-06 10:52:50.862728
 
 """
+from __future__ import annotations
+
 from dagster._core.storage.migration.utils import extract_asset_keys_idx_columns
 
 # revision identifiers, used by Alembic.

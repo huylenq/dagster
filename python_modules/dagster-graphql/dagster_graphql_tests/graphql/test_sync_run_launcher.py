@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster._core.launcher.sync_in_memory_run_launcher import SyncInMemoryRunLauncher
 from dagster._core.test_utils import create_run_for_test, instance_for_test
 

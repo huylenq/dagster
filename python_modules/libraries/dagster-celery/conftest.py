@@ -1,4 +1,7 @@
 # See: https://stackoverflow.com/a/31526934/324449
+from __future__ import annotations
+
+
 def pytest_addoption(parser):
     # We catch the ValueError to support cases where we are loading multiple test suites, e.g., in
     # the VSCode test explorer. When pytest tries to add an option twice, we get, e.g.

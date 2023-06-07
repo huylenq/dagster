@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from typing import Callable, Optional
 
 from dagster._core.definitions import failure_hook, success_hook

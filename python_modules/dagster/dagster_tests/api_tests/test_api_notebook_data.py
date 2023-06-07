@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster._api.notebook_data import sync_get_streaming_external_notebook_data_grpc
 from dagster._utils import file_relative_path
 

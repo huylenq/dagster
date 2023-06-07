@@ -5,6 +5,8 @@ Revises: 6df03f4b1efb
 Create Date: 2023-02-01 11:27:14.146322
 
 """
+from __future__ import annotations
+
 from dagster._core.storage.migration.utils import add_run_job_index, drop_run_job_index
 
 # revision identifiers, used by Alembic.

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from .config_schema import (
     ConfigSchema as ConfigSchema,
     UserConfigSchema as UserConfigSchema,

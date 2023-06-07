@@ -1,5 +1,4 @@
 # pyright: reportGeneralTypeIssues=none
-
 # start
 from dagster_duckdb_pyspark import DuckDBPySparkIOManager
 from pyspark import SparkFiles

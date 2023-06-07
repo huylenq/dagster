@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import logging
 
 from dagster._core.definitions.graph_definition import GraphDefinition

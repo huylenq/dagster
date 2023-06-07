@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from .repository_definition import (
     AssetsDefinitionCacheableData as AssetsDefinitionCacheableData,
     CachingRepositoryData as CachingRepositoryData,

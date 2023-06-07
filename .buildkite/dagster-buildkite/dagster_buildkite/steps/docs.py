@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from typing import List
 
 from dagster_buildkite.steps.tox import build_tox_step

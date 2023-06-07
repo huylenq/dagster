@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from .execution import (
     ScheduledExecutionFailed as ScheduledExecutionFailed,
     ScheduledExecutionResult as ScheduledExecutionResult,

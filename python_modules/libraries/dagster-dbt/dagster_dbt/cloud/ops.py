@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from typing import List, Optional
 
 from dagster import Config, In, Nothing, Out, Output, op

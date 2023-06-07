@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import pytest
 from dagster import In, op
 from dagster._core.errors import DagsterInvalidDefinitionError

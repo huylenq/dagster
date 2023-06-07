@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from .auto_run_reexecution.event_log_consumer import (
     EventLogConsumerDaemon as EventLogConsumerDaemon,
     get_new_cursor as get_new_cursor,

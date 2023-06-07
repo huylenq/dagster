@@ -1,4 +1,6 @@
 # encoding: utf-8
+from __future__ import annotations
+
 import hashlib
 from typing import TYPE_CHECKING, Any, Dict, Iterator, List, Mapping, Sequence
 

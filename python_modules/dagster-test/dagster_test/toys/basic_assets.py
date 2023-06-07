@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster import AssetSelection, MetadataValue, asset, define_asset_job
 
 

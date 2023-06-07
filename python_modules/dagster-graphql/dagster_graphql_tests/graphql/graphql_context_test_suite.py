@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import sys
 import tempfile
 from abc import ABC, abstractmethod

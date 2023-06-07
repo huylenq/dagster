@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import dagster._check as check
 from dagster._core.definitions.selector import RepositorySelector
 from dagster._core.host_representation.code_location import CodeLocation

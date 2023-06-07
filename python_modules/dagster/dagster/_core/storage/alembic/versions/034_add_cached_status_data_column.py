@@ -5,6 +5,7 @@ Revises: 958a9495162d
 Create Date: 2022-11-16 15:23:53.522887
 
 """
+from __future__ import annotations
 
 from dagster._core.storage.migration.utils import add_cached_status_data_column
 

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster import ScheduleDefinition
 
 # Definition that will fire an error when it is imported

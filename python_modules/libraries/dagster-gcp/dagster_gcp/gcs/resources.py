@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from typing import Any, Optional
 
 from dagster import ConfigurableResource, IAttachDifferentObjectToOpContext, resource

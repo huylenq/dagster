@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster_aws.utils.mrjob.log4j import Log4jRecord, parse_hadoop_log4j_records
 
 SIMPLE_LOG4J = """

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster._core.libraries import DagsterLibraryRegistry
 
 from .ops import snowflake_op_for_query as snowflake_op_for_query

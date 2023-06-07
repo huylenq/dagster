@@ -1,5 +1,4 @@
 # start_marker
-
 from typing import List
 
 from dagster import graph, op

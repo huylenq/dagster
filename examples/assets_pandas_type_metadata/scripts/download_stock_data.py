@@ -1,7 +1,5 @@
 #!/usr/bin/env python
 # ruff: noqa: T201
-
-
 import os
 import sys
 

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import pytest
 from dagster import In, asset, define_asset_job, in_process_executor, job, op, repository
 from dagster._core.errors import DagsterExecutionStepNotFoundError, DagsterInvalidSubsetError

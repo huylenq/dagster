@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import pytest
 import responses
 from dagster import AssetKey, build_init_resource_context, materialize, with_resources

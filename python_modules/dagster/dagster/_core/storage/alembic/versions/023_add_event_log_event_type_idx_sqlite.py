@@ -5,6 +5,8 @@ Revises: f4b6a4885876
 Create Date: 2021-09-08 10:42:42.063814
 
 """
+from __future__ import annotations
+
 from dagster._core.storage.migration.utils import create_event_log_event_idx
 
 # revision identifiers, used by Alembic.

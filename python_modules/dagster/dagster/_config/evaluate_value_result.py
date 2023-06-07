@@ -1,4 +1,6 @@
 # pylint disable is for bug: https://github.com/PyCQA/pylint/issues/3299
+from __future__ import annotations
+
 from typing import (
     Any,
     Generator,

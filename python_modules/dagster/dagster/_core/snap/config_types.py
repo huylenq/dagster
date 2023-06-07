@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import dagster._check as check
 from dagster._config import ConfigSchemaSnapshot, snap_from_config_type
 from dagster._core.definitions.job_definition import JobDefinition

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster import AssetMaterialization, Output, op
 from dagster._annotations import experimental
 from dagster._utils.test import wrap_op_in_graph_and_execute

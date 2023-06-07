@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster._config import Array, Field, ScalarUnion, Shape
 
 

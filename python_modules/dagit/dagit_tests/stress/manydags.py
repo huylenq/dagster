@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster import repository
 
 from dagit_tests.stress.dag_gen import generate_job

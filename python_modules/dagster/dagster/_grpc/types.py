@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import base64
 import zlib
 from typing import AbstractSet, Any, Mapping, NamedTuple, Optional, Sequence

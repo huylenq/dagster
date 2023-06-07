@@ -1,4 +1,5 @@
 """Workhorse functions for individual API requests."""
+from __future__ import annotations
 
 import os
 import sys

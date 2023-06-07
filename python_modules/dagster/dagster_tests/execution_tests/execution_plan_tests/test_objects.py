@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import sys
 
 from dagster._core.errors import DagsterUserCodeExecutionError, user_code_error_boundary

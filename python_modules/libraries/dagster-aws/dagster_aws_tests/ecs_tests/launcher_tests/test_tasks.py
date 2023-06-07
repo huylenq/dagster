@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster_aws.ecs.tasks import DagsterEcsTaskDefinitionConfig
 
 

@@ -2,6 +2,7 @@
 
 The asset does nothing. It exists just to have a place to attach the TableMetadataValue.
 """
+from __future__ import annotations
 
 from dagster import MetadataValue, asset
 from dagster._core.definitions.metadata.table import (

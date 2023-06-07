@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster._core.test_utils import instance_for_test
 from dagster._serdes import serialize_pp
 

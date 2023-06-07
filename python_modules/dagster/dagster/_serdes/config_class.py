@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import importlib
 from abc import ABC, abstractmethod
 from typing import Any, Dict, Mapping, NamedTuple, Optional, Type, TypeVar, Union, overload

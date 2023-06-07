@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster._core.storage.event_log import schema as event_log_schema
 from dagster._core.storage.runs import schema as run_schema
 

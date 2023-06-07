@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from typing import Any, List, Mapping, NamedTuple, Optional, Sequence, Set, cast
 
 import dagster._check as check

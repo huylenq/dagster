@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster import job, logger, resource
 from dagster._core.snap import JobSnapshot
 from dagster._core.snap.mode import ModeDefSnap

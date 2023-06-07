@@ -5,6 +5,8 @@ Revises: 5ae53cd67d0c
 Create Date: 2021-01-13 10:48:24.022054
 
 """
+from __future__ import annotations
+
 from dagster._core.storage.migration.utils import create_0_10_0_run_tables
 
 # revision identifiers, used by Alembic.

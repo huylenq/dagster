@@ -1,5 +1,5 @@
 """Facilities for running arbitrary commands in child processes."""
-
+from __future__ import annotations
 
 import os
 import queue

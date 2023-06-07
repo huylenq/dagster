@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections import defaultdict
 from typing import AbstractSet, Dict, Iterable, List, Mapping, Tuple, cast
 

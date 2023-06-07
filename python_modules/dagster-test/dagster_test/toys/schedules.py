@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import datetime
 
 from dagster import build_schedule_from_partitioned_job, schedule

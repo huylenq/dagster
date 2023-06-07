@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from .different_static_partitions import *  # noqa: F403
 from .dynamic_asset_partitions import *  # noqa: F403
 from .failing_partitions import *  # noqa: F403

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster._core.definitions import ResourceDefinition, SourceAsset
 from dagster._core.definitions.events import AssetKey
 from dagster._core.definitions.metadata import MetadataValue

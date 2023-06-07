@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster import OpExecutionContext, op
 from dagster_shell import execute_shell_command
 

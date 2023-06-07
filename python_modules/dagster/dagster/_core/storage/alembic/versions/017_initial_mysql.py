@@ -5,6 +5,7 @@ Revises: 521d4caca7ad
 Create Date: 2021-02-22 23:08:27.392579
 
 """
+from __future__ import annotations
 
 # revision identifiers, used by Alembic.
 revision = "ba4050312958"

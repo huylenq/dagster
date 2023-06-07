@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import inspect
 from collections import deque
 from contextlib import ContextDecorator

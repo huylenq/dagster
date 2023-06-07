@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 CLIENT_SUBMIT_PIPELINE_RUN_MUTATION = """
 mutation($executionParams: ExecutionParams!) {
   launchPipelineExecution(executionParams: $executionParams) {

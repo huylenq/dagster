@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster._utils.merger import deep_merge_dicts
 
 SAMPLE_ACCOUNT_ID = 30000

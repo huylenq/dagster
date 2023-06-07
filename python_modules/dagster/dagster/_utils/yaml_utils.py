@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import functools
 import glob
 from typing import Any, Dict, List, Mapping, Sequence, Type

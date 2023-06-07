@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from .concurrency import execute_concurrency_slots_iteration as execute_concurrency_slots_iteration
 from .run_monitoring import (
     RESUME_RUN_LOG_MESSAGE as RESUME_RUN_LOG_MESSAGE,

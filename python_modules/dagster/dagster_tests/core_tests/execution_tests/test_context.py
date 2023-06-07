@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import dagster._check as check
 from dagster import OpExecutionContext, job, op
 from dagster._core.definitions.job_definition import JobDefinition

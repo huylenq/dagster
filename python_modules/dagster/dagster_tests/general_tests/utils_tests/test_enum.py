@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from enum import Enum
 
 from dagster._utils import is_enum_value

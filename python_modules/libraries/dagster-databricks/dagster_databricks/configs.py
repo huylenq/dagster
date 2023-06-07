@@ -9,6 +9,8 @@ See:
 - https://docs.databricks.com/dev-tools/api/latest/clusters.html
 - https://docs.databricks.com/dev-tools/api/latest/libraries.html
 """
+from __future__ import annotations
+
 from dagster import Array, Bool, Enum, EnumValue, Field, Int, Permissive, Selector, Shape, String
 
 

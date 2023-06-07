@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import pytest
 from dagit import app
 from dagster._cli.workspace import get_workspace_process_context_from_kwargs

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster_airflow.utils import is_airflow_2_loaded_in_environment
 
 

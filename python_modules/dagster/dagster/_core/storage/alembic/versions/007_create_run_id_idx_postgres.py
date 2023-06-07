@@ -5,6 +5,8 @@ Revises: 5c18fd3c2957
 Create Date: 2020-06-11 09:27:11.922143
 
 """
+from __future__ import annotations
+
 from alembic import op
 from sqlalchemy import inspect
 

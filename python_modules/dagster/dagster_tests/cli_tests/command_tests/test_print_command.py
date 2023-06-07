@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import pytest
 from click.testing import CliRunner
 from dagster._cli.job import execute_print_command, job_print_command

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from gzip import GzipFile
 from typing import List, Tuple
 

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from abc import abstractmethod
 from contextlib import contextmanager
 from typing import Optional, Sequence, Type, cast

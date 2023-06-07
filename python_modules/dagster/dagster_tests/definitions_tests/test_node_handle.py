@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import pytest
 from dagster._check import CheckError
 from dagster._core.definitions.dependency import NodeHandle

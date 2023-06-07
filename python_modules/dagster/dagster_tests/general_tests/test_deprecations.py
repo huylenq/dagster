@@ -1,5 +1,6 @@
 # This file strictly contains tests for deprecation warnings. It can serve as a central record of
 # deprecations for the current version.
+from __future__ import annotations
 
 import re
 

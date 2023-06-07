@@ -6,7 +6,7 @@ Produced via:
 parse_spark_configs.py \
 
 """
-
+from __future__ import annotations
 
 from dagster import Bool, Field, Float, IntSource, Permissive, StringSource
 

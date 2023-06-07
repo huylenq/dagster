@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from airflow import __version__ as airflow_version
 from airflow.models.dag import DAG
 from airflow.operators.dummy_operator import DummyOperator  # type: ignore

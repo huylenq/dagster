@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from .composition import PendingNodeInvocation as PendingNodeInvocation
 from .config import ConfigMapping as ConfigMapping
 from .dependency import (

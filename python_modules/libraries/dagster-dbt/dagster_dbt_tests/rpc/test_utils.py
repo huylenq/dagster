@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster_dbt.rpc.utils import fmt_rpc_logs
 
 

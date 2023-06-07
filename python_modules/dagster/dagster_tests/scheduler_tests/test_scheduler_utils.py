@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 MINUTE_BOUNDARY = 1670596320
 
 from dagster._scheduler.scheduler import _get_next_scheduler_iteration_time

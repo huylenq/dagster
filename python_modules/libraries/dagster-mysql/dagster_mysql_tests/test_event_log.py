@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import time
 from urllib.parse import urlparse
 

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from .base import (
     CheckRunHealthResult as CheckRunHealthResult,
     LaunchRunContext as LaunchRunContext,

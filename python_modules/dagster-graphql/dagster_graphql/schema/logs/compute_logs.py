@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import dagster._check as check
 import graphene
 from dagster._core.storage.captured_log_manager import CapturedLogData

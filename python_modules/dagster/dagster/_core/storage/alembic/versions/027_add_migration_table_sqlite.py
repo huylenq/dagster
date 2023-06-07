@@ -5,6 +5,8 @@ Revises: 8d66aa722f94
 Create Date: 2022-03-23 12:58:43.144576
 
 """
+from __future__ import annotations
+
 from dagster._core.storage.migration.utils import create_schedule_secondary_index_table
 
 # revision identifiers, used by Alembic.

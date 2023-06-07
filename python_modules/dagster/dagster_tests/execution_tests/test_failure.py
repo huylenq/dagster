@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster import Failure, job
 from dagster._core.definitions.decorators import op
 from dagster._core.definitions.metadata import MetadataValue

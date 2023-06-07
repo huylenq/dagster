@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from typing import Iterator, Optional, cast
 
 import dagster._check as check

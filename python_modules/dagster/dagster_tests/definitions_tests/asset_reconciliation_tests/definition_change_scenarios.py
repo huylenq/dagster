@@ -1,5 +1,6 @@
 """Scenarios where the set of asset definitions changes between ticks.
 """
+from __future__ import annotations
 
 from .asset_reconciliation_scenario import AssetReconciliationScenario
 from .basic_scenarios import one_asset, two_assets_in_sequence

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster import ExecutorDefinition
 from dagster_celery_k8s import CeleryK8sRunLauncher, celery_k8s_job_executor
 

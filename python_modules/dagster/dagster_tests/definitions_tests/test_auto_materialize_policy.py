@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster import AutoMaterializePolicy
 from dagster._core.definitions.auto_materialize_policy import AutoMaterializePolicyType
 

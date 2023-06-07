@@ -1,8 +1,8 @@
 # type: ignore
+from __future__ import annotations
 
 # Turn pyright off due to problems with putting Dagster types in type annotations.
 # See: https://github.com/dagster-io/dagster/issues/4209
-
 import os
 import pickle
 import tempfile

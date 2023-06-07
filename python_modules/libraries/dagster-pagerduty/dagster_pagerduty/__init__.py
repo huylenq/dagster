@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster._core.libraries import DagsterLibraryRegistry
 
 from .hooks import pagerduty_on_failure as pagerduty_on_failure

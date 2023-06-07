@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import pendulum
 import pytest
 from airflow import __version__ as airflow_version

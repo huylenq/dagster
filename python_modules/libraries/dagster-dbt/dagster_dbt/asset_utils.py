@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import hashlib
 import textwrap
 from typing import AbstractSet, Any, Dict, FrozenSet, List, Mapping, Optional, Set, Tuple

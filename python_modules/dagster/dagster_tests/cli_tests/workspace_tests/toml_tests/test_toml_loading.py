@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster._core.workspace.load_target import get_origins_from_toml
 from dagster._utils import file_relative_path
 

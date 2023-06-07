@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster import mem_io_manager
 from dagster_test.toys.asset_reconciliation.eager_reconciliation import defs
 

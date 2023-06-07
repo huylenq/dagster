@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import pytest
 from dagster import Config, DagsterInvalidDefinitionError, RunConfig
 from dagster_graphql import DagsterGraphQLClientError, InvalidOutputErrorInfo

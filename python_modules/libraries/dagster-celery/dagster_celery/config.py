@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from .defaults import broker_transport_options, task_default_priority, task_default_queue
 
 DEFAULT_CONFIG = {

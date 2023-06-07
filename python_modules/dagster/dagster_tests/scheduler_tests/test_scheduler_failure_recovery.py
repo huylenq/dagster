@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import multiprocessing
 from concurrent.futures import ThreadPoolExecutor
 from signal import Signals

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster._core.test_utils import wait_for_runs_to_finish
 from dagster._core.utils import make_new_run_id
 from dagster_graphql.client.query import (

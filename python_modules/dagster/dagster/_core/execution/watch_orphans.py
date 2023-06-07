@@ -5,6 +5,7 @@
 # process has died and kills the tail child process if so.  This is to ensure that execution that
 # suddenly exits mid-computation without cleaning up after itself will not orphan long-lived tail
 # processes.
+from __future__ import annotations
 
 import os
 import signal

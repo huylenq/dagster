@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections import defaultdict
 
 from dagster import DependencyDefinition, GraphDefinition, In, Int, NodeInvocation, op

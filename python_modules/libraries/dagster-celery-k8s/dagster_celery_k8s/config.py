@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster import Field, Float, Noneable, StringSource
 from dagster._core.host_representation import IN_PROCESS_NAME
 from dagster._utils.merger import merge_dicts

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from enum import Enum as PyEnum
 from functools import update_wrapper
 from typing import TYPE_CHECKING, Any, Callable, Dict, Mapping, Optional, Sequence, Union, overload

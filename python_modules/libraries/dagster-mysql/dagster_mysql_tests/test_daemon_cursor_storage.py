@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import pytest
 from dagster_mysql.run_storage import MySQLRunStorage
 from dagster_tests.storage_tests.utils.daemon_cursor_storage import TestDaemonCursorStorage

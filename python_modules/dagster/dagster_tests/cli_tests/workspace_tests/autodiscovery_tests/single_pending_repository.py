@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster import repository
 from dagster._core.definitions.cacheable_assets import CacheableAssetsDefinition
 

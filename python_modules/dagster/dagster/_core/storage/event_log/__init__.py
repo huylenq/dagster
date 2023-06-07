@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from .base import (
     AssetRecord as AssetRecord,
     EventLogRecord as EventLogRecord,

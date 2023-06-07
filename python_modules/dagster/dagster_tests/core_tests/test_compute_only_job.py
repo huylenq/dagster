@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from typing import Dict, TypeVar
 
 from dagster import job, op

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster import ExecutorDefinition
 from dagster_celery_docker import celery_docker_executor
 

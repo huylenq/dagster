@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from .docker_compose import (
     default_docker_compose_yml as default_docker_compose_yml,
     docker_compose as docker_compose,

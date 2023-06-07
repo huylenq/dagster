@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import logging
 
 from dagster_airflow.operators.util import (  # type: ignore  # (old airflow)

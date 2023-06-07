@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import boto3
 import pytest
 from dagster_aws.athena.resources import (

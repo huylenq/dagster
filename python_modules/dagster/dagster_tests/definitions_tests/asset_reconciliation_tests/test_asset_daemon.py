@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import pytest
 from dagster import AssetKey
 from dagster._core.instance_for_test import instance_for_test

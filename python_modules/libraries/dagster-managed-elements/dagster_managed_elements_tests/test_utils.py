@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster_managed_elements import ManagedElementDiff
 from dagster_managed_elements.utils import diff_dicts
 

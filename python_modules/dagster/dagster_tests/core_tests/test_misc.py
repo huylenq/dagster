@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import pytest
 from dagster._core.definitions.utils import (
     check_valid_name,

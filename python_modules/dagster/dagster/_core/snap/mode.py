@@ -1,4 +1,6 @@
 # Contains mode, resources, loggers
+from __future__ import annotations
+
 from typing import NamedTuple, Optional, Sequence
 
 import dagster._check as check

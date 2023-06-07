@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster_gcp.version import __version__
 
 

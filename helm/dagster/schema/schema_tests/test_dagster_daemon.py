@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import pytest
 import yaml
 from dagster._core.instance.config import schedules_daemon_config, sensors_daemon_config

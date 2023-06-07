@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import pytest
 
 MINIMAL_KUBECONFIG_CONTENT = """

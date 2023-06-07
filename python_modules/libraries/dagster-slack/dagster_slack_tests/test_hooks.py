@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster import op
 from dagster._core.definitions.decorators.job_decorator import job
 from dagster_slack import slack_resource

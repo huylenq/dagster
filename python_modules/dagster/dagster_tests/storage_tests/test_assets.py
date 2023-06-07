@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import pytest
 from dagster import AssetKey, AssetMaterialization, Output, job, op
 from dagster._core.definitions.events import parse_asset_key_string

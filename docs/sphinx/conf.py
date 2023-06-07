@@ -1,15 +1,14 @@
 # For a full of config options see:
 #   https://www.sphinx-doc.org/en/master/usage/configuration.html
+from __future__ import annotations
 
 # -- Path setup --------------------------------------------------------------
-
 # We add two kinds of packages to `sys.path`:
 #
 # - Targets for `autodoc` (referenced via e.g. `automodule` in our doc source rst files).
 #   `autodoc` runs in python and actually imports its targets, so they must be available on
 #   `sys.path`.
 # - Custom sphinx extensions (autodoc_dagster).
-
 import os
 import sys
 

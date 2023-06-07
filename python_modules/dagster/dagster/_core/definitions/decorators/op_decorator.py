@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from functools import lru_cache, update_wrapper
 from inspect import Parameter
 from typing import (

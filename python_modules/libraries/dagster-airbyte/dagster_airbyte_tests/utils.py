@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster._utils.merger import deep_merge_dicts
 from dagster_airbyte import AirbyteState
 

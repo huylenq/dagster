@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster import DagsterType, Out, Output, graph, op
 from dagster_pandas.constraints import (
     ColumnWithMetadataException,

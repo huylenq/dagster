@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from abc import ABC, abstractmethod
 from asyncio import Task, get_event_loop
 from enum import Enum

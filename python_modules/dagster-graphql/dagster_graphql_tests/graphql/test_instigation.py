@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster._core.test_utils import SingleThreadPoolExecutor, wait_for_futures
 from dagster._daemon import get_default_daemon_logger
 from dagster._daemon.sensor import execute_sensor_iteration

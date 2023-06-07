@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster import Definitions, load_assets_from_modules, mem_io_manager
 from dagster_test.toys import basic_assets
 

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster import build_multi_asset_sensor_context, instance_for_test, materialize
 from dagster_test.toys.asset_sensors import (
     partitioned_assets,

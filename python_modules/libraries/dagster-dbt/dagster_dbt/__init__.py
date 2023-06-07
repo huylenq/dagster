@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from .asset_defs import (
     load_assets_from_dbt_manifest as load_assets_from_dbt_manifest,
     load_assets_from_dbt_project as load_assets_from_dbt_project,

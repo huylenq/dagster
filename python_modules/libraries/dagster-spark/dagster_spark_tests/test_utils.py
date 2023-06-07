@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster_spark.utils import parse_spark_config
 
 

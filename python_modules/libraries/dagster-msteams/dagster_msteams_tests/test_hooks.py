@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster import op
 from dagster._core.definitions.decorators.job_decorator import job
 from dagster_msteams.hooks import teams_on_failure, teams_on_success

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import logging
 
 from dagster import ConfigMapping, DagsterInstance, Field, JobDefinition, job, logger, op, resource

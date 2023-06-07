@@ -5,6 +5,8 @@ Revises: c39c047fa021
 Create Date: 2020-06-10 10:00:57.793622
 
 """
+from __future__ import annotations
+
 from alembic import op
 from dagster._core.storage.migration.utils import get_currently_upgrading_instance, has_table
 from sqlalchemy import inspect

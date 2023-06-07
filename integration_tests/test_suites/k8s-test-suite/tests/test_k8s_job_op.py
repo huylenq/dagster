@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import kubernetes
 import pytest
 from dagster import RetryRequested, job, op

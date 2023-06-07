@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster import Bool, Field, Float, Int, Permissive, Shape, String
 
 from .types import (

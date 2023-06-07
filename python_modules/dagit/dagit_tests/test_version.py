@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagit.version import __version__
 
 

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from datetime import datetime
 from enum import Enum
 from typing import TYPE_CHECKING, Any, Mapping, NamedTuple, Optional, Sequence, Set, Union, cast
@@ -177,7 +179,6 @@ class RunRequest(
         from dagster._core.definitions.job_definition import JobDefinition
         from dagster._core.definitions.partition import (
             PartitionedConfig,
-            PartitionsDefinition,
         )
 
         if self.partition_key is None:

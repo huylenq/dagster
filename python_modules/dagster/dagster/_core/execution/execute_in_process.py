@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from typing import Any, Dict, FrozenSet, Mapping, Optional, cast
 
 from dagster._core.definitions import GraphDefinition, JobDefinition, Node, NodeHandle, OpDefinition

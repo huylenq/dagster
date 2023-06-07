@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import responses
 from dagster import build_op_context, op
 from dagster_pagerduty import PagerDutyService, pagerduty_resource

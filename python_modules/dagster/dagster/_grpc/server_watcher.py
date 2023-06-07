@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import threading
 
 import dagster._check as check

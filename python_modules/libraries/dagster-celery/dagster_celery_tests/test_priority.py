@@ -1,4 +1,5 @@
 # pylint doesn't know about pytest fixtures
+from __future__ import annotations
 
 import tempfile
 import threading

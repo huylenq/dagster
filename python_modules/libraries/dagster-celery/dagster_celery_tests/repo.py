@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import time
 
 from dagster import Int, Output, RetryRequested, VersionStrategy, job

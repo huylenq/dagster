@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import sys
 
 from dagster._core.host_representation import ManagedGrpcPythonEnvCodeLocationOrigin

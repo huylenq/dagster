@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from typing import Dict, Mapping
 
 from dagster._core.utils import check_dagster_package_version

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from typing import ContextManager, Mapping, Optional, cast
 
 import dagster._check as check

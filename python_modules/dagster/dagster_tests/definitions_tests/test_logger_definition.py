@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import logging
 
 from dagster import Enum, EnumValue, Field, Int, configured, job, logger

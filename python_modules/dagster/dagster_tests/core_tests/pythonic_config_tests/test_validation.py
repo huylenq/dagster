@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import pytest
 from dagster import job, op
 from dagster._config.pythonic_config import Config

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from .consolidated_sqlite_event_log import (
     ConsolidatedSqliteEventLogStorage as ConsolidatedSqliteEventLogStorage,
 )

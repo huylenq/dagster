@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster._utils.net import is_local_uri
 
 

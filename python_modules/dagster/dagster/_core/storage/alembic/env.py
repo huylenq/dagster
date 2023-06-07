@@ -1,4 +1,5 @@
 # alembic dynamically populates the alembic.context module
+from __future__ import annotations
 
 from alembic import context
 from dagster._core.storage.event_log import SqlEventLogStorageMetadata

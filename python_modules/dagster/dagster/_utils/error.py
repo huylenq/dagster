@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import traceback
 from types import TracebackType
 from typing import Any, NamedTuple, Optional, Sequence, Tuple, Type, Union

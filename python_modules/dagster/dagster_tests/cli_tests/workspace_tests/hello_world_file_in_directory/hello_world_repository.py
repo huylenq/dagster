@@ -1,4 +1,5 @@
 # type: ignore
+from __future__ import annotations
 
 from dagster import repository
 from src.jobs import hello_world_job

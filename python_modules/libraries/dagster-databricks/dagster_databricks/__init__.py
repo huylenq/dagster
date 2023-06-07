@@ -7,6 +7,7 @@ This package provides:
 - the :py:class:`~dagster_databricks.DatabricksRunJobSolidDefinition`, which can be used
     to execute an arbitrary task in Databricks.
 """
+from __future__ import annotations
 
 from dagster._core.libraries import DagsterLibraryRegistry
 

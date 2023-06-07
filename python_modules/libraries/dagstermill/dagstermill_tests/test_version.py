@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagstermill.version import __version__
 
 

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import dask.dataframe as dd
 from dagster import file_relative_path
 from dagster._core.definitions.decorators import op

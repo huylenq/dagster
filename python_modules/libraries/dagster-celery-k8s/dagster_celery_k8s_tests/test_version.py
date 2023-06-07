@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster_celery_k8s.version import __version__
 
 

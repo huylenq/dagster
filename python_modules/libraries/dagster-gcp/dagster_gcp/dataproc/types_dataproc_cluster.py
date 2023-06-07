@@ -6,7 +6,7 @@ Produced via:
 parse_dataproc_configs.py \
 
 """
-
+from __future__ import annotations
 
 from dagster import Enum, EnumValue
 

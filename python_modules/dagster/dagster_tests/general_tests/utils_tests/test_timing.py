@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import pytest
 from dagster._utils.timing import TimerResult, format_duration, time_execution_scope
 

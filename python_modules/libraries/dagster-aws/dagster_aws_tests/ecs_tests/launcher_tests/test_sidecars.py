@@ -1,3 +1,6 @@
+from __future__ import annotations
+
+
 def test_default(ecs, instance, launch_run):
     initial_task_definitions = ecs.list_task_definitions()["taskDefinitionArns"]
 

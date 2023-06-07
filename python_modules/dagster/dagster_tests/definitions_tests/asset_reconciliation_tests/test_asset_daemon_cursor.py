@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster import AssetKey, StaticPartitionsDefinition, asset
 from dagster._core.definitions.asset_graph import AssetGraph
 from dagster._core.definitions.asset_reconciliation_sensor import (

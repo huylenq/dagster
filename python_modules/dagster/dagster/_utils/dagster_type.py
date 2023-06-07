@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from typing import Any
 
 from dagster._core.definitions.events import Failure, TypeCheck

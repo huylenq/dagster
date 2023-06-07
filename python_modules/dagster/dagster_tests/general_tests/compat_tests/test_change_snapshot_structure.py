@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster._core.host_representation import ExternalExecutionPlan
 from dagster._core.instance import DagsterInstance, InstanceRef
 from dagster._core.snap import create_execution_plan_snapshot_id, create_job_snapshot_id

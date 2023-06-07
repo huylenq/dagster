@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster._core.host_representation.origin import (
     ExternalJobOrigin,
     ExternalRepositoryOrigin,

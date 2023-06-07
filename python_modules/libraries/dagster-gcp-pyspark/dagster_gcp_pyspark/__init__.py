@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster._core.libraries import DagsterLibraryRegistry
 
 from .bigquery.bigquery_pyspark_type_handler import (

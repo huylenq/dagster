@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import pytest
 from dagster._seven.compat.pendulum import create_pendulum_time, to_timezone
 from dagster._utils.schedules import cron_string_iterator

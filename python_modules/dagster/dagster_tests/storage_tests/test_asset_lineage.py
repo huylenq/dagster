@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import pytest
 from dagster import AssetKey, DynamicOut, DynamicOutput, Out, Output, job, op
 from dagster._core.definitions.events import AssetLineageInfo

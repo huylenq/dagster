@@ -3,6 +3,8 @@ Not every property on these should be exposed to random Jane or Joe dagster user
 so we have a different layer of objects that encode the explicit public API
 in the user_context module.
 """
+from __future__ import annotations
+
 from abc import ABC, abstractmethod
 from typing import (
     TYPE_CHECKING,

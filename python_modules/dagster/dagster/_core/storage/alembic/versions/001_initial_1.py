@@ -5,10 +5,9 @@ Revises:
 Create Date: 2019-11-21 09:59:57.028730
 
 """
-
+from __future__ import annotations
 
 # alembic dynamically populates the alembic.context module
-
 import sqlalchemy as sa
 from alembic import context, op
 from dagster._core.storage.event_log import SqlEventLogStorageTable

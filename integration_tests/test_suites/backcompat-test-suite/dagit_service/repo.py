@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster import graph, job, op, repository
 from dagster_graphql import DagsterGraphQLClient
 

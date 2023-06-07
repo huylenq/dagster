@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster import Int, Out, Output, graph, op
 
 

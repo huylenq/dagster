@@ -5,7 +5,6 @@
 Builds a convolutional neural network on the fashion mnist data set.
 Designed to show wandb integration with pytorch.
 """
-
 import os
 
 import torch

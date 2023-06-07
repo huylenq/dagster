@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import graphene
 from dagster._core.scheduler.instigation import TickStatus
 from dagster._core.storage.dagster_run import RunsFilter

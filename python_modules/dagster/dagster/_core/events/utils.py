@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from json import JSONDecodeError
 
 import dagster._check as check

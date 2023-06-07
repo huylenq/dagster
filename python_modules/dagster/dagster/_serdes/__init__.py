@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from .config_class import (
     ConfigurableClass as ConfigurableClass,
     ConfigurableClassData as ConfigurableClassData,

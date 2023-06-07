@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import nbformat
 from papermill.log import logger
 

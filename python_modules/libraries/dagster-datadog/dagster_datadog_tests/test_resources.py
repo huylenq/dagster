@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from unittest import mock
 
 from dagster import OpExecutionContext, build_op_context, job, op

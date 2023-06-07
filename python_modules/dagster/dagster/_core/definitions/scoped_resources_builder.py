@@ -4,6 +4,7 @@
 # folded back into "resource_definition".
 #
 # See: https://github.com/python/mypy/issues/7281
+from __future__ import annotations
 
 from collections import namedtuple
 from typing import AbstractSet, Any, Mapping, NamedTuple, Optional

@@ -7,6 +7,7 @@ reconstructables) and abstractions that reside in host processes
 These should only be invoked from contexts where we know this
 to be the case.
 """
+from __future__ import annotations
 
 from typing import TYPE_CHECKING
 

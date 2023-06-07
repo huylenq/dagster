@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import kubernetes
 from marks import mark_daemon
 

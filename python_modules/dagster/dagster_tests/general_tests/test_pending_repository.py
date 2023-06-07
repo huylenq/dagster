@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import dagster._check as check
 import pytest
 from dagster import (

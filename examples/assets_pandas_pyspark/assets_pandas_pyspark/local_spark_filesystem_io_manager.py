@@ -1,11 +1,8 @@
 # local_spark_filesystem_io_manager.py
-
 # Data is stored in Parquet files using the "Hadoop-style" layout in which each table corresponds to a
 # directory, and each file within the directory contains some of the rows.
-
 # The processing options are Pandas and Spark. A table can be created from a Pandas DataFrame
 # and then consumed in a downstream computation as a Spark DataFrame, and vice versa.
-
 import glob
 import os
 from typing import Union

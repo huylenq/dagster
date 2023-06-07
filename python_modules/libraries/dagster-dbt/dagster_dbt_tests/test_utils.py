@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import pytest
 from dagster import AssetKey
 from dagster_dbt.types import DbtOutput

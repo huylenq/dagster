@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from abc import abstractmethod
 from functools import update_wrapper
 from typing import TYPE_CHECKING, AbstractSet, Callable, Optional, Union, cast, overload

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import json
 import logging
 from datetime import datetime
@@ -455,7 +457,7 @@ def execute_asset_backfill_iteration(
     This is a generator so that we can return control to the daemon and let it heartbeat during
     expensive operations.
     """
-    from dagster._core.execution.backfill import BulkActionStatus, PartitionBackfill
+    from dagster._core.execution.backfill import BulkActionStatus
 
     workspace_context = workspace_process_context.create_request_context()
     unloadable_locations = _get_unloadable_location_names(workspace_context, logger)

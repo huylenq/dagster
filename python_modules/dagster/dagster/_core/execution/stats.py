@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections import defaultdict
 from enum import Enum
 from typing import Any, Dict, Iterable, NamedTuple, Optional, Sequence, cast

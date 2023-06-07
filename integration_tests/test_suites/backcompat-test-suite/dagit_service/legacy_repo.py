@@ -1,7 +1,7 @@
 # type: ignore
+from __future__ import annotations
 
 # This file is only loaded by old versions of dagster during backcompat testing.
-
 from dagster import graph, op, pipeline, repository, solid
 from dagster_graphql import DagsterGraphQLClient
 

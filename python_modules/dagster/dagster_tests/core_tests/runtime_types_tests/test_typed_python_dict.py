@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import pytest
 from dagster import DagsterTypeCheckDidNotPass, Dict, In, Out, op
 from dagster._utils.test import wrap_op_in_graph_and_execute

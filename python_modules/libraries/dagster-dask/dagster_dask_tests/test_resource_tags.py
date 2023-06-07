@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster._core.definitions.decorators import op
 from dagster_dask.executor import get_dask_resource_requirements
 

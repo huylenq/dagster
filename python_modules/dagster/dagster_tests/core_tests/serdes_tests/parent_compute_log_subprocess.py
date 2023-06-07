@@ -1,4 +1,5 @@
 """Test a chain of child processes with compute log tails."""
+from __future__ import annotations
 
 import sys
 import time

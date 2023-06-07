@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster import Definitions
 from dagster._core.definitions.assets_job import (
     build_source_asset_observation_job,

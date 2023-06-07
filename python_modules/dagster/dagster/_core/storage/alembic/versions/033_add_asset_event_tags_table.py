@@ -5,6 +5,8 @@ Revises: a00dd8d936a1
 Create Date: 2022-10-25 10:00:50.954192
 
 """
+from __future__ import annotations
+
 import sqlalchemy as db
 from alembic import op
 from dagster._core.storage.migration.utils import has_index, has_table

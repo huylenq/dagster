@@ -1,3 +1,6 @@
+from __future__ import annotations
+
+
 def get_sync_data():
     return {
         "status": "success",

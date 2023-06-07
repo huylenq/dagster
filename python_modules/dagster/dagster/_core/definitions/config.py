@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from typing import Any, Callable, Mapping, NamedTuple, Optional, Union, cast
 
 from typing_extensions import TypeAlias

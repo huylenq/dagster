@@ -1,4 +1,5 @@
 # type: ignore
+from __future__ import annotations
 
 from dagster import job
 from ops import example_two_op

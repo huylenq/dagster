@@ -11,6 +11,7 @@ in the downstream asset depends on the freshness of the data in the upstream ass
 recently you've materialized the downstream asset, it can't be fresher than the upstream
 materialization it was derived from.
 """
+from __future__ import annotations
 
 import datetime
 from typing import AbstractSet, Dict, Mapping, Optional, Sequence, Tuple, cast

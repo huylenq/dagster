@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import contextlib
 import os
 from typing import Callable, Dict, Iterator, List, NamedTuple, Optional

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from .base import RunStorage as RunStorage
 from .in_memory import InMemoryRunStorage as InMemoryRunStorage
 from .schema import (

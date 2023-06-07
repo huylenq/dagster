@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import inspect
 from typing import Any, Union, get_type_hints
 

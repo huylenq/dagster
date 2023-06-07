@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import subprocess
 from distutils import spawn
 from typing import Iterable, List, Optional

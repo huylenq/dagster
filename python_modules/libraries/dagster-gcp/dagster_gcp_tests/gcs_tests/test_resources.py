@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster import build_op_context, op
 from dagster_gcp.gcs.resources import GCSResource, gcs_resource
 

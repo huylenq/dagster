@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import copy
 from functools import update_wrapper
 from typing import (

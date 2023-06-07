@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import random
 
 from dagster import AssetSelection, RunRequest, SensorResult, define_asset_job, sensor

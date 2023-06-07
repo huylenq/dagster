@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import logging
 from distutils import core as distutils_core
 from importlib import reload

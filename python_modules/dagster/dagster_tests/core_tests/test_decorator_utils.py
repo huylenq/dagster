@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster._core.decorator_utils import (
     format_docstring_for_description,
     get_function_params,

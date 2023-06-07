@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from typing import TYPE_CHECKING, Sequence
 
 from dagster._core.storage.captured_log_manager import CapturedLogManager

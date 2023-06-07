@@ -1,3 +1,6 @@
+from __future__ import annotations
+
+
 def types():
     from .assets import GrapheneAssetConnection, GrapheneAssetOrError, GrapheneAssetsOrError
     from .execution_plan import GrapheneExecutionPlanOrError

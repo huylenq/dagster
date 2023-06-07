@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from typing import AbstractSet, Dict, Optional, Union
 
 from dagster._utils.cached_method import cached_method

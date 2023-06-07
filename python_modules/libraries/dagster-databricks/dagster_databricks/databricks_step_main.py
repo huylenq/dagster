@@ -7,6 +7,7 @@ parameters:
 - the DBFS path to the zipped dagster job
 - paths to any other zipped packages which have been uploaded to DBFS.
 """
+from __future__ import annotations
 
 import gzip
 import os

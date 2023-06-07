@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from celery import Celery
 from celery.utils.collections import force_mapping
 from dagster._seven import is_module_available

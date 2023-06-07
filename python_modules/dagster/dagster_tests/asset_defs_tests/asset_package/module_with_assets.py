@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster import AssetKey, SourceAsset, asset
 
 # importing this makes it show up twice when we collect everything

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from .asset_decorator import (
     asset as asset,
     multi_asset as multi_asset,

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster import In, Out, graph, op
 from dagster._core.snap import (
     DependencyStructureIndex,

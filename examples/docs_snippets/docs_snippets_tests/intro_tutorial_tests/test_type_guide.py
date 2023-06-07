@@ -1,7 +1,5 @@
 # pyright: reportGeneralTypeIssues=none
-
 # Disable reportGeneralTypeIssues here due to use of Dagster types in annotations
-
 import typing
 
 import pytest

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import re
 
 from dagster_managed_elements import ManagedElementDiff

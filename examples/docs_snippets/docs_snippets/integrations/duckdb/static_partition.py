@@ -1,5 +1,4 @@
 # start_example
-
 import pandas as pd
 
 from dagster import StaticPartitionsDefinition, asset

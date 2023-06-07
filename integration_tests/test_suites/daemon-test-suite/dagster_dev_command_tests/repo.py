@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from bar import foo_op  # requires working_directory
 from dagster import DefaultSensorStatus, RunRequest, job, repository, sensor
 

@@ -1,5 +1,4 @@
 # start_asset_key
-
 import pandas as pd
 
 from dagster import SourceAsset, asset

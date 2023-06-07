@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from typing import Dict, List
 
 from dagster import Definitions, asset, graph, job, op, repository, resource

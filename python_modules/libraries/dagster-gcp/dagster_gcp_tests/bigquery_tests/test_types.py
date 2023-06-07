@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster_gcp.bigquery.types import _is_valid_dataset, _is_valid_table
 
 

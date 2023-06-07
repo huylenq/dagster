@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import pytest
 
 # pytest rewrites `assert` in test cases to give additional info for debugging. This class isn't a

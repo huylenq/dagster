@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from typing import AbstractSet, Any, Mapping
 
 from dagster._core.workspace.context import WorkspaceRequestContext

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import contextlib
 from tempfile import NamedTemporaryFile
 

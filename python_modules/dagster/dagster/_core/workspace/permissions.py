@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from enum import Enum, unique
 from typing import Dict, Mapping, NamedTuple, Optional
 

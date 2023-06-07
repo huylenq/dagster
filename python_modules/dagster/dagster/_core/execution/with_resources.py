@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from typing import Any, Iterable, List, Mapping, Optional, Sequence, TypeVar, cast
 
 from dagster import _check as check

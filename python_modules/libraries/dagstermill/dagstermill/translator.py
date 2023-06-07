@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import papermill
 import papermill.translators
 from dagster import _seven

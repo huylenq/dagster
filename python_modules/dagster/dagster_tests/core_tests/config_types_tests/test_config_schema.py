@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import pytest
 from dagster import ConfigMapping, Field, graph, op
 from dagster._check import CheckError

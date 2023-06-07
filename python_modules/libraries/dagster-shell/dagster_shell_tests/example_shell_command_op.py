@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster import graph
 from dagster_shell import create_shell_command_op
 

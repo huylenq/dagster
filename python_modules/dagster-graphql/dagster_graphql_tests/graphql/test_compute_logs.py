@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster._core.events import DagsterEventType
 from dagster_graphql.test.utils import (
     execute_dagster_graphql,

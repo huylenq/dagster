@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster_mlflow.version import __version__
 
 

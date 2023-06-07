@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster_aws.emr.utils import subset_run_config
 
 

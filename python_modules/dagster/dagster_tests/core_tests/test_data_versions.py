@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import pytest
 from dagster._check import ParameterCheckError
 from dagster._core.definitions.data_version import DataVersion

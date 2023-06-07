@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import pytest
 from dagster import file_relative_path
 from dagster._core.test_utils import instance_for_test

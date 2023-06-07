@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster import job, op, reconstructable
 from dagster._core.definitions.job_definition import JobDefinition
 from dagster._core.events import MARKER_EVENTS

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from typing import Any
 
 from dagster_graphql.test.utils import execute_dagster_graphql

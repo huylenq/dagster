@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import os
 
 broker_url = "pyamqp://guest@{hostname}:5672//".format(

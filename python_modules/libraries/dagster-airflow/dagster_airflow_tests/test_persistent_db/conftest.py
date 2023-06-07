@@ -3,6 +3,8 @@
 These make very heavy use of fixture dependency and scope. If you're unfamiliar with pytest
 fixtures, read: https://docs.pytest.org/en/latest/fixture.html.
 """
+from __future__ import annotations
+
 import importlib
 import time
 from datetime import datetime

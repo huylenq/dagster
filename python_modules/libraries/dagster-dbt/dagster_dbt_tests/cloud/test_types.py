@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster_dbt import DbtCloudOutput
 
 from .utils import sample_run_details, sample_run_results

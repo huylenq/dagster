@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import os
 
 from dagster._core.execution.api import execute_job

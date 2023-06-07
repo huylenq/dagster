@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import json
 from itertools import chain
 from typing import Any, Dict, Iterable, List, Mapping, Optional, Tuple

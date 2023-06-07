@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from tempfile import TemporaryDirectory
 from urllib.parse import urlparse
 

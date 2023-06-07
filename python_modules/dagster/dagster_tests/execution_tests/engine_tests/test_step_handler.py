@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster import job
 from dagster._core.definitions.reconstruct import reconstructable
 from dagster._core.execution.api import create_execution_plan

@@ -16,6 +16,8 @@ The materialization endpoint of the external system returns a data version strin
 indicating whether a memoized value was used. This information is passed to the Dagster framework by
 returning a `Nothing` `Output`.
 """
+from __future__ import annotations
+
 import warnings
 from typing import Sequence, cast
 

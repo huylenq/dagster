@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster import AssetIn, IOManager, asset, io_manager, materialize, with_resources
 
 

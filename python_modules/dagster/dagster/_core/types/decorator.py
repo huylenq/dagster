@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from typing import TYPE_CHECKING, Callable, Optional, Type, TypeVar, Union, overload
 
 import dagster._check as check

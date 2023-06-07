@@ -12,6 +12,8 @@ Why not pickle?
 * This isn't meant to replace pickle in the conditions that pickle is reasonable to use
   (in memory, not human readable, etc) just handle the json case effectively.
 """
+from __future__ import annotations
+
 import collections.abc
 import warnings
 from abc import ABC, abstractmethod

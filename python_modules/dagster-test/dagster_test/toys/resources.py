@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster import Field, Int, asset, graph, op, repository, resource, with_resources
 
 

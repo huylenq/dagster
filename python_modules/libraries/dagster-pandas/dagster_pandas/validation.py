@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster import (
     DagsterInvariantViolationError,
     _check as check,

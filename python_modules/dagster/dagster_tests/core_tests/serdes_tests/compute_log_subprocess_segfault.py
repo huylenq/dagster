@@ -1,4 +1,5 @@
 """Test that compute log tail processes go away when the parent hard crashes."""
+from __future__ import annotations
 
 import sys
 

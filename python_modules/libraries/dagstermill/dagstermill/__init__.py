@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster._core.libraries import DagsterLibraryRegistry
 
 from .asset_factory import define_dagstermill_asset as define_dagstermill_asset

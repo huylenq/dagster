@@ -3,6 +3,8 @@ host processes and user processes. They should contain no
 business logic or clever indexing. Use the classes in external.py
 for that.
 """
+from __future__ import annotations
+
 import inspect
 import json
 from abc import ABC, abstractmethod

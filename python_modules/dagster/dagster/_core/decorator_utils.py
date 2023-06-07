@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import textwrap
 from inspect import Parameter, signature
 from typing import Any, Callable, Optional, Sequence, Set, TypeVar, Union

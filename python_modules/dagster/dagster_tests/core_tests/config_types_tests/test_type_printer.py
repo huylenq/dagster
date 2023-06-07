@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster import Field, GraphDefinition, Int, Map, Noneable, ScalarUnion, String, op
 from dagster._config import (
     get_recursive_type_keys,

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import pytest
 from dagster import Output, job, op
 from dagster._utils import file_relative_path

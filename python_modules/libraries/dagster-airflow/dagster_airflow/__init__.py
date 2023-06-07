@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from airflow.plugins_manager import AirflowPlugin
 from dagster._core.libraries import DagsterLibraryRegistry
 

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster_gcp.gcs import FakeGCSBlob, FakeGCSBucket, FakeGCSClient
 
 

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import os
 
 from dagster import Array, BoolSource, IntSource, Noneable, StringSource

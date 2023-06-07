@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import threading
 from functools import lru_cache
 from typing import Any, Optional, Tuple, Union

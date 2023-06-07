@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster import job
 from dagster_celery_k8s.executor import celery_k8s_job_executor
 

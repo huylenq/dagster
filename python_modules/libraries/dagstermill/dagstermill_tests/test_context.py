@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster._core.definitions.dependency import Node
 from dagster._core.definitions.op_definition import OpDefinition
 from dagster._core.system_config.objects import ResolvedRunConfig

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import os
 from threading import Thread
 from unittest import mock

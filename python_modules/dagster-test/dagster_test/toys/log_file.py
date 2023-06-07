@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import os
 
 from dagster import AssetKey, AssetMaterialization, Field, MetadataValue, Output, graph, op

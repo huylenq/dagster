@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster import reconstructable
 from dagster._core.definitions import op
 from dagster._core.definitions.decorators.job_decorator import job

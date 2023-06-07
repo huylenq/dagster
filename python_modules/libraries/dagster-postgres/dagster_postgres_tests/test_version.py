@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster_postgres.version import __version__
 
 

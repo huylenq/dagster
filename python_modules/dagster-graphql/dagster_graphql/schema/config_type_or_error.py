@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import graphene
 
 from .config_types import (

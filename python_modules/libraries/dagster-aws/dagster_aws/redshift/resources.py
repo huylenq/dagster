@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import abc
 from contextlib import contextmanager
 from logging import Logger

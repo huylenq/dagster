@@ -1,5 +1,6 @@
 """Unit testing the Mlflow class.
 """
+from __future__ import annotations
 
 import logging
 import random

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import responses
 from dagster_dbt.cloud.cli import DAGSTER_DBT_COMPILE_RUN_ID_ENV_VAR, app
 from typer.testing import CliRunner

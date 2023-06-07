@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from .subset_selector import (
     Traverser as Traverser,
     generate_dep_graph as generate_dep_graph,

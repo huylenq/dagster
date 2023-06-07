@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from abc import ABC, abstractmethod
 from typing import AbstractSet, Callable, List, Optional, Sequence, Set, cast
 

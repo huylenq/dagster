@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from typing import Any
 
 from dagster._core.test_utils import wait_for_runs_to_finish

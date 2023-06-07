@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster import AssetKey, SourceAsset, asset
 
 patsy_cline = SourceAsset(key=AssetKey("patsy_cline"))

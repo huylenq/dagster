@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from contextlib import ExitStack
 from typing import Any, Dict, Mapping, Optional, Type, cast
 

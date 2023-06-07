@@ -7,6 +7,7 @@ remote Dagster user proceses (e.g., containers).
 The GRPC layer is not intended to supplant the dagster-graphql layer, which should still be used to
 drive web frontends like dagit.
 """
+from __future__ import annotations
 
 from .client import (
     DagsterGrpcClient as DagsterGrpcClient,

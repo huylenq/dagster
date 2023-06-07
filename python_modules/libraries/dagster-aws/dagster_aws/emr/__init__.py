@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from .emr import (
     EmrError as EmrError,
     EmrJobRunner as EmrJobRunner,

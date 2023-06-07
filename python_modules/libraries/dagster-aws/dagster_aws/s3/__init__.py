@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from .compute_log_manager import S3ComputeLogManager as S3ComputeLogManager
 from .file_manager import (
     S3FileHandle as S3FileHandle,

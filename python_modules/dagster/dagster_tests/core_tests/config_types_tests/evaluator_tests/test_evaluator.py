@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster import Any, Bool, Field, Int, Noneable, Selector, Shape, String, StringSource
 from dagster._config import (
     DagsterEvaluationErrorReason,

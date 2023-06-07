@@ -1,4 +1,6 @@
 # ruff: noqa: A001, A002
+from __future__ import annotations
+
 from typing import List, Optional, Union
 
 import dagster._check as check

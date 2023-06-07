@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from typing import AbstractSet, List, Mapping, Optional, Set, Tuple
 
 from airflow.models.connection import Connection

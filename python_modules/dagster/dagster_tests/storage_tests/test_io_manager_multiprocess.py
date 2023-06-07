@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster import execute_job, job, multiprocess_executor, op, reconstructable
 from dagster._core.test_utils import instance_for_test
 

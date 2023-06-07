@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import pytest
 from kubernetes.client import models
 from schema.charts.dagster.subschema.dagit import Dagit

@@ -1,6 +1,7 @@
 """Test a chain of child processes with interrupt support, ensure that interrupts can be
 correctly propagated and handled.
 """
+from __future__ import annotations
 
 import sys
 import time

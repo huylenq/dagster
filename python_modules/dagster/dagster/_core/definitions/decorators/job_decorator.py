@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from functools import update_wrapper
 from typing import TYPE_CHECKING, AbstractSet, Any, Callable, Mapping, Optional, Union, overload
 

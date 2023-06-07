@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster._api.snapshot_schedule import sync_get_external_schedule_execution_data_ephemeral_grpc
 from dagster._core.definitions.schedule_definition import ScheduleExecutionData
 from dagster._core.host_representation.external_data import ExternalScheduleExecutionErrorData

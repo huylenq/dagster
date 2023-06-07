@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from ..execution.context.logger import InitLoggerContext, UnboundInitLoggerContext
 from .logger_definition import LoggerDefinition
 from .resource_invocation import resolve_bound_config

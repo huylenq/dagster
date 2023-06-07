@@ -1,6 +1,9 @@
 # turn off type signature tests by default
 # they are slow when run locally
 # you can specify the -m "typesignature" flag to run them (& tox will run them in CI)
+from __future__ import annotations
+
+
 def pytest_configure(config):
     markexpr = getattr(config.option, "markexpr", None)
     if not markexpr or "typesignature" not in markexpr:

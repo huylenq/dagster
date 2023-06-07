@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import pytest
 from click.testing import CliRunner
 from dagster._core.test_utils import instance_for_test

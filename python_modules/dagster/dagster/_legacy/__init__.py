@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster._core.definitions import (
     DynamicOutputDefinition as DynamicOutputDefinition,
     InputDefinition as InputDefinition,

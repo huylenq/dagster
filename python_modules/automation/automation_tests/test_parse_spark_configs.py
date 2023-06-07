@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import os
 
 from automation.parse_spark_configs import extract, serialize

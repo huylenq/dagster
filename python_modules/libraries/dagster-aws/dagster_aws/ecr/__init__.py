@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from .resources import (
     ECRPublicResource as ECRPublicResource,
     FakeECRPublicResource as FakeECRPublicResource,

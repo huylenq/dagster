@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster._core.storage.tags import RESUME_RETRY_TAG
 from dagster._core.workspace.context import WorkspaceRequestContext
 from dagster_graphql.client.query import (

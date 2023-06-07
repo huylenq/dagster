@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 COMPOSITES_QUERY = """
 query CompositesQuery($selector: PipelineSelector!) {
   pipelineOrError(params: $selector) {

@@ -1,3 +1,6 @@
+from __future__ import annotations
+
+
 def test_example_shell_command_op():
     from .example_shell_command_op import my_graph
 

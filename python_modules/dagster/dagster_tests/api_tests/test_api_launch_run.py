@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster._core.host_representation.handle import JobHandle
 from dagster._core.storage.dagster_run import DagsterRunStatus
 from dagster._core.test_utils import (

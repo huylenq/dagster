@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster import op
 from dagster._config.config_type import ConfigTypeKind
 from dagster._config.pythonic_config import Config

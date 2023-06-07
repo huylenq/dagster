@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster import AssetIn, AssetKey, AssetOut, asset, multi_asset
 from dagster._core.definitions.resolved_asset_deps import resolve_assets_def_deps
 

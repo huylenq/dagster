@@ -7,6 +7,8 @@
     i.e. it`s late enough to pull in the required data time, and early enough to not go over the
     maximum lag minutes.
 """
+from __future__ import annotations
+
 import datetime
 from collections import defaultdict
 from typing import AbstractSet, Dict, Mapping, Optional, Set, Tuple, cast

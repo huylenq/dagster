@@ -1,3 +1,4 @@
+
 def get_weather_defs():
     # gather_assets_start
 

@@ -9,6 +9,7 @@ For local development:
   Spin up local telemetry server and set the environment variable DAGSTER_TELEMETRY_URL = 'http://localhost:3000/actions'
   To test RotatingFileHandler, can set MAX_BYTES = 500
 """
+from __future__ import annotations
 
 import datetime
 import hashlib

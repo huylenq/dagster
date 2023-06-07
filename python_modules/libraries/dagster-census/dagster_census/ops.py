@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster import Array, Bool, Field, In, Noneable, Nothing, Out, Output, op
 
 from .resources import DEFAULT_POLL_INTERVAL

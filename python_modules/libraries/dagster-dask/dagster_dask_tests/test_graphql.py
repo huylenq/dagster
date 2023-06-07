@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster._cli.workspace import get_workspace_process_context_from_kwargs
 from dagster._core.test_utils import instance_for_test
 from dagster._utils import file_relative_path

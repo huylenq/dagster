@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from .compute_log_manager import GCSComputeLogManager as GCSComputeLogManager
 from .file_manager import GCSFileHandle as GCSFileHandle
 from .gcs_fake_resource import (

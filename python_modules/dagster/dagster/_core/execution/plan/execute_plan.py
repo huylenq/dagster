@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import sys
 from contextlib import ExitStack
 from typing import Iterator, Optional, Sequence, cast

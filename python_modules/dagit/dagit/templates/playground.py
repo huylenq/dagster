@@ -1,4 +1,5 @@
 # TODO - figure out how to use files as templates
+from __future__ import annotations
 
 TEMPLATE = """<!DOCTYPE html>
 

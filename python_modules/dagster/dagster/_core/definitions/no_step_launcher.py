@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster import resource
 from dagster._core.definitions.resource_definition import dagster_maintained_resource
 

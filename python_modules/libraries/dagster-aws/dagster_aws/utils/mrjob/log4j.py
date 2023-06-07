@@ -14,6 +14,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 """Parse the log4j syslog format used by Hadoop."""
+from __future__ import annotations
+
 import re
 from collections import namedtuple
 

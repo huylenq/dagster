@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import sys
 
 from dagster._utils.error import serializable_error_info_from_exc_info

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import warnings
 from typing import (
     TYPE_CHECKING,
@@ -233,8 +235,6 @@ class OutputContext:
     @property
     def op_def(self) -> "OpDefinition":
         """The definition of the op that produced the output."""
-        from dagster._core.definitions import OpDefinition
-
         if self._op_def is None:
             raise DagsterInvariantViolationError(
                 "Attempting to access op_def, "

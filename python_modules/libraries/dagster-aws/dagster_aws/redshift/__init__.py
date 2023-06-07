@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from .resources import (
     FakeRedshiftClient as FakeRedshiftClient,
     FakeRedshiftClientResource as FakeRedshiftClientResource,

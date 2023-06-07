@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from typing import AbstractSet, Any, Dict, Mapping, NamedTuple, Optional, Sequence, Union, cast
 
 from dagster import _check as check

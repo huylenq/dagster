@@ -1,5 +1,6 @@
 """This file contains sample run results responses from different DBT versions and invocations.
 """
+from __future__ import annotations
 
 DBT_RPC_RESPONSE_SAMPLE = {
     "state": "success",

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import pytest
 from dagster import DailyPartitionsDefinition, MultiPartitionsDefinition, StaticPartitionsDefinition
 from dagster._core.definitions.multi_dimensional_partitions import MultiPartitionsSubset

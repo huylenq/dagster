@@ -1,3 +1,6 @@
+from __future__ import annotations
+
+
 def types():
     from .compute_logs import GrapheneComputeLogFile, GrapheneComputeLogs
     from .events import (

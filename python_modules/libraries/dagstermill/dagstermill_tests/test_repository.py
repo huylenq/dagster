@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster import RepositoryDefinition
 from dagstermill.examples.repository import notebook_repo
 

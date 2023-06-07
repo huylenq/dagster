@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster._core.definitions.run_status_sensor_definition import RunStatusSensorCursor
 from dagster._daemon.types import DaemonHeartbeat
 from dagster._serdes import deserialize_value

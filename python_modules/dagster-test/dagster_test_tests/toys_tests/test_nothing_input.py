@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster_test.toys.nothing_input import nothing_job
 
 

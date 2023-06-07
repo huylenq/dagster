@@ -1,6 +1,7 @@
 """This file contains the typing api that should exist in python in
 order to do metaprogramming and reflection on the built-in typing module.
 """
+from __future__ import annotations
 
 import typing
 

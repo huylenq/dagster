@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections import OrderedDict
 
 from dagster_graphql.client.query import LAUNCH_PARTITION_BACKFILL_MUTATION

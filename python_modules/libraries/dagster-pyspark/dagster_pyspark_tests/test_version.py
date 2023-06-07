@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster_pyspark import __version__
 
 

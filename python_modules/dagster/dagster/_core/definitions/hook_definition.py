@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from typing import AbstractSet, Any, Callable, Iterator, NamedTuple, Optional, cast
 
 import dagster._check as check

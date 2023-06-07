@@ -7,7 +7,7 @@ module_name = "dagster_pypi"
 
 [tool.ruff]
 # Extend root configuration.
-extend = "../../pyproject.toml"
+extend = "../pyproject.toml"
 # Use extend-ignore so that we ignore all the same codes ignored in root.
 extend-ignore = [
   # (print found): Allow prints for demo purposes.

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import graphene
 from dagster._core.definitions.selector import ScheduleSelector
 from dagster._core.workspace.permissions import Permissions

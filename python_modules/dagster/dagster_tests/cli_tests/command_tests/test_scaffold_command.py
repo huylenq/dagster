@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import pytest
 from click.testing import CliRunner
 from dagster._cli.job import execute_scaffold_command, job_scaffold_command

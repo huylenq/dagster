@@ -1,3 +1,6 @@
+from __future__ import annotations
+
+
 def test_version():
     from dagster_celery.version import __version__
 

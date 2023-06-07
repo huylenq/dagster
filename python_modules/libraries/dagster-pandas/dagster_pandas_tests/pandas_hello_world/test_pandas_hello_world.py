@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import os
 
 from dagster._cli.job import do_execute_command

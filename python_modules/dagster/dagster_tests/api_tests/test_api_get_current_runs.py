@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import time
 
 from dagster._core.host_representation.handle import JobHandle

@@ -1,5 +1,6 @@
 # pyright: reportGeneralTypeIssues=none
 # pyright: reportOptionalMemberAccess=none
+from typing import TYPE_CHECKING
 
 # start
 import pandas as pd

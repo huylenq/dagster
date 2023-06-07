@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster_pandas.constraints import (
     CONSTRAINT_METADATA_KEY,
     ColumnAggregateConstraintWithMetadata,

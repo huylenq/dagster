@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import functools
 from inspect import Parameter, Signature, isgeneratorfunction, signature
 from typing import (

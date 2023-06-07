@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import pytest
 from dagster_aws_tests.aws_credential_test_utils import get_aws_creds
 

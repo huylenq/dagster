@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import pickle
 from contextlib import contextmanager
 from typing import Any, Iterator, Union

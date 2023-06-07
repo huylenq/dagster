@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import inspect
 from contextlib import contextmanager
 from typing import TYPE_CHECKING, Any, Dict, Optional, cast

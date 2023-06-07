@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import datahub.emitter.mce_builder as builder
 import pytest
 import responses

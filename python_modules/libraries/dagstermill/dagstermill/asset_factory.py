@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import pickle
 import tempfile
 from typing import Any, Callable, Iterable, Mapping, Optional, Set, Type, Union, cast

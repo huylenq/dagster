@@ -27,6 +27,7 @@ can contain sensitive information. However this information needs to be
 communicated between user repositories and host processes such as dagit.
 
 """
+from __future__ import annotations
 
 from dagster._config import (
     ConfigEnumValueSnap as ConfigEnumValueSnap,

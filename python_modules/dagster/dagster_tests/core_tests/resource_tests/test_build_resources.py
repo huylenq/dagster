@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import pytest
 from dagster import Field, resource
 from dagster._core.definitions.resource_definition import IContainsGenerator

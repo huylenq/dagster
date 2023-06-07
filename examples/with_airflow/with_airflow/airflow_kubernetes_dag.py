@@ -1,5 +1,4 @@
 # pyright: reportUnusedExpression=none
-
 from airflow import models
 from airflow.operators.dummy_operator import DummyOperator  # type: ignore
 from airflow.providers.cncf.kubernetes.operators.kubernetes_pod import KubernetesPodOperator

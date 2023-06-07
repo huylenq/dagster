@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import pytest
 from dagster import Any, Enum, EnumValue, Field, Noneable, Permissive, String
 from dagster._check import CheckError, ParameterCheckError

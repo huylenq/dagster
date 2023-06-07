@@ -1,6 +1,7 @@
 """Test that compute log tail processes go away when the parent is interrupted using
 IPC machinery.
 """
+from __future__ import annotations
 
 import sys
 import time

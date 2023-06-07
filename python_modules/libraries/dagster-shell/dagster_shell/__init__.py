@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dagster._core.libraries import DagsterLibraryRegistry
 
 from .ops import create_shell_command_op, create_shell_script_op, shell_op

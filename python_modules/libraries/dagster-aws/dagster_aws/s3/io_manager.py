@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import io
 import pickle
 from typing import Any, Dict, Optional, Union
