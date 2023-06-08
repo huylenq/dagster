@@ -58,8 +58,6 @@ if TYPE_CHECKING:
     from dagster._core.execution.context.compute import (
         OpExecutionContext,
     )
-
-
 # Going with this catch-all for the time-being to permit pythonic resources
 SourceAssetObserveFunction: TypeAlias = Callable[..., Any]
 
