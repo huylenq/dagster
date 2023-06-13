@@ -7,6 +7,7 @@ from dagster import (
     ConfigurableIOManager,
     ConfigurableResource,
     Definitions,
+    FilesystemIOManager,
     JobDefinition,
     RunRequest,
     ScheduleDefinition,
@@ -14,6 +15,7 @@ from dagster import (
     job,
     op,
     repository,
+    resource,
     sensor,
 )
 from dagster._core.definitions.repository_definition.repository_data_builder import (
@@ -585,3 +587,38 @@ def test_override_default_field_value_in_resources_using_configure_at_launch() -
     )
 
     assert executed["yes"]
+
+
+def test_bind_io_to_job_() -> None:
+    CREATE_TABLE_1_QUERY = "create table_1 as select * from table_0"
+
+    class DummyDB:
+        def execute_query(self, query):
+            print("executing query: ", query)
+
+    @resource
+    def dummy_database_resource(init_context):
+        return DummyDB()
+
+    @op(required_resource_keys={"database"})
+    def op_requires_resources(context):
+        context.resources.database.execute_query(CREATE_TABLE_1_QUERY)
+
+    @job(resource_defs={"database": dummy_database_resource})
+    def do_database_stuff():
+        op_requires_resources()
+
+    @op
+    def simple_op():
+        print("simple op")
+
+    @job()
+    def simple_job():
+        simple_op()
+
+    resources = {"io_manager": FilesystemIOManager()}
+
+    Definitions(
+        jobs=[do_database_stuff, simple_job],
+        resources=resources,
+    )
