@@ -19,6 +19,7 @@ from typing import (
     cast,
 )
 
+
 import dagster._check as check
 from dagster._annotations import public
 from dagster._core.definitions.dependency import OpNode
@@ -521,6 +522,7 @@ class StepExecutionContext(PlanExecutionContext, IStepContext):
 
         self._output_metadata: Dict[str, Any] = {}
         self._seen_outputs: Dict[str, Union[str, Set[str]]] = {}
+        self._seen_user_asset_mats = {}
 
         self._input_asset_records: Dict[AssetKey, Optional["EventLogRecord"]] = {}
         self._is_external_input_asset_records_loaded = False
@@ -845,6 +847,26 @@ class StepExecutionContext(PlanExecutionContext, IStepContext):
             if asset_info is not None:
                 return True
         return False
+
+    def asset_key_for_output(self, output_name: str) -> AssetKey:
+        # note: duped on AssetExecutionContext
+        asset_output_info = self.job_def.asset_layer.asset_info_for_output(
+            node_handle=self.node_handle, output_name=output_name
+        )
+        if asset_output_info is None:
+            check.failed(f"Output '{output_name}' has no asset")
+        else:
+            return asset_output_info.key
+
+    def observe_user_asset_mat(self, asset_key: AssetKey, event: "AssetMaterialization"):
+        # will need to store N events for partitions
+        self._seen_user_asset_mats[asset_key] = event
+
+    def get_observed_user_asset_mat(self, asset_key: AssetKey) -> Optional["AssetMaterialization"]:
+        return self._seen_user_asset_mats.get(asset_key)
+
+    def has_observed_user_asset_mats(self) -> bool:
+        return bool(self._seen_user_asset_mats)
 
     def set_data_version(self, asset_key: AssetKey, data_version: "DataVersion") -> None:
         self._data_version_cache[asset_key] = data_version
