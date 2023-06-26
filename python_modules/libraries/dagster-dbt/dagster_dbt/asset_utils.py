@@ -1,5 +1,6 @@
 import hashlib
 import textwrap
+<<<<<<< HEAD
 from typing import (
     TYPE_CHECKING,
     AbstractSet,
@@ -12,6 +13,9 @@ from typing import (
     Set,
     Tuple,
 )
+=======
+from typing import AbstractSet, Any, Dict, FrozenSet, List, Mapping, Optional, Sequence, Set, Tuple
+>>>>>>> 7fced53fd7 (start converting dbt integration)
 
 from dagster import (
     AssetKey,
@@ -247,7 +251,7 @@ def get_dbt_multi_asset_args(
     deps: Mapping[str, FrozenSet[str]],
     io_manager_key: Optional[str],
     manifest: "DbtManifest",
-) -> Tuple[Set[AssetKey], Dict[str, AssetOut], Dict[str, Set[AssetKey]]]:
+) -> Tuple[Sequence[AssetKey], Dict[str, AssetOut], Dict[str, Set[AssetKey]]]:
     """Use the standard defaults for dbt to construct the arguments for a dbt multi asset."""
     non_argument_deps: Set[AssetKey] = set()
     outs: Dict[str, AssetOut] = {}
@@ -288,7 +292,7 @@ def get_dbt_multi_asset_args(
             if parent_unique_id not in deps:
                 non_argument_deps.add(parent_asset_key)
 
-    return non_argument_deps, outs, internal_asset_deps
+    return list(non_argument_deps), outs, internal_asset_deps
 
 
 def get_asset_deps(

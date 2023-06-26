@@ -77,7 +77,7 @@ def dbt_assets(
         asset_definition = multi_asset(
             outs=outs,
             internal_asset_deps=internal_asset_deps,
-            non_argument_deps=non_argument_deps,
+            deps=non_argument_deps,
             compute_kind="dbt",
             partitions_def=partitions_def,
             can_subset=True,
