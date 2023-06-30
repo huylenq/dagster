@@ -35,6 +35,6 @@ def my_dbt_assets(context: OpExecutionContext, dbt: DbtCli):
     yield from dbt.cli(["build"], context=context).stream()
 
 
-@asset(non_argument_deps={manifest.get_asset_key_for_model("customers")})
+@asset(deps=[manifest.get_asset_key_for_model("customers")])
 def cleaned_customers() -> Any:
     return pd.DataFrame()
