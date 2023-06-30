@@ -33,7 +33,7 @@ def test_asset_downstream_of_dbt_asset() -> None:
     def my_dbt_assets():
         ...
 
-    @asset(non_argument_deps={test_dagster_metadata_manifest.get_asset_key_for_model("orders")})
+    @asset(deps=[test_dagster_metadata_manifest.get_asset_key_for_model("orders")])
     def downstream_python_asset():
         ...
 
