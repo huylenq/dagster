@@ -186,11 +186,18 @@ class DagsterClassDocumenter(ClassDocumenter):
         # Use form `is_public(self.object, attr_name) if possible, because to access a descriptor
         # object (returned by e.g. `@staticmethod`) you need to go in through
         # `self.object.__dict__`-- the value provided in the member list is _not_ the descriptor!
-        return False, [
+        filtered_members = [
             m
             for m in unfiltered_members
             if (m[0] in self.object.__dict__ and is_public(self.object, m[0]) or is_public(m[1]))
         ]
+        for member in filtered_members:
+            if member[0] != "__init__" and not member[1].__doc__:
+                raise Exception(
+                    f"Docstring not found for {self.object.__name__}.{member[0]}. "
+                    "All public methods and properties must have docstrings."
+                )
+        return False, filtered_members
 
 
 # This is a hook that will be executed for every processed docstring. It modifies the lines of the
