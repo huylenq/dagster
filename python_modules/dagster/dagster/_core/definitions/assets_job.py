@@ -19,14 +19,12 @@ from typing import (
 from toposort import CircularDependencyError, toposort
 
 import dagster._check as check
-from dagster._core.definitions.hook_definition import HookDefinition
 from dagster._core.errors import DagsterInvalidDefinitionError
 from dagster._core.selector.subset_selector import AssetSelectionData
 from dagster._utils.merger import merge_dicts
 
 from .asset_layer import AssetLayer
 from .assets import AssetsDefinition
-from .config import ConfigMapping
 from .dependency import (
     DependencyDefinition,
     DependencyMapping,
@@ -34,14 +32,9 @@ from .dependency import (
     NodeHandle,
     NodeInvocation,
 )
-from .events import AssetKey
-from .executor_definition import ExecutorDefinition
 from .graph_definition import GraphDefinition
 from .job_definition import JobDefinition, default_job_io_manager
-from .metadata import RawMetadataValue
-from .partition import PartitionedConfig, PartitionsDefinition
 from .resolved_asset_deps import ResolvedAssetDependencies
-from .resource_definition import ResourceDefinition
 from .resource_requirement import ensure_requirements_satisfied
 from .source_asset import SourceAsset
 from .utils import DEFAULT_IO_MANAGER_KEY
@@ -50,7 +43,15 @@ from .utils import DEFAULT_IO_MANAGER_KEY
 ASSET_BASE_JOB_PREFIX = "__ASSET_JOB"
 
 if TYPE_CHECKING:
+    from dagster._core.definitions.hook_definition import HookDefinition
     from dagster._core.definitions.run_config import RunConfig
+
+    from .config import ConfigMapping
+    from .events import AssetKey
+    from .executor_definition import ExecutorDefinition
+    from .metadata import RawMetadataValue
+    from .partition import PartitionedConfig, PartitionsDefinition
+    from .resource_definition import ResourceDefinition
 
 
 def is_base_asset_job_name(name: str) -> bool:

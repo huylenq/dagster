@@ -2,17 +2,20 @@ from __future__ import annotations
 
 import time
 from collections import defaultdict
-from types import TracebackType
 from typing import (
+    TYPE_CHECKING,
     List,
     Optional,
     Set,
     Type,
 )
 
-from typing_extensions import Self
+if TYPE_CHECKING:
+    from types import TracebackType
 
-from dagster._core.instance import DagsterInstance
+    from typing_extensions import Self
+
+    from dagster._core.instance import DagsterInstance
 
 DEFAULT_CONCURRENCY_CLAIM_BLOCKED_INTERVAL = 1
 

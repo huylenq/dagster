@@ -1,8 +1,9 @@
 from __future__ import annotations
 
-from typing import Any, Mapping, NamedTuple, Optional
+from typing import TYPE_CHECKING, Any, Mapping, NamedTuple, Optional
 
-from dagster._core.definitions.metadata.table import TableSchema
+if TYPE_CHECKING:
+    from dagster._core.definitions.metadata.table import TableSchema
 
 
 class AirbyteTableMetadata:

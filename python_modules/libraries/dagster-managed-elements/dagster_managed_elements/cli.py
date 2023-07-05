@@ -5,14 +5,16 @@ import importlib
 import logging
 import sys
 import warnings
-from types import ModuleType
-from typing import Optional, Sequence
+from typing import TYPE_CHECKING, Optional, Sequence
 
 import click
 import click_spinner
 from dagster._utils.backcompat import ExperimentalWarning
 
 from dagster_managed_elements.types import ManagedElementDiff, ManagedElementReconciler
+
+if TYPE_CHECKING:
+    from types import ModuleType
 
 
 def _deepgetattr(obj, attr: str):

@@ -1,22 +1,24 @@
 from __future__ import annotations
 
 import abc
-from typing import Mapping, Optional, Sequence, Set
+from typing import TYPE_CHECKING, Mapping, Optional, Sequence, Set
 
-from dagster import AssetKey
-from dagster._core.definitions.asset_reconciliation_sensor import AutoMaterializeAssetEvaluation
-from dagster._core.definitions.run_request import InstigatorType
 from dagster._core.instance import MayHaveInstanceWeakref, T_DagsterInstance
-from dagster._core.scheduler.instigation import (
-    AutoMaterializeAssetEvaluationRecord,
-    InstigatorState,
-    InstigatorStatus,
-    InstigatorTick,
-    TickData,
-    TickStatus,
-)
-from dagster._core.storage.sql import AlembicVersion
-from dagster._utils import PrintFn
+
+if TYPE_CHECKING:
+    from dagster import AssetKey
+    from dagster._core.definitions.asset_reconciliation_sensor import AutoMaterializeAssetEvaluation
+    from dagster._core.definitions.run_request import InstigatorType
+    from dagster._core.scheduler.instigation import (
+        AutoMaterializeAssetEvaluationRecord,
+        InstigatorState,
+        InstigatorStatus,
+        InstigatorTick,
+        TickData,
+        TickStatus,
+    )
+    from dagster._core.storage.sql import AlembicVersion
+    from dagster._utils import PrintFn
 
 
 class ScheduleStorage(abc.ABC, MayHaveInstanceWeakref[T_DagsterInstance]):

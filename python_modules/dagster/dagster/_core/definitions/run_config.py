@@ -16,8 +16,6 @@ from typing import (
     cast,
 )
 
-from typing_extensions import TypeAlias
-
 from dagster._config import (
     ALL_CONFIG_BUILTINS,
     ConfigType,
@@ -27,29 +25,32 @@ from dagster._config import (
     Shape,
 )
 from dagster._config.pythonic_config import Config
-from dagster._core.definitions.asset_layer import AssetLayer
 from dagster._core.definitions.executor_definition import (
     ExecutorDefinition,
     execute_in_process_executor,
     in_process_executor,
 )
-from dagster._core.definitions.input import InputDefinition
-from dagster._core.definitions.output import OutputDefinition
 from dagster._core.errors import DagsterInvalidDefinitionError
 from dagster._core.storage.output_manager import IOutputManagerDefinition
 from dagster._core.storage.root_input_manager import IInputManagerDefinition
 from dagster._core.types.dagster_type import ALL_RUNTIME_BUILTINS, construct_dagster_type_dictionary
 from dagster._utils import check
 
-from .configurable import ConfigurableDefinition
 from .definition_config_schema import IDefinitionConfigSchema
 from .dependency import DependencyStructure, GraphNode, Node, NodeHandle, NodeInput, OpNode
 from .graph_definition import GraphDefinition
-from .logger_definition import LoggerDefinition
 from .op_definition import NodeDefinition, OpDefinition
-from .resource_definition import ResourceDefinition
 
 if TYPE_CHECKING:
+    from typing_extensions import TypeAlias
+
+    from dagster._core.definitions.asset_layer import AssetLayer
+    from dagster._core.definitions.input import InputDefinition
+    from dagster._core.definitions.output import OutputDefinition
+
+    from .configurable import ConfigurableDefinition
+    from .logger_definition import LoggerDefinition
+    from .resource_definition import ResourceDefinition
     from .source_asset import SourceAsset
 
 

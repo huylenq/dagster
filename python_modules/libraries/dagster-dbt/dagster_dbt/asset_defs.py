@@ -4,6 +4,7 @@ import hashlib
 import json
 import os
 from typing import (
+    TYPE_CHECKING,
     AbstractSet,
     Any,
     Callable,
@@ -40,7 +41,6 @@ from dagster._core.definitions.events import (
     Output,
 )
 from dagster._core.definitions.load_assets_from_modules import prefix_assets
-from dagster._core.definitions.metadata import MetadataUserInput, RawMetadataValue
 from dagster._core.errors import DagsterInvalidSubsetError
 from dagster._utils.backcompat import experimental_arg_warning
 from dagster._utils.merger import deep_merge_dicts
@@ -56,7 +56,6 @@ from dagster_dbt.asset_utils import (
 )
 from dagster_dbt.core.resources import DbtCliClient
 from dagster_dbt.core.resources_v2 import DbtCli, DbtManifest
-from dagster_dbt.core.types import DbtCliOutput
 from dagster_dbt.core.utils import build_command_args_from_flags, execute_cli
 from dagster_dbt.errors import DagsterDbtError
 from dagster_dbt.types import DbtOutput
@@ -66,6 +65,11 @@ from dagster_dbt.utils import (
     result_to_events,
     select_unique_ids_from_manifest,
 )
+
+if TYPE_CHECKING:
+    from dagster._core.definitions.metadata import MetadataUserInput, RawMetadataValue
+
+    from dagster_dbt.core.types import DbtCliOutput
 
 
 def _load_manifest_for_project(

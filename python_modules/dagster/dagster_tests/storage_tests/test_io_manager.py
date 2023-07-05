@@ -3,7 +3,7 @@ from __future__ import annotations
 import os
 import tempfile
 import time
-from typing import Mapping
+from typing import TYPE_CHECKING, Mapping
 
 import mock
 import pytest
@@ -34,8 +34,6 @@ from dagster import (
     resource,
 )
 from dagster._check import CheckError
-from dagster._core.definitions.job_definition import JobDefinition
-from dagster._core.definitions.metadata import ArbitraryMetadataMapping
 from dagster._core.definitions.time_window_partitions import DailyPartitionsDefinition
 from dagster._core.errors import DagsterInvalidMetadata
 from dagster._core.execution.api import create_execution_plan, execute_plan
@@ -46,6 +44,10 @@ from dagster._core.storage.io_manager import IOManager, dagster_maintained_io_ma
 from dagster._core.storage.mem_io_manager import InMemoryIOManager, mem_io_manager
 from dagster._core.system_config.objects import ResolvedRunConfig
 from dagster._core.test_utils import instance_for_test
+
+if TYPE_CHECKING:
+    from dagster._core.definitions.job_definition import JobDefinition
+    from dagster._core.definitions.metadata import ArbitraryMetadataMapping
 
 
 def test_io_manager_with_config():

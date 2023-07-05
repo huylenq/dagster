@@ -2,10 +2,9 @@ from __future__ import annotations
 
 import os
 import sys
-from typing import Iterator, Optional, cast
+from typing import TYPE_CHECKING, Iterator, Optional, cast
 
 import pytest
-from dagster import DagsterInstance
 from dagster._core.host_representation import (
     CodeLocation,
     ExternalRepository,
@@ -17,7 +16,10 @@ from dagster._core.test_utils import (
     instance_for_test,
 )
 from dagster._core.types.loadable_target_origin import LoadableTargetOrigin
-from dagster._core.workspace.context import WorkspaceProcessContext
+
+if TYPE_CHECKING:
+    from dagster import DagsterInstance
+    from dagster._core.workspace.context import WorkspaceProcessContext
 
 
 @pytest.fixture(name="instance_module_scoped", scope="module")

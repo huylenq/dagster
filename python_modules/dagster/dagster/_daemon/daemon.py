@@ -7,11 +7,9 @@ import uuid
 from abc import ABC, abstractmethod
 from collections import deque
 from contextlib import AbstractContextManager
-from threading import Event
 from typing import TYPE_CHECKING, Generator, Generic, Optional, TypeVar, Union
 
 import pendulum
-from typing_extensions import TypeAlias
 
 from dagster import (
     DagsterInstance,
@@ -31,7 +29,10 @@ from dagster._scheduler.scheduler import execute_scheduler_iteration_loop
 from dagster._utils.error import SerializableErrorInfo, serializable_error_info_from_exc_info
 
 if TYPE_CHECKING:
+    from threading import Event
+
     from pendulum.datetime import DateTime
+    from typing_extensions import TypeAlias
 
 
 def get_default_daemon_logger(daemon_name) -> logging.Logger:

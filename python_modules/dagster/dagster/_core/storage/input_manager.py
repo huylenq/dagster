@@ -4,8 +4,6 @@ from abc import ABC, abstractmethod
 from functools import update_wrapper
 from typing import TYPE_CHECKING, AbstractSet, Callable, Optional, Union, cast, overload
 
-from typing_extensions import TypeAlias, TypeGuard
-
 import dagster._check as check
 from dagster._core.decorator_utils import has_at_least_one_parameter
 from dagster._core.definitions.config import is_callable_valid_config_arg
@@ -17,6 +15,8 @@ from dagster._core.definitions.definition_config_schema import (
 from dagster._core.definitions.resource_definition import ResourceDefinition, ResourceFunction
 
 if TYPE_CHECKING:
+    from typing_extensions import TypeAlias, TypeGuard
+
     from dagster._core.execution.context.input import InputContext
 
 InputLoadFn: TypeAlias = Union[

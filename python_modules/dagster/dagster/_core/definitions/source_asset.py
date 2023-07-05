@@ -13,8 +13,6 @@ from typing import (
     cast,
 )
 
-from typing_extensions import TypeAlias
-
 import dagster._check as check
 from dagster._annotations import PublicAttr, public
 from dagster._core.decorator_utils import get_function_params
@@ -32,7 +30,6 @@ from dagster._core.definitions.metadata import (
 from dagster._core.definitions.op_definition import OpDefinition
 from dagster._core.definitions.partition import PartitionsDefinition
 from dagster._core.definitions.resource_annotation import get_resource_args
-from dagster._core.definitions.resource_definition import ResourceDefinition
 from dagster._core.definitions.resource_requirement import (
     ResourceAddable,
     ResourceRequirement,
@@ -55,6 +52,9 @@ from dagster._utils.backcompat import ExperimentalWarning, experimental_arg_warn
 from dagster._utils.merger import merge_dicts
 
 if TYPE_CHECKING:
+    from typing_extensions import TypeAlias
+
+    from dagster._core.definitions.resource_definition import ResourceDefinition
     from dagster._core.execution.context.compute import (
         OpExecutionContext,
     )

@@ -3,11 +3,11 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import TYPE_CHECKING, AbstractSet, Iterable, Optional
 
-from typing_extensions import Self
-
-from dagster._core.definitions.events import AssetKey
-
 if TYPE_CHECKING:
+    from typing_extensions import Self
+
+    from dagster._core.definitions.events import AssetKey
+
     from .job_definition import JobDefinition
 
 

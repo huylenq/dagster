@@ -2,12 +2,14 @@ from __future__ import annotations
 
 from abc import ABC, abstractmethod
 from contextlib import contextmanager
-from typing import IO, Callable, Generator, Iterator, NamedTuple, Optional, Sequence
-
-from typing_extensions import Final, Self
+from typing import IO, TYPE_CHECKING, Callable, Generator, Iterator, NamedTuple, Optional, Sequence
 
 import dagster._check as check
-from dagster._core.storage.compute_log_manager import ComputeIOType
+
+if TYPE_CHECKING:
+    from typing_extensions import Final, Self
+
+    from dagster._core.storage.compute_log_manager import ComputeIOType
 
 MAX_BYTES_CHUNK_READ: Final = 4194304  # 4 MB
 

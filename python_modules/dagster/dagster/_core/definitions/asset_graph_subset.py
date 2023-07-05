@@ -1,7 +1,18 @@
 from __future__ import annotations
 
 from collections import defaultdict
-from typing import AbstractSet, Any, Dict, Iterable, Mapping, Optional, Set, Union, cast
+from typing import (
+    TYPE_CHECKING,
+    AbstractSet,
+    Any,
+    Dict,
+    Iterable,
+    Mapping,
+    Optional,
+    Set,
+    Union,
+    cast,
+)
 
 from dagster import _check as check
 from dagster._core.definitions.partition import (
@@ -11,10 +22,13 @@ from dagster._core.definitions.partition import (
 from dagster._core.errors import (
     DagsterDefinitionChangedDeserializationError,
 )
-from dagster._core.instance import DynamicPartitionsStore
 
-from .asset_graph import AssetGraph
 from .events import AssetKey, AssetKeyPartitionKey
+
+if TYPE_CHECKING:
+    from dagster._core.instance import DynamicPartitionsStore
+
+    from .asset_graph import AssetGraph
 
 
 class AssetGraphSubset:

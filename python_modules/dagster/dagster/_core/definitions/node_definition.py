@@ -14,13 +14,13 @@ from typing import (
 
 import dagster._check as check
 from dagster._core.definitions.configurable import NamedConfigurableDefinition
-from dagster._core.definitions.policy import RetryPolicy
 from dagster._core.errors import DagsterInvariantViolationError
 
 from .hook_definition import HookDefinition
 from .utils import check_valid_name, validate_tags
 
 if TYPE_CHECKING:
+    from dagster._core.definitions.policy import RetryPolicy
     from dagster._core.types.dagster_type import DagsterType
 
     from .asset_layer import AssetLayer

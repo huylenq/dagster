@@ -2,9 +2,8 @@ from __future__ import annotations
 
 import enum
 import json
-from datetime import datetime
 from itertools import count
-from typing import Any, List, Optional
+from typing import TYPE_CHECKING, Any, List, Optional
 
 import pendulum
 import pytest
@@ -45,6 +44,9 @@ from dagster._core.errors import (
 )
 from dagster._core.test_utils import instance_for_test
 from dagster._loggers import json_console_logger
+
+if TYPE_CHECKING:
+    from datetime import datetime
 
 
 def get_ops():

@@ -4,6 +4,7 @@ import json
 from collections import defaultdict
 from inspect import isfunction
 from typing import (
+    TYPE_CHECKING,
     Any,
     Dict,
     List,
@@ -26,15 +27,8 @@ from dagster._core.definitions.assets_job import (
     get_base_asset_jobs,
     is_base_asset_job_name,
 )
-from dagster._core.definitions.events import AssetKey
-from dagster._core.definitions.executor_definition import ExecutorDefinition
 from dagster._core.definitions.graph_definition import GraphDefinition
 from dagster._core.definitions.job_definition import JobDefinition
-from dagster._core.definitions.logger_definition import LoggerDefinition
-from dagster._core.definitions.partitioned_schedule import (
-    UnresolvedPartitionedAssetScheduleDefinition,
-)
-from dagster._core.definitions.resource_definition import ResourceDefinition
 from dagster._core.definitions.schedule_definition import ScheduleDefinition
 from dagster._core.definitions.sensor_definition import SensorDefinition
 from dagster._core.definitions.source_asset import SourceAsset
@@ -43,6 +37,15 @@ from dagster._core.errors import DagsterInvalidDefinitionError
 
 from .repository_data import CachingRepositoryData
 from .valid_definitions import VALID_REPOSITORY_DATA_DICT_KEYS, RepositoryListDefinition
+
+if TYPE_CHECKING:
+    from dagster._core.definitions.events import AssetKey
+    from dagster._core.definitions.executor_definition import ExecutorDefinition
+    from dagster._core.definitions.logger_definition import LoggerDefinition
+    from dagster._core.definitions.partitioned_schedule import (
+        UnresolvedPartitionedAssetScheduleDefinition,
+    )
+    from dagster._core.definitions.resource_definition import ResourceDefinition
 
 
 def _find_env_vars(config_entry: Any) -> Set[str]:

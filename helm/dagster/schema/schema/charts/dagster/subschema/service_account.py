@@ -1,8 +1,11 @@
 from __future__ import annotations
 
+from typing import TYPE_CHECKING
+
 from pydantic import BaseModel
 
-from ...utils import kubernetes
+if TYPE_CHECKING:
+    from ...utils import kubernetes
 
 
 class ServiceAccount(BaseModel):

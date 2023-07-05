@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import time
+from typing import TYPE_CHECKING
 
 import pytest
 from dagster import (
@@ -10,20 +11,22 @@ from dagster import (
     repository,
 )
 from dagster._core.definitions.events import AssetKey, AssetMaterialization
-from dagster._core.definitions.job_definition import JobDefinition
 from dagster._core.definitions.reconstruct import reconstructable
 from dagster._core.event_api import EventRecordsFilter
 from dagster._core.events import DagsterEventType
 from dagster._core.execution.api import execute_job
-from dagster._core.instance import DagsterInstance
 from dagster._core.storage.dagster_run import DagsterRunStatus
 from dagster._core.storage.tags import GLOBAL_CONCURRENCY_TAG
 from dagster._core.test_utils import poll_for_finished_run
-from dagster._core.workspace.context import WorkspaceRequestContext
 
 from dagster_tests.execution_tests.engine_tests.test_step_delegating_executor import (
     test_step_delegating_executor,
 )
+
+if TYPE_CHECKING:
+    from dagster._core.definitions.job_definition import JobDefinition
+    from dagster._core.instance import DagsterInstance
+    from dagster._core.workspace.context import WorkspaceRequestContext
 
 
 @op(tags={GLOBAL_CONCURRENCY_TAG: "foo"})

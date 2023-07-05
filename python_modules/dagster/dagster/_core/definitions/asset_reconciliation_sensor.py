@@ -36,8 +36,6 @@ from dagster._core.definitions.time_window_partitions import (
 from dagster._serdes.serdes import whitelist_for_serdes
 from dagster._utils.backcompat import deprecation_warning
 
-from .asset_graph import AssetGraph
-from .asset_selection import AssetSelection
 from .auto_materialize_condition import (
     AutoMaterializeCondition,
     AutoMaterializeDecisionType,
@@ -58,6 +56,9 @@ from .utils import check_valid_name
 if TYPE_CHECKING:
     from dagster._core.instance import DagsterInstance, DynamicPartitionsStore
     from dagster._utils.caching_instance_queryer import CachingInstanceQueryer  # expensive import
+
+    from .asset_graph import AssetGraph
+    from .asset_selection import AssetSelection
 
 
 @whitelist_for_serdes

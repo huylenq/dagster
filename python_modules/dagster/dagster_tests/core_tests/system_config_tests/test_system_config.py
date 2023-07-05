@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import re
+from typing import TYPE_CHECKING
 
 from dagster import (
     Any,
@@ -19,9 +20,7 @@ from dagster import (
     op,
 )
 from dagster._config import ConfigTypeKind, process_config
-from dagster._config.config_type import ConfigType
 from dagster._core.definitions import create_run_config_schema
-from dagster._core.definitions.job_definition import JobDefinition
 from dagster._core.definitions.run_config import (
     RunConfigSchemaCreationData,
     define_node_shape,
@@ -32,6 +31,10 @@ from dagster._core.system_config.objects import (
     ResourceConfig,
 )
 from dagster._loggers import default_loggers
+
+if TYPE_CHECKING:
+    from dagster._config.config_type import ConfigType
+    from dagster._core.definitions.job_definition import JobDefinition
 
 
 def create_creation_data(job_def):

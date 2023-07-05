@@ -2,12 +2,20 @@ from __future__ import annotations
 
 import importlib
 from abc import ABC, abstractmethod
-from typing import Any, Dict, Mapping, NamedTuple, Optional, Type, TypeVar, Union, overload
-
-from typing_extensions import Self
+from typing import (
+    TYPE_CHECKING,
+    Any,
+    Dict,
+    Mapping,
+    NamedTuple,
+    Optional,
+    Type,
+    TypeVar,
+    Union,
+    overload,
+)
 
 import dagster._check as check
-from dagster._config.config_schema import UserConfigSchema
 from dagster._utils import convert_dagster_submodule_name
 from dagster._utils.yaml_utils import load_run_config_yaml
 
@@ -15,6 +23,11 @@ from .serdes import (
     NamedTupleSerializer,
     whitelist_for_serdes,
 )
+
+if TYPE_CHECKING:
+    from typing_extensions import Self
+
+    from dagster._config.config_schema import UserConfigSchema
 
 T_ConfigurableClass = TypeVar("T_ConfigurableClass")
 

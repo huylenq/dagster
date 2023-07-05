@@ -2,9 +2,7 @@ from __future__ import annotations
 
 import abc
 import os
-from typing import Any, Mapping, NamedTuple, Optional, Sequence
-
-from typing_extensions import Self
+from typing import TYPE_CHECKING, Any, Mapping, NamedTuple, Optional, Sequence
 
 import dagster._check as check
 from dagster._config import Field, IntSource
@@ -18,9 +16,13 @@ from dagster._core.scheduler.instigation import (
     ScheduleInstigatorData,
 )
 from dagster._serdes import ConfigurableClass
-from dagster._serdes.config_class import ConfigurableClassData
 from dagster._seven import get_current_datetime_in_utc
 from dagster._utils import mkdir_p
+
+if TYPE_CHECKING:
+    from typing_extensions import Self
+
+    from dagster._serdes.config_class import ConfigurableClassData
 
 
 class DagsterSchedulerError(DagsterError):

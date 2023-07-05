@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from contextlib import contextmanager
-from typing import Iterator, List, cast
+from typing import TYPE_CHECKING, Iterator, List, cast
 from unittest import mock
 
 import pytest
@@ -47,11 +47,13 @@ from dagster import (
 from dagster._config.pythonic_config import ConfigurableResource
 from dagster._core.definitions.metadata import MetadataValue
 from dagster._core.definitions.partition import DynamicPartitionsDefinition
-from dagster._core.definitions.resource_annotation import ResourceParam
 from dagster._core.errors import DagsterInvalidDefinitionError, DagsterInvalidInvocationError
 from dagster._core.execution.build_resources import build_resources
 from dagster._core.storage.tags import PARTITION_NAME_TAG
 from dagster._core.test_utils import instance_for_test
+
+if TYPE_CHECKING:
+    from dagster._core.definitions.resource_annotation import ResourceParam
 
 
 def test_sensor_invocation_args():

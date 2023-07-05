@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Any, Mapping, Optional
+from typing import TYPE_CHECKING, Any, Mapping, Optional
 
 import dagster._check as check
 import docker
@@ -11,17 +11,19 @@ from dagster._core.launcher.base import (
     RunLauncher,
     WorkerStatus,
 )
-from dagster._core.storage.dagster_run import DagsterRun
 from dagster._core.storage.tags import DOCKER_IMAGE_TAG
 from dagster._core.utils import parse_env_var
 from dagster._grpc.types import ExecuteRunArgs, ResumeRunArgs
 from dagster._serdes import ConfigurableClass
-from dagster._serdes.config_class import ConfigurableClassData
-from typing_extensions import Self
 
 from dagster_docker.utils import DOCKER_CONFIG_SCHEMA, validate_docker_config, validate_docker_image
 
 from .container_context import DockerContainerContext
+
+if TYPE_CHECKING:
+    from dagster._core.storage.dagster_run import DagsterRun
+    from dagster._serdes.config_class import ConfigurableClassData
+    from typing_extensions import Self
 
 DOCKER_CONTAINER_ID_TAG = "docker/container_id"
 

@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 import re
 from contextlib import AbstractContextManager
-from typing import Any, Dict, List, Tuple, cast
+from typing import TYPE_CHECKING, Any, Dict, List, Tuple, cast
 
 import responses
 from dagster_fivetran import (
@@ -18,7 +18,9 @@ from dagster_fivetran.managed.types import (
 )
 from dagster_managed_elements.types import ManagedElementDiff
 from dagster_managed_elements.utils import diff_dicts
-from requests import PreparedRequest
+
+if TYPE_CHECKING:
+    from requests import PreparedRequest
 
 
 def ok(contents: Dict[str, Any]) -> Any:

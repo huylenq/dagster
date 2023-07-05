@@ -22,7 +22,6 @@ from typing import (
 import click
 import tomli
 from click import UsageError
-from typing_extensions import Never, TypeAlias
 
 import dagster._check as check
 from dagster._core.code_pointer import CodePointer
@@ -30,13 +29,11 @@ from dagster._core.definitions.reconstruct import repository_def_from_target_def
 from dagster._core.definitions.repository_definition import RepositoryDefinition
 from dagster._core.host_representation.code_location import CodeLocation
 from dagster._core.host_representation.external import ExternalRepository
-from dagster._core.instance import DagsterInstance
 from dagster._core.origin import (
     DEFAULT_DAGSTER_ENTRY_POINT,
     JobPythonOrigin,
     RepositoryPythonOrigin,
 )
-from dagster._core.workspace.context import WorkspaceRequestContext
 from dagster._core.workspace.load_target import (
     CompositeTarget,
     EmptyWorkspaceTarget,
@@ -52,7 +49,10 @@ from dagster._grpc.utils import get_loadable_targets
 from dagster._utils.hosted_user_process import recon_repository_from_origin
 
 if TYPE_CHECKING:
-    from dagster._core.workspace.context import WorkspaceProcessContext
+    from typing_extensions import Never, TypeAlias
+
+    from dagster._core.instance import DagsterInstance
+    from dagster._core.workspace.context import WorkspaceProcessContext, WorkspaceRequestContext
 
 from dagster._core.host_representation.external import ExternalJob
 

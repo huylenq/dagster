@@ -4,8 +4,18 @@ import inspect
 import os
 import pkgutil
 from importlib import import_module
-from types import ModuleType
-from typing import Dict, Generator, Iterable, List, Optional, Sequence, Set, Tuple, Union
+from typing import (
+    TYPE_CHECKING,
+    Dict,
+    Generator,
+    Iterable,
+    List,
+    Optional,
+    Sequence,
+    Set,
+    Tuple,
+    Union,
+)
 
 import dagster._check as check
 from dagster._core.definitions.auto_materialize_policy import AutoMaterializePolicy
@@ -20,6 +30,9 @@ from .events import (
     check_opt_coercible_to_asset_key_prefix_param,
 )
 from .source_asset import SourceAsset
+
+if TYPE_CHECKING:
+    from types import ModuleType
 
 
 def _find_assets_in_module(

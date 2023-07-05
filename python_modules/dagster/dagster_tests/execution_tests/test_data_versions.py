@@ -1,6 +1,18 @@
 from __future__ import annotations
 
-from typing import Any, Dict, List, Mapping, Optional, Sequence, Tuple, Union, cast, overload
+from typing import (
+    TYPE_CHECKING,
+    Any,
+    Dict,
+    List,
+    Mapping,
+    Optional,
+    Sequence,
+    Tuple,
+    Union,
+    cast,
+    overload,
+)
 from unittest import mock
 
 from dagster import (
@@ -36,14 +48,16 @@ from dagster._core.definitions.events import AssetKey, Output
 from dagster._core.definitions.observe import observe
 from dagster._core.definitions.partition import StaticPartitionsDefinition
 from dagster._core.events import DagsterEventType
-from dagster._core.execution.context.compute import AssetExecutionContext
-from dagster._core.execution.execute_in_process_result import ExecuteInProcessResult
 from dagster._core.instance_for_test import instance_for_test
-from typing_extensions import Literal
 
 from dagster_tests.core_tests.instance_tests.test_instance_data_versions import (
     create_test_event_log_entry,
 )
+
+if TYPE_CHECKING:
+    from dagster._core.execution.context.compute import AssetExecutionContext
+    from dagster._core.execution.execute_in_process_result import ExecuteInProcessResult
+    from typing_extensions import Literal
 
 # ########################
 # ##### HELPERS

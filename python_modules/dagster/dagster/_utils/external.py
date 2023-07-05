@@ -1,12 +1,14 @@
 from __future__ import annotations
 
-from typing import Optional, Sequence
+from typing import TYPE_CHECKING, Optional, Sequence
 
 import dagster._check as check
 from dagster._core.definitions.selector import JobSubsetSelector
 from dagster._core.host_representation import CodeLocation
-from dagster._core.host_representation.external import ExternalJob
 from dagster._core.host_representation.origin import ExternalJobOrigin
+
+if TYPE_CHECKING:
+    from dagster._core.host_representation.external import ExternalJob
 
 
 def external_job_from_location(

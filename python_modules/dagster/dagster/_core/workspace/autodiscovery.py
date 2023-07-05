@@ -1,8 +1,7 @@
 from __future__ import annotations
 
 import inspect
-from types import ModuleType
-from typing import Callable, NamedTuple, Optional, Sequence, Tuple, Type, Union
+from typing import TYPE_CHECKING, Callable, NamedTuple, Optional, Sequence, Tuple, Type, Union
 
 from dagster import (
     DagsterInvariantViolationError,
@@ -13,6 +12,9 @@ from dagster._core.code_pointer import load_python_file, load_python_module
 from dagster._core.definitions.definitions_class import Definitions
 from dagster._core.definitions.load_assets_from_modules import assets_from_modules
 from dagster._core.definitions.repository_definition import PendingRepositoryDefinition
+
+if TYPE_CHECKING:
+    from types import ModuleType
 
 LOAD_ALL_ASSETS = "<<LOAD_ALL_ASSETS>>"
 

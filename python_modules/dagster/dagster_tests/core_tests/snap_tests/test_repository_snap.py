@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Dict, List
+from typing import TYPE_CHECKING, Dict, List
 
 from dagster import Definitions, asset, graph, job, op, repository, resource
 from dagster._config.field_utils import EnvVar
@@ -10,9 +10,7 @@ from dagster._core.definitions.repository_definition import (
     PendingRepositoryDefinition,
     RepositoryDefinition,
 )
-from dagster._core.definitions.resource_annotation import ResourceParam
 from dagster._core.definitions.resource_definition import ResourceDefinition
-from dagster._core.execution.context.init import InitResourceContext
 from dagster._core.host_representation import (
     ExternalJobData,
     external_repository_data_from_def,
@@ -23,6 +21,10 @@ from dagster._core.host_representation.external_data import (
     ResourceJobUsageEntry,
 )
 from dagster._core.snap import JobSnapshot
+
+if TYPE_CHECKING:
+    from dagster._core.definitions.resource_annotation import ResourceParam
+    from dagster._core.execution.context.init import InitResourceContext
 
 
 def test_repository_snap_all_props():

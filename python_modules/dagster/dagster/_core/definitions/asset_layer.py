@@ -20,30 +20,30 @@ from typing import (
 )
 
 import dagster._check as check
-from dagster._core.definitions.hook_definition import HookDefinition
-from dagster._core.definitions.metadata import (
-    ArbitraryMetadataMapping,
-    RawMetadataValue,
-)
-from dagster._core.selector.subset_selector import AssetSelectionData
 
 from ..errors import DagsterInvalidSubsetError
-from .config import ConfigMapping
 from .dependency import NodeHandle, NodeInputHandle, NodeOutput, NodeOutputHandle
 from .events import AssetKey
-from .executor_definition import ExecutorDefinition
 from .graph_definition import GraphDefinition
-from .node_definition import NodeDefinition
-from .resource_definition import ResourceDefinition
 
 if TYPE_CHECKING:
     from dagster._core.definitions.assets import AssetsDefinition, SourceAsset
+    from dagster._core.definitions.hook_definition import HookDefinition
     from dagster._core.definitions.job_definition import JobDefinition
+    from dagster._core.definitions.metadata import (
+        ArbitraryMetadataMapping,
+        RawMetadataValue,
+    )
     from dagster._core.definitions.partition_mapping import PartitionMapping
     from dagster._core.definitions.resolved_asset_deps import ResolvedAssetDependencies
     from dagster._core.execution.context.output import OutputContext
+    from dagster._core.selector.subset_selector import AssetSelectionData
 
+    from .config import ConfigMapping
+    from .executor_definition import ExecutorDefinition
+    from .node_definition import NodeDefinition
     from .partition import PartitionedConfig, PartitionsDefinition
+    from .resource_definition import ResourceDefinition
 
 
 class AssetOutputInfo(
@@ -529,7 +529,7 @@ class AssetLayer:
 
                     return set(
                         cast(
-                            PartitionsDefinition, context.asset_partitions_def
+                            "PartitionsDefinition", context.asset_partitions_def
                         ).get_partition_keys_in_range(
                             context.asset_partition_key_range,
                             dynamic_partitions_store=context.step_context.instance,

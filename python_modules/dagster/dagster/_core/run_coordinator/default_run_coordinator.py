@@ -1,16 +1,18 @@
 from __future__ import annotations
 
 import logging
-from typing import Mapping, Optional
-
-from typing_extensions import Self
+from typing import TYPE_CHECKING, Mapping, Optional
 
 import dagster._check as check
-from dagster._config.config_schema import UserConfigSchema
 from dagster._core.storage.dagster_run import DagsterRun, DagsterRunStatus
 from dagster._serdes import ConfigurableClass, ConfigurableClassData
 
 from .base import RunCoordinator, SubmitRunContext
+
+if TYPE_CHECKING:
+    from typing_extensions import Self
+
+    from dagster._config.config_schema import UserConfigSchema
 
 
 class DefaultRunCoordinator(RunCoordinator, ConfigurableClass):

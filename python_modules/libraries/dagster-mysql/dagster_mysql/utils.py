@@ -4,7 +4,7 @@ import logging
 import re
 import time
 from contextlib import contextmanager
-from typing import Callable, Iterator, Optional, Tuple, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Callable, Iterator, Optional, Tuple, TypeVar, Union, cast
 from urllib.parse import (
     quote_plus as urlquote,
     urlparse,
@@ -14,13 +14,15 @@ import mysql.connector as mysql
 import mysql.connector.errorcode as mysql_errorcode
 import sqlalchemy as db
 import sqlalchemy.exc as db_exc
-from alembic.config import Config
 from dagster import _check as check
-from dagster._core.storage.config import MySqlStorageConfig
 from dagster._core.storage.sql import get_alembic_config
 from mysql.connector.pooling import PooledMySQLConnection
-from sqlalchemy.engine import Connection
-from typing_extensions import TypeAlias
+
+if TYPE_CHECKING:
+    from alembic.config import Config
+    from dagster._core.storage.config import MySqlStorageConfig
+    from sqlalchemy.engine import Connection
+    from typing_extensions import TypeAlias
 
 T = TypeVar("T")
 

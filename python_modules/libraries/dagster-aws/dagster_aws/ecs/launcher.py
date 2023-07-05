@@ -6,7 +6,7 @@ import os
 import uuid
 import warnings
 from collections import namedtuple
-from typing import Any, Dict, List, Mapping, Optional, Sequence
+from typing import TYPE_CHECKING, Any, Dict, List, Mapping, Optional, Sequence
 
 import boto3
 from botocore.exceptions import ClientError
@@ -28,13 +28,10 @@ from dagster._core.launcher.base import (
     RunLauncher,
     WorkerStatus,
 )
-from dagster._core.storage.dagster_run import DagsterRun
 from dagster._core.storage.tags import RUN_WORKER_ID_TAG
 from dagster._grpc.types import ExecuteRunArgs
 from dagster._serdes import ConfigurableClass
-from dagster._serdes.config_class import ConfigurableClassData
 from dagster._utils.backoff import backoff
-from typing_extensions import Self
 
 from ..secretsmanager import get_secrets_from_arns
 from .container_context import SHARED_ECS_SCHEMA, SHARED_TASK_DEFINITION_FIELDS, EcsContainerContext
@@ -46,6 +43,11 @@ from .tasks import (
     get_task_kwargs_from_current_task,
 )
 from .utils import get_task_definition_family, get_task_logs, task_definitions_match
+
+if TYPE_CHECKING:
+    from dagster._core.storage.dagster_run import DagsterRun
+    from dagster._serdes.config_class import ConfigurableClassData
+    from typing_extensions import Self
 
 Tags = namedtuple("Tags", ["arn", "cluster", "cpu", "memory"])
 

@@ -5,7 +5,7 @@ import io
 import os
 import time
 import uuid
-from typing import Optional
+from typing import TYPE_CHECKING, Optional
 from urllib.parse import urlparse
 
 import boto3
@@ -17,8 +17,10 @@ from dagster import (
 )
 from dagster._annotations import deprecated
 from dagster._core.definitions.resource_definition import dagster_maintained_resource
-from dagster._core.execution.context.init import InitResourceContext
 from pydantic import Field
+
+if TYPE_CHECKING:
+    from dagster._core.execution.context.init import InitResourceContext
 
 
 class AthenaError(Exception):

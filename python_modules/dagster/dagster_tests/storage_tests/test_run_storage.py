@@ -2,17 +2,19 @@ from __future__ import annotations
 
 import tempfile
 from contextlib import contextmanager
-from typing import Any, Mapping
+from typing import TYPE_CHECKING, Any, Mapping
 
 import mock
 import pytest
 from dagster._core.storage.legacy_storage import LegacyRunStorage
 from dagster._core.storage.runs import InMemoryRunStorage, SqliteRunStorage
 from dagster._core.storage.sqlite_storage import DagsterSqliteStorage
-from dagster._serdes.config_class import ConfigurableClassData
-from typing_extensions import Self
 
 from dagster_tests.storage_tests.utils.run_storage import TestRunStorage
+
+if TYPE_CHECKING:
+    from dagster._serdes.config_class import ConfigurableClassData
+    from typing_extensions import Self
 
 
 @contextmanager

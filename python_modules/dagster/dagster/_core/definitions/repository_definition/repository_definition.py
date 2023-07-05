@@ -21,17 +21,8 @@ from dagster._core.definitions.assets_job import (
     ASSET_BASE_JOB_PREFIX,
 )
 from dagster._core.definitions.cacheable_assets import AssetsDefinitionCacheableData
-from dagster._core.definitions.events import AssetKey, CoercibleToAssetKey
-from dagster._core.definitions.executor_definition import ExecutorDefinition
-from dagster._core.definitions.job_definition import JobDefinition
-from dagster._core.definitions.logger_definition import LoggerDefinition
-from dagster._core.definitions.resource_definition import ResourceDefinition
-from dagster._core.definitions.schedule_definition import ScheduleDefinition
-from dagster._core.definitions.sensor_definition import SensorDefinition
-from dagster._core.definitions.source_asset import SourceAsset
 from dagster._core.definitions.utils import check_valid_name
 from dagster._core.errors import DagsterInvariantViolationError
-from dagster._core.instance import DagsterInstance
 from dagster._serdes import whitelist_for_serdes
 from dagster._utils import hash_collection
 
@@ -40,13 +31,25 @@ from .valid_definitions import (
     SINGLETON_REPOSITORY_NAME as SINGLETON_REPOSITORY_NAME,
     VALID_REPOSITORY_DATA_DICT_KEYS as VALID_REPOSITORY_DATA_DICT_KEYS,
     PendingRepositoryListDefinition as PendingRepositoryListDefinition,
-    RepositoryListDefinition as RepositoryListDefinition,
 )
 
 if TYPE_CHECKING:
     from dagster._core.definitions import AssetsDefinition
     from dagster._core.definitions.cacheable_assets import CacheableAssetsDefinition
+    from dagster._core.definitions.events import AssetKey, CoercibleToAssetKey
+    from dagster._core.definitions.executor_definition import ExecutorDefinition
+    from dagster._core.definitions.job_definition import JobDefinition
+    from dagster._core.definitions.logger_definition import LoggerDefinition
+    from dagster._core.definitions.resource_definition import ResourceDefinition
+    from dagster._core.definitions.schedule_definition import ScheduleDefinition
+    from dagster._core.definitions.sensor_definition import SensorDefinition
+    from dagster._core.definitions.source_asset import SourceAsset
+    from dagster._core.instance import DagsterInstance
     from dagster._core.storage.asset_value_loader import AssetValueLoader
+
+    from .valid_definitions import (
+        RepositoryListDefinition as RepositoryListDefinition,
+    )
 
 
 @whitelist_for_serdes

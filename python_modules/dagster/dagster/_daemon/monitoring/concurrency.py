@@ -1,7 +1,6 @@
 from __future__ import annotations
 
-import logging
-from typing import Iterator, Optional
+from typing import TYPE_CHECKING, Iterator, Optional
 
 import pendulum
 
@@ -9,9 +8,13 @@ from dagster._core.storage.dagster_run import (
     FINISHED_STATUSES,
     RunsFilter,
 )
-from dagster._core.workspace.context import IWorkspaceProcessContext
-from dagster._utils import DebugCrashFlags
-from dagster._utils.error import SerializableErrorInfo
+
+if TYPE_CHECKING:
+    import logging
+
+    from dagster._core.workspace.context import IWorkspaceProcessContext
+    from dagster._utils import DebugCrashFlags
+    from dagster._utils.error import SerializableErrorInfo
 
 RUN_BATCH_SIZE = 1000
 

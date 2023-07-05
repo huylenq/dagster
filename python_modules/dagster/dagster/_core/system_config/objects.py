@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 from typing import (
+    TYPE_CHECKING,
     AbstractSet,
     Any,
     Dict,
@@ -22,9 +23,11 @@ from dagster._core.definitions.executor_definition import (
     execute_in_process_executor,
 )
 from dagster._core.definitions.job_definition import JobDefinition
-from dagster._core.definitions.resource_definition import ResourceDefinition
 from dagster._core.errors import DagsterInvalidConfigError
 from dagster._utils import ensure_single_item
+
+if TYPE_CHECKING:
+    from dagster._core.definitions.resource_definition import ResourceDefinition
 
 
 class OpConfig(

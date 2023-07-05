@@ -1,13 +1,12 @@
 from __future__ import annotations
 
 import zlib
-from typing import ContextManager, Mapping, Optional
+from typing import TYPE_CHECKING, ContextManager, Mapping, Optional
 
 import dagster._check as check
 import sqlalchemy as db
 import sqlalchemy.dialects as db_dialects
 import sqlalchemy.pool as db_pool
-from dagster._config.config_schema import UserConfigSchema
 from dagster._core.storage.config import PostgresStorageConfig, pg_config
 from dagster._core.storage.runs import (
     DaemonHeartbeatsTable,
@@ -16,7 +15,6 @@ from dagster._core.storage.runs import (
     SqlRunStorage,
 )
 from dagster._core.storage.runs.schema import KeyValueStoreTable, SnapshotsTable
-from dagster._core.storage.runs.sql_run_storage import SnapshotType
 from dagster._core.storage.sql import (
     AlembicVersion,
     check_alembic_revision,
@@ -24,10 +22,8 @@ from dagster._core.storage.sql import (
     run_alembic_upgrade,
     stamp_alembic_rev,
 )
-from dagster._daemon.types import DaemonHeartbeat
 from dagster._serdes import ConfigurableClass, ConfigurableClassData, serialize_value
 from dagster._utils import utc_datetime_from_timestamp
-from sqlalchemy.engine import Connection
 
 from ..utils import (
     create_pg_connection,
@@ -37,6 +33,12 @@ from ..utils import (
     retry_pg_connection_fn,
     retry_pg_creation_fn,
 )
+
+if TYPE_CHECKING:
+    from dagster._config.config_schema import UserConfigSchema
+    from dagster._core.storage.runs.sql_run_storage import SnapshotType
+    from dagster._daemon.types import DaemonHeartbeat
+    from sqlalchemy.engine import Connection
 
 
 class PostgresRunStorage(SqlRunStorage, ConfigurableClass):

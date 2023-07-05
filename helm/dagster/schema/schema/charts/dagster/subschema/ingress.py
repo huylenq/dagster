@@ -1,11 +1,12 @@
 from __future__ import annotations
 
 from enum import Enum
-from typing import List, Optional, Union
+from typing import TYPE_CHECKING, List, Optional, Union
 
 from pydantic import BaseModel
 
-from ...utils import kubernetes
+if TYPE_CHECKING:
+    from ...utils import kubernetes
 
 
 class IngressPathType(str, Enum):

@@ -3,7 +3,7 @@ from __future__ import annotations
 import datetime
 import json
 import os
-from typing import Any, Mapping, Optional, Sequence
+from typing import TYPE_CHECKING, Any, Mapping, Optional, Sequence
 
 import dagster._seven as seven
 from dagster import (
@@ -24,7 +24,9 @@ from dagster._core.storage.local_compute_log_manager import (
 from dagster._serdes import ConfigurableClass, ConfigurableClassData
 from dagster._utils import ensure_dir, ensure_file
 from google.cloud import storage
-from typing_extensions import Self
+
+if TYPE_CHECKING:
+    from typing_extensions import Self
 
 
 class GCSComputeLogManager(CloudStorageComputeLogManager, ConfigurableClass):

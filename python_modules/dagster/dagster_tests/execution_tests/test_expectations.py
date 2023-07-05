@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Sequence
+from typing import TYPE_CHECKING, Sequence
 
 import pytest
 from dagster import (
@@ -10,8 +10,10 @@ from dagster import (
     GraphDefinition,
     op,
 )
-from dagster._core.events import DagsterEvent
-from dagster._core.execution.execution_result import ExecutionResult
+
+if TYPE_CHECKING:
+    from dagster._core.events import DagsterEvent
+    from dagster._core.execution.execution_result import ExecutionResult
 
 
 def expt_results_for_compute_step(

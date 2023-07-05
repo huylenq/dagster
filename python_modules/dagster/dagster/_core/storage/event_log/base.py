@@ -18,22 +18,22 @@ import dagster._check as check
 from dagster._core.assets import AssetDetails
 from dagster._core.definitions.events import AssetKey
 from dagster._core.event_api import EventHandlerFn, EventLogRecord, EventRecordsFilter
-from dagster._core.events import DagsterEventType
-from dagster._core.events.log import EventLogEntry
 from dagster._core.execution.stats import (
     RunStepKeyStatsSnapshot,
     build_run_stats_from_events,
     build_run_step_stats_from_events,
 )
 from dagster._core.instance import MayHaveInstanceWeakref, T_DagsterInstance
-from dagster._core.storage.dagster_run import DagsterRunStatsSnapshot
-from dagster._core.storage.sql import AlembicVersion
 from dagster._seven import json
-from dagster._utils import PrintFn
-from dagster._utils.concurrency import ConcurrencyClaimStatus, ConcurrencyKeyInfo
 
 if TYPE_CHECKING:
+    from dagster._core.events import DagsterEventType
+    from dagster._core.events.log import EventLogEntry
+    from dagster._core.storage.dagster_run import DagsterRunStatsSnapshot
     from dagster._core.storage.partition_status_cache import AssetStatusCacheValue
+    from dagster._core.storage.sql import AlembicVersion
+    from dagster._utils import PrintFn
+    from dagster._utils.concurrency import ConcurrencyClaimStatus, ConcurrencyKeyInfo
 
 
 class EventLogConnection(NamedTuple):

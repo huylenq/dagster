@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import json
 from copy import deepcopy
-from typing import Any, List, Optional
+from typing import TYPE_CHECKING, Any, List, Optional
 
 import pytest
 import responses
@@ -27,10 +27,12 @@ from dagster_dbt import (
     load_assets_from_dbt_cloud_job,
 )
 from dagster_dbt.cloud.asset_defs import DAGSTER_DBT_COMPILE_RUN_ID_ENV_VAR
-from dagster_dbt.cloud.resources import DbtCloudClient
 
 from ..utils import assert_assets_match_project
 from .utils import sample_get_environment_variables
+
+if TYPE_CHECKING:
+    from dagster_dbt.cloud.resources import DbtCloudClient
 
 DBT_CLOUD_API_TOKEN = "abc"
 DBT_CLOUD_ACCOUNT_ID = 1

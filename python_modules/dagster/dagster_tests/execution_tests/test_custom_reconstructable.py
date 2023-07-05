@@ -2,12 +2,15 @@ from __future__ import annotations
 
 import os
 import sys
+from typing import TYPE_CHECKING
 
 import pytest
 from dagster import job, op, reconstructable
 from dagster._core.definitions import ReconstructableJob, build_reconstructable_job
-from dagster._core.definitions.job_definition import JobDefinition
 from dagster._core.errors import DagsterInvariantViolationError
+
+if TYPE_CHECKING:
+    from dagster._core.definitions.job_definition import JobDefinition
 
 
 @op

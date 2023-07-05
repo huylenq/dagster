@@ -1,15 +1,12 @@
 from __future__ import annotations
 
-from typing import ContextManager, Optional, cast
+from typing import TYPE_CHECKING, ContextManager, Optional, cast
 
 import dagster._check as check
 import sqlalchemy as db
 import sqlalchemy.dialects as db_dialects
 import sqlalchemy.exc as db_exc
 import sqlalchemy.pool as db_pool
-from dagster._config.config_schema import UserConfigSchema
-from dagster._core.event_api import EventHandlerFn
-from dagster._core.events.log import EventLogEntry
 from dagster._core.storage.config import MySqlStorageConfig, mysql_config
 from dagster._core.storage.event_log import (
     AssetKeyTable,
@@ -27,7 +24,6 @@ from dagster._core.storage.sql import (
     stamp_alembic_rev,
 )
 from dagster._serdes import ConfigurableClass, ConfigurableClassData
-from sqlalchemy.engine import Connection
 
 from ..utils import (
     create_mysql_connection,
@@ -38,6 +34,12 @@ from ..utils import (
     retry_mysql_connection_fn,
     retry_mysql_creation_fn,
 )
+
+if TYPE_CHECKING:
+    from dagster._config.config_schema import UserConfigSchema
+    from dagster._core.event_api import EventHandlerFn
+    from dagster._core.events.log import EventLogEntry
+    from sqlalchemy.engine import Connection
 
 MINIMUM_MYSQL_INTERSECT_VERSION = "8.0.31"
 

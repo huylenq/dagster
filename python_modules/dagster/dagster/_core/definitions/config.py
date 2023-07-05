@@ -1,8 +1,6 @@
 from __future__ import annotations
 
-from typing import Any, Callable, Mapping, NamedTuple, Optional, Union, cast
-
-from typing_extensions import TypeAlias
+from typing import TYPE_CHECKING, Any, Callable, Mapping, NamedTuple, Optional, Union, cast
 
 import dagster._check as check
 from dagster._builtins import BuiltinEnum
@@ -17,6 +15,9 @@ from dagster._core.definitions.definition_config_schema import IDefinitionConfig
 from dagster._core.errors import DagsterInvalidConfigError
 
 from .definition_config_schema import convert_user_facing_definition_config_schema
+
+if TYPE_CHECKING:
+    from typing_extensions import TypeAlias
 
 ConfigMappingFn: TypeAlias = Callable[[Any], Any]
 

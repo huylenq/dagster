@@ -2,13 +2,13 @@ from __future__ import annotations
 
 import os
 from time import sleep
+from typing import TYPE_CHECKING
 
 from dagster._core.execution.plan.resume_retry import ReexecutionStrategy
 from dagster._core.storage.dagster_run import DagsterRunStatus
 from dagster._core.storage.tags import RESUME_RETRY_TAG
 from dagster._core.test_utils import create_run_for_test, poll_for_finished_run
 from dagster._core.utils import make_new_run_id
-from dagster._core.workspace.context import WorkspaceRequestContext
 from dagster._seven.temp_dir import get_system_temp_directory
 from dagster_graphql.client.query import (
     LAUNCH_PIPELINE_EXECUTION_MUTATION,
@@ -39,6 +39,9 @@ from .utils import (
     step_started,
     sync_execute_get_events,
 )
+
+if TYPE_CHECKING:
+    from dagster._core.workspace.context import WorkspaceRequestContext
 
 
 def first_event_of_type(logs, message_type):

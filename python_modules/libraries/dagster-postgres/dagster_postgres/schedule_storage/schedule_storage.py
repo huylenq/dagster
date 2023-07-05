@@ -1,14 +1,12 @@
 from __future__ import annotations
 
-from typing import ContextManager, Optional
+from typing import TYPE_CHECKING, ContextManager, Optional
 
 import dagster._check as check
 import pendulum
 import sqlalchemy as db
 import sqlalchemy.dialects as db_dialects
 import sqlalchemy.pool as db_pool
-from dagster._config.config_schema import UserConfigSchema
-from dagster._core.scheduler.instigation import InstigatorState
 from dagster._core.storage.config import PostgresStorageConfig, pg_config
 from dagster._core.storage.schedules import ScheduleStorageSqlMetadata, SqlScheduleStorage
 from dagster._core.storage.schedules.schema import InstigatorsTable
@@ -20,7 +18,6 @@ from dagster._core.storage.sql import (
     stamp_alembic_rev,
 )
 from dagster._serdes import ConfigurableClass, ConfigurableClassData, serialize_value
-from sqlalchemy.engine import Connection
 
 from ..utils import (
     create_pg_connection,
@@ -30,6 +27,11 @@ from ..utils import (
     retry_pg_connection_fn,
     retry_pg_creation_fn,
 )
+
+if TYPE_CHECKING:
+    from dagster._config.config_schema import UserConfigSchema
+    from dagster._core.scheduler.instigation import InstigatorState
+    from sqlalchemy.engine import Connection
 
 
 class PostgresScheduleStorage(SqlScheduleStorage, ConfigurableClass):

@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import io
 import pickle
-from typing import Any, Dict, Optional, Union
+from typing import TYPE_CHECKING, Any, Dict, Optional, Union
 
 from dagster import (
     ConfigurableIOManager,
@@ -20,7 +20,8 @@ from dagster._utils.cached_method import cached_method
 from pydantic import Field
 from upath import UPath
 
-from .resources import S3Resource
+if TYPE_CHECKING:
+    from .resources import S3Resource
 
 
 class PickledObjectS3IOManager(UPathIOManager):

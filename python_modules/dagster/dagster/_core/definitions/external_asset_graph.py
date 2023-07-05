@@ -15,20 +15,21 @@ from typing import (
 )
 
 from dagster._core.definitions.assets_job import ASSET_BASE_JOB_PREFIX
-from dagster._core.definitions.auto_materialize_policy import AutoMaterializePolicy
-from dagster._core.host_representation.external import ExternalRepository
-from dagster._core.host_representation.handle import RepositoryHandle
-from dagster._core.selector.subset_selector import DependencyGraph
-from dagster._core.workspace.workspace import IWorkspace
 
 from .asset_graph import AssetGraph
-from .events import AssetKey
-from .freshness_policy import FreshnessPolicy
-from .partition import PartitionsDefinition
-from .partition_mapping import PartitionMapping
 
 if TYPE_CHECKING:
+    from dagster._core.definitions.auto_materialize_policy import AutoMaterializePolicy
+    from dagster._core.host_representation.external import ExternalRepository
     from dagster._core.host_representation.external_data import ExternalAssetNode
+    from dagster._core.host_representation.handle import RepositoryHandle
+    from dagster._core.selector.subset_selector import DependencyGraph
+    from dagster._core.workspace.workspace import IWorkspace
+
+    from .events import AssetKey
+    from .freshness_policy import FreshnessPolicy
+    from .partition import PartitionsDefinition
+    from .partition_mapping import PartitionMapping
 
 
 class ExternalAssetGraph(AssetGraph):

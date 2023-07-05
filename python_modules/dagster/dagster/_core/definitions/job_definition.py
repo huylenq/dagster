@@ -3,7 +3,6 @@ from __future__ import annotations
 import importlib
 import os
 import warnings
-from datetime import datetime
 from functools import update_wrapper
 from typing import (
     TYPE_CHECKING,
@@ -21,12 +20,9 @@ from typing import (
     cast,
 )
 
-from typing_extensions import Self
-
 import dagster._check as check
 from dagster._annotations import public
 from dagster._config import Field, Shape, StringSource
-from dagster._config.config_type import ConfigType
 from dagster._config.validate import validate_config
 from dagster._core.definitions.dependency import (
     Node,
@@ -35,7 +31,6 @@ from dagster._core.definitions.dependency import (
     NodeInvocation,
 )
 from dagster._core.definitions.events import AssetKey
-from dagster._core.definitions.node_definition import NodeDefinition
 from dagster._core.definitions.op_definition import OpDefinition
 from dagster._core.definitions.op_selection import OpSelection, get_graph_subset
 from dagster._core.definitions.partition import DynamicPartitionsDefinition
@@ -62,7 +57,6 @@ from dagster._core.storage.io_manager import (
     io_manager,
 )
 from dagster._core.storage.tags import MEMOIZED_RUN_TAG
-from dagster._core.types.dagster_type import DagsterType
 from dagster._core.utils import str_format_set
 from dagster._utils import IHasInternalInit
 from dagster._utils.backcompat import deprecation_warning, experimental_class_warning
@@ -87,13 +81,20 @@ from .utils import DEFAULT_IO_MANAGER_KEY, validate_tags
 from .version_strategy import VersionStrategy
 
 if TYPE_CHECKING:
+    from datetime import datetime
+
+    from typing_extensions import Self
+
+    from dagster._config.config_type import ConfigType
     from dagster._config.snap import ConfigSchemaSnapshot
+    from dagster._core.definitions.node_definition import NodeDefinition
     from dagster._core.definitions.run_config import RunConfig
     from dagster._core.execution.execute_in_process_result import ExecuteInProcessResult
     from dagster._core.execution.resources_init import InitResourceContext
     from dagster._core.host_representation.job_index import JobIndex
     from dagster._core.instance import DagsterInstance
     from dagster._core.snap import JobSnapshot
+    from dagster._core.types.dagster_type import DagsterType
 
     from .run_config_schema import RunConfigSchema
 

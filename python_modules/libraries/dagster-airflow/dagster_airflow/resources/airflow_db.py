@@ -1,11 +1,8 @@
 from __future__ import annotations
 
-import datetime
-from typing import Mapping, Optional
+from typing import TYPE_CHECKING, Mapping, Optional
 
 import pendulum
-from airflow.models.dag import DAG
-from airflow.models.dagrun import DagRun
 from dagster import (
     DagsterInvariantViolationError,
     DagsterRun,
@@ -16,6 +13,12 @@ from dagster._core.instance import AIRFLOW_EXECUTION_DATE_STR
 from dagster_airflow.utils import (
     is_airflow_2_loaded_in_environment,
 )
+
+if TYPE_CHECKING:
+    import datetime
+
+    from airflow.models.dag import DAG
+    from airflow.models.dagrun import DagRun
 
 if is_airflow_2_loaded_in_environment():
     from airflow.utils.state import DagRunState

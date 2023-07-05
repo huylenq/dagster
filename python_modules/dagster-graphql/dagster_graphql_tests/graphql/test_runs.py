@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import copy
+from typing import TYPE_CHECKING
 
 import yaml
 from dagster import AssetMaterialization, Output, job, op, repository
@@ -9,7 +10,6 @@ from dagster._core.execution.api import execute_run
 from dagster._core.storage.dagster_run import DagsterRunStatus
 from dagster._core.storage.tags import PARENT_RUN_ID_TAG, ROOT_RUN_ID_TAG
 from dagster._core.test_utils import instance_for_test
-from dagster._core.workspace.context import WorkspaceRequestContext
 from dagster._utils import Counter, traced_counter
 from dagster_graphql.test.utils import (
     define_out_of_process_context,
@@ -22,6 +22,9 @@ from dagster_graphql_tests.graphql.graphql_context_test_suite import (
     ExecutingGraphQLContextTestMatrix,
     ReadonlyGraphQLContextTestMatrix,
 )
+
+if TYPE_CHECKING:
+    from dagster._core.workspace.context import WorkspaceRequestContext
 
 RUNS_QUERY = """
 query PipelineRunsRootQuery($selector: PipelineSelector!) {

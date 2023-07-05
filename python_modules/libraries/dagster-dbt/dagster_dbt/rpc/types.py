@@ -1,10 +1,11 @@
 from __future__ import annotations
 
-from typing import Any, Mapping
-
-import requests
+from typing import TYPE_CHECKING, Any, Mapping
 
 from ..types import DbtOutput
+
+if TYPE_CHECKING:
+    import requests
 
 
 class DbtRpcOutput(DbtOutput):

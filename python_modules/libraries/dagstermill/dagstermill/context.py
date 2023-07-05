@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import AbstractSet, Any, Mapping, Optional, cast
+from typing import TYPE_CHECKING, AbstractSet, Any, Mapping, Optional, cast
 
 from dagster import (
     DagsterRun,
@@ -12,9 +12,11 @@ from dagster._annotations import public
 from dagster._core.definitions.dependency import Node, NodeHandle
 from dagster._core.execution.context.compute import AbstractComputeExecutionContext
 from dagster._core.execution.context.system import PlanExecutionContext, StepExecutionContext
-from dagster._core.log_manager import DagsterLogManager
-from dagster._core.system_config.objects import ResolvedRunConfig
 from dagster._utils.backcompat import deprecation_warning
+
+if TYPE_CHECKING:
+    from dagster._core.log_manager import DagsterLogManager
+    from dagster._core.system_config.objects import ResolvedRunConfig
 
 
 class DagstermillExecutionContext(AbstractComputeExecutionContext):

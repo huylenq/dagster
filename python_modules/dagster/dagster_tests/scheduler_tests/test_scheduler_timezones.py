@@ -1,13 +1,10 @@
 from __future__ import annotations
 
-from concurrent.futures import ThreadPoolExecutor
+from typing import TYPE_CHECKING
 
 import pendulum
 import pytest
-from dagster._core.host_representation.external import ExternalRepository
-from dagster._core.instance import DagsterInstance
 from dagster._core.scheduler.instigation import TickStatus
-from dagster._core.workspace.context import WorkspaceProcessContext
 from dagster._seven.compat.pendulum import create_pendulum_time, to_timezone
 
 from .test_scheduler_run import (
@@ -17,6 +14,13 @@ from .test_scheduler_run import (
     validate_tick,
     wait_for_all_runs_to_start,
 )
+
+if TYPE_CHECKING:
+    from concurrent.futures import ThreadPoolExecutor
+
+    from dagster._core.host_representation.external import ExternalRepository
+    from dagster._core.instance import DagsterInstance
+    from dagster._core.workspace.context import WorkspaceProcessContext
 
 
 @pytest.mark.parametrize("executor", get_schedule_executors())

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from datetime import datetime
+from typing import TYPE_CHECKING
 
 import dagster._check as check
 from dagster import AssetKey
@@ -13,7 +14,6 @@ from dagster._core.definitions.partition import (
     SerializedPartitionsSubset,
 )
 from dagster._core.definitions.time_window_partitions import TimeWindowPartitionsDefinition
-from dagster._core.workspace.context import WorkspaceRequestContext
 from dagster._daemon.asset_daemon import CURSOR_KEY
 from dagster_graphql.test.utils import execute_dagster_graphql
 
@@ -21,6 +21,9 @@ from dagster_graphql_tests.graphql.graphql_context_test_suite import (
     ExecutingGraphQLContextTestMatrix,
 )
 from dagster_graphql_tests.graphql.repo import static_partitions_def
+
+if TYPE_CHECKING:
+    from dagster._core.workspace.context import WorkspaceRequestContext
 
 QUERY = """
 query GetEvaluationsQuery($assetKey: AssetKeyInput!, $limit: Int!, $cursor: String) {

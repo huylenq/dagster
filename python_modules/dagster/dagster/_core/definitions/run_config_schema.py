@@ -1,12 +1,14 @@
 from __future__ import annotations
 
-from typing import Iterable, Mapping, NamedTuple, Optional
+from typing import TYPE_CHECKING, Iterable, Mapping, NamedTuple, Optional
 
 import dagster._check as check
-from dagster._config import ConfigType
 
-from .config import ConfigMapping
-from .job_definition import JobDefinition
+if TYPE_CHECKING:
+    from dagster._config import ConfigType
+
+    from .config import ConfigMapping
+    from .job_definition import JobDefinition
 
 
 class RunConfigSchema(NamedTuple):

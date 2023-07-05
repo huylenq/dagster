@@ -3,7 +3,6 @@ from __future__ import annotations
 import random
 import string
 import time
-from concurrent.futures import ThreadPoolExecutor
 from contextlib import ExitStack, contextmanager
 from typing import TYPE_CHECKING, Optional, Sequence, cast
 
@@ -33,9 +32,7 @@ from dagster._core.host_representation import (
     GrpcServerCodeLocation,
     GrpcServerCodeLocationOrigin,
 )
-from dagster._core.host_representation.external import ExternalRepository, ExternalSchedule
 from dagster._core.host_representation.origin import ManagedGrpcPythonEnvCodeLocationOrigin
-from dagster._core.instance import DagsterInstance
 from dagster._core.scheduler.instigation import (
     InstigatorState,
     InstigatorStatus,
@@ -54,7 +51,6 @@ from dagster._core.test_utils import (
     instance_for_test,
     wait_for_futures,
 )
-from dagster._core.workspace.context import WorkspaceProcessContext
 from dagster._core.workspace.load_target import EmptyWorkspaceTarget, GrpcServerTarget, ModuleTarget
 from dagster._daemon import get_default_daemon_logger
 from dagster._grpc.client import DagsterGrpcClient
@@ -69,6 +65,11 @@ from dagster._utils.partitions import DEFAULT_DATE_FORMAT
 from .conftest import loadable_target_origin, workspace_load_target
 
 if TYPE_CHECKING:
+    from concurrent.futures import ThreadPoolExecutor
+
+    from dagster._core.host_representation.external import ExternalRepository, ExternalSchedule
+    from dagster._core.instance import DagsterInstance
+    from dagster._core.workspace.context import WorkspaceProcessContext
     from pendulum.datetime import DateTime
 
 

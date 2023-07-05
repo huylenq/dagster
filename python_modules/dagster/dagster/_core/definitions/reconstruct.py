@@ -23,8 +23,6 @@ from typing import (
     overload,
 )
 
-from typing_extensions import Self, TypeAlias
-
 import dagster._check as check
 import dagster._seven as seven
 from dagster._annotations import experimental
@@ -49,6 +47,8 @@ from .events import AssetKey
 from .job_base import IJob
 
 if TYPE_CHECKING:
+    from typing_extensions import Self, TypeAlias
+
     from dagster._core.definitions.assets import AssetsDefinition
     from dagster._core.definitions.job_definition import JobDefinition
     from dagster._core.definitions.repository_definition import (

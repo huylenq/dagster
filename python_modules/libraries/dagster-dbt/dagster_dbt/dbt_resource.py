@@ -1,13 +1,15 @@
 from __future__ import annotations
 
-import logging
 from abc import abstractmethod
-from typing import Any, Mapping, Optional, Sequence
+from typing import TYPE_CHECKING, Any, Mapping, Optional, Sequence
 
 from dagster import get_dagster_logger
 from dagster._annotations import deprecated
 
-from .types import DbtOutput
+if TYPE_CHECKING:
+    import logging
+
+    from .types import DbtOutput
 
 
 class DbtClient:

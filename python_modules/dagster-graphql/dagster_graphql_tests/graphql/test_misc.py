@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import csv
 from collections import OrderedDict
+from typing import TYPE_CHECKING
 
 from dagster import (
     DependencyDefinition,
@@ -13,12 +14,14 @@ from dagster import (
 )
 from dagster._core.definitions.graph_definition import GraphDefinition
 from dagster._core.types.dagster_type import PythonObjectDagsterType
-from dagster._core.workspace.context import WorkspaceRequestContext
 from dagster._legacy import OutputDefinition
 from dagster_graphql.schema.roots.mutation import execution_params_from_graphql
 from dagster_graphql.test.utils import execute_dagster_graphql, infer_pipeline_selector
 
 from .production_query import PRODUCTION_QUERY
+
+if TYPE_CHECKING:
+    from dagster._core.workspace.context import WorkspaceRequestContext
 
 
 @dagster_type_loader(str)

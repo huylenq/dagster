@@ -23,7 +23,6 @@ from dagster._core.definitions.partition import (
     StaticPartitionsDefinition,
 )
 from dagster._core.definitions.time_window_partitions import TimeWindowPartitionsDefinition
-from dagster._core.instance import DynamicPartitionsStore
 from dagster._core.storage.dagster_run import FINISHED_STATUSES, RunsFilter
 from dagster._core.storage.tags import (
     MULTIDIMENSIONAL_PARTITION_PREFIX,
@@ -32,6 +31,9 @@ from dagster._core.storage.tags import (
 from dagster._serdes import whitelist_for_serdes
 from dagster._serdes.errors import DeserializationError
 from dagster._serdes.serdes import deserialize_value
+
+if TYPE_CHECKING:
+    from dagster._core.instance import DynamicPartitionsStore
 
 CACHEABLE_PARTITION_TYPES = (
     TimeWindowPartitionsDefinition,

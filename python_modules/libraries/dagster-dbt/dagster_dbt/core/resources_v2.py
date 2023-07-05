@@ -35,12 +35,10 @@ from dagster import (
     get_dagster_logger,
 )
 from dagster._annotations import experimental
-from dagster._core.definitions.asset_graph import AssetGraph
 from dagster._core.errors import DagsterInvalidInvocationError
 from dbt.contracts.results import NodeStatus
 from dbt.node_types import NodeType
 from pydantic import Field
-from typing_extensions import Literal
 
 from ..asset_utils import (
     default_asset_key_fn,
@@ -54,6 +52,8 @@ from ..utils import ASSET_RESOURCE_TYPES, select_unique_ids_from_manifest
 
 if TYPE_CHECKING:
     from dagster import RunConfig
+    from dagster._core.definitions.asset_graph import AssetGraph
+    from typing_extensions import Literal
 
 logger = get_dagster_logger()
 

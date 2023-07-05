@@ -15,8 +15,6 @@ from typing import (
     overload,
 )
 
-from typing_extensions import TypeAlias
-
 import dagster._check as check
 from dagster._annotations import public
 from dagster._core.decorator_utils import format_docstring_for_description
@@ -51,6 +49,8 @@ from .scoped_resources_builder import (  # re-exported
 )
 
 if TYPE_CHECKING:
+    from typing_extensions import TypeAlias
+
     from dagster._core.execution.resources_init import InitResourceContext
 
 ResourceFunctionWithContext: TypeAlias = Callable[["InitResourceContext"], Any]

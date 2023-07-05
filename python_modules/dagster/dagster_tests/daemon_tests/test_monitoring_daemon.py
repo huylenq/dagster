@@ -4,14 +4,13 @@ import logging
 import os
 import time
 from logging import Logger
-from typing import Any, Mapping, Optional, cast
+from typing import TYPE_CHECKING, Any, Mapping, Optional, cast
 
 import dagster._check as check
 import pendulum
 import pytest
 from dagster._core.events import DagsterEvent, DagsterEventType
 from dagster._core.events.log import EventLogEntry
-from dagster._core.instance import DagsterInstance
 from dagster._core.launcher import CheckRunHealthResult, RunLauncher, WorkerStatus
 from dagster._core.storage.dagster_run import DagsterRun, DagsterRunStatus
 from dagster._core.storage.tags import MAX_RUNTIME_SECONDS_TAG
@@ -21,7 +20,6 @@ from dagster._core.test_utils import (
     environ,
     instance_for_test,
 )
-from dagster._core.workspace.context import WorkspaceProcessContext
 from dagster._core.workspace.load_target import EmptyWorkspaceTarget
 from dagster._daemon import get_default_daemon_logger
 from dagster._daemon.monitoring.run_monitoring import (
@@ -30,8 +28,12 @@ from dagster._daemon.monitoring.run_monitoring import (
     monitor_starting_run,
 )
 from dagster._serdes import ConfigurableClass
-from dagster._serdes.config_class import ConfigurableClassData
-from typing_extensions import Self
+
+if TYPE_CHECKING:
+    from dagster._core.instance import DagsterInstance
+    from dagster._core.workspace.context import WorkspaceProcessContext
+    from dagster._serdes.config_class import ConfigurableClassData
+    from typing_extensions import Self
 
 
 class TestRunLauncher(RunLauncher, ConfigurableClass):

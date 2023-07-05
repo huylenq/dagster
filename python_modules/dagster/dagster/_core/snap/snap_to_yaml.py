@@ -1,10 +1,12 @@
 from __future__ import annotations
 
 import json
-from typing import Any, Optional
+from typing import TYPE_CHECKING, Any, Optional
 
-from dagster._config.snap import ConfigSchemaSnapshot, ConfigTypeSnap
 from dagster._utils.yaml_utils import dump_run_config_yaml
+
+if TYPE_CHECKING:
+    from dagster._config.snap import ConfigSchemaSnapshot, ConfigTypeSnap
 
 
 def _safe_json_loads(json_str: Optional[str]) -> object:

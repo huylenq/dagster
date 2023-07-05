@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import copy
-import logging
 from contextlib import ExitStack
 from datetime import datetime
 from enum import Enum
@@ -23,7 +22,6 @@ from typing import (
 )
 
 import pendulum
-from typing_extensions import TypeAlias
 
 import dagster._check as check
 from dagster._annotations import deprecated, public
@@ -47,16 +45,21 @@ from ..errors import (
 from ..instance import DagsterInstance
 from ..instance.ref import InstanceRef
 from ..storage.dagster_run import DagsterRun
-from .graph_definition import GraphDefinition
-from .job_definition import JobDefinition
 from .run_request import RunRequest, SkipReason
 from .target import DirectTarget, ExecutableDefinition, RepoRelativeTarget
 from .unresolved_asset_job_definition import UnresolvedAssetJobDefinition
 from .utils import check_valid_name, validate_tags
 
 if TYPE_CHECKING:
+    import logging
+
+    from typing_extensions import TypeAlias
+
     from dagster import ResourceDefinition
     from dagster._core.definitions.repository_definition import RepositoryDefinition
+
+    from .graph_definition import GraphDefinition
+    from .job_definition import JobDefinition
 T = TypeVar("T")
 
 RunConfig: TypeAlias = Mapping[str, Any]

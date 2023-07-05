@@ -5,7 +5,7 @@ import shutil
 import tempfile
 from collections import defaultdict
 from contextlib import contextmanager
-from typing import Any, Dict, Mapping, Optional, cast
+from typing import TYPE_CHECKING, Any, Dict, Mapping, Optional, cast
 
 # top-level include is dangerous in terms of incurring circular deps
 from dagster import (
@@ -15,7 +15,6 @@ from dagster import (
     _check as check,
 )
 from dagster._config import Field, StringSource
-from dagster._config.config_schema import UserConfigSchema
 from dagster._core.definitions import (
     GraphDefinition,
     InputMapping,
@@ -23,7 +22,6 @@ from dagster._core.definitions import (
     OpDefinition,
     OutputMapping,
 )
-from dagster._core.definitions.dependency import Node
 from dagster._core.definitions.executor_definition import in_process_executor
 from dagster._core.definitions.job_base import InMemoryJob
 from dagster._core.definitions.logger_definition import LoggerDefinition
@@ -37,7 +35,6 @@ from dagster._core.execution.context_creation_job import (
     create_log_manager,
     create_plan_data,
 )
-from dagster._core.execution.execute_in_process_result import ExecuteInProcessResult
 from dagster._core.instance import DagsterInstance
 from dagster._core.scheduler import Scheduler
 from dagster._core.storage.dagster_run import DagsterRun
@@ -45,8 +42,6 @@ from dagster._core.storage.event_log.sqlite.sqlite_event_log import SqliteEventL
 from dagster._core.storage.sqlite_storage import SqliteStorageConfig
 from dagster._core.utility_ops import create_stub_op
 from dagster._serdes import ConfigurableClass
-from dagster._serdes.config_class import ConfigurableClassData
-from dagster._utils.concurrency import ConcurrencyClaimStatus
 
 # re-export
 from ..temp_file import (
@@ -57,6 +52,13 @@ from ..temp_file import (
     get_temp_file_name_with_data as get_temp_file_name_with_data,
     get_temp_file_names as get_temp_file_names,
 )
+
+if TYPE_CHECKING:
+    from dagster._config.config_schema import UserConfigSchema
+    from dagster._core.definitions.dependency import Node
+    from dagster._core.execution.execute_in_process_result import ExecuteInProcessResult
+    from dagster._serdes.config_class import ConfigurableClassData
+    from dagster._utils.concurrency import ConcurrencyClaimStatus
 
 
 def create_test_pipeline_execution_context(

@@ -2,9 +2,9 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING, Optional
 
-from dagster._core.execution.backfill import BulkActionStatus
-
 if TYPE_CHECKING:
+    from dagster._core.execution.backfill import BulkActionStatus
+
     from dagster_graphql.schema.util import ResolveInfo
 
     from ..schema.backfill import (

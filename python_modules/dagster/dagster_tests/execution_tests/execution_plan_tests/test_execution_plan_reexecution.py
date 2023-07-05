@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import os
 import pickle
+from typing import TYPE_CHECKING
 
 import dagster._check as check
 import pytest
@@ -9,7 +10,6 @@ from dagster import DependencyDefinition, In, Int, Out, op
 from dagster._core.definitions.executor_definition import in_process_executor
 from dagster._core.definitions.graph_definition import GraphDefinition
 from dagster._core.definitions.job_base import InMemoryJob
-from dagster._core.definitions.job_definition import JobDefinition
 from dagster._core.definitions.reconstruct import reconstructable
 from dagster._core.errors import (
     DagsterExecutionStepNotFoundError,
@@ -27,6 +27,9 @@ from dagster._core.execution.plan.state import KnownExecutionState
 from dagster._core.instance_for_test import instance_for_test
 from dagster._core.storage.mem_io_manager import mem_io_manager
 from dagster._core.system_config.objects import ResolvedRunConfig
+
+if TYPE_CHECKING:
+    from dagster._core.definitions.job_definition import JobDefinition
 
 
 @op(ins={"num": In(Int)}, out=Out(Int))

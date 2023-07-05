@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-from datetime import datetime
 from threading import RLock
 from typing import (
     TYPE_CHECKING,
@@ -17,11 +16,6 @@ from typing import (
 )
 
 import dagster._check as check
-from dagster._config.snap import ConfigFieldSnap, ConfigSchemaSnapshot
-from dagster._core.definitions.events import AssetKey
-from dagster._core.definitions.metadata import (
-    MetadataValue,
-)
 from dagster._core.definitions.run_request import InstigatorType
 from dagster._core.definitions.schedule_definition import DefaultScheduleStatus
 from dagster._core.definitions.selector import (
@@ -36,16 +30,8 @@ from dagster._core.definitions.sensor_definition import (
     SensorType,
 )
 from dagster._core.execution.plan.handle import ResolvedFromDynamicStepHandle, StepHandle
-from dagster._core.host_representation.origin import (
-    ExternalInstigatorOrigin,
-    ExternalJobOrigin,
-    ExternalPartitionSetOrigin,
-    ExternalRepositoryOrigin,
-)
-from dagster._core.instance import DagsterInstance
 from dagster._core.origin import JobPythonOrigin, RepositoryPythonOrigin
 from dagster._core.snap import ExecutionPlanSnapshot
-from dagster._core.snap.execution_plan_snapshot import ExecutionStepSnap
 from dagster._core.utils import toposort
 from dagster._serdes import create_snapshot_id
 from dagster._utils.cached_method import cached_method
@@ -74,7 +60,22 @@ from .job_index import JobIndex
 from .represented import RepresentedJob
 
 if TYPE_CHECKING:
+    from datetime import datetime
+
+    from dagster._config.snap import ConfigFieldSnap, ConfigSchemaSnapshot
+    from dagster._core.definitions.events import AssetKey
+    from dagster._core.definitions.metadata import (
+        MetadataValue,
+    )
+    from dagster._core.host_representation.origin import (
+        ExternalInstigatorOrigin,
+        ExternalJobOrigin,
+        ExternalPartitionSetOrigin,
+        ExternalRepositoryOrigin,
+    )
+    from dagster._core.instance import DagsterInstance
     from dagster._core.scheduler.instigation import InstigatorState
+    from dagster._core.snap.execution_plan_snapshot import ExecutionStepSnap
 
 
 class ExternalRepository:

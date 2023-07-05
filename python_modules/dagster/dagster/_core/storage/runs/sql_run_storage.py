@@ -8,6 +8,7 @@ from collections import defaultdict
 from datetime import datetime
 from enum import Enum
 from typing import (
+    TYPE_CHECKING,
     Any,
     Callable,
     ContextManager,
@@ -27,7 +28,6 @@ from typing import (
 import pendulum
 import sqlalchemy as db
 import sqlalchemy.exc as db_exc
-from sqlalchemy.engine import Connection
 
 import dagster._check as check
 from dagster._core.errors import (
@@ -38,14 +38,12 @@ from dagster._core.errors import (
 )
 from dagster._core.events import EVENT_TYPE_TO_PIPELINE_RUN_STATUS, DagsterEvent, DagsterEventType
 from dagster._core.execution.backfill import BulkActionStatus, PartitionBackfill
-from dagster._core.host_representation.origin import ExternalJobOrigin
 from dagster._core.snap import (
     ExecutionPlanSnapshot,
     JobSnapshot,
     create_execution_plan_snapshot_id,
     create_job_snapshot_id,
 )
-from dagster._core.storage.sql import SqlAlchemyQuery
 from dagster._core.storage.sqlalchemy_compat import (
     db_fetch_mappings,
     db_scalar_subquery,
@@ -93,6 +91,12 @@ from .schema import (
     SecondaryIndexMigrationTable,
     SnapshotsTable,
 )
+
+if TYPE_CHECKING:
+    from sqlalchemy.engine import Connection
+
+    from dagster._core.host_representation.origin import ExternalJobOrigin
+    from dagster._core.storage.sql import SqlAlchemyQuery
 
 
 class SnapshotType(Enum):

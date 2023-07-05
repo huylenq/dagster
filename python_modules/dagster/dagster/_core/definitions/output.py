@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import inspect
 from typing import (
+    TYPE_CHECKING,
     Any,
     NamedTuple,
     Optional,
@@ -24,9 +25,11 @@ from dagster._core.types.dagster_type import (
     resolve_dagster_type,
 )
 
-from .inference import InferredOutputProps
 from .input import NoValueSentinel
 from .utils import DEFAULT_IO_MANAGER_KEY, DEFAULT_OUTPUT, check_valid_name
+
+if TYPE_CHECKING:
+    from .inference import InferredOutputProps
 
 TOutputDefinition = TypeVar("TOutputDefinition", bound="OutputDefinition")
 TOut = TypeVar("TOut", bound="Out")

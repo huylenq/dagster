@@ -1,16 +1,18 @@
 from __future__ import annotations
 
-from typing import List, Sequence
+from typing import TYPE_CHECKING, List, Sequence
 
 import graphene
-from dagster._core.host_representation.external_data import (
-    EnvVarConsumer,
-)
 
 from dagster_graphql.schema.errors import (
     GraphenePythonError,
 )
 from dagster_graphql.schema.util import non_null_list
+
+if TYPE_CHECKING:
+    from dagster._core.host_representation.external_data import (
+        EnvVarConsumer,
+    )
 
 
 class GrapheneEnvVarConsumerType(graphene.Enum):

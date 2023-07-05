@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Any, Mapping, Sequence
+from typing import TYPE_CHECKING, Any, Mapping, Sequence
 
 from dagster import (
     Output,
@@ -8,7 +8,9 @@ from dagster import (
 )
 from dagster._core.definitions import In, OpDefinition, op
 from dagster._core.definitions.output import Out
-from dagster._core.execution.context.compute import OpExecutionContext
+
+if TYPE_CHECKING:
+    from dagster._core.execution.context.compute import OpExecutionContext
 
 
 def _compute_fn(

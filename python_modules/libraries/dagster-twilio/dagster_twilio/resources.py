@@ -1,10 +1,14 @@
 from __future__ import annotations
 
+from typing import TYPE_CHECKING
+
 from dagster import ConfigurableResource, resource
 from dagster._core.definitions.resource_definition import dagster_maintained_resource
-from dagster._core.execution.context.init import InitResourceContext
 from pydantic import Field
 from twilio.rest import Client
+
+if TYPE_CHECKING:
+    from dagster._core.execution.context.init import InitResourceContext
 
 
 class TwilioResource(ConfigurableResource):

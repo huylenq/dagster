@@ -1,16 +1,18 @@
 from __future__ import annotations
 
-from typing import Any, Mapping, Optional
-
-from typing_extensions import Self
+from typing import TYPE_CHECKING, Any, Mapping, Optional
 
 import dagster._check as check
-from dagster._config.config_schema import UserConfigSchema
 from dagster._core.execution.api import execute_run
 from dagster._core.launcher import LaunchRunContext, RunLauncher
 from dagster._serdes import ConfigurableClass
-from dagster._serdes.config_class import ConfigurableClassData
 from dagster._utils.hosted_user_process import recon_job_from_origin
+
+if TYPE_CHECKING:
+    from typing_extensions import Self
+
+    from dagster._config.config_schema import UserConfigSchema
+    from dagster._serdes.config_class import ConfigurableClassData
 
 
 class SyncInMemoryRunLauncher(RunLauncher, ConfigurableClass):

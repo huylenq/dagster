@@ -1,10 +1,11 @@
 from __future__ import annotations
 
-from typing import Optional
+from typing import TYPE_CHECKING, Optional
 
 from pydantic import BaseModel
 
-from ...utils.kubernetes import ExternalImage
+if TYPE_CHECKING:
+    from ...utils.kubernetes import ExternalImage
 
 
 class Service(BaseModel):

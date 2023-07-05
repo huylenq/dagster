@@ -1,11 +1,10 @@
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import AbstractSet, Callable, List, Optional, Sequence, Set, cast
+from typing import TYPE_CHECKING, AbstractSet, Callable, List, Optional, Sequence, Set, cast
 
 import dagster._check as check
 from dagster._core.definitions import JobDefinition, NodeHandle
-from dagster._core.definitions.events import AssetMaterialization, AssetObservation
 from dagster._core.definitions.utils import DEFAULT_OUTPUT
 from dagster._core.errors import DagsterError, DagsterInvariantViolationError
 from dagster._core.events import (
@@ -16,9 +15,12 @@ from dagster._core.events import (
     StepExpectationResultData,
     StepMaterializationData,
 )
-from dagster._core.execution.plan.objects import StepFailureData
 from dagster._core.execution.plan.step import StepKind
-from dagster._core.storage.dagster_run import DagsterRun
+
+if TYPE_CHECKING:
+    from dagster._core.definitions.events import AssetMaterialization, AssetObservation
+    from dagster._core.execution.plan.objects import StepFailureData
+    from dagster._core.storage.dagster_run import DagsterRun
 
 
 class ExecutionResult(ABC):

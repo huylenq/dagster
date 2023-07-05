@@ -1,11 +1,9 @@
 from __future__ import annotations
 
-from datetime import datetime
-from typing import NamedTuple, Optional, cast
+from typing import TYPE_CHECKING, NamedTuple, Optional, cast
 
 import dagster._check as check
 from dagster._annotations import PublicAttr
-from dagster._core.definitions.partition import PartitionsDefinition, PartitionsSubset
 from dagster._core.definitions.partition_mapping import PartitionMapping, UpstreamPartitionsResult
 from dagster._core.definitions.time_window_partitions import (
     TimeWindow,
@@ -13,11 +11,16 @@ from dagster._core.definitions.time_window_partitions import (
     TimeWindowPartitionsSubset,
 )
 from dagster._core.errors import DagsterInvalidDefinitionError
-from dagster._core.instance import DynamicPartitionsStore
 from dagster._serdes import whitelist_for_serdes
 from dagster._utils.backcompat import (
     experimental_arg_warning,
 )
+
+if TYPE_CHECKING:
+    from datetime import datetime
+
+    from dagster._core.definitions.partition import PartitionsDefinition, PartitionsSubset
+    from dagster._core.instance import DynamicPartitionsStore
 
 
 @whitelist_for_serdes

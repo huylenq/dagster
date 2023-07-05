@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import sys
 from contextlib import contextmanager
+from typing import TYPE_CHECKING
 
 import pytest
 from dagster import job, op, repository
@@ -17,12 +18,14 @@ from dagster._core.host_representation.external import ExternalRepository
 from dagster._core.host_representation.external_data import ExternalJobData
 from dagster._core.host_representation.handle import RepositoryHandle
 from dagster._core.host_representation.origin import ExternalRepositoryOrigin
-from dagster._core.instance import DagsterInstance
 from dagster._core.test_utils import instance_for_test
 from dagster._core.types.loadable_target_origin import LoadableTargetOrigin
 from dagster._serdes.serdes import deserialize_value
 
 from .utils import get_bar_repo_code_location
+
+if TYPE_CHECKING:
+    from dagster._core.instance import DagsterInstance
 
 
 def test_streaming_external_repositories_api_grpc(instance):

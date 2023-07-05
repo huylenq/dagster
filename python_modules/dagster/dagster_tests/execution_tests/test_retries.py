@@ -4,7 +4,7 @@ import os
 import tempfile
 import time
 from collections import defaultdict
-from typing import Sequence
+from typing import TYPE_CHECKING, Sequence
 
 import pytest
 from dagster import (
@@ -26,7 +26,6 @@ from dagster import (
 from dagster._core.definitions.events import HookExecutionResult
 from dagster._core.definitions.job_base import InMemoryJob
 from dagster._core.errors import DagsterInvalidDefinitionError
-from dagster._core.events import DagsterEvent
 from dagster._core.execution.api import (
     ReexecutionOptions,
     create_execution_plan,
@@ -37,6 +36,9 @@ from dagster._core.execution.api import (
 from dagster._core.execution.retries import RetryMode
 from dagster._core.storage.dagster_run import DagsterRun
 from dagster._core.test_utils import instance_for_test
+
+if TYPE_CHECKING:
+    from dagster._core.events import DagsterEvent
 
 executors = pytest.mark.parametrize(
     "environment",

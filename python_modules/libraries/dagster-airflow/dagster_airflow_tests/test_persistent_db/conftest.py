@@ -8,18 +8,20 @@ from __future__ import annotations
 import importlib
 import time
 from datetime import datetime
-from typing import Generator
+from typing import TYPE_CHECKING, Generator
 
 import airflow
 import pytest
 from airflow.utils import db
-from dagster import DagsterInstance
 from dagster._core.test_utils import environ, instance_for_test
 from dagster._utils import file_relative_path
 from dagster_airflow.utils import (
     is_airflow_2_loaded_in_environment,
 )
 from sqlalchemy.exc import OperationalError
+
+if TYPE_CHECKING:
+    from dagster import DagsterInstance
 
 
 @pytest.fixture(name="docker_compose_file", scope="session")

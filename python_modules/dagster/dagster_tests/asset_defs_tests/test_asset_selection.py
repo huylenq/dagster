@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import operator
 from functools import reduce
-from typing import AbstractSet, Iterable, Tuple, Union
+from typing import TYPE_CHECKING, AbstractSet, Iterable, Tuple, Union
 
 import pytest
 from dagster import (
@@ -21,7 +21,9 @@ from dagster import (
 from dagster._core.definitions import AssetSelection, asset
 from dagster._core.definitions.assets import AssetsDefinition
 from dagster._core.definitions.events import AssetKey
-from typing_extensions import TypeAlias
+
+if TYPE_CHECKING:
+    from typing_extensions import TypeAlias
 
 earth = SourceAsset("earth", group_name="planets")
 

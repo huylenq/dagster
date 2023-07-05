@@ -47,14 +47,15 @@ from dagster._core.definitions.reconstruct import (
     get_ephemeral_repository_name,
 )
 from dagster._core.errors import DagsterInvariantViolationError
-from dagster._core.events import DagsterEvent
-from dagster._core.execution.context.system import PlanOrchestrationContext
 from dagster._core.execution.plan.objects import StepSuccessData
 from dagster._core.instance import DagsterInstance
 from dagster._utils.merger import merge_dicts
 from dagster.version import __version__ as dagster_module_version
 
 if TYPE_CHECKING:
+    from dagster._core.definitions.assets import AssetsDefinition
+    from dagster._core.events import DagsterEvent
+    from dagster._core.execution.context.system import PlanOrchestrationContext
     from dagster._core.host_representation.external import (
         ExternalJob,
         ExternalRepository,
@@ -610,7 +611,6 @@ def log_repo_stats(
     job: Optional[IJob] = None,
     repo: Optional[ReconstructableRepository] = None,
 ) -> None:
-    from dagster._core.definitions.assets import AssetsDefinition
     from dagster._core.definitions.partition import DynamicPartitionsDefinition
 
     check.inst_param(instance, "instance", DagsterInstance)

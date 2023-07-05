@@ -4,6 +4,7 @@ import inspect
 from collections import deque
 from contextlib import ContextDecorator
 from typing import (
+    TYPE_CHECKING,
     AbstractSet,
     Any,
     Callable,
@@ -18,7 +19,6 @@ from typing import (
 )
 
 import dagster._check as check
-from dagster._core.definitions.job_definition import JobDefinition
 from dagster._core.definitions.resource_definition import (
     ResourceDefinition,
     ScopedResourcesBuilder,
@@ -41,13 +41,16 @@ from dagster._core.execution.plan.step import ExecutionStep, IExecutionStep
 from dagster._core.instance import DagsterInstance
 from dagster._core.log_manager import DagsterLogManager
 from dagster._core.storage.dagster_run import DagsterRun
-from dagster._core.system_config.objects import ResourceConfig
 from dagster._core.utils import toposort
 from dagster._utils import EventGenerationManager, ensure_gen
 from dagster._utils.error import serializable_error_info_from_exc_info
 from dagster._utils.timing import format_duration, time_execution_scope
 
 from .context.init import InitResourceContext
+
+if TYPE_CHECKING:
+    from dagster._core.definitions.job_definition import JobDefinition
+    from dagster._core.system_config.objects import ResourceConfig
 
 
 def resource_initialization_manager(

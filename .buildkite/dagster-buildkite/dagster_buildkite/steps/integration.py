@@ -1,11 +1,10 @@
 from __future__ import annotations
 
 import os
-from typing import Callable, List, Optional
+from typing import TYPE_CHECKING, Callable, List, Optional
 
 from ..defines import GCP_CREDS_LOCAL_FILE, LATEST_DAGSTER_RELEASE
 from ..package_spec import PackageSpec
-from ..python_version import AvailablePythonVersion
 from ..utils import (
     BuildkiteStep,
     BuildkiteTopLevelStep,
@@ -15,6 +14,9 @@ from ..utils import (
     network_buildkite_container,
 )
 from .test_project import test_project_depends_fn
+
+if TYPE_CHECKING:
+    from ..python_version import AvailablePythonVersion
 
 SCRIPT_PATH = os.path.dirname(os.path.abspath(__file__))
 DAGSTER_CURRENT_BRANCH = "current_branch"

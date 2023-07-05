@@ -3,7 +3,7 @@ from __future__ import annotations
 import datetime
 import os
 import time
-from typing import Dict, List, Optional, Sequence
+from typing import TYPE_CHECKING, Dict, List, Optional, Sequence
 
 from dagster import (
     AssetKey,
@@ -19,10 +19,8 @@ from dagster import (
     repository,
 )
 from dagster._core.definitions.multi_dimensional_partitions import MultiPartitionKey
-from dagster._core.events.log import EventLogEntry
 from dagster._core.storage.dagster_run import DagsterRunStatus
 from dagster._core.test_utils import instance_for_test, poll_for_finished_run
-from dagster._core.workspace.context import WorkspaceRequestContext
 from dagster._utils import Counter, safe_tempfile_path, traced_counter
 from dagster_graphql.client.query import (
     LAUNCH_PIPELINE_EXECUTION_MUTATION,
@@ -42,6 +40,10 @@ from dagster_graphql_tests.graphql.graphql_context_test_suite import (
     AllRepositoryGraphQLContextTestMatrix,
     ExecutingGraphQLContextTestMatrix,
 )
+
+if TYPE_CHECKING:
+    from dagster._core.events.log import EventLogEntry
+    from dagster._core.workspace.context import WorkspaceRequestContext
 
 GET_ASSET_KEY_QUERY = """
     query AssetKeyQuery {

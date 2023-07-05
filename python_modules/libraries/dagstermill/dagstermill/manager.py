@@ -3,7 +3,7 @@ from __future__ import annotations
 import os
 import pickle
 import uuid
-from typing import AbstractSet, Any, Mapping, Optional, cast
+from typing import TYPE_CHECKING, AbstractSet, Any, Mapping, Optional, cast
 
 from dagster import (
     AssetMaterialization,
@@ -21,14 +21,12 @@ from dagster._core.definitions.events import RetryRequested
 from dagster._core.definitions.graph_definition import GraphDefinition
 from dagster._core.definitions.job_base import InMemoryJob
 from dagster._core.definitions.job_definition import JobDefinition
-from dagster._core.definitions.node_definition import NodeDefinition
 from dagster._core.definitions.op_definition import OpDefinition
 from dagster._core.definitions.reconstruct import ReconstructableJob
 from dagster._core.definitions.resource_definition import ScopedResourcesBuilder
 from dagster._core.events import DagsterEvent
 from dagster._core.execution.api import create_execution_plan, scoped_job_context
 from dagster._core.execution.plan.outputs import StepOutputHandle
-from dagster._core.execution.plan.plan import ExecutionPlan
 from dagster._core.execution.plan.step import ExecutionStep
 from dagster._core.execution.resources_init import (
     get_required_resource_keys_to_init,
@@ -36,7 +34,6 @@ from dagster._core.execution.resources_init import (
 )
 from dagster._core.instance import DagsterInstance
 from dagster._core.instance.ref import InstanceRef
-from dagster._core.log_manager import DagsterLogManager
 from dagster._core.storage.dagster_run import DagsterRun, DagsterRunStatus
 from dagster._core.system_config.objects import ResolvedRunConfig, ResourceConfig
 from dagster._core.utils import make_new_run_id
@@ -47,6 +44,11 @@ from dagster._utils import EventGenerationManager
 from .context import DagstermillExecutionContext, DagstermillRuntimeExecutionContext
 from .errors import DagstermillError
 from .serialize import PICKLE_PROTOCOL
+
+if TYPE_CHECKING:
+    from dagster._core.definitions.node_definition import NodeDefinition
+    from dagster._core.execution.plan.plan import ExecutionPlan
+    from dagster._core.log_manager import DagsterLogManager
 
 
 class DagstermillResourceEventGenerationManager(EventGenerationManager):

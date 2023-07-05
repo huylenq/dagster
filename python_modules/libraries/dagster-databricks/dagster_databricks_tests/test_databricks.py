@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from typing import TYPE_CHECKING
 from unittest import mock
 
 import dagster
@@ -12,7 +13,9 @@ from dagster_databricks.types import (
     DatabricksRunLifeCycleState,
     DatabricksRunResultState,
 )
-from pytest_mock import MockerFixture
+
+if TYPE_CHECKING:
+    from pytest_mock import MockerFixture
 
 HOST = "https://uksouth.azuredatabricks.net"
 TOKEN = "super-secret-token"

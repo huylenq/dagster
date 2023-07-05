@@ -1,9 +1,13 @@
 from __future__ import annotations
 
+from typing import TYPE_CHECKING
+
 import dagster._check as check
 from dagster._core.errors import DagsterInvariantViolationError
-from dagster._core.execution.context.system import IPlanContext
-from dagster._core.execution.plan.plan import ExecutionPlan
+
+if TYPE_CHECKING:
+    from dagster._core.execution.context.system import IPlanContext
+    from dagster._core.execution.plan.plan import ExecutionPlan
 
 
 def validate_reexecution_memoization(

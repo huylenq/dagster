@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import json
-import logging
 import math
 import multiprocessing
 import os
@@ -13,11 +12,20 @@ import uuid
 import warnings
 from concurrent.futures import ThreadPoolExecutor
 from contextlib import ExitStack
-from multiprocessing.synchronize import Event as MPEvent
-from subprocess import Popen
 from threading import Event as ThreadingEventType
 from time import sleep
-from typing import Any, Dict, Iterator, List, Mapping, Optional, Sequence, Tuple, cast
+from typing import (
+    TYPE_CHECKING,
+    Any,
+    Dict,
+    Iterator,
+    List,
+    Mapping,
+    Optional,
+    Sequence,
+    Tuple,
+    cast,
+)
 
 import grpc
 from grpc_health.v1 import health, health_pb2, health_pb2_grpc
@@ -26,7 +34,6 @@ import dagster._check as check
 import dagster._seven as seven
 from dagster._core.code_pointer import CodePointer
 from dagster._core.definitions.reconstruct import ReconstructableRepository
-from dagster._core.definitions.repository_definition import RepositoryDefinition
 from dagster._core.errors import DagsterUserCodeUnreachableError
 from dagster._core.host_representation.external_data import (
     ExternalJobSubsetResult,
@@ -42,7 +49,6 @@ from dagster._core.instance import DagsterInstance, InstanceRef
 from dagster._core.libraries import DagsterLibraryRegistry
 from dagster._core.origin import DEFAULT_DAGSTER_ENTRY_POINT, get_python_environment_entry_point
 from dagster._core.types.loadable_target_origin import LoadableTargetOrigin
-from dagster._core.workspace.autodiscovery import LoadableTarget
 from dagster._serdes import deserialize_value, serialize_value
 from dagster._serdes.ipc import IPCErrorMessage, open_ipc_subprocess
 from dagster._utils import (
@@ -89,6 +95,14 @@ from .types import (
     StartRunResult,
 )
 from .utils import get_loadable_targets, max_rx_bytes, max_send_bytes
+
+if TYPE_CHECKING:
+    import logging
+    from multiprocessing.synchronize import Event as MPEvent
+    from subprocess import Popen
+
+    from dagster._core.definitions.repository_definition import RepositoryDefinition
+    from dagster._core.workspace.autodiscovery import LoadableTarget
 
 EVENT_QUEUE_POLL_INTERVAL = 0.1
 

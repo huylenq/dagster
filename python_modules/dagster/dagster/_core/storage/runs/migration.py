@@ -1,13 +1,11 @@
 from __future__ import annotations
 
 from contextlib import ExitStack
-from typing import AbstractSet, Any, Callable, Iterator, Mapping, Optional, cast
+from typing import TYPE_CHECKING, AbstractSet, Any, Callable, Iterator, Mapping, Optional, cast
 
 import sqlalchemy as db
 import sqlalchemy.exc as db_exc
-from sqlalchemy.engine import Connection
 from tqdm import tqdm
-from typing_extensions import Final, TypeAlias
 
 import dagster._check as check
 from dagster._core.storage.sqlalchemy_compat import db_select
@@ -18,6 +16,10 @@ from ..dagster_run import DagsterRun, DagsterRunStatus, RunRecord
 from ..runs.base import RunStorage
 from ..runs.schema import BulkActionsTable, RunsTable, RunTagsTable
 from ..tags import PARTITION_NAME_TAG, PARTITION_SET_TAG, REPOSITORY_LABEL_TAG
+
+if TYPE_CHECKING:
+    from sqlalchemy.engine import Connection
+    from typing_extensions import Final, TypeAlias
 
 RUN_PARTITIONS = "run_partitions"
 RUN_START_END = (  # was run_start_end, but renamed to overwrite bad timestamps written

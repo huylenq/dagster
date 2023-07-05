@@ -1,7 +1,6 @@
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Optional
+from typing import TYPE_CHECKING, Optional
 from unittest.mock import MagicMock
 
 import pendulum
@@ -29,14 +28,18 @@ from dagster._core.definitions.asset_graph import AssetGraph
 from dagster._core.definitions.asset_graph_subset import AssetGraphSubset
 from dagster._core.definitions.events import AssetKeyPartitionKey
 from dagster._core.definitions.external_asset_graph import ExternalAssetGraph
-from dagster._core.definitions.partition import PartitionsDefinition, PartitionsSubset
 from dagster._core.definitions.partition_key_range import PartitionKeyRange
 from dagster._core.definitions.partition_mapping import UpstreamPartitionsResult
 from dagster._core.definitions.source_asset import SourceAsset
 from dagster._core.host_representation.external_data import external_asset_graph_from_defs
-from dagster._core.instance import DynamicPartitionsStore
 from dagster._core.test_utils import instance_for_test
 from dagster._seven.compat.pendulum import create_pendulum_time
+
+if TYPE_CHECKING:
+    from datetime import datetime
+
+    from dagster._core.definitions.partition import PartitionsDefinition, PartitionsSubset
+    from dagster._core.instance import DynamicPartitionsStore
 
 
 def to_external_asset_graph(assets) -> AssetGraph:

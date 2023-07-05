@@ -4,8 +4,8 @@ import random
 import string
 import tempfile
 import time
-from concurrent.futures import ThreadPoolExecutor
 from contextlib import ExitStack, contextmanager
+from typing import TYPE_CHECKING
 from unittest import mock
 
 import pendulum
@@ -49,7 +49,6 @@ from dagster._core.definitions.run_status_sensor_definition import run_status_se
 from dagster._core.definitions.sensor_definition import DefaultSensorStatus, RunRequest, SkipReason
 from dagster._core.events import DagsterEventType
 from dagster._core.host_representation import ExternalInstigatorOrigin, ExternalRepositoryOrigin
-from dagster._core.host_representation.external import ExternalRepository
 from dagster._core.host_representation.origin import (
     ManagedGrpcPythonEnvCodeLocationOrigin,
 )
@@ -67,12 +66,17 @@ from dagster._core.test_utils import (
     instance_for_test,
     wait_for_futures,
 )
-from dagster._core.workspace.context import WorkspaceProcessContext
 from dagster._daemon import get_default_daemon_logger
 from dagster._daemon.sensor import execute_sensor_iteration, execute_sensor_iteration_loop
 from dagster._seven.compat.pendulum import create_pendulum_time, to_timezone
 
 from .conftest import create_workspace_load_target
+
+if TYPE_CHECKING:
+    from concurrent.futures import ThreadPoolExecutor
+
+    from dagster._core.host_representation.external import ExternalRepository
+    from dagster._core.workspace.context import WorkspaceProcessContext
 
 
 @asset

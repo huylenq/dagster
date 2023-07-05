@@ -4,16 +4,14 @@ import logging
 import os
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Callable, List, Mapping, Optional, Union
+from typing import TYPE_CHECKING, Callable, List, Mapping, Optional, Union
 
 import pkg_resources
-from typing_extensions import TypeAlias
 
 from dagster_buildkite.git import ChangedFiles
 from dagster_buildkite.python_packages import PythonPackages, changed_filetypes
 
 from .python_version import AvailablePythonVersion
-from .step_builder import BuildkiteQueue
 from .steps.tox import build_tox_step
 from .utils import (
     BuildkiteLeafStep,
@@ -23,6 +21,11 @@ from .utils import (
     is_feature_branch,
     message_contains,
 )
+
+if TYPE_CHECKING:
+    from typing_extensions import TypeAlias
+
+    from .step_builder import BuildkiteQueue
 
 _CORE_PACKAGES = [
     "python_modules/dagster",

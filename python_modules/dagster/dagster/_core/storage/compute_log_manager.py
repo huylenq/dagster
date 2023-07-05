@@ -3,13 +3,14 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from contextlib import contextmanager
 from enum import Enum
-from typing import Callable, Iterator, NamedTuple, Optional
-
-from typing_extensions import Self
+from typing import TYPE_CHECKING, Callable, Iterator, NamedTuple, Optional
 
 import dagster._check as check
 from dagster._core.instance import MayHaveInstanceWeakref, T_DagsterInstance
 from dagster._core.storage.dagster_run import DagsterRun
+
+if TYPE_CHECKING:
+    from typing_extensions import Self
 
 MAX_BYTES_FILE_READ = 33554432  # 32 MB
 MAX_BYTES_CHUNK_READ = 4194304  # 4 MB

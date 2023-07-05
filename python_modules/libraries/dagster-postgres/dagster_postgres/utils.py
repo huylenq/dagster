@@ -3,10 +3,9 @@ from __future__ import annotations
 import logging
 import time
 from contextlib import contextmanager
-from typing import Any, Callable, Iterator, Mapping, Optional, TypeVar
+from typing import TYPE_CHECKING, Any, Callable, Iterator, Mapping, Optional, TypeVar
 from urllib.parse import quote, urlencode
 
-import alembic.config
 import psycopg2
 import psycopg2.errorcodes
 import psycopg2.extensions
@@ -17,9 +16,12 @@ from dagster._core.definitions.policy import Backoff, Jitter, calculate_delay
 
 # re-export
 from dagster._core.storage.config import pg_config as pg_config
-from dagster._core.storage.event_log.sql_event_log import SqlDbConnection
 from dagster._core.storage.sql import get_alembic_config
-from sqlalchemy.engine import Connection
+
+if TYPE_CHECKING:
+    import alembic.config
+    from dagster._core.storage.event_log.sql_event_log import SqlDbConnection
+    from sqlalchemy.engine import Connection
 
 T = TypeVar("T")
 

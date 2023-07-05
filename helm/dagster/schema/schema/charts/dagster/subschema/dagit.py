@@ -1,11 +1,13 @@
 from __future__ import annotations
 
-from typing import Dict, List, Optional, Union
+from typing import TYPE_CHECKING, Dict, List, Optional, Union
 
 from pydantic import Extra
 
-from ...utils import kubernetes
 from ...utils.utils import BaseModel
+
+if TYPE_CHECKING:
+    from ...utils import kubernetes
 
 
 class Server(BaseModel):

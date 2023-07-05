@@ -3,16 +3,18 @@ from __future__ import annotations
 import os
 import pickle
 from abc import abstractmethod
-from typing import Union
+from typing import TYPE_CHECKING, Union
 
 import dagster._check as check
 from dagster._annotations import experimental, public
 from dagster._config import Field, StringSource
 from dagster._core.errors import DagsterInvariantViolationError
-from dagster._core.execution.context.input import InputContext
 from dagster._core.execution.context.output import OutputContext
 from dagster._core.storage.io_manager import IOManager, dagster_maintained_io_manager, io_manager
 from dagster._utils import PICKLE_PROTOCOL, mkdir_p
+
+if TYPE_CHECKING:
+    from dagster._core.execution.context.input import InputContext
 
 
 class MemoizableIOManager(IOManager):

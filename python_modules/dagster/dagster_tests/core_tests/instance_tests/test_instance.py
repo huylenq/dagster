@@ -3,7 +3,7 @@ from __future__ import annotations
 import os
 import re
 import tempfile
-from typing import Any, Mapping, Optional
+from typing import TYPE_CHECKING, Any, Mapping, Optional
 from unittest.mock import MagicMock, patch
 
 import pytest
@@ -61,9 +61,11 @@ from dagster._core.test_utils import (
 from dagster._daemon.asset_daemon import AssetDaemon
 from dagster._serdes import ConfigurableClass
 from dagster._serdes.config_class import ConfigurableClassData
-from typing_extensions import Self
 
 from dagster_tests.api_tests.utils import get_bar_workspace
+
+if TYPE_CHECKING:
+    from typing_extensions import Self
 
 
 def test_get_run_by_id():

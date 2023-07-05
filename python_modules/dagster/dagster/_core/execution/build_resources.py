@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from contextlib import contextmanager
-from typing import Any, Dict, Generator, Mapping, Optional, cast
+from typing import TYPE_CHECKING, Any, Dict, Generator, Mapping, Optional, cast
 
 import dagster._check as check
 from dagster._config import process_config
@@ -15,12 +15,14 @@ from dagster._core.errors import DagsterInvalidConfigError
 from dagster._core.execution.resources_init import resource_initialization_manager
 from dagster._core.instance import DagsterInstance
 from dagster._core.log_manager import DagsterLogManager
-from dagster._core.storage.dagster_run import DagsterRun
 from dagster._core.storage.io_manager import IOManager, IOManagerDefinition
 from dagster._core.system_config.objects import ResourceConfig, config_map_resources
 
 from .api import ephemeral_instance_if_missing
 from .context_creation_job import initialize_console_manager
+
+if TYPE_CHECKING:
+    from dagster._core.storage.dagster_run import DagsterRun
 
 
 def get_mapped_resource_config(

@@ -1,14 +1,17 @@
 from __future__ import annotations
 
-from typing import Any, Mapping, Optional
+from typing import TYPE_CHECKING, Any, Mapping, Optional
 
 from dagster._core.events import EngineEventData
-from dagster._core.storage.dagster_run import DagsterRun
-from dagster._serdes.config_class import ConfigurableClassData
-from typing_extensions import Self
 
-from .container_context import EcsContainerContext
 from .launcher import EcsRunLauncher
+
+if TYPE_CHECKING:
+    from dagster._core.storage.dagster_run import DagsterRun
+    from dagster._serdes.config_class import ConfigurableClassData
+    from typing_extensions import Self
+
+    from .container_context import EcsContainerContext
 
 
 class CustomECSRunLauncher(EcsRunLauncher):

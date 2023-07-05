@@ -1,14 +1,16 @@
 from __future__ import annotations
 
-from typing import Any, Mapping, Optional, Sequence, Type
+from typing import TYPE_CHECKING, Any, Mapping, Optional, Sequence, Type
 
 from dagster import InputContext, MetadataValue, OutputContext, TableColumn, TableSchema
-from dagster._core.definitions.metadata import RawMetadataValue
 from dagster._core.storage.db_io_manager import DbTypeHandler, TableSlice
 from dagster_gcp import BigQueryIOManager, build_bigquery_io_manager
 from dagster_gcp.bigquery.io_manager import BigQueryClient
 from pyspark.sql import DataFrame, SparkSession
 from pyspark.sql.types import StructType
+
+if TYPE_CHECKING:
+    from dagster._core.definitions.metadata import RawMetadataValue
 
 
 def _get_bigquery_write_options(

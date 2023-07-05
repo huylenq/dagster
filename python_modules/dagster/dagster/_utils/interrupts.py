@@ -4,10 +4,12 @@ import signal
 import sys
 import threading
 from contextlib import contextmanager
-from types import FrameType
-from typing import Any, Iterator, Optional, Type
+from typing import TYPE_CHECKING, Any, Iterator, Optional, Type
 
-from typing_extensions import TypeAlias
+if TYPE_CHECKING:
+    from types import FrameType
+
+    from typing_extensions import TypeAlias
 
 # This should be improved later-- signal._HANDLER unfortunately is not defined in all Python
 # versions.

@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import logging
-from typing import Mapping, Optional, Sequence, Union
+from typing import TYPE_CHECKING, Mapping, Optional, Sequence, Union
 
 import mock
 import pytest
@@ -9,9 +9,11 @@ from dagster import get_dagster_logger, reconstructable, resource
 from dagster._core.definitions.decorators import op
 from dagster._core.definitions.decorators.job_decorator import job
 from dagster._core.definitions.job_definition import JobDefinition
-from dagster._core.definitions.reconstruct import ReconstructableJob
 from dagster._core.execution.api import execute_job
 from dagster._core.test_utils import instance_for_test
+
+if TYPE_CHECKING:
+    from dagster._core.definitions.reconstruct import ReconstructableJob
 
 
 def _reset_logging() -> None:

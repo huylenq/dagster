@@ -1,11 +1,8 @@
 from __future__ import annotations
 
 import copy
-from typing import Sequence
+from typing import TYPE_CHECKING, Sequence
 
-from dagster import (
-    AssetsDefinition,
-)
 from dagster._core.definitions.auto_materialize_policy import AutoMaterializePolicy
 
 from .asset_reconciliation_scenario import (
@@ -14,6 +11,11 @@ from .asset_reconciliation_scenario import (
     run_request,
 )
 from .freshness_policy_scenarios import diamond_freshness, overlapping_freshness_inf
+
+if TYPE_CHECKING:
+    from dagster import (
+        AssetsDefinition,
+    )
 
 
 def with_auto_materialize_policy(

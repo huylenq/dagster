@@ -4,7 +4,7 @@ import gzip
 import io
 import uuid
 from os import path
-from typing import Generic, List, TypeVar
+from typing import TYPE_CHECKING, Generic, List, TypeVar
 
 import dagster._check as check
 from dagster import __version__ as dagster_version
@@ -17,11 +17,9 @@ from dagster._seven import json
 from dagster._utils import Counter, traced_counter
 from dagster_graphql import __version__ as dagster_graphql_version
 from dagster_graphql.schema import create_schema
-from graphene import Schema
 from starlette.datastructures import MutableHeaders
 from starlette.exceptions import HTTPException
 from starlette.middleware import Middleware
-from starlette.requests import HTTPConnection, Request
 from starlette.responses import (
     FileResponse,
     HTMLResponse,
@@ -32,10 +30,14 @@ from starlette.responses import (
 )
 from starlette.routing import Mount, Route, WebSocketRoute
 from starlette.staticfiles import StaticFiles
-from starlette.types import Message
 
 from .graphql import GraphQLServer
 from .version import __version__
+
+if TYPE_CHECKING:
+    from graphene import Schema
+    from starlette.requests import HTTPConnection, Request
+    from starlette.types import Message
 
 ROOT_ADDRESS_STATIC_RESOURCES = [
     "/manifest.json",

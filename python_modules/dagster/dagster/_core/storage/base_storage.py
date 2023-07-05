@@ -1,12 +1,14 @@
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
+from typing import TYPE_CHECKING
 
 from dagster._core.instance import MayHaveInstanceWeakref, T_DagsterInstance
 
-from .event_log.base import EventLogStorage
-from .runs.base import RunStorage
-from .schedules.base import ScheduleStorage
+if TYPE_CHECKING:
+    from .event_log.base import EventLogStorage
+    from .runs.base import RunStorage
+    from .schedules.base import ScheduleStorage
 
 
 class DagsterStorage(ABC, MayHaveInstanceWeakref[T_DagsterInstance]):

@@ -4,16 +4,18 @@ import os
 import subprocess
 import tempfile
 import time
-from typing import Iterator
+from typing import TYPE_CHECKING, Iterator
 
 import docker
 import pytest
 from dagster import file_relative_path
-from dagster._core.instance import DagsterInstance
 from dagster._core.test_utils import environ, instance_for_test
 from dagster_test.test_project import build_and_tag_test_image, get_test_project_docker_image
 
 from .utils import start_celery_worker
+
+if TYPE_CHECKING:
+    from dagster._core.instance import DagsterInstance
 
 IS_BUILDKITE = os.getenv("BUILDKITE") is not None
 

@@ -3,27 +3,40 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from asyncio import Task, get_event_loop
 from enum import Enum
-from typing import Any, AsyncGenerator, Dict, List, Optional, Sequence, Tuple, Union, cast
+from typing import (
+    TYPE_CHECKING,
+    Any,
+    AsyncGenerator,
+    Dict,
+    List,
+    Optional,
+    Sequence,
+    Tuple,
+    Union,
+    cast,
+)
 
 import dagster._check as check
 from dagster._serdes import pack_value
 from dagster._seven import json
 from dagster._utils.error import serializable_error_info_from_exc_info
 from dagster_graphql.implementation.utils import ErrorCapture
-from graphene import Schema
 from graphql import GraphQLError, GraphQLFormattedError
 from graphql.execution import ExecutionResult
 from starlette import status
 from starlette.applications import Starlette
 from starlette.concurrency import run_in_threadpool
-from starlette.datastructures import QueryParams
-from starlette.middleware import Middleware
-from starlette.requests import HTTPConnection, Request
 from starlette.responses import HTMLResponse, JSONResponse, PlainTextResponse
-from starlette.routing import BaseRoute
 from starlette.websockets import WebSocket, WebSocketDisconnect, WebSocketState
 
 from dagit.templates.playground import TEMPLATE
+
+if TYPE_CHECKING:
+    from graphene import Schema
+    from starlette.datastructures import QueryParams
+    from starlette.middleware import Middleware
+    from starlette.requests import HTTPConnection, Request
+    from starlette.routing import BaseRoute
 
 
 class GraphQLWS(str, Enum):

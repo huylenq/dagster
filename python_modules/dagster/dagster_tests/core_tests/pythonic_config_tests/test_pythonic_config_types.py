@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import enum
-from typing import Any, Dict, List, Mapping, Optional, Type, Union
+from typing import TYPE_CHECKING, Any, Dict, List, Mapping, Optional, Type, Union
 
 import pytest
 from dagster import (
@@ -20,7 +20,9 @@ from dagster._config.type_printer import print_config_type_to_string
 from dagster._core.errors import DagsterInvalidConfigError
 from dagster._utils.cached_method import cached_method
 from pydantic import Field
-from typing_extensions import Literal
+
+if TYPE_CHECKING:
+    from typing_extensions import Literal
 
 
 def test_default_config_class_non_permissive() -> None:

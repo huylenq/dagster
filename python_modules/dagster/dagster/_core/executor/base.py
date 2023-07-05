@@ -4,12 +4,12 @@ from abc import ABC, abstractmethod
 from typing import TYPE_CHECKING, Iterator
 
 from dagster._annotations import public
-from dagster._core.execution.retries import RetryMode
 
 if TYPE_CHECKING:
     from dagster._core.events import DagsterEvent
     from dagster._core.execution.context.system import PlanOrchestrationContext
     from dagster._core.execution.plan.plan import ExecutionPlan
+    from dagster._core.execution.retries import RetryMode
 
 
 class Executor(ABC):

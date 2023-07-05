@@ -1,12 +1,13 @@
 from __future__ import annotations
 
-from typing import Any, Mapping, NamedTuple, Optional, Sequence
-
-from typing_extensions import Final
+from typing import TYPE_CHECKING, Any, Mapping, NamedTuple, Optional, Sequence
 
 import dagster._check as check
 from dagster._core.code_pointer import CodePointer
 from dagster._serdes import create_snapshot_id, whitelist_for_serdes
+
+if TYPE_CHECKING:
+    from typing_extensions import Final
 
 DEFAULT_DAGSTER_ENTRY_POINT: Final = ["dagster"]
 

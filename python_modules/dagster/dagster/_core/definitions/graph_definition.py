@@ -20,15 +20,11 @@ from typing import (
 )
 
 from toposort import CircularDependencyError, toposort_flatten
-from typing_extensions import Self
 
 import dagster._check as check
 from dagster._annotations import public
 from dagster._core.definitions.config import ConfigMapping
-from dagster._core.definitions.definition_config_schema import IDefinitionConfigSchema
-from dagster._core.definitions.policy import RetryPolicy
 from dagster._core.errors import DagsterInvalidDefinitionError, DagsterInvariantViolationError
-from dagster._core.selector.subset_selector import AssetSelectionData
 from dagster._core.types.dagster_type import (
     DagsterType,
     DagsterTypeKind,
@@ -45,28 +41,33 @@ from .dependency import (
     NodeInputHandle,
     NodeInvocation,
 )
-from .hook_definition import HookDefinition
 from .input import FanInInputPointer, InputDefinition, InputMapping, InputPointer
-from .logger_definition import LoggerDefinition
-from .metadata import RawMetadataValue
 from .node_container import create_execution_structure, normalize_dependency_dict
 from .node_definition import NodeDefinition
 from .output import OutputDefinition, OutputMapping
-from .resource_requirement import ResourceRequirement
-from .version_strategy import VersionStrategy
 
 if TYPE_CHECKING:
+    from typing_extensions import Self
+
+    from dagster._core.definitions.definition_config_schema import IDefinitionConfigSchema
+    from dagster._core.definitions.policy import RetryPolicy
     from dagster._core.execution.execute_in_process_result import ExecuteInProcessResult
     from dagster._core.instance import DagsterInstance
+    from dagster._core.selector.subset_selector import AssetSelectionData
 
     from .asset_layer import AssetLayer
     from .composition import PendingNodeInvocation
     from .executor_definition import ExecutorDefinition
+    from .hook_definition import HookDefinition
     from .job_definition import JobDefinition
+    from .logger_definition import LoggerDefinition
+    from .metadata import RawMetadataValue
     from .op_definition import OpDefinition
     from .partition import PartitionedConfig, PartitionsDefinition
+    from .resource_requirement import ResourceRequirement
     from .run_config import RunConfig
     from .source_asset import SourceAsset
+    from .version_strategy import VersionStrategy
 
 T = TypeVar("T")
 

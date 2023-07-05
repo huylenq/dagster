@@ -1,8 +1,6 @@
 from __future__ import annotations
 
 import json
-import logging
-from datetime import datetime
 from enum import Enum
 from typing import (
     TYPE_CHECKING,
@@ -21,7 +19,6 @@ from typing import (
 )
 
 from dagster import _check as check
-from dagster._core.definitions.asset_graph import AssetGraph
 from dagster._core.definitions.asset_graph_subset import AssetGraphSubset
 from dagster._core.definitions.asset_reconciliation_sensor import (
     build_run_requests,
@@ -31,8 +28,6 @@ from dagster._core.definitions.asset_selection import AssetSelection
 from dagster._core.definitions.assets_job import is_base_asset_job_name
 from dagster._core.definitions.events import AssetKey, AssetKeyPartitionKey
 from dagster._core.definitions.external_asset_graph import ExternalAssetGraph
-from dagster._core.definitions.partition import PartitionsSubset
-from dagster._core.definitions.run_request import RunRequest
 from dagster._core.definitions.selector import JobSubsetSelector
 from dagster._core.errors import (
     DagsterAssetBackfillDataLoadError,
@@ -42,26 +37,33 @@ from dagster._core.errors import (
 )
 from dagster._core.event_api import EventRecordsFilter
 from dagster._core.events import DagsterEventType
-from dagster._core.host_representation import (
-    ExternalExecutionPlan,
-    ExternalJob,
-)
-from dagster._core.instance import DagsterInstance, DynamicPartitionsStore
 from dagster._core.storage.dagster_run import (
     CANCELABLE_RUN_STATUSES,
     DagsterRunStatus,
     RunsFilter,
 )
 from dagster._core.storage.tags import BACKFILL_ID_TAG, PARTITION_NAME_TAG
-from dagster._core.workspace.context import (
-    BaseWorkspaceRequestContext,
-    IWorkspaceProcessContext,
-)
-from dagster._core.workspace.workspace import IWorkspace
 from dagster._utils import hash_collection, utc_datetime_from_timestamp
 from dagster._utils.caching_instance_queryer import CachingInstanceQueryer
 
 if TYPE_CHECKING:
+    import logging
+    from datetime import datetime
+
+    from dagster._core.definitions.asset_graph import AssetGraph
+    from dagster._core.definitions.partition import PartitionsSubset
+    from dagster._core.definitions.run_request import RunRequest
+    from dagster._core.host_representation import (
+        ExternalExecutionPlan,
+        ExternalJob,
+    )
+    from dagster._core.instance import DagsterInstance, DynamicPartitionsStore
+    from dagster._core.workspace.context import (
+        BaseWorkspaceRequestContext,
+        IWorkspaceProcessContext,
+    )
+    from dagster._core.workspace.workspace import IWorkspace
+
     from .backfill import PartitionBackfill
 
 
@@ -446,7 +448,7 @@ def _get_unloadable_location_names(context: IWorkspace, logger: logging.Logger) 
 
 
 def execute_asset_backfill_iteration(
-    backfill: "PartitionBackfill",
+    backfill: PartitionBackfill,
     logger: logging.Logger,
     workspace_process_context: IWorkspaceProcessContext,
     instance: DagsterInstance,
@@ -527,7 +529,7 @@ def execute_asset_backfill_iteration(
             updated_backfill = updated_backfill.with_status(BulkActionStatus.COMPLETED)
         else:
             # refetch, in case the backfill was canceled in the meantime
-            backfill = cast(PartitionBackfill, instance.get_backfill(backfill.backfill_id))
+            backfill = cast("PartitionBackfill", instance.get_backfill(backfill.backfill_id))
             updated_backfill = backfill.with_asset_backfill_data(
                 result.backfill_data, dynamic_partitions_store=instance
             )

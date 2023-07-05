@@ -1,17 +1,19 @@
 from __future__ import annotations
 
 import sys
-from typing import Iterator, Optional, Sequence, Tuple, cast
+from typing import TYPE_CHECKING, Iterator, Optional, Sequence, Tuple, cast
 
 from dagster._core.definitions.metadata import MetadataValue
 from dagster._core.definitions.selector import JobSubsetSelector
 from dagster._core.events import EngineEventData
 from dagster._core.execution.plan.resume_retry import ReexecutionStrategy
-from dagster._core.instance import DagsterInstance
 from dagster._core.storage.dagster_run import DagsterRun, DagsterRunStatus, RunRecord
 from dagster._core.storage.tags import MAX_RETRIES_TAG, RETRY_NUMBER_TAG, RETRY_STRATEGY_TAG
-from dagster._core.workspace.context import IWorkspaceProcessContext
 from dagster._utils.error import serializable_error_info_from_exc_info
+
+if TYPE_CHECKING:
+    from dagster._core.instance import DagsterInstance
+    from dagster._core.workspace.context import IWorkspaceProcessContext
 
 DEFAULT_REEXECUTION_POLICY = ReexecutionStrategy.FROM_FAILURE
 

@@ -23,8 +23,6 @@ from typing import (
     cast,
 )
 
-from typing_extensions import TypeAlias
-
 import dagster._check as check
 from dagster._annotations import public
 from dagster._core.definitions.op_definition import OpDefinition
@@ -47,23 +45,25 @@ from .dependency import (
 from .graph_definition import GraphDefinition
 from .hook_definition import HookDefinition
 from .inference import infer_output_props
-from .input import InputDefinition, InputMapping
-from .logger_definition import LoggerDefinition
 from .node_definition import NodeDefinition
 from .output import OutputDefinition, OutputMapping
 from .policy import RetryPolicy
-from .resource_definition import ResourceDefinition
 from .utils import check_valid_name, validate_tags
-from .version_strategy import VersionStrategy
 
 if TYPE_CHECKING:
+    from typing_extensions import TypeAlias
+
     from dagster._core.execution.execute_in_process_result import ExecuteInProcessResult
     from dagster._core.instance import DagsterInstance
 
     from .executor_definition import ExecutorDefinition
+    from .input import InputDefinition, InputMapping
     from .job_definition import JobDefinition
+    from .logger_definition import LoggerDefinition
     from .partition import PartitionedConfig, PartitionsDefinition
+    from .resource_definition import ResourceDefinition
     from .source_asset import SourceAsset
+    from .version_strategy import VersionStrategy
 
 
 _composition_stack: List["InProgressCompositionContext"] = []

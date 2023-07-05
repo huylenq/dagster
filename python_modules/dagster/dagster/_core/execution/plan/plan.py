@@ -28,7 +28,6 @@ from dagster._core.definitions import (
     OpDefinition,
 )
 from dagster._core.definitions.composition import MappedInputPlaceholder
-from dagster._core.definitions.dependency import DependencyStructure
 from dagster._core.definitions.executor_definition import ExecutorRequirement
 from dagster._core.definitions.job_definition import JobDefinition
 from dagster._core.definitions.repository_definition import RepositoryLoadData
@@ -42,8 +41,6 @@ from dagster._core.execution.plan.handle import (
     StepHandle,
     UnresolvedStepHandle,
 )
-from dagster._core.execution.plan.instance_concurrency_context import InstanceConcurrencyContext
-from dagster._core.execution.retries import RetryMode
 from dagster._core.instance import DagsterInstance, InstanceRef
 from dagster._core.storage.mem_io_manager import mem_io_manager
 from dagster._core.system_config.objects import ResolvedRunConfig
@@ -81,6 +78,9 @@ from .step import (
 )
 
 if TYPE_CHECKING:
+    from dagster._core.definitions.dependency import DependencyStructure
+    from dagster._core.execution.plan.instance_concurrency_context import InstanceConcurrencyContext
+    from dagster._core.execution.retries import RetryMode
     from dagster._core.snap.execution_plan_snapshot import (
         ExecutionPlanSnapshot,
         ExecutionStepInputSnap,

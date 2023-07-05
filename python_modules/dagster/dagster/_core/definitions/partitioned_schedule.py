@@ -1,14 +1,12 @@
 from __future__ import annotations
 
-from typing import Callable, Mapping, NamedTuple, Optional, Union, cast
+from typing import TYPE_CHECKING, Callable, Mapping, NamedTuple, Optional, Union, cast
 
 import dagster._check as check
 from dagster._core.errors import DagsterInvalidDefinitionError
 
 from .decorators.schedule_decorator import schedule
-from .job_definition import JobDefinition
 from .multi_dimensional_partitions import MultiPartitionsDefinition
-from .partition import PartitionsDefinition
 from .run_request import RunRequest, SkipReason
 from .schedule_definition import (
     DefaultScheduleStatus,
@@ -22,6 +20,10 @@ from .time_window_partitions import (
     has_one_dimension_time_window_partitioning,
 )
 from .unresolved_asset_job_definition import UnresolvedAssetJobDefinition
+
+if TYPE_CHECKING:
+    from .job_definition import JobDefinition
+    from .partition import PartitionsDefinition
 
 
 class UnresolvedPartitionedAssetScheduleDefinition(NamedTuple):

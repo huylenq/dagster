@@ -1,11 +1,12 @@
 from __future__ import annotations
 
-from typing import Any, Iterator, Mapping, Sequence
+from typing import TYPE_CHECKING, Any, Iterator, Mapping, Sequence
 
 from dagster import AssetMaterialization, MetadataValue
 from dagster._core.definitions.metadata.table import TableColumn, TableSchema
 
-from dagster_airbyte.types import AirbyteOutput
+if TYPE_CHECKING:
+    from dagster_airbyte.types import AirbyteOutput
 
 
 def generate_table_schema(stream_schema_props: Mapping[str, Any]) -> TableSchema:

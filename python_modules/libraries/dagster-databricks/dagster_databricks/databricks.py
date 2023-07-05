@@ -1,9 +1,8 @@
 from __future__ import annotations
 
 import base64
-import logging
 import time
-from typing import Any, Mapping, Optional
+from typing import TYPE_CHECKING, Any, Mapping, Optional
 
 import dagster
 import dagster._check as check
@@ -21,6 +20,9 @@ from .types import (
     DatabricksRunState,
 )
 from .version import __version__
+
+if TYPE_CHECKING:
+    import logging
 
 # wait at most 24 hours by default for run execution
 DEFAULT_RUN_MAX_WAIT_TIME_SEC = 24 * 60 * 60

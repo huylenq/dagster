@@ -1,20 +1,22 @@
 from __future__ import annotations
 
-from typing import Optional
+from typing import TYPE_CHECKING, Optional
 
 from dagster import _check as check
-from dagster._config.config_schema import UserConfigSchema
 from dagster._core.storage.base_storage import DagsterStorage
 from dagster._core.storage.config import PostgresStorageConfig, pg_config
-from dagster._core.storage.event_log import EventLogStorage
-from dagster._core.storage.runs import RunStorage
-from dagster._core.storage.schedules import ScheduleStorage
 from dagster._serdes import ConfigurableClass, ConfigurableClassData
 
 from .event_log import PostgresEventLogStorage
 from .run_storage import PostgresRunStorage
 from .schedule_storage import PostgresScheduleStorage
 from .utils import pg_url_from_config
+
+if TYPE_CHECKING:
+    from dagster._config.config_schema import UserConfigSchema
+    from dagster._core.storage.event_log import EventLogStorage
+    from dagster._core.storage.runs import RunStorage
+    from dagster._core.storage.schedules import ScheduleStorage
 
 
 class DagsterPostgresStorage(DagsterStorage, ConfigurableClass):

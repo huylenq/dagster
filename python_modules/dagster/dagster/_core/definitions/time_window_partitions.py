@@ -7,6 +7,7 @@ import re
 from datetime import datetime
 from enum import Enum
 from typing import (
+    TYPE_CHECKING,
     AbstractSet,
     Any,
     Callable,
@@ -26,7 +27,6 @@ import pendulum
 
 import dagster._check as check
 from dagster._annotations import PublicAttr, public
-from dagster._core.instance import DynamicPartitionsStore
 from dagster._utils.partitions import DEFAULT_HOURLY_FORMAT_WITHOUT_TIMEZONE
 from dagster._utils.schedules import (
     cron_string_iterator,
@@ -47,6 +47,9 @@ from .partition import (
     cron_schedule_from_schedule_type_and_offsets,
 )
 from .partition_key_range import PartitionKeyRange
+
+if TYPE_CHECKING:
+    from dagster._core.instance import DynamicPartitionsStore
 
 
 class TimeWindow(NamedTuple):

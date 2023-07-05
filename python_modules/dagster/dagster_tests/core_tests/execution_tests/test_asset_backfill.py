@@ -1,7 +1,16 @@
 from __future__ import annotations
 
-import datetime
-from typing import Iterable, Mapping, NamedTuple, Optional, Sequence, Set, Union, cast
+from typing import (
+    TYPE_CHECKING,
+    Iterable,
+    Mapping,
+    NamedTuple,
+    Optional,
+    Sequence,
+    Set,
+    Union,
+    cast,
+)
 from unittest.mock import MagicMock, patch
 
 import pendulum
@@ -56,6 +65,9 @@ from dagster_tests.definitions_tests.asset_reconciliation_tests.partition_scenar
     two_dynamic_assets,
     unpartitioned_after_dynamic_asset,
 )
+
+if TYPE_CHECKING:
+    import datetime
 
 
 class AssetBackfillScenario(NamedTuple):

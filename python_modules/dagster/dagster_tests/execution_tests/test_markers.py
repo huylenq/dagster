@@ -1,10 +1,14 @@
 from __future__ import annotations
 
+from typing import TYPE_CHECKING
+
 from dagster import job, op, reconstructable
-from dagster._core.definitions.job_definition import JobDefinition
 from dagster._core.events import MARKER_EVENTS
 from dagster._core.execution.api import execute_job
 from dagster._core.test_utils import instance_for_test
+
+if TYPE_CHECKING:
+    from dagster._core.definitions.job_definition import JobDefinition
 
 
 def define_job() -> JobDefinition:

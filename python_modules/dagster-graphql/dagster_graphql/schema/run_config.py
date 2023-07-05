@@ -1,10 +1,9 @@
 from __future__ import annotations
 
-from typing import Any, Optional
+from typing import TYPE_CHECKING, Any, Optional
 
 import dagster._check as check
 import graphene
-from dagster._config.snap import ConfigSchemaSnapshot
 from dagster._core.host_representation import RepresentedJob
 from dagster._core.host_representation.external_data import DEFAULT_MODE_NAME
 from dagster._core.snap.snap_to_yaml import default_values_yaml_from_type_snap
@@ -21,6 +20,9 @@ from .errors import (
 from .pipelines.config_result import GraphenePipelineConfigValidationResult
 from .runs import GrapheneRunConfigData, parse_run_config_input
 from .util import ResolveInfo, non_null_list
+
+if TYPE_CHECKING:
+    from dagster._config.snap import ConfigSchemaSnapshot
 
 
 class GrapheneRunConfigSchema(graphene.ObjectType):

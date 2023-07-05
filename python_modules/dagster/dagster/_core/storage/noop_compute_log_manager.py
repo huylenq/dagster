@@ -1,9 +1,7 @@
 from __future__ import annotations
 
 from contextlib import contextmanager
-from typing import IO, Any, Generator, Mapping, Optional, Sequence
-
-from typing_extensions import Self
+from typing import IO, TYPE_CHECKING, Any, Generator, Mapping, Optional, Sequence
 
 import dagster._check as check
 from dagster._core.storage.captured_log_manager import (
@@ -21,6 +19,9 @@ from .compute_log_manager import (
     ComputeLogFileData,
     ComputeLogManager,
 )
+
+if TYPE_CHECKING:
+    from typing_extensions import Self
 
 
 class NoOpComputeLogManager(CapturedLogManager, ComputeLogManager, ConfigurableClass):

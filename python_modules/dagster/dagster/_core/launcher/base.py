@@ -2,13 +2,15 @@ from __future__ import annotations
 
 from abc import ABC, abstractmethod
 from enum import Enum
-from typing import NamedTuple, Optional
+from typing import TYPE_CHECKING, NamedTuple, Optional
 
 from dagster._core.instance import MayHaveInstanceWeakref, T_DagsterInstance
-from dagster._core.origin import JobPythonOrigin
-from dagster._core.storage.dagster_run import DagsterRun
-from dagster._core.workspace.workspace import IWorkspace
 from dagster._serdes import whitelist_for_serdes
+
+if TYPE_CHECKING:
+    from dagster._core.origin import JobPythonOrigin
+    from dagster._core.storage.dagster_run import DagsterRun
+    from dagster._core.workspace.workspace import IWorkspace
 
 
 class LaunchRunContext(NamedTuple):

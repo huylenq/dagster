@@ -5,13 +5,13 @@ from contextlib import contextmanager
 from typing import TYPE_CHECKING, Any, Dict, Optional, cast
 
 import dagster._check as check
-from dagster._core.definitions.configurable import ConfigurableDefinition
 from dagster._core.errors import DagsterInvalidConfigError, DagsterInvalidInvocationError
 
 from ..._config import Shape
 from .resource_requirement import ensure_requirements_satisfied
 
 if TYPE_CHECKING:
+    from dagster._core.definitions.configurable import ConfigurableDefinition
     from dagster._core.definitions.resource_definition import ResourceDefinition
     from dagster._core.execution.context.init import InitResourceContext, UnboundInitResourceContext
 

@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from functools import update_wrapper
 from typing import (
+    TYPE_CHECKING,
     Callable,
     Dict,
     Iterable,
@@ -14,8 +15,6 @@ from typing import (
     Union,
     overload,
 )
-
-from typing_extensions import TypeAlias
 
 import dagster._check as check
 from dagster._core.decorator_utils import get_function_params
@@ -39,6 +38,9 @@ from ..repository_definition import (
 from ..schedule_definition import ScheduleDefinition
 from ..sensor_definition import SensorDefinition
 from ..unresolved_asset_job_definition import UnresolvedAssetJobDefinition
+
+if TYPE_CHECKING:
+    from typing_extensions import TypeAlias
 
 T = TypeVar("T")
 

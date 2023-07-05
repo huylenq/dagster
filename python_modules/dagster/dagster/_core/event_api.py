@@ -1,17 +1,20 @@
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Callable, Mapping, NamedTuple, Optional, Sequence, Union
-
-from typing_extensions import TypeAlias
+from typing import TYPE_CHECKING, Callable, Mapping, NamedTuple, Optional, Sequence, Union
 
 import dagster._check as check
-from dagster._annotations import PublicAttr
 from dagster._core.definitions.events import AssetKey, AssetMaterialization
 from dagster._core.errors import DagsterInvalidInvocationError
 from dagster._core.events import DagsterEventType
 from dagster._core.events.log import EventLogEntry
 from dagster._serdes import whitelist_for_serdes
+
+if TYPE_CHECKING:
+    from datetime import datetime
+
+    from typing_extensions import TypeAlias
+
+    from dagster._annotations import PublicAttr
 
 EventHandlerFn: TypeAlias = Callable[[EventLogEntry, str], None]
 

@@ -4,8 +4,6 @@ from enum import Enum as PyEnum
 from functools import update_wrapper
 from typing import TYPE_CHECKING, Any, Callable, Dict, Mapping, Optional, Sequence, Union, overload
 
-from typing_extensions import Self, TypeAlias
-
 import dagster._check as check
 from dagster._annotations import public
 from dagster._builtins import Int
@@ -14,7 +12,6 @@ from dagster._core.definitions.configurable import (
     ConfiguredDefinitionConfigSchema,
     NamedConfigurableDefinition,
 )
-from dagster._core.definitions.job_base import IJob
 from dagster._core.definitions.reconstruct import ReconstructableJob
 from dagster._core.errors import DagsterUnmetExecutorRequirementsError
 from dagster._core.execution.retries import RetryMode, get_retries_config
@@ -26,6 +23,9 @@ from .definition_config_schema import (
 )
 
 if TYPE_CHECKING:
+    from typing_extensions import Self, TypeAlias
+
+    from dagster._core.definitions.job_base import IJob
     from dagster._core.executor.base import Executor
     from dagster._core.executor.in_process import InProcessExecutor
     from dagster._core.executor.init import InitExecutorContext

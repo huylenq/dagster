@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Mapping
+from typing import TYPE_CHECKING, Mapping
 
 import click
 
@@ -12,7 +12,6 @@ from dagster._cli.workspace.cli_target import (
 from dagster._core.definitions.events import AssetKey
 from dagster._core.errors import DagsterInvalidSubsetError
 from dagster._core.execution.api import execute_job
-from dagster._core.instance import DagsterInstance
 from dagster._core.origin import JobPythonOrigin
 from dagster._core.selector.subset_selector import parse_asset_selection
 from dagster._core.telemetry import telemetry_wrapper
@@ -23,6 +22,9 @@ from dagster._utils.hosted_user_process import (
 from dagster._utils.interrupts import capture_interrupts
 
 from .utils import get_instance_for_cli, get_possibly_temporary_instance_for_cli
+
+if TYPE_CHECKING:
+    from dagster._core.instance import DagsterInstance
 
 
 @click.group(name="asset")

@@ -3,8 +3,7 @@ from __future__ import annotations
 import json
 import pickle
 from datetime import datetime
-from pathlib import Path
-from typing import Any, Dict, List, Optional, cast
+from typing import TYPE_CHECKING, Any, Dict, List, Optional, cast
 
 import pytest
 from dagster import (
@@ -30,9 +29,13 @@ from dagster import (
 from dagster._check import CheckError
 from dagster._core.definitions import build_assets_job
 from dagster._core.events import HandledOutputData
-from dagster._core.storage.io_manager import IOManagerDefinition
 from dagster._core.storage.upath_io_manager import UPathIOManager
 from upath import UPath
+
+if TYPE_CHECKING:
+    from pathlib import Path
+
+    from dagster._core.storage.io_manager import IOManagerDefinition
 
 
 class DummyIOManager(UPathIOManager):

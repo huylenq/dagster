@@ -1,8 +1,7 @@
 from __future__ import annotations
 
-from typing import List, Mapping, Optional
+from typing import TYPE_CHECKING, List, Mapping, Optional
 
-from airflow.models.connection import Connection
 from airflow.models.dag import DAG
 from dagster import (
     ResourceDefinition,
@@ -12,6 +11,9 @@ from dagster import (
 from dagster._utils.schedules import is_valid_cron_schedule
 
 from dagster_airflow.dagster_job_factory import make_dagster_job_from_airflow_dag
+
+if TYPE_CHECKING:
+    from airflow.models.connection import Connection
 
 
 def _is_dag_is_schedule(dag: DAG) -> bool:

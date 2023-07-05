@@ -2,11 +2,12 @@ from __future__ import annotations
 
 import hashlib
 import re
-from typing import Any, Mapping
-
-from dagster._core.host_representation.origin import ExternalJobOrigin
+from typing import TYPE_CHECKING, Any, Mapping
 
 from .tasks import DagsterEcsTaskDefinitionConfig
+
+if TYPE_CHECKING:
+    from dagster._core.host_representation.origin import ExternalJobOrigin
 
 
 def sanitize_family(family):

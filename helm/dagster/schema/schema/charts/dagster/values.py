@@ -1,12 +1,13 @@
 from __future__ import annotations
 
-from typing import Any, List, Mapping, Optional
+from typing import TYPE_CHECKING, Any, List, Mapping, Optional
 
 from pydantic import BaseModel, Field
 
-from ..dagster_user_deployments.subschema.user_deployments import UserDeployments
-from ..utils import kubernetes
-from . import subschema
+if TYPE_CHECKING:
+    from ..dagster_user_deployments.subschema.user_deployments import UserDeployments
+    from ..utils import kubernetes
+    from . import subschema
 
 
 class DagsterHelmValues(BaseModel):

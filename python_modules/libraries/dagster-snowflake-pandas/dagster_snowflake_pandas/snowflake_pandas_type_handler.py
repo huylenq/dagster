@@ -1,16 +1,18 @@
 from __future__ import annotations
 
-from typing import Mapping, Optional, Sequence, Type
+from typing import TYPE_CHECKING, Mapping, Optional, Sequence, Type
 
 import pandas as pd
 import pandas.core.dtypes.common as pd_core_dtypes_common
 from dagster import InputContext, MetadataValue, OutputContext, TableColumn, TableSchema
-from dagster._core.definitions.metadata import RawMetadataValue
 from dagster._core.errors import DagsterInvariantViolationError
 from dagster._core.storage.db_io_manager import DbTypeHandler, TableSlice
 from dagster_snowflake import build_snowflake_io_manager
 from dagster_snowflake.snowflake_io_manager import SnowflakeDbClient, SnowflakeIOManager
 from snowflake.connector.pandas_tools import pd_writer
+
+if TYPE_CHECKING:
+    from dagster._core.definitions.metadata import RawMetadataValue
 
 
 def _table_exists(table_slice: TableSlice, connection):

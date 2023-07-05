@@ -15,8 +15,6 @@ from typing import (
     cast,
 )
 
-from typing_extensions import TypeGuard
-
 import dagster._check as check
 from dagster._core.definitions.utils import validate_tags
 from dagster._serdes.serdes import EnumSerializer, whitelist_for_serdes
@@ -27,6 +25,8 @@ from .inputs import StepInput, UnresolvedCollectStepInput, UnresolvedMappedStepI
 from .outputs import StepOutput
 
 if TYPE_CHECKING:
+    from typing_extensions import TypeGuard
+
     from dagster._core.definitions.dependency import NodeHandle
 
 

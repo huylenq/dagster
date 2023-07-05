@@ -3,18 +3,20 @@ from __future__ import annotations
 from typing import TYPE_CHECKING, Callable, Optional, Sequence, Union
 
 from dagster import DefaultSensorStatus
-from dagster._core.definitions import GraphDefinition, JobDefinition
 from dagster._core.definitions.run_status_sensor_definition import (
     RunFailureSensorContext,
     run_failure_sensor,
 )
-from dagster._core.definitions.unresolved_asset_job_definition import UnresolvedAssetJobDefinition
 
 from dagster_msteams.card import Card
 from dagster_msteams.client import TeamsClient
 
 if TYPE_CHECKING:
+    from dagster._core.definitions import GraphDefinition, JobDefinition
     from dagster._core.definitions.selector import JobSelector, RepositorySelector
+    from dagster._core.definitions.unresolved_asset_job_definition import (
+        UnresolvedAssetJobDefinition,
+    )
 
 
 def _default_failure_message(context: RunFailureSensorContext) -> str:

@@ -1,16 +1,18 @@
 from __future__ import annotations
 
 import json
-from typing import Sequence
+from typing import TYPE_CHECKING, Sequence
 
 import dagster._check as check
 from dagster._config import ALL_CONFIG_BUILTINS
-from dagster._core.workspace.context import WorkspaceRequestContext
 from dagster._utils import file_relative_path
 from dagster_graphql.test.utils import GqlResult, execute_dagster_graphql, infer_pipeline_selector
 
 from .graphql_context_test_suite import NonLaunchableGraphQLContextTestMatrix
 from .repo import csv_hello_world_ops_config
+
+if TYPE_CHECKING:
+    from dagster._core.workspace.context import WorkspaceRequestContext
 
 CONFIG_VALIDATION_QUERY = """
 query PipelineQuery(

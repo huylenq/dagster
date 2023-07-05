@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Optional, Sequence
+from typing import TYPE_CHECKING, Optional, Sequence
 
 import pytest
 from dagster import job
@@ -14,7 +14,9 @@ from dagster_databricks.types import (
     DatabricksRunLifeCycleState,
     DatabricksRunResultState,
 )
-from pytest_mock import MockerFixture
+
+if TYPE_CHECKING:
+    from pytest_mock import MockerFixture
 
 
 def _mock_get_run_response() -> Sequence[dict]:

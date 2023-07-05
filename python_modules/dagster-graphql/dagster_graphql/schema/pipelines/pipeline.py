@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import List, Optional, Sequence
+from typing import TYPE_CHECKING, List, Optional, Sequence
 
 import dagster._check as check
 import graphene
@@ -8,7 +8,6 @@ from dagster._core.definitions.time_window_partitions import PartitionRangeStatu
 from dagster._core.events import DagsterEventType
 from dagster._core.host_representation.external import ExternalExecutionPlan, ExternalJob
 from dagster._core.host_representation.external_data import DEFAULT_MODE_NAME, ExternalPresetData
-from dagster._core.host_representation.represented import RepresentedJob
 from dagster._core.storage.dagster_run import (
     DagsterRunStatsSnapshot,
     DagsterRunStatus,
@@ -65,6 +64,9 @@ from .mode import GrapheneMode
 from .pipeline_ref import GraphenePipelineReference
 from .pipeline_run_stats import GrapheneRunStatsSnapshotOrError
 from .status import GrapheneRunStatus
+
+if TYPE_CHECKING:
+    from dagster._core.host_representation.represented import RepresentedJob
 
 STARTED_STATUSES = {
     DagsterRunStatus.STARTED,

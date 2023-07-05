@@ -21,7 +21,6 @@ from typing_extensions import TypeAlias, get_args, get_origin
 
 import dagster._check as check
 from dagster._annotations import public
-from dagster._config.config_schema import UserConfigSchema
 from dagster._core.decorator_utils import get_function_params
 from dagster._core.definitions.dependency import NodeHandle, NodeInputHandle
 from dagster._core.definitions.node_definition import NodeDefinition
@@ -42,16 +41,17 @@ from .definition_config_schema import (
     IDefinitionConfigSchema,
     convert_user_facing_definition_config_schema,
 )
-from .hook_definition import HookDefinition
 from .inference import infer_output_props
 from .input import In, InputDefinition
 from .output import Out, OutputDefinition
 
 if TYPE_CHECKING:
+    from dagster._config.config_schema import UserConfigSchema
     from dagster._core.definitions.asset_layer import AssetLayer
 
     from .composition import PendingNodeInvocation
     from .decorators.op_decorator import DecoratedOpFunction
+    from .hook_definition import HookDefinition
 
 OpComputeFunction: TypeAlias = Callable[..., Any]
 

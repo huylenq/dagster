@@ -1,13 +1,15 @@
 from __future__ import annotations
 
 from enum import Enum
-from typing import Any, Dict, List, Optional, Union
+from typing import TYPE_CHECKING, Any, Dict, List, Optional, Union
 
 from pydantic import Extra
 
-from ...utils import kubernetes
 from ...utils.utils import BaseModel, ConfigurableClass, create_json_schema_conditionals
-from .config import IntSource
+
+if TYPE_CHECKING:
+    from ...utils import kubernetes
+    from .config import IntSource
 
 
 class RunCoordinatorType(str, Enum):

@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import List
+from typing import TYPE_CHECKING, List
 
 import dagster._check as check
 import graphene
@@ -12,7 +12,6 @@ from dagster._core.host_representation.external_data import (
     NestedResourceType,
     ResourceJobUsageEntry,
 )
-from dagster._core.workspace.workspace import IWorkspace
 
 from dagster_graphql.schema.asset_key import GrapheneAssetKey
 from dagster_graphql.schema.errors import (
@@ -25,6 +24,9 @@ from dagster_graphql.schema.solids import GrapheneSolidHandle, build_solid_handl
 from dagster_graphql.schema.util import non_null_list
 
 from .config_types import GrapheneConfigTypeField
+
+if TYPE_CHECKING:
+    from dagster._core.workspace.workspace import IWorkspace
 
 
 class GrapheneConfiguredValueType(graphene.Enum):

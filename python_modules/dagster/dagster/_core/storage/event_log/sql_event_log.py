@@ -24,8 +24,6 @@ from typing import (
 import pendulum
 import sqlalchemy as db
 import sqlalchemy.exc as db_exc
-from sqlalchemy.engine import Connection
-from typing_extensions import TypeAlias
 
 import dagster._check as check
 import dagster._seven as seven
@@ -38,8 +36,8 @@ from dagster._core.errors import (
 )
 from dagster._core.event_api import RunShardedEventsCursor
 from dagster._core.events import ASSET_EVENTS, MARKER_EVENTS, DagsterEventType
+from dagster._core.events.log import EventLogEntry
 from dagster._core.execution.stats import RunStepKeyStatsSnapshot, build_run_step_stats_from_events
-from dagster._core.storage.sql import SqlAlchemyQuery, SqlAlchemyRow
 from dagster._core.storage.sqlalchemy_compat import (
     db_case,
     db_fetch_mappings,
@@ -69,7 +67,6 @@ from .base import (
     AssetRecord,
     EventLogConnection,
     EventLogCursor,
-    EventLogEntry,
     EventLogRecord,
     EventLogStorage,
     EventRecordsFilter,
@@ -86,7 +83,11 @@ from .schema import (
 )
 
 if TYPE_CHECKING:
+    from sqlalchemy.engine import Connection
+    from typing_extensions import TypeAlias
+
     from dagster._core.storage.partition_status_cache import AssetStatusCacheValue
+    from dagster._core.storage.sql import SqlAlchemyQuery, SqlAlchemyRow
 
 MAX_CONCURRENCY_SLOTS = 1000
 MIN_ASSET_ROWS = 25

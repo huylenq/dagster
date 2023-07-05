@@ -1,11 +1,9 @@
 from __future__ import annotations
 
 from collections import defaultdict
-from datetime import datetime
 from typing import TYPE_CHECKING, AbstractSet, Any, Mapping, NamedTuple, Optional, Sequence, Union
 
 import dagster._check as check
-from dagster._core.definitions import AssetKey
 from dagster._core.definitions.run_request import RunRequest
 from dagster._core.errors import DagsterInvalidDefinitionError
 from dagster._utils.backcompat import deprecation_warning
@@ -15,7 +13,10 @@ from .config import ConfigMapping
 from .metadata import RawMetadataValue
 
 if TYPE_CHECKING:
+    from datetime import datetime
+
     from dagster._core.definitions import (
+        AssetKey,
         AssetsDefinition,
         AssetSelection,
         ExecutorDefinition,

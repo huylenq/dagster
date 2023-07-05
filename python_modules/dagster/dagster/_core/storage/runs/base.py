@@ -5,26 +5,26 @@ from typing import TYPE_CHECKING, Mapping, Optional, Sequence, Set, Tuple, Union
 
 from typing_extensions import TypedDict
 
-from dagster._core.events import DagsterEvent
-from dagster._core.execution.backfill import BulkActionStatus, PartitionBackfill
 from dagster._core.instance import MayHaveInstanceWeakref, T_DagsterInstance
 from dagster._core.snap import ExecutionPlanSnapshot, JobSnapshot
-from dagster._core.storage.dagster_run import (
-    DagsterRun,
-    JobBucket,
-    RunPartitionData,
-    RunRecord,
-    RunsFilter,
-    TagBucket,
-)
-from dagster._core.storage.sql import AlembicVersion
-from dagster._daemon.types import DaemonHeartbeat
-from dagster._utils import PrintFn
 
 from ..daemon_cursor import DaemonCursorStorage
 
 if TYPE_CHECKING:
+    from dagster._core.events import DagsterEvent
+    from dagster._core.execution.backfill import BulkActionStatus, PartitionBackfill
     from dagster._core.host_representation.origin import ExternalJobOrigin
+    from dagster._core.storage.dagster_run import (
+        DagsterRun,
+        JobBucket,
+        RunPartitionData,
+        RunRecord,
+        RunsFilter,
+        TagBucket,
+    )
+    from dagster._core.storage.sql import AlembicVersion
+    from dagster._daemon.types import DaemonHeartbeat
+    from dagster._utils import PrintFn
 
 
 class RunGroupInfo(TypedDict):

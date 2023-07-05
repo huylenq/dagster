@@ -1,7 +1,8 @@
 from __future__ import annotations
 
+from typing import TYPE_CHECKING
+
 from dagster._core.storage.tags import RESUME_RETRY_TAG
-from dagster._core.workspace.context import WorkspaceRequestContext
 from dagster_graphql.client.query import (
     LAUNCH_PIPELINE_EXECUTION_MUTATION,
     LAUNCH_PIPELINE_REEXECUTION_MUTATION,
@@ -18,6 +19,9 @@ from .utils import (
     step_did_not_run,
     step_did_succeed,
 )
+
+if TYPE_CHECKING:
+    from dagster._core.workspace.context import WorkspaceRequestContext
 
 
 def test_dynamic_resume_reexecution(graphql_context: WorkspaceRequestContext):

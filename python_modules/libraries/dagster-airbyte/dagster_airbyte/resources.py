@@ -2,12 +2,11 @@ from __future__ import annotations
 
 import hashlib
 import json
-import logging
 import sys
 import time
 from abc import abstractmethod
 from contextlib import contextmanager
-from typing import Any, Dict, List, Mapping, Optional, cast
+from typing import TYPE_CHECKING, Any, Dict, List, Mapping, Optional, cast
 
 import requests
 from dagster import (
@@ -25,6 +24,9 @@ from pydantic import Field
 from requests.exceptions import RequestException
 
 from dagster_airbyte.types import AirbyteOutput
+
+if TYPE_CHECKING:
+    import logging
 
 DEFAULT_POLL_INTERVAL_SECONDS = 10
 

@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Optional, Tuple
+from typing import TYPE_CHECKING, Optional, Tuple
 
 import dagster._check as check
 import graphene
@@ -15,12 +15,14 @@ from dagster._core.definitions.auto_materialize_condition import (
     ParentMaterializedAutoMaterializeCondition,
     ParentOutdatedAutoMaterializeCondition,
 )
-from dagster._core.definitions.partition import SerializedPartitionsSubset
-from dagster._core.scheduler.instigation import AutoMaterializeAssetEvaluationRecord
 
 from dagster_graphql.schema.errors import GrapheneError
 
 from .util import non_null_list
+
+if TYPE_CHECKING:
+    from dagster._core.definitions.partition import SerializedPartitionsSubset
+    from dagster._core.scheduler.instigation import AutoMaterializeAssetEvaluationRecord
 
 GrapheneAutoMaterializeDecisionType = graphene.Enum.from_enum(AutoMaterializeDecisionType)
 

@@ -11,9 +11,10 @@ from dagster_graphql.schema.auto_materialize_asset_evaluations import (
     GrapheneAutoMaterializeAssetEvaluationRecord,
     GrapheneAutoMaterializeAssetEvaluationRecords,
 )
-from dagster_graphql.schema.inputs import GrapheneAssetKeyInput
 
 if TYPE_CHECKING:
+    from dagster_graphql.schema.inputs import GrapheneAssetKeyInput
+
     from ..schema.util import ResolveInfo
 
 

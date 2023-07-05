@@ -3,15 +3,17 @@ from __future__ import annotations
 import tempfile
 import time
 from contextlib import contextmanager
-from typing import Any, Callable, Mapping, Union
+from typing import TYPE_CHECKING, Any, Callable, Mapping, Union
 
 import dagster._check as check
 from dagster._core.events import DagsterEvent, DagsterEventType, EngineEventData
 from dagster._core.events.log import EventLogEntry
 from dagster._core.storage.event_log import SqliteEventLogStorage, SqlPollingEventWatcher
 from dagster._core.storage.event_log.base import EventLogCursor
-from dagster._serdes.config_class import ConfigurableClassData
-from typing_extensions import Self
+
+if TYPE_CHECKING:
+    from dagster._serdes.config_class import ConfigurableClassData
+    from typing_extensions import Self
 
 
 class SqlitePollingEventLogStorage(SqliteEventLogStorage):

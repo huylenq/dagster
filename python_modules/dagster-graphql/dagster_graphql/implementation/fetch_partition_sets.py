@@ -24,8 +24,6 @@ from dagster._core.storage.tags import (
 )
 from dagster._utils.yaml_utils import dump_run_config_yaml
 
-from dagster_graphql.schema.util import ResolveInfo
-
 if TYPE_CHECKING:
     from dagster_graphql.schema.errors import GraphenePartitionSetNotFoundError
     from dagster_graphql.schema.partition_sets import (
@@ -39,6 +37,7 @@ if TYPE_CHECKING:
         GraphenePartitionStatusCounts,
         GraphenePartitionTags,
     )
+    from dagster_graphql.schema.util import ResolveInfo
 
 
 def get_partition_sets_or_error(

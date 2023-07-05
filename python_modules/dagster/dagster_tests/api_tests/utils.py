@@ -2,20 +2,22 @@ from __future__ import annotations
 
 import sys
 from contextlib import ExitStack, contextmanager
-from typing import Iterator, Optional
+from typing import TYPE_CHECKING, Iterator, Optional
 
 from dagster import file_relative_path
 from dagster._core.host_representation import (
     JobHandle,
     ManagedGrpcPythonEnvCodeLocationOrigin,
 )
-from dagster._core.host_representation.code_location import GrpcServerCodeLocation
-from dagster._core.host_representation.handle import RepositoryHandle
-from dagster._core.instance import DagsterInstance
 from dagster._core.test_utils import instance_for_test
 from dagster._core.types.loadable_target_origin import LoadableTargetOrigin
 from dagster._core.workspace.context import WorkspaceProcessContext, WorkspaceRequestContext
 from dagster._core.workspace.load_target import PythonFileTarget
+
+if TYPE_CHECKING:
+    from dagster._core.host_representation.code_location import GrpcServerCodeLocation
+    from dagster._core.host_representation.handle import RepositoryHandle
+    from dagster._core.instance import DagsterInstance
 
 
 @contextmanager

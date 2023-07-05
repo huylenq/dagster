@@ -12,9 +12,10 @@ from dagster import (
 from dagster._config import process_config
 from dagster._core.container_context import process_shared_container_context_config
 from dagster._core.errors import DagsterInvalidConfigError
-from dagster._core.storage.dagster_run import DagsterRun
 
 if TYPE_CHECKING:
+    from dagster._core.storage.dagster_run import DagsterRun
+
     from . import DockerRunLauncher
 
 DOCKER_CONTAINER_CONTEXT_SCHEMA = {

@@ -3,6 +3,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from contextlib import contextmanager
 from typing import (
+    TYPE_CHECKING,
     Any,
     Dict,
     Generic,
@@ -19,7 +20,6 @@ from typing import (
 
 import dagster._check as check
 from dagster._check import CheckError
-from dagster._core.definitions.metadata import RawMetadataValue
 from dagster._core.definitions.multi_dimensional_partitions import (
     MultiPartitionKey,
     MultiPartitionsDefinition,
@@ -29,9 +29,12 @@ from dagster._core.definitions.time_window_partitions import (
     TimeWindowPartitionsDefinition,
 )
 from dagster._core.errors import DagsterInvalidDefinitionError
-from dagster._core.execution.context.input import InputContext
 from dagster._core.execution.context.output import OutputContext
 from dagster._core.storage.io_manager import IOManager
+
+if TYPE_CHECKING:
+    from dagster._core.definitions.metadata import RawMetadataValue
+    from dagster._core.execution.context.input import InputContext
 
 T = TypeVar("T")
 

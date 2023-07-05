@@ -2,9 +2,9 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING, Any, Dict, List, Mapping, Sequence, Type, Union
 
-from typing_extensions import TypeAlias
-
 if TYPE_CHECKING:
+    from typing_extensions import TypeAlias
+
     from dagster._config import ConfigType, Field
 
 # Eventually, the below `UserConfigSchema` should be renamed to `ConfigSchema` and the class

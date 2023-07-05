@@ -5,7 +5,7 @@ import string
 import sys
 import tempfile
 from contextlib import contextmanager
-from typing import ContextManager, NoReturn, Optional, Tuple
+from typing import TYPE_CHECKING, ContextManager, NoReturn, Optional, Tuple
 
 import mock
 import pytest
@@ -45,7 +45,9 @@ from dagster._grpc.server import GrpcServerProcess
 from dagster._utils import file_relative_path
 from dagster._utils.merger import merge_dicts
 from dagster.version import __version__
-from typing_extensions import TypeAlias
+
+if TYPE_CHECKING:
+    from typing_extensions import TypeAlias
 
 
 @op

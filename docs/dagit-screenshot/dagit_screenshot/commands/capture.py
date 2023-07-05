@@ -5,10 +5,12 @@ import os
 import signal
 import subprocess
 from time import sleep
+from typing import TYPE_CHECKING
 
 from selenium import webdriver
 
-from dagit_screenshot.utils import ScreenshotSpec
+if TYPE_CHECKING:
+    from dagit_screenshot.utils import ScreenshotSpec
 
 # Time in seconds that we sleep waiting for a dagit route to load
 DAGIT_ROUTE_LOAD_TIME = 1

@@ -9,11 +9,8 @@ from dagster._core.definitions.selector import (
     RepositorySelector,
     ScheduleSelector,
 )
-from dagster._core.scheduler.instigation import InstigatorState, InstigatorStatus
 from dagster._core.workspace.permissions import Permissions
 from dagster._seven import get_current_datetime_in_utc, get_timestamp_from_utc_datetime
-
-from dagster_graphql.schema.util import ResolveInfo
 
 from .loader import RepositoryScopedBatchLoader
 from .utils import (
@@ -23,6 +20,10 @@ from .utils import (
 )
 
 if TYPE_CHECKING:
+    from dagster._core.scheduler.instigation import InstigatorState, InstigatorStatus
+
+    from dagster_graphql.schema.util import ResolveInfo
+
     from ..schema.instigation import GrapheneDryRunInstigationTick
     from ..schema.schedules import (
         GrapheneSchedule,

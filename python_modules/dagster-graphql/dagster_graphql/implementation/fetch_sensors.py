@@ -13,8 +13,6 @@ from dagster._core.scheduler.instigation import (
 from dagster._core.workspace.permissions import Permissions
 from dagster._seven import get_current_datetime_in_utc, get_timestamp_from_utc_datetime
 
-from dagster_graphql.schema.util import ResolveInfo
-
 from .loader import RepositoryScopedBatchLoader
 from .utils import (
     UserFacingGraphQLError,
@@ -24,6 +22,7 @@ from .utils import (
 
 if TYPE_CHECKING:
     from dagster_graphql.schema.instigation import GrapheneDryRunInstigationTick
+    from dagster_graphql.schema.util import ResolveInfo
 
     from ..schema.sensors import GrapheneSensor, GrapheneSensors, GrapheneStopSensorMutationResult
 

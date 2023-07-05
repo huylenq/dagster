@@ -37,10 +37,11 @@ from ..schedule_definition import (
     has_at_least_one_parameter,
     validate_and_get_schedule_resource_dict,
 )
-from ..target import ExecutableDefinition
 from ..utils import validate_tags
 
 if TYPE_CHECKING:
+    from ..target import ExecutableDefinition
+
     pass
 
 

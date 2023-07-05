@@ -3,7 +3,7 @@ from __future__ import annotations
 import collections.abc
 import inspect
 from functools import update_wrapper
-from typing import Any, Callable, Optional, Sequence, Set, Union
+from typing import TYPE_CHECKING, Any, Callable, Optional, Sequence, Set, Union
 
 import dagster._check as check
 from dagster._annotations import experimental
@@ -25,7 +25,9 @@ from ..sensor_definition import (
     SensorDefinition,
     SkipReason,
 )
-from ..target import ExecutableDefinition
+
+if TYPE_CHECKING:
+    from ..target import ExecutableDefinition
 
 
 def sensor(

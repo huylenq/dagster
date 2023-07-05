@@ -3,6 +3,7 @@ from __future__ import annotations
 import inspect
 import warnings
 from typing import (
+    TYPE_CHECKING,
     AbstractSet,
     Any,
     Dict,
@@ -56,7 +57,6 @@ from dagster._core.errors import (
     user_code_error_boundary,
 )
 from dagster._core.events import DagsterEvent
-from dagster._core.execution.context.output import OutputContext
 from dagster._core.execution.context.system import StepExecutionContext, TypeCheckContext
 from dagster._core.execution.plan.compute import execute_core_compute
 from dagster._core.execution.plan.inputs import StepInputData
@@ -64,14 +64,18 @@ from dagster._core.execution.plan.objects import StepSuccessData, TypeCheckData
 from dagster._core.execution.plan.outputs import StepOutputData, StepOutputHandle
 from dagster._core.execution.resolve_versions import resolve_step_output_versions
 from dagster._core.storage.tags import BACKFILL_ID_TAG, MEMOIZED_RUN_TAG
-from dagster._core.types.dagster_type import DagsterType
 from dagster._utils import iterate_with_context
 from dagster._utils.backcompat import ExperimentalWarning, experimental_functionality_warning
 from dagster._utils.timing import time_execution_scope
 
-from .compute import OpOutputUnion
 from .compute_generator import create_op_compute_wrapper
 from .utils import op_execution_error_boundary
+
+if TYPE_CHECKING:
+    from dagster._core.execution.context.output import OutputContext
+    from dagster._core.types.dagster_type import DagsterType
+
+    from .compute import OpOutputUnion
 
 
 def _step_output_error_checked_user_event_sequence(

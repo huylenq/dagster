@@ -11,13 +11,14 @@ from dagster._core.host_representation.origin import (
     GrpcServerCodeLocationOrigin,
     ManagedGrpcPythonEnvCodeLocationOrigin,
 )
-from dagster._core.instance import DagsterInstance
 from dagster._core.types.loadable_target_origin import LoadableTargetOrigin
 from dagster._utils.yaml_utils import load_yaml_from_path
 
 from .config_schema import ensure_workspace_config
 
 if TYPE_CHECKING:
+    from dagster._core.instance import DagsterInstance
+
     from .context import WorkspaceProcessContext
 
 

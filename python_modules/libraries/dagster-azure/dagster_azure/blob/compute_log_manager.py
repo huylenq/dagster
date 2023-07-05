@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import os
 from contextlib import contextmanager
-from typing import Any, Mapping, Optional, Sequence
+from typing import TYPE_CHECKING, Any, Mapping, Optional, Sequence
 
 import dagster._seven as seven
 from azure.identity import DefaultAzureCredential
@@ -24,9 +24,11 @@ from dagster._core.storage.local_compute_log_manager import (
 )
 from dagster._serdes import ConfigurableClass, ConfigurableClassData
 from dagster._utils import ensure_dir, ensure_file
-from typing_extensions import Self
 
 from .utils import create_blob_client, generate_blob_sas
+
+if TYPE_CHECKING:
+    from typing_extensions import Self
 
 
 class AzureBlobComputeLogManager(CloudStorageComputeLogManager, ConfigurableClass):

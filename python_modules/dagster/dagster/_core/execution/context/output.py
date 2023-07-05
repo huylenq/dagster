@@ -23,20 +23,20 @@ from dagster._core.definitions.events import (
     AssetObservation,
     CoercibleToAssetKey,
 )
-from dagster._core.definitions.metadata import (
-    ArbitraryMetadataMapping,
-    MetadataValue,
-    RawMetadataValue,
-)
-from dagster._core.definitions.partition_key_range import PartitionKeyRange
-from dagster._core.definitions.time_window_partitions import TimeWindow
 from dagster._core.errors import DagsterInvalidMetadata, DagsterInvariantViolationError
 from dagster._core.execution.plan.utils import build_resources_for_manager
 
 if TYPE_CHECKING:
     from dagster._core.definitions import JobDefinition, PartitionsDefinition
+    from dagster._core.definitions.metadata import (
+        ArbitraryMetadataMapping,
+        MetadataValue,
+        RawMetadataValue,
+    )
     from dagster._core.definitions.op_definition import OpDefinition
+    from dagster._core.definitions.partition_key_range import PartitionKeyRange
     from dagster._core.definitions.resource_definition import Resources
+    from dagster._core.definitions.time_window_partitions import TimeWindow
     from dagster._core.events import DagsterEvent
     from dagster._core.execution.context.system import StepExecutionContext
     from dagster._core.execution.plan.outputs import StepOutputHandle
@@ -241,7 +241,7 @@ class OutputContext:
                 "but it was not provided when constructing the OutputContext"
             )
 
-        return cast(OpDefinition, self._op_def)
+        return cast("OpDefinition", self._op_def)
 
     @public
     @property

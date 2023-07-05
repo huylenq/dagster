@@ -14,12 +14,7 @@ from typing import (
 from dagster import (
     _check as check,
 )
-from dagster._config.config_schema import UserConfigSchema
-from dagster._core.definitions.asset_reconciliation_sensor import AutoMaterializeAssetEvaluation
-from dagster._core.event_api import EventHandlerFn
 from dagster._serdes import ConfigurableClass, ConfigurableClassData
-from dagster._utils import PrintFn
-from dagster._utils.concurrency import ConcurrencyClaimStatus, ConcurrencyKeyInfo
 
 from .base_storage import DagsterStorage
 from .event_log.base import (
@@ -33,8 +28,11 @@ from .runs.base import RunGroupInfo, RunStorage
 from .schedules.base import ScheduleStorage
 
 if TYPE_CHECKING:
+    from dagster._config.config_schema import UserConfigSchema
+    from dagster._core.definitions.asset_reconciliation_sensor import AutoMaterializeAssetEvaluation
     from dagster._core.definitions.events import AssetKey
     from dagster._core.definitions.run_request import InstigatorType
+    from dagster._core.event_api import EventHandlerFn
     from dagster._core.events import DagsterEvent, DagsterEventType
     from dagster._core.events.log import EventLogEntry
     from dagster._core.execution.backfill import BulkActionStatus, PartitionBackfill
@@ -62,6 +60,8 @@ if TYPE_CHECKING:
     )
     from dagster._core.storage.partition_status_cache import AssetStatusCacheValue
     from dagster._daemon.types import DaemonHeartbeat
+    from dagster._utils import PrintFn
+    from dagster._utils.concurrency import ConcurrencyClaimStatus, ConcurrencyKeyInfo
 
 
 class CompositeStorage(DagsterStorage, ConfigurableClass):

@@ -1,9 +1,7 @@
 from __future__ import annotations
 
 from enum import Enum
-from typing import List, NamedTuple, Optional, Sequence, Union
-
-from typing_extensions import TypeAlias
+from typing import TYPE_CHECKING, List, NamedTuple, Optional, Sequence, Union
 
 import dagster._check as check
 from dagster._core.definitions.asset_reconciliation_sensor import AutoMaterializeAssetEvaluation
@@ -23,6 +21,9 @@ from dagster._serdes.serdes import (
 from dagster._utils import datetime_as_float, xor
 from dagster._utils.error import SerializableErrorInfo
 from dagster._utils.merger import merge_dicts
+
+if TYPE_CHECKING:
+    from typing_extensions import TypeAlias
 
 InstigatorData: TypeAlias = Union["ScheduleInstigatorData", "SensorInstigatorData"]
 

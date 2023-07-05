@@ -4,7 +4,18 @@ import os
 import re
 import sys
 import textwrap
-from typing import Any, Callable, Iterator, Mapping, Optional, Sequence, Tuple, TypeVar, cast
+from typing import (
+    TYPE_CHECKING,
+    Any,
+    Callable,
+    Iterator,
+    Mapping,
+    Optional,
+    Sequence,
+    Tuple,
+    TypeVar,
+    cast,
+)
 
 import click
 import pendulum
@@ -36,7 +47,6 @@ from dagster._core.definitions.utils import validate_tags
 from dagster._core.errors import DagsterBackfillFailedError
 from dagster._core.execution.api import create_execution_plan, execute_job
 from dagster._core.execution.backfill import BulkActionStatus, PartitionBackfill
-from dagster._core.execution.execution_result import ExecutionResult
 from dagster._core.execution.job_backfill import create_backfill_run
 from dagster._core.host_representation import (
     CodeLocation,
@@ -50,11 +60,9 @@ from dagster._core.host_representation.external_data import (
 )
 from dagster._core.instance import DagsterInstance
 from dagster._core.snap import JobSnapshot, NodeInvocationSnap
-from dagster._core.storage.dagster_run import DagsterRun
 from dagster._core.storage.tags import MEMOIZED_RUN_TAG
 from dagster._core.telemetry import log_external_repo_stats, telemetry_wrapper
 from dagster._core.utils import make_new_backfill_id
-from dagster._core.workspace.workspace import IWorkspace
 from dagster._seven import IS_WINDOWS, JSONDecodeError, json
 from dagster._utils import DEFAULT_WORKSPACE_YAML_FILENAME, PrintFn
 from dagster._utils.error import serializable_error_info_from_exc_info
@@ -66,6 +74,11 @@ from dagster._utils.yaml_utils import dump_run_config_yaml, load_yaml_from_glob_
 
 from .config_scaffolder import scaffold_job_config
 from .utils import get_instance_for_cli, get_possibly_temporary_instance_for_cli
+
+if TYPE_CHECKING:
+    from dagster._core.execution.execution_result import ExecutionResult
+    from dagster._core.storage.dagster_run import DagsterRun
+    from dagster._core.workspace.workspace import IWorkspace
 
 T = TypeVar("T")
 T_Callable = TypeVar("T_Callable", bound=Callable[..., Any])

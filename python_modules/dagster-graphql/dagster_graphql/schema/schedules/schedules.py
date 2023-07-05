@@ -1,11 +1,10 @@
 from __future__ import annotations
 
-from typing import List, Optional
+from typing import TYPE_CHECKING, List, Optional
 
 import dagster._check as check
 import graphene
 from dagster._core.host_representation import ExternalSchedule
-from dagster._core.scheduler.instigation import InstigatorState
 from dagster._seven import get_current_datetime_in_utc, get_timestamp_from_utc_datetime
 
 from dagster_graphql.implementation.loader import RepositoryScopedBatchLoader
@@ -21,6 +20,9 @@ from ..instigation import (
     GrapheneInstigationState,
 )
 from ..util import ResolveInfo, non_null_list
+
+if TYPE_CHECKING:
+    from dagster._core.scheduler.instigation import InstigatorState
 
 
 class GrapheneSchedule(graphene.ObjectType):

@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-from datetime import datetime
 from typing import (
     TYPE_CHECKING,
     Any,
@@ -16,22 +15,24 @@ from typing import (
 import dagster._check as check
 from dagster._annotations import public
 from dagster._core.definitions.events import AssetKey, AssetObservation, CoercibleToAssetKey
-from dagster._core.definitions.metadata import (
-    ArbitraryMetadataMapping,
-    MetadataValue,
-)
 from dagster._core.definitions.partition import PartitionsSubset
 from dagster._core.definitions.partition_key_range import PartitionKeyRange
 from dagster._core.definitions.time_window_partitions import TimeWindow, TimeWindowPartitionsSubset
 from dagster._core.errors import DagsterInvariantViolationError
-from dagster._core.instance import DagsterInstance, DynamicPartitionsStore
 
 if TYPE_CHECKING:
+    from datetime import datetime
+
     from dagster._core.definitions import PartitionsDefinition
+    from dagster._core.definitions.metadata import (
+        ArbitraryMetadataMapping,
+        MetadataValue,
+    )
     from dagster._core.definitions.op_definition import OpDefinition
     from dagster._core.definitions.resource_definition import Resources
     from dagster._core.events import DagsterEvent
     from dagster._core.execution.context.system import StepExecutionContext
+    from dagster._core.instance import DagsterInstance, DynamicPartitionsStore
     from dagster._core.log_manager import DagsterLogManager
     from dagster._core.types.dagster_type import DagsterType
 

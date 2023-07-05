@@ -6,19 +6,21 @@ import shutil
 import uuid
 from abc import ABC, abstractmethod
 from contextlib import contextmanager
-from typing import BinaryIO, ContextManager, Iterator, Optional, TextIO, Union
-
-from typing_extensions import TypeAlias
+from typing import TYPE_CHECKING, BinaryIO, ContextManager, Iterator, Optional, TextIO, Union
 
 import dagster._check as check
 from dagster._annotations import public
 from dagster._config import Field, StringSource
 from dagster._core.definitions.resource_definition import dagster_maintained_resource, resource
-from dagster._core.execution.context.init import InitResourceContext
 from dagster._core.instance import DagsterInstance
 from dagster._utils import mkdir_p
 
 from .temp_file_manager import TempfileManager
+
+if TYPE_CHECKING:
+    from typing_extensions import TypeAlias
+
+    from dagster._core.execution.context.init import InitResourceContext
 
 IOStream: TypeAlias = Union[TextIO, BinaryIO]
 

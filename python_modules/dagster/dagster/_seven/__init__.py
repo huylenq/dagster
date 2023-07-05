@@ -9,11 +9,9 @@ import threading
 import time
 from contextlib import contextmanager
 from datetime import timezone
-from types import ModuleType
-from typing import Any, Callable, List, Sequence, Type
+from typing import TYPE_CHECKING, Any, Callable, List, Sequence, Type
 
 import pendulum
-from typing_extensions import TypeGuard
 
 from .compat.pendulum import PendulumDateTime as PendulumDateTime  # re-exported
 from .json import (
@@ -22,6 +20,11 @@ from .json import (
     dumps as dumps,
 )
 from .temp_dir import get_system_temp_directory as get_system_temp_directory
+
+if TYPE_CHECKING:
+    from types import ModuleType
+
+    from typing_extensions import TypeGuard
 
 IS_WINDOWS = os.name == "nt"
 

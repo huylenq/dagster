@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import pickle
-from typing import Any, Optional, Union
+from typing import TYPE_CHECKING, Any, Optional, Union
 
 from dagster import (
     ConfigurableIOManager,
@@ -21,7 +21,8 @@ from google.cloud import storage
 from pydantic import Field
 from upath import UPath
 
-from .resources import GCSResource
+if TYPE_CHECKING:
+    from .resources import GCSResource
 
 DEFAULT_LEASE_DURATION = 60  # One minute
 

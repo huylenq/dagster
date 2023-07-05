@@ -26,7 +26,6 @@ from typing import (
 )
 
 import pendulum
-from typing_extensions import TypeAlias
 
 import dagster._check as check
 from dagster._annotations import public
@@ -36,9 +35,6 @@ from dagster._core.definitions.partition import (
 )
 from dagster._core.definitions.resource_annotation import (
     get_resource_args,
-)
-from dagster._core.definitions.resource_definition import (
-    Resources,
 )
 from dagster._core.definitions.scoped_resources_builder import ScopedResourcesBuilder
 from dagster._core.errors import (
@@ -56,8 +52,6 @@ from ..decorator_utils import (
     get_function_params,
 )
 from .asset_selection import AssetSelection
-from .graph_definition import GraphDefinition
-from .job_definition import JobDefinition
 from .run_request import (
     AddDynamicPartitionsRequest,
     DagsterRunReaction,
@@ -67,13 +61,21 @@ from .run_request import (
     SkipReason,
 )
 from .target import DirectTarget, ExecutableDefinition, RepoRelativeTarget
-from .unresolved_asset_job_definition import UnresolvedAssetJobDefinition
 from .utils import check_valid_name
 
 if TYPE_CHECKING:
+    from typing_extensions import TypeAlias
+
     from dagster import ResourceDefinition
     from dagster._core.definitions.definitions_class import Definitions
     from dagster._core.definitions.repository_definition import RepositoryDefinition
+    from dagster._core.definitions.resource_definition import (
+        Resources,
+    )
+
+    from .graph_definition import GraphDefinition
+    from .job_definition import JobDefinition
+    from .unresolved_asset_job_definition import UnresolvedAssetJobDefinition
 
 
 @whitelist_for_serdes

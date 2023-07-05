@@ -11,22 +11,25 @@ from __future__ import annotations
 
 import datetime
 from collections import defaultdict
-from typing import AbstractSet, Dict, Mapping, Optional, Set, Tuple, cast
+from typing import TYPE_CHECKING, AbstractSet, Dict, Mapping, Optional, Set, Tuple, cast
 
 import pendulum
 
-from dagster._core.definitions.data_time import CachingDataTimeResolver
 from dagster._core.definitions.events import AssetKey, AssetKeyPartitionKey
-from dagster._core.definitions.freshness_policy import FreshnessPolicy
 from dagster._utils.schedules import cron_string_iterator
 
-from .asset_graph import AssetGraph
 from .auto_materialize_condition import (
     AutoMaterializeCondition,
     AutoMaterializeDecisionType,
     DownstreamFreshnessAutoMaterializeCondition,
     FreshnessAutoMaterializeCondition,
 )
+
+if TYPE_CHECKING:
+    from dagster._core.definitions.data_time import CachingDataTimeResolver
+    from dagster._core.definitions.freshness_policy import FreshnessPolicy
+
+    from .asset_graph import AssetGraph
 
 
 def get_execution_period_for_policy(

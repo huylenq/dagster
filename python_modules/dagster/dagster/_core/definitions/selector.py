@@ -1,13 +1,14 @@
 from __future__ import annotations
 
-from typing import AbstractSet, Iterable, NamedTuple, Optional, Sequence
-
-from typing_extensions import Self
+from typing import TYPE_CHECKING, AbstractSet, Iterable, NamedTuple, Optional, Sequence
 
 import dagster._check as check
 from dagster._core.definitions.events import AssetKey
 from dagster._core.definitions.repository_definition import SINGLETON_REPOSITORY_NAME
 from dagster._serdes import create_snapshot_id, whitelist_for_serdes
+
+if TYPE_CHECKING:
+    from typing_extensions import Self
 
 
 class JobSubsetSelector(

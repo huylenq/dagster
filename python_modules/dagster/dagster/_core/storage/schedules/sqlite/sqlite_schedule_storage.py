@@ -1,18 +1,16 @@
 from __future__ import annotations
 
 from contextlib import contextmanager
-from typing import Iterator, Optional
+from typing import TYPE_CHECKING, Iterator, Optional
 
 import sqlalchemy as db
 from packaging.version import parse
-from sqlalchemy.engine import Connection
 from sqlalchemy.pool import NullPool
 
 from dagster import (
     StringSource,
     _check as check,
 )
-from dagster._config.config_schema import UserConfigSchema
 from dagster._core.storage.sql import (
     AlembicVersion,
     check_alembic_revision,
@@ -27,6 +25,11 @@ from dagster._utils import mkdir_p
 
 from ..schema import ScheduleStorageSqlMetadata
 from ..sql_schedule_storage import SqlScheduleStorage
+
+if TYPE_CHECKING:
+    from sqlalchemy.engine import Connection
+
+    from dagster._config.config_schema import UserConfigSchema
 
 MINIMUM_SQLITE_BATCH_VERSION = "3.25.0"
 

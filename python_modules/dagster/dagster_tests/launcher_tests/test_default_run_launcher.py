@@ -6,7 +6,7 @@ import re
 import sys
 import tempfile
 import time
-from typing import Any, Mapping
+from typing import TYPE_CHECKING, Any, Mapping
 
 import pytest
 from dagster import (
@@ -19,7 +19,6 @@ from dagster import (
 )
 from dagster._core.definitions import op
 from dagster._core.errors import DagsterLaunchFailedError
-from dagster._core.instance import DagsterInstance
 from dagster._core.storage.dagster_run import DagsterRunStatus
 from dagster._core.storage.tags import GRPC_INFO_TAG
 from dagster._core.test_utils import (
@@ -41,6 +40,9 @@ def noop_op(_):
 
 
 from dagster import job
+
+if TYPE_CHECKING:
+    from dagster._core.instance import DagsterInstance
 
 
 @job

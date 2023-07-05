@@ -18,13 +18,11 @@ from dagster._annotations import deprecated, experimental, public
 from dagster._config.pythonic_config import (
     attach_resource_id_to_key_mapping,
 )
-from dagster._core.definitions.events import AssetKey, CoercibleToAssetKey
 from dagster._core.definitions.executor_definition import ExecutorDefinition
 from dagster._core.definitions.logger_definition import LoggerDefinition
 from dagster._core.execution.build_resources import wrap_resources_for_execution
 from dagster._core.execution.with_resources import with_resources
 from dagster._core.executor.base import Executor
-from dagster._core.instance import DagsterInstance
 from dagster._utils.cached_method import cached_method
 
 from .assets import AssetsDefinition, SourceAsset
@@ -42,6 +40,8 @@ from .sensor_definition import SensorDefinition
 from .unresolved_asset_job_definition import UnresolvedAssetJobDefinition
 
 if TYPE_CHECKING:
+    from dagster._core.definitions.events import AssetKey, CoercibleToAssetKey
+    from dagster._core.instance import DagsterInstance
     from dagster._core.storage.asset_value_loader import AssetValueLoader
 
 

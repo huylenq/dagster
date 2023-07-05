@@ -25,7 +25,6 @@ from typing import (
 )
 
 import dagster._check as check
-from dagster._core.definitions import ExecutorDefinition, JobDefinition
 from dagster._core.definitions.executor_definition import check_cross_process_constraints
 from dagster._core.definitions.job_base import IJob
 from dagster._core.definitions.resource_definition import ScopedResourcesBuilder
@@ -57,6 +56,7 @@ from .context.system import (
 )
 
 if TYPE_CHECKING:
+    from dagster._core.definitions import ExecutorDefinition, JobDefinition
     from dagster._core.execution.plan.outputs import StepOutputHandle
     from dagster._core.executor.base import Executor
 

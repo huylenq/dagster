@@ -1,9 +1,8 @@
 from __future__ import annotations
 
-import logging
 import os
 import time
-from typing import Callable, Iterable, Mapping, Optional, Sequence, Tuple, cast
+from typing import TYPE_CHECKING, Callable, Iterable, Mapping, Optional, Sequence, Tuple, cast
 
 import dagster._check as check
 from dagster._core.definitions.selector import JobSubsetSelector
@@ -30,14 +29,18 @@ from dagster._core.storage.tags import (
 )
 from dagster._core.telemetry import BACKFILL_RUN_CREATED, hash_name, log_action
 from dagster._core.utils import make_new_run_id
-from dagster._core.workspace.context import (
-    BaseWorkspaceRequestContext,
-    IWorkspaceProcessContext,
-)
-from dagster._utils.error import SerializableErrorInfo
 from dagster._utils.merger import merge_dicts
 
 from .backfill import BulkActionStatus, PartitionBackfill
+
+if TYPE_CHECKING:
+    import logging
+
+    from dagster._core.workspace.context import (
+        BaseWorkspaceRequestContext,
+        IWorkspaceProcessContext,
+    )
+    from dagster._utils.error import SerializableErrorInfo
 
 # out of abundance of caution, sleep at checkpoints in case we are pinning CPU by submitting lots
 # of jobs all at once

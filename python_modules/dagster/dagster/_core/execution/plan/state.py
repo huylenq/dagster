@@ -14,8 +14,6 @@ from typing import (
     cast,
 )
 
-from typing_extensions import TypeAlias
-
 import dagster._check as check
 from dagster._core.errors import DagsterExecutionPlanSnapshotNotFoundError, DagsterRunNotFoundError
 from dagster._core.events import DagsterEventType
@@ -28,6 +26,8 @@ from dagster._core.storage.dagster_run import DagsterRun
 from dagster._serdes import whitelist_for_serdes
 
 if TYPE_CHECKING:
+    from typing_extensions import TypeAlias
+
     from dagster._core.execution.plan.plan import StepHandleUnion
 
 

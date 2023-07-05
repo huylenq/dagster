@@ -20,20 +20,22 @@ from dagster import (
     freshness_policy_sensor,
 )
 from dagster._annotations import experimental
-from dagster._core.definitions import GraphDefinition, JobDefinition
 from dagster._core.definitions.run_status_sensor_definition import (
     RunFailureSensorContext,
     run_failure_sensor,
 )
-from dagster._core.definitions.unresolved_asset_job_definition import UnresolvedAssetJobDefinition
 from dagster._utils.backcompat import deprecation_warning
 from slack_sdk.web.client import WebClient
 
 if TYPE_CHECKING:
+    from dagster._core.definitions import GraphDefinition, JobDefinition
     from dagster._core.definitions.selector import (
         CodeLocationSelector,
         JobSelector,
         RepositorySelector,
+    )
+    from dagster._core.definitions.unresolved_asset_job_definition import (
+        UnresolvedAssetJobDefinition,
     )
 
 T = TypeVar("T", RunFailureSensorContext, FreshnessPolicySensorContext)

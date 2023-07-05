@@ -2,9 +2,9 @@ from __future__ import annotations
 
 import hashlib
 import itertools
-from datetime import datetime
 from functools import reduce
 from typing import (
+    TYPE_CHECKING,
     Dict,
     Iterable,
     List,
@@ -26,7 +26,6 @@ from dagster._core.errors import (
     DagsterInvalidInvocationError,
     DagsterUnknownPartitionError,
 )
-from dagster._core.instance import DynamicPartitionsStore
 from dagster._core.storage.tags import (
     MULTIDIMENSIONAL_PARTITION_PREFIX,
     get_multidimensional_partition_tag,
@@ -40,6 +39,11 @@ from .partition import (
     StaticPartitionsDefinition,
 )
 from .time_window_partitions import TimeWindow, TimeWindowPartitionsDefinition
+
+if TYPE_CHECKING:
+    from datetime import datetime
+
+    from dagster._core.instance import DynamicPartitionsStore
 
 INVALID_STATIC_PARTITIONS_KEY_CHARACTERS = set(["|", ",", "[", "]"])
 

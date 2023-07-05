@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Iterator, List, Optional, cast
+from typing import TYPE_CHECKING, Iterator, List, Optional, cast
 
 import kubernetes.config
 from dagster import (
@@ -16,8 +16,6 @@ from dagster._core.definitions.metadata import MetadataValue
 from dagster._core.events import DagsterEvent, EngineEventData
 from dagster._core.execution.retries import RetryMode, get_retries_config
 from dagster._core.execution.tags import get_tag_concurrency_limits_config
-from dagster._core.executor.base import Executor
-from dagster._core.executor.init import InitExecutorContext
 from dagster._core.executor.step_delegating import (
     CheckStepHealthResult,
     StepDelegatingExecutor,
@@ -36,6 +34,10 @@ from .job import (
     get_k8s_job_name,
     get_user_defined_k8s_config,
 )
+
+if TYPE_CHECKING:
+    from dagster._core.executor.base import Executor
+    from dagster._core.executor.init import InitExecutorContext
 
 _K8S_EXECUTOR_CONFIG_SCHEMA = merge_dicts(
     DagsterK8sJobConfig.config_type_job(),

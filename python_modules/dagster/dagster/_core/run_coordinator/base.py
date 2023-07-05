@@ -4,9 +4,9 @@ from abc import ABC, abstractmethod
 from typing import TYPE_CHECKING, NamedTuple, Optional
 
 from dagster._core.instance import MayHaveInstanceWeakref, T_DagsterInstance
-from dagster._core.storage.dagster_run import DagsterRun
 
 if TYPE_CHECKING:
+    from dagster._core.storage.dagster_run import DagsterRun
     from dagster._core.workspace.context import IWorkspace
 
 

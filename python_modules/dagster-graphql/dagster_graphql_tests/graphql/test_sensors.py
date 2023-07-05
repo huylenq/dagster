@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import os
 import sys
+from typing import TYPE_CHECKING
 
 import pendulum
 import pytest
@@ -19,7 +20,6 @@ from dagster._core.scheduler.instigation import (
 )
 from dagster._core.test_utils import SingleThreadPoolExecutor, wait_for_futures
 from dagster._core.types.loadable_target_origin import LoadableTargetOrigin
-from dagster._core.workspace.context import WorkspaceRequestContext
 from dagster._daemon import get_default_daemon_logger
 from dagster._daemon.sensor import execute_sensor_iteration
 from dagster._utils import Counter, traced_counter
@@ -39,6 +39,9 @@ from .graphql_context_test_suite import (
     NonLaunchableGraphQLContextTestMatrix,
     ReadonlyGraphQLContextTestMatrix,
 )
+
+if TYPE_CHECKING:
+    from dagster._core.workspace.context import WorkspaceRequestContext
 
 GET_SENSORS_QUERY = """
 query SensorsQuery($repositorySelector: RepositorySelector!) {

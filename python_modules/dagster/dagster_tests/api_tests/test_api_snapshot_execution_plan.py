@@ -1,16 +1,19 @@
 from __future__ import annotations
 
 import re
+from typing import TYPE_CHECKING
 
 import pytest
 from dagster._api.snapshot_execution_plan import sync_get_external_execution_plan_grpc
 from dagster._core.definitions.events import AssetKey
 from dagster._core.errors import DagsterUserCodeProcessError
 from dagster._core.host_representation.handle import JobHandle
-from dagster._core.instance import DagsterInstance
 from dagster._core.snap.execution_plan_snapshot import ExecutionPlanSnapshot
 
 from .utils import get_bar_repo_code_location
+
+if TYPE_CHECKING:
+    from dagster._core.instance import DagsterInstance
 
 
 def test_execution_plan_error_grpc(instance: DagsterInstance):

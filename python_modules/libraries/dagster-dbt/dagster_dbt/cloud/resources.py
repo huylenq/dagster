@@ -2,10 +2,9 @@ from __future__ import annotations
 
 import datetime
 import json
-import logging
 import time
 from enum import Enum
-from typing import Any, Mapping, Optional, Sequence, cast
+from typing import TYPE_CHECKING, Any, Mapping, Optional, Sequence, cast
 from urllib.parse import urlencode, urljoin
 
 import requests
@@ -25,6 +24,9 @@ from pydantic import Field
 from requests.exceptions import RequestException
 
 from .types import DbtCloudOutput
+
+if TYPE_CHECKING:
+    import logging
 
 DBT_DEFAULT_HOST = "https://cloud.getdbt.com/"
 DBT_API_V2_PATH = "api/v2/accounts/"

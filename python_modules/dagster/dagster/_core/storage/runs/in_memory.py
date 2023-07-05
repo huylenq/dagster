@@ -2,18 +2,21 @@ from __future__ import annotations
 
 import uuid
 from contextlib import contextmanager
-from typing import Iterator, Optional, Sequence
+from typing import TYPE_CHECKING, Iterator, Optional, Sequence
 
 import sqlalchemy as db
-from sqlalchemy.engine import Connection
 from sqlalchemy.pool import NullPool
 
-from dagster._core.debug import DebugRunPayload
 from dagster._core.storage.sql import create_engine, get_alembic_config, stamp_alembic_rev
 from dagster._core.storage.sqlite import create_in_memory_conn_string
 
 from .schema import InstanceInfo, RunStorageSqlMetadata
 from .sql_run_storage import SqlRunStorage
+
+if TYPE_CHECKING:
+    from sqlalchemy.engine import Connection
+
+    from dagster._core.debug import DebugRunPayload
 
 
 class InMemoryRunStorage(SqlRunStorage):

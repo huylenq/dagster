@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import inspect
-from typing import Any, Callable, NamedTuple, Optional, Sequence, Set
+from typing import TYPE_CHECKING, Any, Callable, NamedTuple, Optional, Sequence, Set
 
 import dagster._check as check
 from dagster._annotations import public
@@ -17,8 +17,10 @@ from .sensor_definition import (
     SensorType,
     validate_and_get_resource_dict,
 )
-from .target import ExecutableDefinition
 from .utils import check_valid_name
+
+if TYPE_CHECKING:
+    from .target import ExecutableDefinition
 
 
 class AssetSensorParamNames(NamedTuple):

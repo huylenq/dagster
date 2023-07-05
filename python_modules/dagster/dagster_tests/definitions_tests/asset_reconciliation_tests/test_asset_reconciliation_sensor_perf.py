@@ -5,7 +5,7 @@ import random
 import tarfile
 import tempfile
 import time
-from typing import AbstractSet, NamedTuple, Optional, Sequence, Tuple
+from typing import TYPE_CHECKING, AbstractSet, NamedTuple, Optional, Sequence, Tuple
 
 import pytest
 from dagster import (
@@ -19,20 +19,22 @@ from dagster import (
 from dagster._core.definitions.asset_graph import AssetGraph
 from dagster._core.definitions.asset_out import AssetOut
 from dagster._core.definitions.asset_reconciliation_sensor import build_asset_reconciliation_sensor
-from dagster._core.definitions.assets import AssetsDefinition
 from dagster._core.definitions.decorators.asset_decorator import multi_asset
 from dagster._core.definitions.events import Output
 from dagster._core.definitions.freshness_policy import FreshnessPolicy
 from dagster._core.definitions.materialize import materialize_to_memory
-from dagster._core.definitions.partition import PartitionsDefinition
 from dagster._core.definitions.partition_key_range import PartitionKeyRange
-from dagster._core.definitions.repository_definition import RepositoryDefinition
 from dagster._core.definitions.sensor_definition import build_sensor_context
 from dagster._core.definitions.source_asset import SourceAsset
 from dagster._core.definitions.time_window_partitions import HourlyPartitionsDefinition
 from dagster._core.instance.ref import InstanceRef
 from dagster._core.types.dagster_type import Nothing
 from dagster._utils import file_relative_path
+
+if TYPE_CHECKING:
+    from dagster._core.definitions.assets import AssetsDefinition
+    from dagster._core.definitions.partition import PartitionsDefinition
+    from dagster._core.definitions.repository_definition import RepositoryDefinition
 
 
 class RandomAssets(NamedTuple):

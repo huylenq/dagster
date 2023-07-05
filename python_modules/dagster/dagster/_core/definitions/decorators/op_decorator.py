@@ -18,7 +18,6 @@ from typing import (
 )
 
 import dagster._check as check
-from dagster._config import UserConfigSchema
 from dagster._core.decorator_utils import (
     format_docstring_for_description,
     get_function_params,
@@ -36,11 +35,13 @@ from dagster._utils.backcompat import canonicalize_backcompat_args
 
 from ..input import In, InputDefinition
 from ..output import Out
-from ..policy import RetryPolicy
 from ..utils import DEFAULT_OUTPUT
 
 if TYPE_CHECKING:
+    from dagster._config import UserConfigSchema
+
     from ..op_definition import OpDefinition
+    from ..policy import RetryPolicy
 
 
 class _Op:

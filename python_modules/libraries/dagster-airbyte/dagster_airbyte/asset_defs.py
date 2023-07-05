@@ -8,6 +8,7 @@ from abc import abstractmethod
 from functools import partial
 from itertools import chain
 from typing import (
+    TYPE_CHECKING,
     Any,
     Callable,
     Dict,
@@ -39,9 +40,7 @@ from dagster._core.definitions.cacheable_assets import (
     AssetsDefinitionCacheableData,
     CacheableAssetsDefinition,
 )
-from dagster._core.definitions.events import CoercibleToAssetKeyPrefix
 from dagster._core.definitions.metadata import MetadataValue, TableSchemaMetadataValue
-from dagster._core.definitions.metadata.table import TableSchema
 from dagster._core.errors import DagsterInvalidInvocationError
 from dagster._core.execution.context.init import build_init_resource_context
 from dagster._utils.merger import merge_dicts
@@ -53,6 +52,10 @@ from dagster_airbyte.utils import (
     generate_table_schema,
     is_basic_normalization_operation,
 )
+
+if TYPE_CHECKING:
+    from dagster._core.definitions.events import CoercibleToAssetKeyPrefix
+    from dagster._core.definitions.metadata.table import TableSchema
 
 
 def _build_airbyte_asset_defn_metadata(

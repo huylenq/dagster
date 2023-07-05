@@ -1,15 +1,17 @@
 from __future__ import annotations
 
 from contextlib import contextmanager
-from typing import Iterator, Sequence
+from typing import TYPE_CHECKING, Iterator, Sequence
 
 import sqlalchemy as db
 from alembic import op
 from sqlalchemy import inspect
 
 import dagster._check as check
-from dagster._core.instance import DagsterInstance
 from dagster._core.storage.sql import get_current_timestamp
+
+if TYPE_CHECKING:
+    from dagster._core.instance import DagsterInstance
 
 
 def get_inspector():

@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import contextlib
 import re
-from typing import Any, Dict, Generator
+from typing import TYPE_CHECKING, Any, Dict, Generator
 
 import pytest
 from dagster import (
@@ -15,8 +15,10 @@ from dagster import (
 )
 from dagster._check import CheckError
 from dagster._core.errors import DagsterResourceFunctionError
-from dagster._core.execution.context.init import InitResourceContext
 from pydantic import PrivateAttr
+
+if TYPE_CHECKING:
+    from dagster._core.execution.context.init import InitResourceContext
 
 
 def test_basic_pre_teardown_after_execution() -> None:

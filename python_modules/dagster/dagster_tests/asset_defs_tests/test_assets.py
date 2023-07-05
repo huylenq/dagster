@@ -3,7 +3,7 @@ from __future__ import annotations
 import ast
 import datetime
 import tempfile
-from typing import Sequence
+from typing import TYPE_CHECKING, Sequence
 
 import pytest
 from dagster import (
@@ -42,9 +42,11 @@ from dagster._core.errors import (
     DagsterInvalidInvocationError,
     DagsterInvalidPropertyError,
 )
-from dagster._core.instance import DagsterInstance
 from dagster._core.storage.mem_io_manager import InMemoryIOManager
 from dagster._core.test_utils import instance_for_test
+
+if TYPE_CHECKING:
+    from dagster._core.instance import DagsterInstance
 
 
 def test_with_replaced_asset_keys():

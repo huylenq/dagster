@@ -7,7 +7,7 @@ import sys
 import time
 from concurrent.futures import ThreadPoolExecutor
 from contextlib import ExitStack, contextmanager
-from typing import List, Optional, Sequence, Tuple, cast
+from typing import TYPE_CHECKING, List, Optional, Sequence, Tuple, cast
 
 import mock
 import pendulum
@@ -54,7 +54,6 @@ from dagster._core.events import (
 )
 from dagster._core.events.log import EventLogEntry, construct_event_logger
 from dagster._core.execution.api import execute_run
-from dagster._core.execution.job_execution_result import JobExecutionResult
 from dagster._core.execution.plan.handle import StepHandle
 from dagster._core.execution.plan.objects import StepFailureData, StepSuccessData
 from dagster._core.execution.stats import StepEventStatus
@@ -64,7 +63,6 @@ from dagster._core.host_representation.origin import (
     InProcessCodeLocationOrigin,
 )
 from dagster._core.storage.event_log import InMemoryEventLogStorage, SqlEventLogStorage
-from dagster._core.storage.event_log.base import EventLogStorage
 from dagster._core.storage.event_log.migration import (
     EVENT_LOG_DATA_MIGRATIONS,
     migrate_asset_key_data,
@@ -79,6 +77,10 @@ from dagster._loggers import colored_console_logger
 from dagster._serdes.serdes import deserialize_value
 from dagster._utils import datetime_as_float
 from dagster._utils.concurrency import ConcurrencySlotStatus
+
+if TYPE_CHECKING:
+    from dagster._core.execution.job_execution_result import JobExecutionResult
+    from dagster._core.storage.event_log.base import EventLogStorage
 
 TEST_TIMEOUT = 5
 

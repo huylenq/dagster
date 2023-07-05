@@ -8,12 +8,13 @@ from dagster._core.host_representation import RepresentedJob
 from dagster._core.host_representation.external_data import DEFAULT_MODE_NAME
 
 from dagster_graphql.schema.errors import GrapheneModeNotFoundError
-from dagster_graphql.schema.util import ResolveInfo
 
 from .external import get_external_job_or_raise
 from .utils import JobSubsetSelector, UserFacingGraphQLError
 
 if TYPE_CHECKING:
+    from dagster_graphql.schema.util import ResolveInfo
+
     from ..schema.pipelines.config import (
         GraphenePipelineConfigValidationValid,
     )

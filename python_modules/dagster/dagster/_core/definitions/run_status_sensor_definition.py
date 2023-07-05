@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import functools
-import logging
 from contextlib import ExitStack
 from datetime import datetime
 from typing import (
@@ -20,7 +19,6 @@ from typing import (
 )
 
 import pendulum
-from typing_extensions import TypeAlias
 
 import dagster._check as check
 from dagster._annotations import public
@@ -63,16 +61,21 @@ from .sensor_definition import (
     get_sensor_context_from_args_or_kwargs,
     validate_and_get_resource_dict,
 )
-from .target import ExecutableDefinition
 from .unresolved_asset_job_definition import UnresolvedAssetJobDefinition
 
 if TYPE_CHECKING:
+    import logging
+
+    from typing_extensions import TypeAlias
+
     from dagster._core.definitions.resource_definition import ResourceDefinition
     from dagster._core.definitions.selector import (
         CodeLocationSelector,
         JobSelector,
         RepositorySelector,
     )
+
+    from .target import ExecutableDefinition
 
 RunStatusSensorEvaluationFunction: TypeAlias = Union[
     Callable[..., RawSensorEvaluationFunctionReturn],

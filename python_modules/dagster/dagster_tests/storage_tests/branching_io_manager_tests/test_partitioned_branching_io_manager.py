@@ -2,13 +2,16 @@ from __future__ import annotations
 
 import math
 import time
+from typing import TYPE_CHECKING
 
 from dagster import DagsterInstance, Definitions, asset
-from dagster._core.definitions.assets import AssetsDefinition
 from dagster._core.definitions.partition import StaticPartitionsDefinition
 from dagster._core.storage.branching.branching_io_manager import BranchingIOManager
 
 from .utils import AssetBasedInMemoryIOManager, DefinitionsRunner
+
+if TYPE_CHECKING:
+    from dagster._core.definitions.assets import AssetsDefinition
 
 partitioning_scheme = StaticPartitionsDefinition(["A", "B", "C"])
 

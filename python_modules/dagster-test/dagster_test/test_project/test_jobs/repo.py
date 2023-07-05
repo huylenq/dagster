@@ -6,7 +6,7 @@ import random
 import time
 from collections import defaultdict
 from contextlib import contextmanager
-from typing import Any, Callable, Mapping, Optional, Union
+from typing import TYPE_CHECKING, Any, Callable, Mapping, Optional, Union
 
 import boto3
 from dagster import (
@@ -28,16 +28,18 @@ from dagster import (
     resource,
 )
 from dagster._core.definitions.decorators import schedule
-from dagster._core.definitions.graph_definition import GraphDefinition
-from dagster._core.definitions.job_definition import JobDefinition
 from dagster._core.definitions.output import Out
-from dagster._core.definitions.resource_definition import ResourceDefinition
 from dagster._core.test_utils import nesting_graph
 from dagster._utils import segfault
 from dagster._utils.merger import merge_dicts
 from dagster._utils.yaml_utils import merge_yamls
 from dagster_aws.s3 import s3_pickle_io_manager, s3_resource
 from dagster_gcp.gcs import gcs_pickle_io_manager, gcs_resource
+
+if TYPE_CHECKING:
+    from dagster._core.definitions.graph_definition import GraphDefinition
+    from dagster._core.definitions.job_definition import JobDefinition
+    from dagster._core.definitions.resource_definition import ResourceDefinition
 
 IS_BUILDKITE = bool(os.getenv("BUILDKITE"))
 

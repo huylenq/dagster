@@ -4,17 +4,17 @@ import re
 from typing import TYPE_CHECKING, Dict, Mapping, Optional
 
 import dagster._check as check
-from dagster._core.definitions.job_definition import JobDefinition
 from dagster._core.definitions.version_strategy import OpVersionContext, ResourceVersionContext
 from dagster._core.errors import DagsterInvariantViolationError
 from dagster._core.execution.plan.outputs import StepOutputHandle
 from dagster._core.execution.plan.step import is_executable_step
-from dagster._core.system_config.objects import ResolvedRunConfig
 
 from .plan.inputs import join_and_hash
 
 if TYPE_CHECKING:
+    from dagster._core.definitions.job_definition import JobDefinition
     from dagster._core.execution.plan.plan import ExecutionPlan
+    from dagster._core.system_config.objects import ResolvedRunConfig
 
 VALID_VERSION_REGEX_STR = r"^[A-Za-z0-9_]+$"
 VALID_VERSION_REGEX = re.compile(VALID_VERSION_REGEX_STR)

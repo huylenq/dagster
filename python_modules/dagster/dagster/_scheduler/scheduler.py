@@ -1,28 +1,21 @@
 from __future__ import annotations
 
 import datetime
-import logging
 import os
 import sys
 import threading
 import time
 from collections import defaultdict
-from concurrent.futures import Future, ThreadPoolExecutor
 from contextlib import ExitStack
 from typing import TYPE_CHECKING, Dict, List, Mapping, NamedTuple, Optional, cast
 
 import pendulum
 
 import dagster._check as check
-from dagster._core.definitions.run_request import RunRequest
 from dagster._core.definitions.schedule_definition import DefaultScheduleStatus
 from dagster._core.definitions.selector import JobSubsetSelector
 from dagster._core.definitions.utils import validate_tags
 from dagster._core.errors import DagsterUserCodeUnreachableError
-from dagster._core.host_representation import ExternalSchedule
-from dagster._core.host_representation.code_location import CodeLocation
-from dagster._core.host_representation.external import ExternalJob
-from dagster._core.instance import DagsterInstance
 from dagster._core.scheduler.instigation import (
     InstigatorState,
     InstigatorStatus,
@@ -37,18 +30,26 @@ from dagster._core.storage.dagster_run import DagsterRun, DagsterRunStatus, Runs
 from dagster._core.storage.tags import RUN_KEY_TAG, SCHEDULED_EXECUTION_TIME_TAG
 from dagster._core.telemetry import SCHEDULED_RUN_CREATED, hash_name, log_action
 from dagster._core.utils import InheritContextThreadPoolExecutor
-from dagster._core.workspace.context import IWorkspaceProcessContext
 from dagster._scheduler.stale import resolve_stale_or_missing_assets
 from dagster._seven.compat.pendulum import to_timezone
-from dagster._utils import DebugCrashFlags, SingleInstigatorDebugCrashFlags
 from dagster._utils.error import SerializableErrorInfo, serializable_error_info_from_exc_info
 from dagster._utils.log import default_date_format_string
 from dagster._utils.merger import merge_dicts
 
 if TYPE_CHECKING:
+    import logging
+    from concurrent.futures import Future, ThreadPoolExecutor
+
     from pendulum.datetime import DateTime
 
+    from dagster._core.definitions.run_request import RunRequest
+    from dagster._core.host_representation import ExternalSchedule
+    from dagster._core.host_representation.code_location import CodeLocation
+    from dagster._core.host_representation.external import ExternalJob
+    from dagster._core.instance import DagsterInstance
+    from dagster._core.workspace.context import IWorkspaceProcessContext
     from dagster._daemon.daemon import DaemonIterator
+    from dagster._utils import DebugCrashFlags, SingleInstigatorDebugCrashFlags
 
 
 # how often do we update the job row in the database with the last iteration timestamp.  This

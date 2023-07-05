@@ -1,18 +1,20 @@
 from __future__ import annotations
 
 import string
-from typing import Optional
+from typing import TYPE_CHECKING, Optional
 
 import pytest
 from click.testing import CliRunner
 from dagster._cli.job import execute_backfill_command, job_backfill_command
-from dagster._cli.workspace.cli_target import ClickArgMapping
-from dagster._core.instance import DagsterInstance
 from dagster._core.test_utils import instance_for_test
 from dagster._utils import file_relative_path
 from dagster._utils.merger import merge_dicts
 
 from .test_cli_commands import BackfillCommandTestContext, backfill_command_contexts
+
+if TYPE_CHECKING:
+    from dagster._cli.workspace.cli_target import ClickArgMapping
+    from dagster._core.instance import DagsterInstance
 
 
 def run_test_backfill(

@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Any, Mapping, NamedTuple, Optional, Sequence, Type, Union
+from typing import TYPE_CHECKING, Any, Mapping, NamedTuple, Optional, Sequence, Type, Union
 
 import dagster._check as check
 from dagster._annotations import PublicAttr
@@ -12,10 +12,12 @@ from dagster._core.definitions.events import (
 )
 from dagster._core.definitions.freshness_policy import FreshnessPolicy
 from dagster._core.definitions.input import NoValueSentinel
-from dagster._core.definitions.metadata import MetadataUserInput
 from dagster._core.definitions.output import Out
 from dagster._core.definitions.utils import DEFAULT_IO_MANAGER_KEY
 from dagster._core.types.dagster_type import DagsterType, resolve_dagster_type
+
+if TYPE_CHECKING:
+    from dagster._core.definitions.metadata import MetadataUserInput
 
 
 class AssetOut(

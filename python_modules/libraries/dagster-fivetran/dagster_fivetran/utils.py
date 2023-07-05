@@ -1,13 +1,15 @@
 from __future__ import annotations
 
-from typing import Any, Dict, Iterator, Mapping, Optional, Sequence
+from typing import TYPE_CHECKING, Any, Dict, Iterator, Mapping, Optional, Sequence
 
 import dagster._check as check
 from dagster import AssetMaterialization, MetadataValue
-from dagster._core.definitions.metadata import MetadataUserInput
 from dagster._core.definitions.metadata.table import TableColumn, TableSchema
 
-from dagster_fivetran.types import FivetranOutput
+if TYPE_CHECKING:
+    from dagster._core.definitions.metadata import MetadataUserInput
+
+    from dagster_fivetran.types import FivetranOutput
 
 
 def get_fivetran_connector_url(connector_details: Mapping[str, Any]) -> str:

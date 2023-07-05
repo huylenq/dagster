@@ -2,8 +2,7 @@ from __future__ import annotations
 
 import abc
 from contextlib import contextmanager
-from logging import Logger
-from typing import Any, Dict, Optional, cast
+from typing import TYPE_CHECKING, Any, Dict, Optional, cast
 
 import psycopg2
 import psycopg2.extensions
@@ -16,6 +15,9 @@ from dagster import (
 from dagster._annotations import deprecated
 from dagster._core.definitions.resource_definition import dagster_maintained_resource
 from pydantic import Field
+
+if TYPE_CHECKING:
+    from logging import Logger
 
 
 class RedshiftError(Exception):

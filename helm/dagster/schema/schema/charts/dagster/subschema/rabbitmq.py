@@ -1,8 +1,11 @@
 from __future__ import annotations
 
+from typing import TYPE_CHECKING
+
 from pydantic import BaseModel, Field
 
-from ...utils.kubernetes import ExternalImage
+if TYPE_CHECKING:
+    from ...utils.kubernetes import ExternalImage
 
 
 class RabbitMQConfiguration(BaseModel):

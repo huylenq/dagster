@@ -3,7 +3,7 @@ from __future__ import annotations
 import os
 import pickle
 import re
-from typing import Optional, Sequence
+from typing import TYPE_CHECKING, Optional, Sequence
 
 import pytest
 from dagster import (
@@ -34,14 +34,16 @@ from dagster._core.definitions.reconstruct import (
     ReconstructableJob,
     ReconstructableRepository,
 )
-from dagster._core.definitions.repository_definition.valid_definitions import (
-    PendingRepositoryListDefinition,
-)
-from dagster._core.events import DagsterEvent
 from dagster._core.execution.api import create_execution_plan, execute_plan
 from dagster._core.instance import DagsterInstance
 from dagster._core.system_config.objects import ResolvedRunConfig
 from dagster._core.test_utils import instance_for_test
+
+if TYPE_CHECKING:
+    from dagster._core.definitions.repository_definition.valid_definitions import (
+        PendingRepositoryListDefinition,
+    )
+    from dagster._core.events import DagsterEvent
 
 
 def define_inty_job(using_file_system=False):

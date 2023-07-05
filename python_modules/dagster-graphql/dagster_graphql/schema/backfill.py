@@ -16,7 +16,6 @@ from dagster._core.execution.backfill import (
     BulkActionStatus,
     PartitionBackfill,
 )
-from dagster._core.host_representation.external import ExternalPartitionSet
 from dagster._core.storage.dagster_run import RunPartitionData, RunRecord, RunsFilter
 from dagster._core.storage.tags import BACKFILL_ID_TAG
 from dagster._core.workspace.permissions import Permissions
@@ -42,6 +41,8 @@ from .pipelines.config import GrapheneRunConfigValidationInvalid
 from .util import ResolveInfo, non_null_list
 
 if TYPE_CHECKING:
+    from dagster._core.host_representation.external import ExternalPartitionSet
+
     from dagster_graphql.schema.partition_sets import (
         GraphenePartitionStatusCounts,
     )

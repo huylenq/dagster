@@ -7,9 +7,7 @@ import time
 from abc import abstractmethod
 from collections import defaultdict
 from contextlib import contextmanager
-from typing import IO, Iterator, Optional, Sequence, Union
-
-from typing_extensions import TypeAlias
+from typing import IO, TYPE_CHECKING, Iterator, Optional, Sequence, Union
 
 from dagster import _check as check
 from dagster._core.instance import T_DagsterInstance
@@ -31,6 +29,9 @@ from dagster._core.storage.local_compute_log_manager import (
     IO_TYPE_EXTENSION,
     LocalComputeLogManager,
 )
+
+if TYPE_CHECKING:
+    from typing_extensions import TypeAlias
 
 SUBSCRIPTION_POLLING_INTERVAL = 5
 

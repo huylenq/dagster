@@ -1,12 +1,16 @@
 from __future__ import annotations
 
-from dagster._core.workspace.context import WorkspaceRequestContext
+from typing import TYPE_CHECKING
+
 from dagster_graphql.test.utils import infer_pipeline_selector
 
 from dagster_graphql_tests.graphql.repo import LONG_INT
 
 from .graphql_context_test_suite import ExecutingGraphQLContextTestMatrix
 from .utils import sync_execute_get_events
+
+if TYPE_CHECKING:
+    from dagster._core.workspace.context import WorkspaceRequestContext
 
 
 class TestMaterializations(ExecutingGraphQLContextTestMatrix):

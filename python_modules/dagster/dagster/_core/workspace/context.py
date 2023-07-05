@@ -10,15 +10,12 @@ from contextlib import ExitStack
 from itertools import count
 from typing import TYPE_CHECKING, Any, Dict, Mapping, Optional, Sequence, Set, TypeVar, Union
 
-from typing_extensions import Self
-
 import dagster._check as check
 from dagster._core.definitions.selector import JobSubsetSelector
 from dagster._core.errors import (
     DagsterCodeLocationLoadError,
     DagsterCodeLocationNotFoundError,
 )
-from dagster._core.execution.plan.state import KnownExecutionState
 from dagster._core.host_representation import (
     CodeLocation,
     CodeLocationOrigin,
@@ -58,6 +55,9 @@ from .workspace import (
 )
 
 if TYPE_CHECKING:
+    from typing_extensions import Self
+
+    from dagster._core.execution.plan.state import KnownExecutionState
     from dagster._core.host_representation import (
         ExternalPartitionConfigData,
         ExternalPartitionExecutionErrorData,

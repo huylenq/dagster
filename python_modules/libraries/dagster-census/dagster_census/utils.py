@@ -1,10 +1,11 @@
 from __future__ import annotations
 
-from typing import Sequence
+from typing import TYPE_CHECKING, Sequence
 
 from dagster import AssetMaterialization
 
-from .types import CensusOutput
+if TYPE_CHECKING:
+    from .types import CensusOutput
 
 
 def generate_materialization(

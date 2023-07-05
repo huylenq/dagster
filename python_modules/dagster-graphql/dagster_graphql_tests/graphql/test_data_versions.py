@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Any, Mapping, Optional, Sequence, cast
+from typing import TYPE_CHECKING, Any, Mapping, Optional, Sequence, cast
 
 from dagster import (
     AssetIn,
@@ -19,7 +19,6 @@ from dagster._core.definitions.events import AssetKey
 from dagster._core.definitions.partition import StaticPartitionsDefinition
 from dagster._core.definitions.unresolved_asset_job_definition import define_asset_job
 from dagster._core.test_utils import instance_for_test, wait_for_runs_to_finish
-from dagster._core.workspace.context import WorkspaceRequestContext
 from dagster_graphql.client.query import LAUNCH_PIPELINE_EXECUTION_MUTATION
 from dagster_graphql.test.utils import (
     GqlAssetKey,
@@ -31,6 +30,9 @@ from dagster_graphql.test.utils import (
 )
 
 from dagster_graphql_tests.graphql.test_assets import GET_ASSET_DATA_VERSIONS, GET_ASSET_JOB_NAMES
+
+if TYPE_CHECKING:
+    from dagster._core.workspace.context import WorkspaceRequestContext
 
 
 def get_repo_v1():

@@ -17,13 +17,13 @@ from typing import (
     Union,
 )
 
-from typing_extensions import Final
-
 from dagster import _check as check
 from dagster._annotations import deprecated, experimental
 from dagster._utils.cached_method import cached_method
 
 if TYPE_CHECKING:
+    from typing_extensions import Final
+
     from dagster._core.definitions.asset_graph import AssetGraph
     from dagster._core.definitions.events import AssetKey
     from dagster._core.events.log import EventLogEntry

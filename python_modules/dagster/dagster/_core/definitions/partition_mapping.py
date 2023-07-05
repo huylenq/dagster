@@ -5,8 +5,8 @@ import itertools
 import warnings
 from abc import ABC, abstractmethod
 from collections import defaultdict
-from datetime import datetime
 from typing import (
+    TYPE_CHECKING,
     Collection,
     Dict,
     List,
@@ -34,10 +34,14 @@ from dagster._core.definitions.partition import (
 )
 from dagster._core.definitions.partition_key_range import PartitionKeyRange
 from dagster._core.definitions.time_window_partitions import TimeWindowPartitionsDefinition
-from dagster._core.instance import DynamicPartitionsStore
 from dagster._serdes import whitelist_for_serdes
 from dagster._utils.backcompat import ExperimentalWarning
 from dagster._utils.cached_method import cached_method
+
+if TYPE_CHECKING:
+    from datetime import datetime
+
+    from dagster._core.instance import DynamicPartitionsStore
 
 
 class UpstreamPartitionsResult(NamedTuple):

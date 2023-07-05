@@ -4,8 +4,6 @@ from abc import abstractmethod
 from functools import update_wrapper
 from typing import TYPE_CHECKING, AbstractSet, Any, Callable, Optional, Set, Union, cast, overload
 
-from typing_extensions import TypeAlias, TypeGuard
-
 import dagster._check as check
 from dagster._annotations import public
 from dagster._config import UserConfigSchema
@@ -23,6 +21,8 @@ from dagster._core.storage.root_input_manager import IInputManagerDefinition
 from ..decorator_utils import get_function_params
 
 if TYPE_CHECKING:
+    from typing_extensions import TypeAlias, TypeGuard
+
     from dagster._core.execution.context.init import InitResourceContext
     from dagster._core.execution.context.input import InputContext
     from dagster._core.execution.context.output import OutputContext

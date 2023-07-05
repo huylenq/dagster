@@ -5,14 +5,16 @@ import inspect
 import os
 import sys
 from abc import ABC, abstractmethod
-from types import ModuleType
-from typing import Callable, List, NamedTuple, Optional, Sequence, cast
+from typing import TYPE_CHECKING, Callable, List, NamedTuple, Optional, Sequence, cast
 
 import dagster._check as check
 from dagster._core.errors import DagsterImportError, DagsterInvariantViolationError
 from dagster._serdes import whitelist_for_serdes
 from dagster._seven import get_import_error_message, import_module_from_path
 from dagster._utils import alter_sys_path, hash_collection
+
+if TYPE_CHECKING:
+    from types import ModuleType
 
 
 class CodePointer(ABC):

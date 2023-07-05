@@ -1,17 +1,19 @@
 from __future__ import annotations
 
-from typing import AbstractSet, Mapping, Optional, Union, overload
+from typing import TYPE_CHECKING, AbstractSet, Mapping, Optional, Union, overload
 
 import dagster._check as check
 from dagster._annotations import experimental
 from dagster._core.definitions.events import AssetKey, CoercibleToAssetKeyPrefix
-from dagster._core.definitions.metadata import (
-    MetadataUserInput,
-)
-from dagster._core.definitions.partition import PartitionsDefinition
 from dagster._core.definitions.resource_annotation import get_resource_args
-from dagster._core.definitions.resource_definition import ResourceDefinition
 from dagster._core.definitions.source_asset import SourceAsset, SourceAssetObserveFunction
+
+if TYPE_CHECKING:
+    from dagster._core.definitions.metadata import (
+        MetadataUserInput,
+    )
+    from dagster._core.definitions.partition import PartitionsDefinition
+    from dagster._core.definitions.resource_definition import ResourceDefinition
 
 
 @overload

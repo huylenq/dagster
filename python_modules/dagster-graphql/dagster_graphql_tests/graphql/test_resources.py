@@ -1,7 +1,11 @@
 from __future__ import annotations
 
-from dagster._core.workspace.context import WorkspaceRequestContext
+from typing import TYPE_CHECKING
+
 from dagster_graphql.test.utils import execute_dagster_graphql, infer_pipeline_selector
+
+if TYPE_CHECKING:
+    from dagster._core.workspace.context import WorkspaceRequestContext
 
 RESOURCE_QUERY = """
 query ResourceQuery($selector: PipelineSelector!) {

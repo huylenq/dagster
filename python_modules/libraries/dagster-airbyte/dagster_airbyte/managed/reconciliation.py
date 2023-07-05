@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from typing import (
+    TYPE_CHECKING,
     Any,
     Callable,
     Dict,
@@ -17,10 +18,6 @@ from typing import (
 import dagster._check as check
 from dagster import AssetKey
 from dagster._annotations import experimental, public
-from dagster._core.definitions.cacheable_assets import CacheableAssetsDefinition
-from dagster._core.definitions.events import CoercibleToAssetKeyPrefix
-from dagster._core.definitions.freshness_policy import FreshnessPolicy
-from dagster._core.definitions.resource_definition import ResourceDefinition
 from dagster._core.execution.context.init import build_init_resource_context
 from dagster._utils.merger import deep_merge_dicts
 from dagster_managed_elements import (
@@ -52,6 +49,12 @@ from dagster_airbyte.managed.types import (
 )
 from dagster_airbyte.resources import AirbyteResource
 from dagster_airbyte.utils import is_basic_normalization_operation
+
+if TYPE_CHECKING:
+    from dagster._core.definitions.cacheable_assets import CacheableAssetsDefinition
+    from dagster._core.definitions.events import CoercibleToAssetKeyPrefix
+    from dagster._core.definitions.freshness_policy import FreshnessPolicy
+    from dagster._core.definitions.resource_definition import ResourceDefinition
 
 
 def gen_configured_stream_json(

@@ -5,8 +5,10 @@ import importlib.util
 import sys
 from importlib.abc import Loader, MetaPathFinder
 from importlib.machinery import ModuleSpec, PathFinder
-from types import ModuleType
-from typing import Mapping, Optional, Sequence, Union
+from typing import TYPE_CHECKING, Mapping, Optional, Sequence, Union
+
+if TYPE_CHECKING:
+    from types import ModuleType
 
 
 # The AliasedModuleFinder should be inserted in front of the built-in PathFinder.

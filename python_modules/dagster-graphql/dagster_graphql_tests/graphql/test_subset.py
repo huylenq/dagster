@@ -1,11 +1,13 @@
 from __future__ import annotations
 
-from typing import AbstractSet, Any, Mapping
+from typing import TYPE_CHECKING, AbstractSet, Any, Mapping
 
-from dagster._core.workspace.context import WorkspaceRequestContext
 from dagster_graphql.test.utils import GqlResult, execute_dagster_graphql, infer_pipeline_selector
 
 from .graphql_context_test_suite import NonLaunchableGraphQLContextTestMatrix
+
+if TYPE_CHECKING:
+    from dagster._core.workspace.context import WorkspaceRequestContext
 
 SCHEMA_OR_ERROR_SUBSET_QUERY = """
 query EnvironmentQuery($selector: PipelineSelector!){

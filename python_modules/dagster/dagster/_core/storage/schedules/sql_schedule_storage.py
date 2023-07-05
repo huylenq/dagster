@@ -4,6 +4,7 @@ from abc import abstractmethod
 from collections import defaultdict
 from datetime import datetime
 from typing import (
+    TYPE_CHECKING,
     Any,
     Callable,
     ContextManager,
@@ -19,11 +20,8 @@ from typing import (
 import pendulum
 import sqlalchemy as db
 import sqlalchemy.exc as db_exc
-from sqlalchemy.engine import Connection
 
 import dagster._check as check
-from dagster._core.definitions.asset_reconciliation_sensor import AutoMaterializeAssetEvaluation
-from dagster._core.definitions.events import AssetKey
 from dagster._core.definitions.run_request import InstigatorType
 from dagster._core.errors import DagsterInvariantViolationError
 from dagster._core.scheduler.instigation import (
@@ -34,7 +32,6 @@ from dagster._core.scheduler.instigation import (
     TickData,
     TickStatus,
 )
-from dagster._core.storage.sql import SqlAlchemyQuery, SqlAlchemyRow
 from dagster._core.storage.sqlalchemy_compat import db_fetch_mappings, db_select, db_subquery
 from dagster._serdes import serialize_value
 from dagster._serdes.serdes import deserialize_value
@@ -54,6 +51,13 @@ from .schema import (
     JobTickTable,
     SecondaryIndexMigrationTable,
 )
+
+if TYPE_CHECKING:
+    from sqlalchemy.engine import Connection
+
+    from dagster._core.definitions.asset_reconciliation_sensor import AutoMaterializeAssetEvaluation
+    from dagster._core.definitions.events import AssetKey
+    from dagster._core.storage.sql import SqlAlchemyQuery, SqlAlchemyRow
 
 T_NamedTuple = TypeVar("T_NamedTuple", bound=NamedTuple)
 

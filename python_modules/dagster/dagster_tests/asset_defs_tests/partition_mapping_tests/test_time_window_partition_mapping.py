@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from datetime import datetime, timezone
-from typing import Optional, Sequence
+from typing import TYPE_CHECKING, Optional, Sequence
 
 import pendulum
 import pytest
@@ -15,7 +15,9 @@ from dagster import (
     WeeklyPartitionsDefinition,
 )
 from dagster._core.definitions.partition_key_range import PartitionKeyRange
-from dagster._core.definitions.time_window_partitions import TimeWindowPartitionsSubset
+
+if TYPE_CHECKING:
+    from dagster._core.definitions.time_window_partitions import TimeWindowPartitionsSubset
 
 
 def subset_with_keys(partitions_def: TimeWindowPartitionsDefinition, keys: Sequence[str]):

@@ -5,10 +5,9 @@ import signal
 import subprocess
 import sys
 from contextlib import contextmanager
-from io import TextIOWrapper
 from subprocess import Popen
 from time import sleep
-from typing import Iterator, NamedTuple, Optional, Sequence, Tuple
+from typing import TYPE_CHECKING, Iterator, NamedTuple, Optional, Sequence, Tuple
 
 import dagster._check as check
 from dagster._core.errors import DagsterError
@@ -22,6 +21,9 @@ from dagster._utils.error import (
     SerializableErrorInfo,
     serializable_error_info_from_exc_info,
 )
+
+if TYPE_CHECKING:
+    from io import TextIOWrapper
 
 
 def write_unary_input(input_file: str, obj: NamedTuple) -> None:

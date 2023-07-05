@@ -1,11 +1,13 @@
 from __future__ import annotations
 
 import threading
-from typing import Callable, List, MutableMapping, NamedTuple, Optional
+from typing import TYPE_CHECKING, Callable, List, MutableMapping, NamedTuple, Optional
 
 import dagster._check as check
-from dagster._core.events.log import EventLogEntry
 from dagster._core.storage.event_log.base import EventLogCursor, EventLogStorage
+
+if TYPE_CHECKING:
+    from dagster._core.events.log import EventLogEntry
 
 INIT_POLL_PERIOD = 0.250  # 250ms
 MAX_POLL_PERIOD = 16.0  # 16s

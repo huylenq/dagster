@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import datetime
 import sys
 import threading
 from abc import abstractmethod
@@ -22,13 +21,10 @@ from dagster._api.snapshot_partition import (
 from dagster._api.snapshot_repository import sync_get_streaming_external_repositories_data_grpc
 from dagster._api.snapshot_schedule import sync_get_external_schedule_execution_data_grpc
 from dagster._core.code_pointer import CodePointer
-from dagster._core.definitions.reconstruct import ReconstructableJob
-from dagster._core.definitions.repository_definition import RepositoryDefinition
 from dagster._core.definitions.selector import JobSubsetSelector
 from dagster._core.errors import DagsterInvariantViolationError, DagsterUserCodeProcessError
 from dagster._core.execution.api import create_execution_plan
 from dagster._core.execution.plan.state import KnownExecutionState
-from dagster._core.host_representation import ExternalJobSubsetResult
 from dagster._core.host_representation.external import (
     ExternalExecutionPlan,
     ExternalJob,
@@ -66,9 +62,14 @@ from dagster._seven.compat.pendulum import PendulumDateTime
 from dagster._utils.merger import merge_dicts
 
 if TYPE_CHECKING:
+    import datetime
+
+    from dagster._core.definitions.reconstruct import ReconstructableJob
+    from dagster._core.definitions.repository_definition import RepositoryDefinition
     from dagster._core.definitions.schedule_definition import ScheduleExecutionData
     from dagster._core.definitions.sensor_definition import SensorExecutionData
     from dagster._core.host_representation import (
+        ExternalJobSubsetResult,
         ExternalPartitionConfigData,
         ExternalPartitionExecutionErrorData,
         ExternalPartitionSetExecutionParamData,

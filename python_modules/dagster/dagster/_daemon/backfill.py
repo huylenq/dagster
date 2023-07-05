@@ -1,14 +1,17 @@
 from __future__ import annotations
 
-import logging
 import sys
-from typing import Iterable, Mapping, Optional, cast
+from typing import TYPE_CHECKING, Iterable, Mapping, Optional, cast
 
 from dagster._core.execution.asset_backfill import execute_asset_backfill_iteration
 from dagster._core.execution.backfill import BulkActionStatus, PartitionBackfill
 from dagster._core.execution.job_backfill import execute_job_backfill_iteration
-from dagster._core.workspace.context import IWorkspaceProcessContext
 from dagster._utils.error import SerializableErrorInfo, serializable_error_info_from_exc_info
+
+if TYPE_CHECKING:
+    import logging
+
+    from dagster._core.workspace.context import IWorkspaceProcessContext
 
 
 def execute_backfill_iteration(

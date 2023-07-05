@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import datetime
-from typing import AbstractSet, NamedTuple, Optional
+from typing import TYPE_CHECKING, AbstractSet, NamedTuple, Optional
 
 import pendulum
 
@@ -14,7 +14,8 @@ from dagster._utils.schedules import (
     reverse_cron_string_iterator,
 )
 
-from .events import AssetKey
+if TYPE_CHECKING:
+    from .events import AssetKey
 
 
 class FreshnessConstraint(NamedTuple):

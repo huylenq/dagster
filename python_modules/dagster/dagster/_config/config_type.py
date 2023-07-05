@@ -7,10 +7,11 @@ from typing import TYPE_CHECKING, Dict, Iterator, Optional, Sequence, cast
 import dagster._check as check
 from dagster._annotations import public
 from dagster._builtins import BuiltinEnum
-from dagster._config import UserConfigSchema
 from dagster._serdes import whitelist_for_serdes
 
 if TYPE_CHECKING:
+    from dagster._config import UserConfigSchema
+
     from .snap import ConfigSchemaSnapshot, ConfigTypeSnap
 
 

@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Optional
+from typing import TYPE_CHECKING, Optional
 
 import pendulum
 
@@ -11,11 +11,13 @@ from dagster._core.definitions.asset_reconciliation_sensor import (
 )
 from dagster._core.definitions.external_asset_graph import ExternalAssetGraph
 from dagster._core.definitions.selector import JobSubsetSelector
-from dagster._core.instance import DagsterInstance
 from dagster._core.storage.dagster_run import DagsterRunStatus
 from dagster._core.storage.tags import AUTO_MATERIALIZE_TAG
-from dagster._core.workspace.context import IWorkspaceProcessContext
 from dagster._daemon.daemon import DaemonIterator, IntervalDaemon
+
+if TYPE_CHECKING:
+    from dagster._core.instance import DagsterInstance
+    from dagster._core.workspace.context import IWorkspaceProcessContext
 
 CURSOR_KEY = "ASSET_DAEMON_CURSOR"
 ASSET_DAEMON_PAUSED_KEY = "ASSET_DAEMON_PAUSED"

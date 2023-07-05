@@ -560,8 +560,6 @@ from typing import (
     Tuple as TypingTuple,
 )
 
-from typing_extensions import Final
-
 from dagster._utils.backcompat import deprecation_warning, rename_warning
 
 # NOTE: Unfortunately we have to declare deprecated aliases twice-- the
@@ -576,6 +574,8 @@ if TYPE_CHECKING:
 
     # JobExecutionResult used to be called ExecuteJobResult because it was only returned from
     # `execute_job`.
+    from typing_extensions import Final
+
     from dagster._core.execution.job_execution_result import (
         JobExecutionResult as ExecuteJobResult,  # noqa: F401
     )

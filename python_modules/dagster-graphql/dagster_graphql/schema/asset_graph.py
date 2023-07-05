@@ -19,7 +19,6 @@ from dagster._core.errors import DagsterInvariantViolationError
 from dagster._core.event_api import EventRecordsFilter
 from dagster._core.events import DagsterEventType
 from dagster._core.host_representation import CodeLocation, ExternalRepository
-from dagster._core.host_representation.external import ExternalJob
 from dagster._core.host_representation.external_data import (
     ExternalAssetNode,
     ExternalDynamicPartitionsDefinitionData,
@@ -85,6 +84,8 @@ from .pipelines.pipeline import (
 from .util import ResolveInfo, non_null_list
 
 if TYPE_CHECKING:
+    from dagster._core.host_representation.external import ExternalJob
+
     from .external import GrapheneRepository
 
 GrapheneAssetStaleStatus = graphene.Enum.from_enum(StaleStatus, name="StaleStatus")

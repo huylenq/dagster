@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import pickle
 from contextlib import contextmanager
-from typing import Any, Iterator, Union
+from typing import TYPE_CHECKING, Any, Iterator, Union
 
 from dagster import (
     InputContext,
@@ -19,8 +19,10 @@ from dagster._utils.cached_method import cached_method
 from pydantic import Field
 from upath import UPath
 
-from dagster_azure.adls2.resources import ADLS2Resource
 from dagster_azure.adls2.utils import ResourceNotFoundError
+
+if TYPE_CHECKING:
+    from dagster_azure.adls2.resources import ADLS2Resource
 
 _LEASE_DURATION = 60  # One minute
 

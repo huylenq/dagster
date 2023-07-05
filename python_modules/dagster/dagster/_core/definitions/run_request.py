@@ -1,25 +1,26 @@
 from __future__ import annotations
 
-from datetime import datetime
 from enum import Enum
 from typing import TYPE_CHECKING, Any, Mapping, NamedTuple, Optional, Sequence, Set, Union, cast
 
 import dagster._check as check
 from dagster._annotations import PublicAttr, experimental
 from dagster._core.definitions.events import AssetKey
-from dagster._core.instance import DynamicPartitionsStore
 from dagster._core.storage.dagster_run import DagsterRun, DagsterRunStatus
 from dagster._core.storage.tags import PARTITION_NAME_TAG
 from dagster._serdes.serdes import whitelist_for_serdes
 from dagster._utils.error import SerializableErrorInfo
 
 if TYPE_CHECKING:
+    from datetime import datetime
+
     from dagster._core.definitions.job_definition import JobDefinition
     from dagster._core.definitions.partition import PartitionsDefinition
     from dagster._core.definitions.run_config import RunConfig
     from dagster._core.definitions.unresolved_asset_job_definition import (
         UnresolvedAssetJobDefinition,
     )
+    from dagster._core.instance import DynamicPartitionsStore
 
 
 @whitelist_for_serdes(old_storage_names={"JobType"})
@@ -194,7 +195,7 @@ class RunRequest(
                     f" '{target_definition.name}' is unpartitioned."
                 ),
             )
-        partitions_def = cast(PartitionsDefinition, partitions_def)
+        partitions_def = cast("PartitionsDefinition", partitions_def)
 
         partitioned_config = (
             target_definition.partitioned_config

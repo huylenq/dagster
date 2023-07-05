@@ -1,9 +1,7 @@
 from __future__ import annotations
 
-from typing import AbstractSet, List, Mapping, Optional, Set, Tuple
+from typing import TYPE_CHECKING, AbstractSet, List, Mapping, Optional, Set, Tuple
 
-from airflow.models.connection import Connection
-from airflow.models.dag import DAG
 from dagster import (
     AssetKey,
     AssetsDefinition,
@@ -19,6 +17,10 @@ from dagster_airflow.utils import (
     DagsterAirflowError,
     normalized_name,
 )
+
+if TYPE_CHECKING:
+    from airflow.models.connection import Connection
+    from airflow.models.dag import DAG
 
 
 def _build_asset_dependencies(

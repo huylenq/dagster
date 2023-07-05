@@ -26,7 +26,6 @@ from dagster import (
     MultiPartitionsDefinition,
     _check as check,
 )
-from dagster._core.definitions.data_time import CachingDataTimeResolver
 from dagster._core.definitions.external_asset_graph import ExternalAssetGraph
 from dagster._core.definitions.multi_dimensional_partitions import (
     MultiPartitionsSubset,
@@ -44,11 +43,6 @@ from dagster._core.definitions.time_window_partitions import (
     fetch_flattened_time_window_ranges,
 )
 from dagster._core.events import ASSET_EVENTS
-from dagster._core.events.log import EventLogEntry
-from dagster._core.host_representation.code_location import CodeLocation
-from dagster._core.host_representation.external import ExternalRepository
-from dagster._core.host_representation.external_data import ExternalAssetNode
-from dagster._core.instance import DynamicPartitionsStore
 from dagster._core.storage.partition_status_cache import (
     build_failed_and_in_progress_partition_subset,
     get_and_update_asset_status_cache_value,
@@ -63,6 +57,13 @@ from dagster_graphql.implementation.loader import (
 )
 
 if TYPE_CHECKING:
+    from dagster._core.definitions.data_time import CachingDataTimeResolver
+    from dagster._core.events.log import EventLogEntry
+    from dagster._core.host_representation.code_location import CodeLocation
+    from dagster._core.host_representation.external import ExternalRepository
+    from dagster._core.host_representation.external_data import ExternalAssetNode
+    from dagster._core.instance import DynamicPartitionsStore
+
     from ..schema.asset_graph import GrapheneAssetNode, GrapheneAssetNodeDefinitionCollision
     from ..schema.errors import GrapheneAssetNotFoundError
     from ..schema.freshness_policy import GrapheneAssetFreshnessInfo

@@ -1,9 +1,13 @@
 from __future__ import annotations
 
-from dagster._core.workspace.context import WorkspaceRequestContext
+from typing import TYPE_CHECKING
+
 from dagster_graphql.test.utils import execute_dagster_graphql, infer_repository_selector
 
 from .graphql_context_test_suite import NonLaunchableGraphQLContextTestMatrix
+
+if TYPE_CHECKING:
+    from dagster._core.workspace.context import WorkspaceRequestContext
 
 REPOSITORY_QUERY = """
 query {

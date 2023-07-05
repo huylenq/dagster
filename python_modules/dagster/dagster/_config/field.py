@@ -1,11 +1,10 @@
 from __future__ import annotations
 
-from typing import Any, Optional, Union, cast, overload
+from typing import TYPE_CHECKING, Any, Optional, Union, cast, overload
 
 import dagster._check as check
 from dagster._annotations import public
 from dagster._builtins import BuiltinEnum
-from dagster._config import UserConfigSchema
 from dagster._core.errors import DagsterInvalidConfigError, DagsterInvalidDefinitionError
 from dagster._serdes import serialize_value
 from dagster._seven import is_subclass
@@ -14,6 +13,9 @@ from dagster._utils.typing_api import is_closed_python_optional_type, is_typing_
 
 from .config_type import Array, ConfigAnyInstance, ConfigType, ConfigTypeKind
 from .field_utils import FIELD_NO_DEFAULT_PROVIDED, Map, all_optional_type
+
+if TYPE_CHECKING:
+    from dagster._config import UserConfigSchema
 
 
 def _is_config_type_class(obj) -> bool:

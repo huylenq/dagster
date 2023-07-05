@@ -3,11 +3,10 @@ from __future__ import annotations
 import datetime
 import os
 import tempfile
-from typing import List
+from typing import TYPE_CHECKING, List
 
 import pytest
 import pytz
-from _pytest.mark.structures import ParameterSet
 from airflow import __version__ as airflow_version
 from airflow.models import Pool, Variable
 from dagster import (
@@ -26,6 +25,9 @@ from dagster_airflow import (
 )
 
 from dagster_airflow_tests.marks import requires_persistent_db
+
+if TYPE_CHECKING:
+    from _pytest.mark.structures import ParameterSet
 
 RETRY_DAG = """
 from airflow import models

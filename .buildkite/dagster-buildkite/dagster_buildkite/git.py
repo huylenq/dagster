@@ -4,8 +4,10 @@ import logging
 import os
 import subprocess
 from dataclasses import dataclass
-from pathlib import Path
-from typing import Optional, Set
+from typing import TYPE_CHECKING, Optional, Set
+
+if TYPE_CHECKING:
+    from pathlib import Path
 
 
 def get_commit(rev):

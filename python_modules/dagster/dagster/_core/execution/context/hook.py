@@ -8,18 +8,19 @@ from dagster._annotations import public
 
 from ...definitions.composition import PendingNodeInvocation
 from ...definitions.decorators.graph_decorator import graph
-from ...definitions.dependency import Node
 from ...definitions.hook_definition import HookDefinition
 from ...definitions.op_definition import OpDefinition
 from ...definitions.resource_definition import IContainsGenerator, Resources
 from ...errors import DagsterInvalidPropertyError, DagsterInvariantViolationError
-from ...log_manager import DagsterLogManager
-from ..plan.step import ExecutionStep
 from ..plan.utils import RetryRequestedFromPolicy
-from .system import StepExecutionContext
 
 if TYPE_CHECKING:
     from dagster._core.instance import DagsterInstance
+
+    from ...definitions.dependency import Node
+    from ...log_manager import DagsterLogManager
+    from ..plan.step import ExecutionStep
+    from .system import StepExecutionContext
 
 
 def _property_msg(prop_name: str, method_name: str) -> str:

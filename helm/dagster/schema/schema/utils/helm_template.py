@@ -8,14 +8,15 @@ from contextlib import contextmanager
 from dataclasses import dataclass
 from pprint import pprint
 from tempfile import NamedTemporaryFile, mkstemp
-from typing import Any, Dict, List, Optional, Union
+from typing import TYPE_CHECKING, Any, Dict, List, Optional, Union
 
 import dagster._check as check
 import yaml
 from kubernetes.client.api_client import ApiClient
 
-from schema.charts.dagster.values import DagsterHelmValues
-from schema.charts.dagster_user_deployments.values import DagsterUserDeploymentsHelmValues
+if TYPE_CHECKING:
+    from schema.charts.dagster.values import DagsterHelmValues
+    from schema.charts.dagster_user_deployments.values import DagsterUserDeploymentsHelmValues
 
 
 def git_repo_root():

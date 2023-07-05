@@ -2,12 +2,11 @@ from __future__ import annotations
 
 import time
 from contextlib import contextmanager
-from typing import Iterator
+from typing import TYPE_CHECKING, Iterator
 
 import pytest
 from dagster._core.events import DagsterEvent, DagsterEventType
 from dagster._core.host_representation.code_location import GrpcServerCodeLocation
-from dagster._core.host_representation.handle import JobHandle
 from dagster._core.host_representation.origin import ManagedGrpcPythonEnvCodeLocationOrigin
 from dagster._core.storage.dagster_run import IN_PROGRESS_RUN_STATUSES, DagsterRunStatus
 from dagster._core.storage.tags import PRIORITY_TAG
@@ -20,6 +19,9 @@ from dagster._core.workspace.load_target import EmptyWorkspaceTarget
 from dagster._daemon.run_coordinator.queued_run_coordinator_daemon import QueuedRunCoordinatorDaemon
 
 from dagster_tests.api_tests.utils import get_foo_job_handle
+
+if TYPE_CHECKING:
+    from dagster._core.host_representation.handle import JobHandle
 
 
 @contextmanager

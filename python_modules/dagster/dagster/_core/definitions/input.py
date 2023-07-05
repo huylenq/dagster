@@ -31,11 +31,12 @@ from dagster._core.types.dagster_type import (  # BuiltinScalarDagsterType,
 )
 from dagster._utils.backcompat import deprecation_warning, experimental_arg_warning
 
-from .inference import InferredInputProps
 from .utils import NoValueSentinel, check_valid_name
 
 if TYPE_CHECKING:
     from dagster._core.execution.context.input import InputContext
+
+    from .inference import InferredInputProps
 
 T = TypeVar("T")
 

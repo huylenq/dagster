@@ -1,12 +1,15 @@
 from __future__ import annotations
 
+from typing import TYPE_CHECKING
+
 import dagster._check as check
 import graphene
 from dagster._core.snap import ConfigSchemaSnapshot, ResourceDefSnap
 
-from dagster_graphql.schema.util import ResolveInfo
-
 from ..config_types import GrapheneConfigTypeField
+
+if TYPE_CHECKING:
+    from dagster_graphql.schema.util import ResolveInfo
 
 
 class GrapheneResource(graphene.ObjectType):

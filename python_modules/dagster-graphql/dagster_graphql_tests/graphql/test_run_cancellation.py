@@ -2,14 +2,13 @@ from __future__ import annotations
 
 import os
 import time
-from typing import Any
+from typing import TYPE_CHECKING, Any
 
 import pytest
 from dagster._core.definitions.reconstruct import ReconstructableRepository
 from dagster._core.execution.api import execute_job
 from dagster._core.storage.dagster_run import DagsterRunStatus
 from dagster._core.test_utils import create_run_for_test
-from dagster._core.workspace.context import WorkspaceRequestContext
 from dagster._grpc.types import CancelExecutionRequest
 from dagster._utils import file_relative_path, safe_tempfile_path
 from dagster_graphql.client.query import LAUNCH_PIPELINE_EXECUTION_MUTATION
@@ -20,6 +19,9 @@ from .graphql_context_test_suite import (
     ReadonlyGraphQLContextTestMatrix,
     make_graphql_context_test_suite,
 )
+
+if TYPE_CHECKING:
+    from dagster._core.workspace.context import WorkspaceRequestContext
 
 RUN_CANCELLATION_QUERY = """
 mutation($runId: String!, $terminatePolicy: TerminateRunPolicy) {

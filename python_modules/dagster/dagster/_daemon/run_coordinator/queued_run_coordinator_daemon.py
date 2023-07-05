@@ -5,7 +5,7 @@ import threading
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from contextlib import ExitStack
-from typing import Dict, Iterable, Iterator, List, Optional, Sequence
+from typing import TYPE_CHECKING, Dict, Iterable, Iterator, List, Optional, Sequence
 
 from dagster import (
     DagsterEvent,
@@ -14,7 +14,6 @@ from dagster import (
 )
 from dagster._core.errors import DagsterCodeLocationLoadError, DagsterUserCodeUnreachableError
 from dagster._core.events import EngineEventData
-from dagster._core.instance import DagsterInstance
 from dagster._core.launcher import LaunchRunContext
 from dagster._core.run_coordinator.queued_run_coordinator import (
     QueuedRunCoordinator,
@@ -28,11 +27,14 @@ from dagster._core.storage.dagster_run import (
 )
 from dagster._core.storage.tags import PRIORITY_TAG
 from dagster._core.utils import InheritContextThreadPoolExecutor
-from dagster._core.workspace.context import IWorkspaceProcessContext
-from dagster._core.workspace.workspace import IWorkspace
 from dagster._daemon.daemon import DaemonIterator, IntervalDaemon
 from dagster._utils.error import serializable_error_info_from_exc_info
 from dagster._utils.tags import TagConcurrencyLimitsCounter
+
+if TYPE_CHECKING:
+    from dagster._core.instance import DagsterInstance
+    from dagster._core.workspace.context import IWorkspaceProcessContext
+    from dagster._core.workspace.workspace import IWorkspace
 
 
 class QueuedRunCoordinatorDaemon(IntervalDaemon):

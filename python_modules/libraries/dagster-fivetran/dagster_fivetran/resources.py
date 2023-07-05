@@ -2,9 +2,8 @@ from __future__ import annotations
 
 import datetime
 import json
-import logging
 import time
-from typing import Any, Mapping, Optional, Sequence, Tuple
+from typing import TYPE_CHECKING, Any, Mapping, Optional, Sequence, Tuple
 from urllib.parse import urljoin
 
 import requests
@@ -27,6 +26,9 @@ from requests.exceptions import RequestException
 
 from dagster_fivetran.types import FivetranOutput
 from dagster_fivetran.utils import get_fivetran_connector_url, get_fivetran_logs_url
+
+if TYPE_CHECKING:
+    import logging
 
 FIVETRAN_API_BASE = "https://api.fivetran.com"
 FIVETRAN_API_VERSION_PATH = "v1/"

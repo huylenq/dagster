@@ -6,15 +6,12 @@ from typing import TYPE_CHECKING, Iterator, Optional
 from urllib.parse import urljoin, urlparse
 
 import sqlalchemy as db
-from sqlalchemy.engine import Connection
 from sqlalchemy.pool import NullPool
-from typing_extensions import Self
 
 from dagster import (
     StringSource,
     _check as check,
 )
-from dagster._config.config_schema import UserConfigSchema
 from dagster._core.storage.sql import (
     AlembicVersion,
     check_alembic_revision,
@@ -32,6 +29,10 @@ from ..schema import InstanceInfo, RunsTable, RunStorageSqlMetadata, RunTagsTabl
 from ..sql_run_storage import SqlRunStorage
 
 if TYPE_CHECKING:
+    from sqlalchemy.engine import Connection
+    from typing_extensions import Self
+
+    from dagster._config.config_schema import UserConfigSchema
     from dagster._core.storage.sqlite_storage import SqliteStorageConfig
 MINIMUM_SQLITE_BUCKET_VERSION = [3, 25, 0]
 

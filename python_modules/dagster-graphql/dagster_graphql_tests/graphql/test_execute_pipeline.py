@@ -3,10 +3,10 @@ from __future__ import annotations
 import json
 import time
 import uuid
+from typing import TYPE_CHECKING
 
 from dagster._core.storage.dagster_run import DagsterRunStatus, RunsFilter
 from dagster._core.test_utils import wait_for_runs_to_finish
-from dagster._core.workspace.context import WorkspaceRequestContext
 from dagster._utils import file_relative_path
 from dagster_graphql.client.query import (
     LAUNCH_PIPELINE_EXECUTION_MUTATION,
@@ -31,6 +31,9 @@ from .utils import (
     step_did_succeed,
     sync_execute_get_run_log_data,
 )
+
+if TYPE_CHECKING:
+    from dagster._core.workspace.context import WorkspaceRequestContext
 
 STEP_FAILURE_EVENTS_QUERY = (
     """

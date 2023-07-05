@@ -4,6 +4,7 @@ import json
 import shlex
 from argparse import Namespace
 from typing import (
+    TYPE_CHECKING,
     Any,
     Callable,
     Dict,
@@ -37,7 +38,6 @@ from dagster._core.definitions.cacheable_assets import (
     AssetsDefinitionCacheableData,
     CacheableAssetsDefinition,
 )
-from dagster._core.definitions.metadata import MetadataUserInput
 from dagster._core.execution.context.init import build_init_resource_context
 from dagster._utils.backcompat import experimental_arg_warning
 
@@ -54,6 +54,9 @@ from dagster_dbt.asset_utils import (
 from ..errors import DagsterDbtCloudJobInvariantViolationError
 from ..utils import ASSET_RESOURCE_TYPES, result_to_events
 from .resources import DbtCloudClient, DbtCloudClientResource, DbtCloudRunStatus
+
+if TYPE_CHECKING:
+    from dagster._core.definitions.metadata import MetadataUserInput
 
 DAGSTER_DBT_COMPILE_RUN_ID_ENV_VAR = "DBT_DAGSTER_COMPILE_RUN_ID"
 

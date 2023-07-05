@@ -1,13 +1,15 @@
 from __future__ import annotations
 
-from typing import Callable, Optional
+from typing import TYPE_CHECKING, Callable, Optional
 
 from dagster import AssetsDefinition, PartitionsDefinition, multi_asset
 from dagster._annotations import experimental
 
 from .asset_utils import get_dbt_multi_asset_args, get_deps
-from .core.resources_v2 import DbtManifest
 from .utils import ASSET_RESOURCE_TYPES, select_unique_ids_from_manifest
+
+if TYPE_CHECKING:
+    from .cli.resources_v2 import DbtManifest
 
 
 @experimental

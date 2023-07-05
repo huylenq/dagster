@@ -10,7 +10,6 @@ from abc import abstractmethod
 from collections import defaultdict
 from enum import Enum
 from tempfile import TemporaryDirectory
-from types import TracebackType
 from typing import (
     TYPE_CHECKING,
     AbstractSet,
@@ -42,7 +41,6 @@ from dagster._core.errors import (
     DagsterRunAlreadyExists,
     DagsterRunConflict,
 )
-from dagster._core.log_manager import DagsterLogRecord
 from dagster._core.origin import JobPythonOrigin
 from dagster._core.storage.dagster_run import (
     IN_PROGRESS_RUN_STATUSES,
@@ -87,6 +85,8 @@ AIRFLOW_EXECUTION_DATE_STR = "airflow_execution_date"
 IS_AIRFLOW_INGEST_PIPELINE_STR = "is_airflow_ingest_pipeline"
 
 if TYPE_CHECKING:
+    from types import TracebackType
+
     from dagster._core.debug import DebugRunPayload
     from dagster._core.definitions.job_definition import (
         JobDefinition,
@@ -112,6 +112,7 @@ if TYPE_CHECKING:
     )
     from dagster._core.host_representation.external import ExternalSchedule
     from dagster._core.launcher import RunLauncher
+    from dagster._core.log_manager import DagsterLogRecord
     from dagster._core.run_coordinator import RunCoordinator
     from dagster._core.scheduler import Scheduler, SchedulerDebugInfo
     from dagster._core.scheduler.instigation import (

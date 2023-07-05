@@ -1,14 +1,18 @@
 from __future__ import annotations
 
+from typing import TYPE_CHECKING
+
 from dagster import (
     _check as check,
 )
 from dagster._core.execution.compute_logs import warn_if_compute_logs_disabled
 from dagster._core.telemetry import log_workspace_stats
 from dagster._core.workspace.context import IWorkspaceProcessContext
-from starlette.applications import Starlette
 
 from .webserver import DagitWebserver
+
+if TYPE_CHECKING:
+    from starlette.applications import Starlette
 
 
 def create_app_from_workspace_process_context(

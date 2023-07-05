@@ -1,12 +1,14 @@
 from __future__ import annotations
 
-from inspect import Parameter
-from typing import Sequence, TypeVar
+from typing import TYPE_CHECKING, Sequence, TypeVar
 
 from typing_extensions import Annotated
 
 from dagster._core.decorator_utils import get_function_params
 from dagster._core.definitions.resource_definition import ResourceDefinition
+
+if TYPE_CHECKING:
+    from inspect import Parameter
 
 
 def get_resource_args(fn) -> Sequence[Parameter]:

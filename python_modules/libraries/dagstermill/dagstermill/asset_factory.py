@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import pickle
 import tempfile
-from typing import Any, Callable, Iterable, Mapping, Optional, Set, Type, Union, cast
+from typing import TYPE_CHECKING, Any, Callable, Iterable, Mapping, Optional, Set, Type, Union, cast
 
 import dagster._check as check
 from dagster import (
@@ -19,11 +19,13 @@ from dagster import (
 )
 from dagster._config.pythonic_config import Config, infer_schema_from_config_class
 from dagster._config.pythonic_config.utils import safe_is_subclass
-from dagster._core.definitions.events import CoercibleToAssetKeyPrefix
 from dagster._core.definitions.utils import validate_tags
-from dagster._core.execution.context.compute import OpExecutionContext
 
 from dagstermill.factory import _clean_path_for_windows, execute_notebook
+
+if TYPE_CHECKING:
+    from dagster._core.definitions.events import CoercibleToAssetKeyPrefix
+    from dagster._core.execution.context.compute import OpExecutionContext
 
 
 def _make_dagstermill_asset_compute_fn(

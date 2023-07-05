@@ -1,14 +1,12 @@
 from __future__ import annotations
 
-from typing import Any, ContextManager, Mapping, Optional, Sequence
+from typing import TYPE_CHECKING, Any, ContextManager, Mapping, Optional, Sequence
 
 import dagster._check as check
 import sqlalchemy as db
 import sqlalchemy.dialects as db_dialects
 import sqlalchemy.pool as db_pool
-from dagster._config.config_schema import UserConfigSchema
 from dagster._core.errors import DagsterInvariantViolationError
-from dagster._core.event_api import EventHandlerFn
 from dagster._core.events import ASSET_EVENTS
 from dagster._core.events.log import EventLogEntry
 from dagster._core.storage.config import pg_config
@@ -31,7 +29,6 @@ from dagster._core.storage.sql import (
 )
 from dagster._core.storage.sqlalchemy_compat import db_select
 from dagster._serdes import ConfigurableClass, ConfigurableClassData, deserialize_value
-from sqlalchemy.engine import Connection
 
 from ..utils import (
     create_pg_connection,
@@ -41,6 +38,11 @@ from ..utils import (
     retry_pg_connection_fn,
     retry_pg_creation_fn,
 )
+
+if TYPE_CHECKING:
+    from dagster._config.config_schema import UserConfigSchema
+    from dagster._core.event_api import EventHandlerFn
+    from sqlalchemy.engine import Connection
 
 CHANNEL_NAME = "run_events"
 

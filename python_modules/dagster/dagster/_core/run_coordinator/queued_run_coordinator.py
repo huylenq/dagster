@@ -1,9 +1,7 @@
 from __future__ import annotations
 
 import logging
-from typing import Any, Mapping, NamedTuple, Optional, Sequence
-
-from typing_extensions import Self
+from typing import TYPE_CHECKING, Any, Mapping, NamedTuple, Optional, Sequence
 
 from dagster import (
     DagsterEvent,
@@ -14,12 +12,16 @@ from dagster import (
 )
 from dagster._builtins import Bool
 from dagster._config import Array, Field, Noneable, ScalarUnion, Shape
-from dagster._config.config_schema import UserConfigSchema
 from dagster._core.instance import T_DagsterInstance
 from dagster._core.storage.dagster_run import DagsterRun, DagsterRunStatus
 from dagster._serdes import ConfigurableClass, ConfigurableClassData
 
 from .base import RunCoordinator, SubmitRunContext
+
+if TYPE_CHECKING:
+    from typing_extensions import Self
+
+    from dagster._config.config_schema import UserConfigSchema
 
 
 class RunQueueConfig(

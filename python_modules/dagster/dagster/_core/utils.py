@@ -9,6 +9,7 @@ from collections import OrderedDict
 from concurrent.futures import ThreadPoolExecutor
 from contextvars import copy_context
 from typing import (
+    TYPE_CHECKING,
     AbstractSet,
     Any,
     Iterable,
@@ -21,10 +22,12 @@ from typing import (
 )
 
 import toposort as toposort_
-from typing_extensions import Final
 
 import dagster._check as check
 from dagster._utils import library_version_from_core_version, parse_package_version
+
+if TYPE_CHECKING:
+    from typing_extensions import Final
 
 BACKFILL_TAG_LENGTH = 8
 

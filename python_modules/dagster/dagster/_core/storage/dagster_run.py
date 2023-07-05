@@ -15,8 +15,6 @@ from typing import (
     Union,
 )
 
-from typing_extensions import Self
-
 import dagster._check as check
 from dagster._annotations import PublicAttr, public
 from dagster._core.definitions.events import AssetKey
@@ -37,6 +35,8 @@ from .tags import (
 )
 
 if TYPE_CHECKING:
+    from typing_extensions import Self
+
     from dagster._core.host_representation.external import ExternalSchedule, ExternalSensor
     from dagster._core.host_representation.origin import ExternalJobOrigin
 

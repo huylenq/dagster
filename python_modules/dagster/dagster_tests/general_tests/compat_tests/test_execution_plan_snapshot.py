@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import os
+from typing import TYPE_CHECKING
 
 from dagster import (
     DynamicOut,
@@ -13,7 +14,6 @@ from dagster import (
     job,
     op,
 )
-from dagster._core.definitions.job_definition import JobDefinition
 from dagster._core.definitions.reconstruct import reconstructable
 from dagster._core.execution.api import create_execution_plan, execute_run
 from dagster._core.execution.plan.inputs import (
@@ -34,6 +34,9 @@ from dagster._core.storage.dagster_run import DagsterRunStatus
 from dagster._core.storage.root_input_manager import root_input_manager
 from dagster._utils import file_relative_path
 from dagster._utils.test import copy_directory
+
+if TYPE_CHECKING:
+    from dagster._core.definitions.job_definition import JobDefinition
 
 
 @op(out=Out(int))

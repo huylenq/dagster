@@ -4,8 +4,6 @@ import hashlib
 from abc import ABC, abstractmethod
 from typing import TYPE_CHECKING, AbstractSet, Any, Callable, Iterator, Optional, cast
 
-from typing_extensions import TypeAlias
-
 import dagster._check as check
 from dagster._config import ConfigType
 from dagster._core.decorator_utils import get_function_params, validate_expected_params
@@ -18,6 +16,8 @@ from ..definitions.resource_requirement import (
 )
 
 if TYPE_CHECKING:
+    from typing_extensions import TypeAlias
+
     from dagster._core.execution.context.system import (
         DagsterTypeLoaderContext,
     )

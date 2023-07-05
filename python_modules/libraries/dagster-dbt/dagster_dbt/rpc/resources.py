@@ -1,13 +1,12 @@
 from __future__ import annotations
 
 import json
-import logging
 import platform
 import sys
 import time
 import uuid
 from base64 import standard_b64encode as b64
-from typing import Any, Dict, Mapping, Optional, Sequence, cast
+from typing import TYPE_CHECKING, Any, Dict, Mapping, Optional, Sequence, cast
 
 import requests
 import requests.utils
@@ -29,6 +28,9 @@ from dagster._core.utils import coerce_valid_log_level
 from ..dbt_resource import DbtResource
 from .types import DbtRpcOutput
 from .utils import is_fatal_code
+
+if TYPE_CHECKING:
+    import logging
 
 
 class DbtRpcResource(DbtResource):

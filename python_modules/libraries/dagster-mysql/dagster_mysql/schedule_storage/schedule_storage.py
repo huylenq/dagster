@@ -1,13 +1,12 @@
 from __future__ import annotations
 
-from typing import ContextManager, Optional, cast
+from typing import TYPE_CHECKING, ContextManager, Optional, cast
 
 import dagster._check as check
 import pendulum
 import sqlalchemy as db
 import sqlalchemy.dialects as db_dialects
 import sqlalchemy.pool as db_pool
-from dagster._config.config_schema import UserConfigSchema
 from dagster._core.storage.config import MySqlStorageConfig, mysql_config
 from dagster._core.storage.schedules import ScheduleStorageSqlMetadata, SqlScheduleStorage
 from dagster._core.storage.schedules.schema import InstigatorsTable
@@ -19,7 +18,6 @@ from dagster._core.storage.sql import (
     stamp_alembic_rev,
 )
 from dagster._serdes import ConfigurableClass, ConfigurableClassData, serialize_value
-from sqlalchemy.engine import Connection
 
 from ..utils import (
     create_mysql_connection,
@@ -30,6 +28,10 @@ from ..utils import (
     retry_mysql_connection_fn,
     retry_mysql_creation_fn,
 )
+
+if TYPE_CHECKING:
+    from dagster._config.config_schema import UserConfigSchema
+    from sqlalchemy.engine import Connection
 
 MINIMUM_MYSQL_BATCH_VERSION = "8.0.0"
 

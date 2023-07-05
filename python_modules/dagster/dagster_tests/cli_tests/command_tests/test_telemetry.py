@@ -4,7 +4,7 @@ import json
 import os
 import tempfile
 from difflib import SequenceMatcher
-from typing import Any
+from typing import TYPE_CHECKING, Any
 from unittest.mock import MagicMock
 
 from click.testing import CliRunner
@@ -29,8 +29,6 @@ from dagster._cli.job import job_execute_command
 from dagster._core.definitions.auto_materialize_policy import AutoMaterializePolicy
 from dagster._core.definitions.reconstruct import get_ephemeral_repository_name
 from dagster._core.definitions.resource_definition import dagster_maintained_resource
-from dagster._core.execution.context.input import InputContext
-from dagster._core.execution.context.output import OutputContext
 from dagster._core.host_representation.external import ExternalRepository
 from dagster._core.host_representation.external_data import external_repository_data_from_def
 from dagster._core.host_representation.handle import RepositoryHandle
@@ -49,6 +47,10 @@ from dagster._core.telemetry import (
 from dagster._core.test_utils import environ, instance_for_test
 from dagster._core.workspace.load import load_workspace_process_context_from_yaml_paths
 from dagster._utils import file_relative_path, pushd, script_relative_path
+
+if TYPE_CHECKING:
+    from dagster._core.execution.context.input import InputContext
+    from dagster._core.execution.context.output import OutputContext
 
 EXPECTED_KEYS = set(
     [

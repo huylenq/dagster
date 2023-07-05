@@ -3,15 +3,16 @@ from __future__ import annotations
 from typing import TYPE_CHECKING, Union
 
 import dagster._check as check
-from dagster._core.instance import DagsterInstance
 from dagster._core.storage.dagster_run import DagsterRun
-
-from dagster_graphql.schema.util import ResolveInfo
 
 from .external import get_external_job_or_raise, get_full_external_job_or_raise
 from .utils import JobSubsetSelector, UserFacingGraphQLError
 
 if TYPE_CHECKING:
+    from dagster._core.instance import DagsterInstance
+
+    from dagster_graphql.schema.util import ResolveInfo
+
     from ..schema.pipelines.pipeline import GraphenePipeline
     from ..schema.pipelines.pipeline_ref import GrapheneUnknownPipeline
     from ..schema.pipelines.snapshot import GraphenePipelineSnapshot

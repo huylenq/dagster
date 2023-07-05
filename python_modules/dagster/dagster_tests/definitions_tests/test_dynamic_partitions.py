@@ -1,7 +1,6 @@
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Callable, Optional, Sequence
+from typing import TYPE_CHECKING, Callable, Optional, Sequence
 
 import pytest
 from dagster import (
@@ -15,6 +14,9 @@ from dagster import (
 from dagster._check import CheckError
 from dagster._core.definitions.partition import DynamicPartitionsDefinition, Partition
 from dagster._core.test_utils import instance_for_test
+
+if TYPE_CHECKING:
+    from datetime import datetime
 
 
 @pytest.mark.parametrize(

@@ -1,8 +1,7 @@
 from __future__ import annotations
 
 import inspect
-from datetime import datetime
-from typing import Optional
+from typing import TYPE_CHECKING, Optional
 
 from dagster import (
     AllPartitionMapping,
@@ -31,15 +30,19 @@ from dagster import (
 from dagster._core.definitions import asset, build_assets_job
 from dagster._core.definitions.asset_graph import AssetGraph
 from dagster._core.definitions.events import AssetKey
-from dagster._core.definitions.partition import PartitionsSubset
 from dagster._core.definitions.partition_key_range import PartitionKeyRange
 from dagster._core.definitions.partition_mapping import (
     PartitionMapping,
     UpstreamPartitionsResult,
     get_builtin_partition_mapping_types,
 )
-from dagster._core.instance import DynamicPartitionsStore
 from dagster._core.test_utils import assert_namedtuple_lists_equal
+
+if TYPE_CHECKING:
+    from datetime import datetime
+
+    from dagster._core.definitions.partition import PartitionsSubset
+    from dagster._core.instance import DynamicPartitionsStore
 
 
 def test_access_partition_keys_from_context_non_identity_partition_mapping():

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+from typing import TYPE_CHECKING
 
 import pytest
 from dagster import (
@@ -35,9 +36,11 @@ from dagster._core.definitions.metadata.table import (
     TableRecord,
     TableSchema,
 )
-from dagster._core.execution.execution_result import ExecutionResult
 from dagster._core.snap.node import build_node_defs_snapshot
 from dagster._serdes.serdes import deserialize_value, serialize_value
+
+if TYPE_CHECKING:
+    from dagster._core.execution.execution_result import ExecutionResult
 
 
 def step_events_of_type(result: ExecutionResult, node_name: str, event_type: DagsterEventType):

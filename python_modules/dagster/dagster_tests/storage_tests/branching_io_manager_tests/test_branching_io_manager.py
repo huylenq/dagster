@@ -2,17 +2,19 @@ from __future__ import annotations
 
 import math
 import time
-from typing import Optional
+from typing import TYPE_CHECKING, Optional
 
 from dagster import Definitions, asset
-from dagster._core.definitions.assets import AssetsDefinition
 from dagster._core.definitions.events import AssetKey, AssetMaterialization
 from dagster._core.definitions.metadata import TextMetadataValue
-from dagster._core.events.log import EventLogEntry
 from dagster._core.instance import DagsterInstance
 from dagster._core.storage.branching.branching_io_manager import BranchingIOManager
 
 from .utils import AssetBasedInMemoryIOManager, DefinitionsRunner
+
+if TYPE_CHECKING:
+    from dagster._core.definitions.assets import AssetsDefinition
+    from dagster._core.events.log import EventLogEntry
 
 
 @asset

@@ -1,12 +1,14 @@
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Any, Mapping, Optional
+from typing import TYPE_CHECKING, Any, Mapping, Optional
 
 import dagster._check as check
 from dateutil.parser import isoparse
 
 from ..types import DbtOutput
+
+if TYPE_CHECKING:
+    from datetime import datetime
 
 
 class DbtCloudOutput(DbtOutput):

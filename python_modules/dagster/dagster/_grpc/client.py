@@ -3,11 +3,9 @@ from __future__ import annotations
 import os
 import sys
 from contextlib import contextmanager
-from threading import Event
-from typing import Any, Iterator, Optional, Sequence, Tuple
+from typing import TYPE_CHECKING, Any, Iterator, Optional, Sequence, Tuple
 
 import grpc
-from google.protobuf.reflection import GeneratedProtocolMessageType
 from grpc_health.v1 import health_pb2
 from grpc_health.v1.health_pb2_grpc import HealthStub
 
@@ -36,6 +34,11 @@ from .types import (
     SensorExecutionArgs,
 )
 from .utils import default_grpc_timeout, max_rx_bytes, max_send_bytes
+
+if TYPE_CHECKING:
+    from threading import Event
+
+    from google.protobuf.reflection import GeneratedProtocolMessageType
 
 CLIENT_HEARTBEAT_INTERVAL = 1
 

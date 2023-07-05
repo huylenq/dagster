@@ -22,10 +22,8 @@ from typing import (
 import dagster._check as check
 from dagster._annotations import experimental, public
 from dagster._core.definitions.asset_selection import AssetSelection
-from dagster._core.definitions.assets import AssetsDefinition
 from dagster._core.definitions.partition import PartitionsDefinition
 from dagster._core.definitions.resource_annotation import get_resource_args
-from dagster._core.definitions.resource_definition import ResourceDefinition
 from dagster._core.definitions.scoped_resources_builder import ScopedResourcesBuilder
 from dagster._core.errors import (
     DagsterInvalidDefinitionError,
@@ -33,7 +31,6 @@ from dagster._core.errors import (
     DagsterInvariantViolationError,
 )
 from dagster._core.instance import DagsterInstance
-from dagster._core.instance.ref import InstanceRef
 from dagster._utils import normalize_to_repository
 
 from .events import AssetKey
@@ -47,13 +44,17 @@ from .sensor_definition import (
     get_sensor_context_from_args_or_kwargs,
     validate_and_get_resource_dict,
 )
-from .target import ExecutableDefinition
 from .utils import check_valid_name
 
 if TYPE_CHECKING:
+    from dagster._core.definitions.assets import AssetsDefinition
     from dagster._core.definitions.definitions_class import Definitions
     from dagster._core.definitions.repository_definition import RepositoryDefinition
+    from dagster._core.definitions.resource_definition import ResourceDefinition
+    from dagster._core.instance.ref import InstanceRef
     from dagster._core.storage.event_log.base import EventLogRecord
+
+    from .target import ExecutableDefinition
 
 MAX_NUM_UNCONSUMED_EVENTS = 25
 
@@ -661,7 +662,7 @@ class MultiAssetSensorEvaluationContext(SensorEvaluationContext):
         )
 
     def _get_asset(self, asset_key: AssetKey, fn_name: str) -> AssetsDefinition:
-        repo_def = cast(RepositoryDefinition, self._repository_def)
+        repo_def = cast("RepositoryDefinition", self._repository_def)
         repository_assets = repo_def.assets_defs_by_key
         if asset_key in self._assets_by_key:
             asset_def = self._assets_by_key[asset_key]

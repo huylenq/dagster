@@ -1,10 +1,12 @@
 from __future__ import annotations
 
 import inspect
-from typing import Any, Union, get_type_hints
+from typing import TYPE_CHECKING, Any, Union, get_type_hints
 
-from dagster_airbyte import AirbyteDestination, AirbyteSource
 from dagster_airbyte.managed.generated import destinations, sources
+
+if TYPE_CHECKING:
+    from dagster_airbyte import AirbyteDestination, AirbyteSource
 
 
 def instantiate(obj: Any) -> Any:

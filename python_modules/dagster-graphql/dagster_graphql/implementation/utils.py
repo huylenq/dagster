@@ -3,7 +3,6 @@ from __future__ import annotations
 import sys
 from contextlib import contextmanager
 from contextvars import ContextVar
-from types import TracebackType
 from typing import (
     TYPE_CHECKING,
     Any,
@@ -31,6 +30,8 @@ from dagster._utils.error import serializable_error_info_from_exc_info
 from typing_extensions import ParamSpec, TypeAlias
 
 if TYPE_CHECKING:
+    from types import TracebackType
+
     from dagster_graphql.schema.errors import GrapheneError, GraphenePythonError
     from dagster_graphql.schema.util import ResolveInfo
 

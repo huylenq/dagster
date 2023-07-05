@@ -5,11 +5,10 @@ import os
 import subprocess
 import sys
 from contextlib import contextmanager
-from typing import Any, Mapping, Optional
+from typing import TYPE_CHECKING, Any, Mapping, Optional
 
 import dagster._check as check
 from dagster._core.code_pointer import FileCodePointer
-from dagster._core.definitions.job_definition import JobDefinition
 from dagster._core.definitions.reconstruct import ReconstructableJob, ReconstructableRepository
 from dagster._core.definitions.selector import InstigatorSelector
 from dagster._core.execution.api import create_execution_plan
@@ -26,7 +25,6 @@ from dagster._core.host_representation.origin import (
     ExternalJobOrigin,
     ExternalRepositoryOrigin,
 )
-from dagster._core.instance import DagsterInstance
 from dagster._core.origin import (
     DEFAULT_DAGSTER_ENTRY_POINT,
     JobPythonOrigin,
@@ -36,6 +34,10 @@ from dagster._core.test_utils import in_process_test_workspace
 from dagster._core.types.loadable_target_origin import LoadableTargetOrigin
 from dagster._serdes import create_snapshot_id
 from dagster._utils import file_relative_path, git_repository_root
+
+if TYPE_CHECKING:
+    from dagster._core.definitions.job_definition import JobDefinition
+    from dagster._core.instance import DagsterInstance
 
 IS_BUILDKITE = os.getenv("BUILDKITE") is not None
 

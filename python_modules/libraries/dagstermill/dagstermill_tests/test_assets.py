@@ -2,16 +2,19 @@ from __future__ import annotations
 
 import os
 from contextlib import contextmanager
+from typing import TYPE_CHECKING
 
 import pytest
 from dagster import AssetKey, DagsterEventType
 from dagster._core.definitions.metadata import NotebookMetadataValue, PathMetadataValue
 from dagster._core.definitions.reconstruct import ReconstructableJob
 from dagster._core.execution.api import execute_job
-from dagster._core.execution.execution_result import ExecutionResult
 from dagster._core.test_utils import instance_for_test
 from dagstermill.compat import ExecutionError
 from dagstermill.examples.repository import custom_io_mgr_key_asset
+
+if TYPE_CHECKING:
+    from dagster._core.execution.execution_result import ExecutionResult
 
 
 def get_path(materialization_event):

@@ -2,16 +2,18 @@ from __future__ import annotations
 
 import logging
 from collections import defaultdict
-from typing import Callable, Mapping, Sequence
+from typing import TYPE_CHECKING, Callable, Mapping, Sequence
 
 from dagster import DagsterEvent, job, op
 from dagster._core.definitions.graph_definition import GraphDefinition
 from dagster._core.definitions.job_definition import JobDefinition
-from dagster._core.definitions.node_definition import NodeDefinition
 from dagster._core.events import DagsterEventType
 from dagster._core.events.log import EventLogEntry, construct_event_logger
 from dagster._loggers import colored_console_logger
 from dagster._serdes import deserialize_value
+
+if TYPE_CHECKING:
+    from dagster._core.definitions.node_definition import NodeDefinition
 
 
 def get_loggers(event_callback):

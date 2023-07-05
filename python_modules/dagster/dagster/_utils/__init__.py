@@ -46,7 +46,6 @@ from typing import (
 )
 
 import packaging.version
-from typing_extensions import Literal, TypeAlias, TypeGuard
 
 import dagster._check as check
 import dagster._seven as seven
@@ -59,6 +58,8 @@ else:
     from pathlib2 import Path
 
 if TYPE_CHECKING:
+    from typing_extensions import Literal, TypeAlias, TypeGuard
+
     from dagster._core.definitions.definitions_class import Definitions
     from dagster._core.definitions.repository_definition.repository_definition import (
         RepositoryDefinition,

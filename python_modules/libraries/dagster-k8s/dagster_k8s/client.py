@@ -4,7 +4,7 @@ import logging
 import sys
 import time
 from enum import Enum
-from typing import Any, Callable, List, Optional, TypeVar
+from typing import TYPE_CHECKING, Any, Callable, List, Optional, TypeVar
 
 import kubernetes.client
 import kubernetes.client.rest
@@ -13,7 +13,9 @@ from dagster import (
     _check as check,
 )
 from dagster._core.storage.dagster_run import DagsterRunStatus
-from kubernetes.client.models import V1Job, V1JobStatus
+
+if TYPE_CHECKING:
+    from kubernetes.client.models import V1Job, V1JobStatus
 
 try:
     from kubernetes.client.models import EventsV1Event  # noqa

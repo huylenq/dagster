@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from typing import TYPE_CHECKING
+
 from dagster import (
     Array,
     Enum,
@@ -14,18 +16,20 @@ from dagster import (
 )
 from dagster._config import ConfigTypeKind, Map, resolve_to_config_type
 from dagster._config.snap import ConfigSchemaSnapshot, ConfigTypeSnap
-from dagster._core.definitions.job_definition import JobDefinition
 from dagster._core.snap import (
     ConfigEnumValueSnap,
     build_config_schema_snapshot,
     snap_from_config_type,
 )
-from dagster._core.types.dagster_type import DagsterType
 from dagster._serdes import (
     deserialize_value,
     serialize_pp,
     serialize_value,
 )
+
+if TYPE_CHECKING:
+    from dagster._core.definitions.job_definition import JobDefinition
+    from dagster._core.types.dagster_type import DagsterType
 
 
 def snap_from_dagster_type(dagster_type: DagsterType) -> ConfigTypeSnap:

@@ -1,8 +1,9 @@
 from __future__ import annotations
 
-from typing import NamedTuple
+from typing import TYPE_CHECKING, NamedTuple
 
-from dagster._annotations import PublicAttr
+if TYPE_CHECKING:
+    from dagster._annotations import PublicAttr
 
 
 class PartitionKeyRange(NamedTuple):

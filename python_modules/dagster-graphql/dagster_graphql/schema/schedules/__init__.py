@@ -1,10 +1,10 @@
 from __future__ import annotations
 
+from typing import TYPE_CHECKING
+
 import graphene
 from dagster._core.definitions.selector import ScheduleSelector
 from dagster._core.workspace.permissions import Permissions
-
-from dagster_graphql.schema.util import ResolveInfo
 
 from ...implementation.fetch_schedules import start_schedule, stop_schedule
 from ...implementation.utils import (
@@ -26,6 +26,9 @@ from .schedules import (
     GrapheneSchedulesOrError,
 )
 from .ticks import GrapheneInstigationTickStatus
+
+if TYPE_CHECKING:
+    from dagster_graphql.schema.util import ResolveInfo
 
 
 class GrapheneScheduleStatus(graphene.Enum):

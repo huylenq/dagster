@@ -1,12 +1,13 @@
 from __future__ import annotations
 
-from typing import List
+from typing import TYPE_CHECKING, List
 
 from pydantic import BaseModel, Field
 
-from ..dagster.subschema import Global, ServiceAccount
-from ..utils import kubernetes
-from .subschema.user_deployments import UserDeployment
+if TYPE_CHECKING:
+    from ..dagster.subschema import Global, ServiceAccount
+    from ..utils import kubernetes
+    from .subschema.user_deployments import UserDeployment
 
 
 class DagsterUserDeploymentsHelmValues(BaseModel):

@@ -10,7 +10,7 @@ import time
 from collections import OrderedDict
 from contextlib import contextmanager
 from copy import deepcopy
-from typing import Iterator, List, Mapping, Optional, Sequence, Tuple, TypeVar
+from typing import TYPE_CHECKING, Iterator, List, Mapping, Optional, Sequence, Tuple, TypeVar
 
 from dagster import (
     Any,
@@ -89,7 +89,6 @@ from dagster._core.definitions.multi_dimensional_partitions import MultiPartitio
 from dagster._core.definitions.partition import PartitionedConfig
 from dagster._core.definitions.reconstruct import ReconstructableRepository
 from dagster._core.definitions.sensor_definition import RunRequest, SkipReason
-from dagster._core.host_representation.external import ExternalRepository
 from dagster._core.log_manager import coerce_valid_log_level
 from dagster._core.storage.dagster_run import DagsterRunStatus
 from dagster._core.storage.fs_io_manager import fs_io_manager
@@ -107,7 +106,10 @@ from dagster_graphql.test.utils import (
     main_repo_location_name,
     main_repo_name,
 )
-from typing_extensions import Literal, Never
+
+if TYPE_CHECKING:
+    from dagster._core.host_representation.external import ExternalRepository
+    from typing_extensions import Literal, Never
 
 T = TypeVar("T")
 

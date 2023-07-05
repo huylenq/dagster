@@ -6,15 +6,16 @@ from typing import TYPE_CHECKING, Mapping, Optional, Sequence, Union
 import dagster._check as check
 from dagster._config import validate_config_from_snap
 from dagster._core.definitions.selector import JobSubsetSelector, RepositorySelector
-from dagster._core.execution.plan.state import KnownExecutionState
 from dagster._core.host_representation import ExternalJob
-from dagster._core.host_representation.external import ExternalExecutionPlan
 from dagster._core.workspace.context import BaseWorkspaceRequestContext, WorkspaceRequestContext
 from dagster._utils.error import serializable_error_info_from_exc_info
 
 from .utils import UserFacingGraphQLError
 
 if TYPE_CHECKING:
+    from dagster._core.execution.plan.state import KnownExecutionState
+    from dagster._core.host_representation.external import ExternalExecutionPlan
+
     from dagster_graphql.schema.errors import GrapheneRepositoryNotFoundError
     from dagster_graphql.schema.external import (
         GrapheneRepository,

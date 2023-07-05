@@ -7,9 +7,7 @@ from typing import TYPE_CHECKING, Any, AsyncIterator, Optional, Sequence, Tuple,
 
 # re-exports
 import dagster._check as check
-from dagster._core.definitions.events import AssetKey
 from dagster._core.events import EngineEventData
-from dagster._core.instance import DagsterInstance
 from dagster._core.storage.captured_log_manager import CapturedLogManager
 from dagster._core.storage.compute_log_manager import ComputeIOType, ComputeLogFileData
 from dagster._core.storage.dagster_run import CANCELABLE_RUN_STATUSES
@@ -20,6 +18,9 @@ from starlette.concurrency import (
 )
 
 if TYPE_CHECKING:
+    from dagster._core.definitions.events import AssetKey
+    from dagster._core.instance import DagsterInstance
+
     from dagster_graphql.schema.roots.mutation import GrapheneTerminateRunPolicy
 
 from ..utils import (

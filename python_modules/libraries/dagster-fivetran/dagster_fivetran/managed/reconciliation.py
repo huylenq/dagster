@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import json
 from itertools import chain
-from typing import Any, Dict, Iterable, List, Mapping, Optional, Tuple
+from typing import TYPE_CHECKING, Any, Dict, Iterable, List, Mapping, Optional, Tuple
 
 import dagster._check as check
 from dagster import ResourceDefinition
@@ -12,14 +12,15 @@ from dagster_managed_elements import ManagedElementCheckResult, ManagedElementDi
 from dagster_managed_elements.types import ManagedElementReconciler, is_key_secret
 from dagster_managed_elements.utils import diff_dicts
 
-from dagster_fivetran import FivetranResource
-
 from .types import (
     FivetranConnector,
     FivetranDestination,
     InitializedFivetranConnector,
     InitializedFivetranDestination,
 )
+
+if TYPE_CHECKING:
+    from dagster_fivetran import FivetranResource
 
 FIVETRAN_SECRET_MASK = "******"
 

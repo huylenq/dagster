@@ -1,12 +1,14 @@
 from __future__ import annotations
 
-from typing import Any, Callable, Optional, Type, Union, cast, overload
+from typing import TYPE_CHECKING, Any, Callable, Optional, Type, Union, cast, overload
 
 import dagster._check as check
-from dagster._config import UserConfigSchema
 from dagster._core.decorator_utils import get_function_params
 
 from ..config import ConfigMapping, ConfigMappingFn
+
+if TYPE_CHECKING:
+    from dagster._config import UserConfigSchema
 
 
 class _ConfigMapping:

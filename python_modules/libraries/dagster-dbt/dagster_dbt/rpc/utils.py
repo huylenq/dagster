@@ -3,12 +3,14 @@ from __future__ import annotations
 import logging
 from collections import defaultdict
 from enum import Enum
-from typing import Mapping, Sequence
+from typing import TYPE_CHECKING, Mapping, Sequence
 
 from dagster import Failure, RetryRequested
-from dagster._core.execution.context.compute import OpExecutionContext
-from requests import Response
-from requests.exceptions import RequestException
+
+if TYPE_CHECKING:
+    from dagster._core.execution.context.compute import OpExecutionContext
+    from requests import Response
+    from requests.exceptions import RequestException
 
 
 def fmt_rpc_logs(logs: Sequence[Mapping[str, str]]) -> Mapping[int, str]:

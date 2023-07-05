@@ -5,8 +5,6 @@ from typing import TYPE_CHECKING, Optional, Sequence, Tuple, cast
 import dagster._check as check
 from dagster._core.errors import DagsterRunNotFoundError
 from dagster._core.execution.plan.state import KnownExecutionState
-from dagster._core.host_representation.external import ExternalJob
-from dagster._core.instance import DagsterInstance
 from dagster._core.storage.dagster_run import DagsterRun, DagsterRunStatus
 from dagster._core.storage.tags import RESUME_RETRY_TAG
 from dagster._core.utils import make_new_run_id
@@ -16,6 +14,9 @@ from ..external import ensure_valid_config, get_external_execution_plan_or_raise
 from ..utils import ExecutionParams
 
 if TYPE_CHECKING:
+    from dagster._core.host_representation.external import ExternalJob
+    from dagster._core.instance import DagsterInstance
+
     from dagster_graphql.schema.util import ResolveInfo
 
 

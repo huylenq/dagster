@@ -4,9 +4,9 @@ from typing import TYPE_CHECKING, Sequence
 
 from dagster._core.storage.captured_log_manager import CapturedLogManager
 
-from dagster_graphql.schema.util import ResolveInfo
-
 if TYPE_CHECKING:
+    from dagster_graphql.schema.util import ResolveInfo
+
     from ..schema.logs.compute_logs import GrapheneCapturedLogsMetadata
 
 

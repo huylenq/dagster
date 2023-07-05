@@ -1,10 +1,12 @@
 from __future__ import annotations
 
 from enum import Enum
-from typing import FrozenSet, NamedTuple, Optional, Union
+from typing import TYPE_CHECKING, FrozenSet, NamedTuple, Optional, Union
 
-from dagster._core.definitions.events import AssetKey
 from dagster._serdes import whitelist_for_serdes
+
+if TYPE_CHECKING:
+    from dagster._core.definitions.events import AssetKey
 
 
 @whitelist_for_serdes

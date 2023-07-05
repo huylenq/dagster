@@ -25,15 +25,11 @@ import pendulum
 import toposort
 
 import dagster._check as check
-from dagster._core.definitions.auto_materialize_policy import AutoMaterializePolicy
 from dagster._core.errors import DagsterInvalidInvocationError, DagsterInvariantViolationError
-from dagster._core.instance import DynamicPartitionsStore
 from dagster._core.selector.subset_selector import DependencyGraph, generate_asset_dep_graph
 from dagster._utils.cached_method import cached_method
 
-from .assets import AssetsDefinition
 from .events import AssetKey, AssetKeyPartitionKey
-from .freshness_policy import FreshnessPolicy
 from .partition import PartitionsDefinition, PartitionsSubset
 from .partition_mapping import PartitionMapping, UpstreamPartitionsResult, infer_partition_mapping
 from .source_asset import SourceAsset
@@ -45,6 +41,11 @@ from .time_window_partitions import (
 
 if TYPE_CHECKING:
     from dagster._core.definitions.asset_graph_subset import AssetGraphSubset
+    from dagster._core.definitions.auto_materialize_policy import AutoMaterializePolicy
+    from dagster._core.instance import DynamicPartitionsStore
+
+    from .assets import AssetsDefinition
+    from .freshness_policy import FreshnessPolicy
 
 
 class ParentsPartitionsResult(NamedTuple):

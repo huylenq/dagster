@@ -4,6 +4,7 @@ import sys
 from collections import defaultdict
 from datetime import datetime
 from functools import wraps
+from typing import TYPE_CHECKING
 
 import pandas as pd
 from dagster import (
@@ -13,7 +14,9 @@ from dagster import (
 )
 from dagster._utils.backcompat import experimental_class_warning
 from pandas import DataFrame
-from typing_extensions import Final
+
+if TYPE_CHECKING:
+    from typing_extensions import Final
 
 CONSTRAINT_METADATA_KEY: Final = "constraint_metadata"
 

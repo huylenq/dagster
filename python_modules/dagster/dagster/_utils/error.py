@@ -2,12 +2,13 @@ from __future__ import annotations
 
 import traceback
 from types import TracebackType
-from typing import Any, NamedTuple, Optional, Sequence, Tuple, Type, Union
-
-from typing_extensions import TypeAlias
+from typing import TYPE_CHECKING, Any, NamedTuple, Optional, Sequence, Tuple, Type, Union
 
 import dagster._check as check
 from dagster._serdes import whitelist_for_serdes
+
+if TYPE_CHECKING:
+    from typing_extensions import TypeAlias
 
 
 # mypy does not support recursive types, so "cause" has to be typed `Any`

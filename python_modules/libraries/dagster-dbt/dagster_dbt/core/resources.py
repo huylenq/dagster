@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Any, Iterator, Mapping, Optional, Sequence, Set
+from typing import TYPE_CHECKING, Any, Iterator, Mapping, Optional, Sequence, Set
 
 import dagster._check as check
 from dagster import resource
@@ -11,7 +11,6 @@ from dagster._utils.merger import merge_dicts
 from pydantic import Field
 
 from ..dbt_resource import DbtClient
-from .types import DbtCliOutput
 from .utils import (
     DEFAULT_DBT_TARGET_PATH,
     execute_cli,
@@ -20,6 +19,9 @@ from .utils import (
     parse_run_results,
     remove_run_results,
 )
+
+if TYPE_CHECKING:
+    from .types import DbtCliOutput
 
 DEFAULT_DBT_EXECUTABLE = "dbt"
 

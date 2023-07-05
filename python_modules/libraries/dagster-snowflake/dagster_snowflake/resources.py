@@ -4,7 +4,7 @@ import base64
 import sys
 import warnings
 from contextlib import closing, contextmanager
-from typing import Any, Dict, Iterator, List, Mapping, Optional, Sequence, Union
+from typing import TYPE_CHECKING, Any, Dict, Iterator, List, Mapping, Optional, Sequence, Union
 
 import dagster._check as check
 from cryptography.hazmat.backends import default_backend
@@ -17,9 +17,11 @@ from dagster import (
 )
 from dagster._annotations import public
 from dagster._core.definitions.resource_definition import dagster_maintained_resource
-from dagster._core.storage.event_log.sql_event_log import SqlDbConnection
 from dagster._utils.cached_method import cached_method
 from pydantic import Field, root_validator, validator
+
+if TYPE_CHECKING:
+    from dagster._core.storage.event_log.sql_event_log import SqlDbConnection
 
 try:
     import snowflake.connector

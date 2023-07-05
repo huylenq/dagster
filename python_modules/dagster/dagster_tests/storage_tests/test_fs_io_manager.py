@@ -4,8 +4,7 @@ import os
 import pickle
 import shutil
 import tempfile
-from datetime import datetime
-from typing import Optional, Tuple
+from typing import TYPE_CHECKING, Optional, Tuple
 
 import pytest
 from dagster import (
@@ -33,16 +32,20 @@ from dagster import (
 )
 from dagster._core.definitions import AssetIn, asset, build_assets_job, multi_asset
 from dagster._core.definitions.definitions_class import Definitions
-from dagster._core.definitions.partition import PartitionsSubset
 from dagster._core.definitions.partition_mapping import UpstreamPartitionsResult
 from dagster._core.definitions.version_strategy import VersionStrategy
 from dagster._core.errors import DagsterInvariantViolationError
 from dagster._core.execution.api import create_execution_plan
-from dagster._core.instance import DynamicPartitionsStore
 from dagster._core.storage.fs_io_manager import fs_io_manager
-from dagster._core.storage.io_manager import IOManagerDefinition
 from dagster._core.test_utils import instance_for_test
 from dagster._utils import file_relative_path
+
+if TYPE_CHECKING:
+    from datetime import datetime
+
+    from dagster._core.definitions.partition import PartitionsSubset
+    from dagster._core.instance import DynamicPartitionsStore
+    from dagster._core.storage.io_manager import IOManagerDefinition
 
 
 def define_job(io_manager: IOManagerDefinition):

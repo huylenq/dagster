@@ -1,10 +1,12 @@
 from __future__ import annotations
 
-from typing import Dict, Tuple
+from typing import TYPE_CHECKING, Dict, Tuple
 
-from dagster._core.execution.context.input import InputContext
-from dagster._core.execution.context.output import OutputContext
 from dagster._core.storage.io_manager import IOManager, dagster_maintained_io_manager, io_manager
+
+if TYPE_CHECKING:
+    from dagster._core.execution.context.input import InputContext
+    from dagster._core.execution.context.output import OutputContext
 
 
 class InMemoryIOManager(IOManager):

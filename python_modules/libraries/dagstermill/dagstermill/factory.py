@@ -6,7 +6,19 @@ import pickle
 import sys
 import tempfile
 import uuid
-from typing import Any, Callable, Iterable, Mapping, Optional, Sequence, Set, Type, Union, cast
+from typing import (
+    TYPE_CHECKING,
+    Any,
+    Callable,
+    Iterable,
+    Mapping,
+    Optional,
+    Sequence,
+    Set,
+    Type,
+    Union,
+    cast,
+)
 
 import nbformat
 import papermill
@@ -24,9 +36,7 @@ from dagster._core.definitions.events import AssetMaterialization, Failure, Retr
 from dagster._core.definitions.metadata import MetadataValue
 from dagster._core.definitions.reconstruct import ReconstructableJob
 from dagster._core.definitions.utils import validate_tags
-from dagster._core.execution.context.compute import OpExecutionContext
 from dagster._core.execution.context.input import build_input_context
-from dagster._core.execution.context.system import StepExecutionContext
 from dagster._core.execution.plan.outputs import StepOutputHandle
 from dagster._serdes import pack_value
 from dagster._seven import get_system_temp_directory
@@ -39,6 +49,10 @@ from .compat import ExecutionError
 from .engine import DagstermillEngine
 from .errors import DagstermillError
 from .translator import DagsterTranslator
+
+if TYPE_CHECKING:
+    from dagster._core.execution.context.compute import OpExecutionContext
+    from dagster._core.execution.context.system import StepExecutionContext
 
 
 def _clean_path_for_windows(notebook_path: str) -> str:

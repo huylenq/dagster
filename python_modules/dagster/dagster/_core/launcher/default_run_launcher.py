@@ -3,13 +3,10 @@ from __future__ import annotations
 import time
 from typing import TYPE_CHECKING, Any, Mapping, Optional, cast
 
-from typing_extensions import Self
-
 import dagster._seven as seven
 from dagster import (
     _check as check,
 )
-from dagster._config.config_schema import UserConfigSchema
 from dagster._core.errors import (
     DagsterInvariantViolationError,
     DagsterLaunchFailedError,
@@ -21,14 +18,17 @@ from dagster._serdes import (
     ConfigurableClass,
     deserialize_value,
 )
-from dagster._serdes.config_class import ConfigurableClassData
 from dagster._utils.merger import merge_dicts
 
 from .base import LaunchRunContext, RunLauncher
 
 if TYPE_CHECKING:
+    from typing_extensions import Self
+
+    from dagster._config.config_schema import UserConfigSchema
     from dagster._core.instance import DagsterInstance
     from dagster._grpc.client import DagsterGrpcClient
+    from dagster._serdes.config_class import ConfigurableClassData
 
 
 # note: this class is a top level export, so we defer many imports til use for performance

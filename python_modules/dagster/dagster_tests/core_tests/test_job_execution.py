@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import uuid
 import warnings
-from typing import Mapping, Sequence, Set, Tuple
+from typing import TYPE_CHECKING, Mapping, Sequence, Set, Tuple
 
 import pytest
 from dagster import (
@@ -33,7 +33,6 @@ from dagster._core.definitions.graph_definition import (
     create_adjacency_lists,
 )
 from dagster._core.definitions.job_definition import JobDefinition
-from dagster._core.definitions.op_definition import OpDefinition
 from dagster._core.errors import DagsterExecutionStepNotFoundError, DagsterInvariantViolationError
 from dagster._core.execution.api import ReexecutionOptions, execute_job
 from dagster._core.instance import DagsterInstance
@@ -47,6 +46,9 @@ from dagster._core.utility_ops import (
     input_set,
 )
 from dagster._core.workspace.load import location_origin_from_python_file
+
+if TYPE_CHECKING:
+    from dagster._core.definitions.op_definition import OpDefinition
 
 # protected members
 # pylint: disable=W0212

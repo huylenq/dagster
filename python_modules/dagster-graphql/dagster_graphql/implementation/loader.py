@@ -3,16 +3,13 @@ from __future__ import annotations
 from collections import defaultdict
 from enum import Enum
 from functools import lru_cache
-from typing import Any, Dict, Iterable, List, Mapping, Optional, Sequence, Set, Tuple
+from typing import TYPE_CHECKING, Any, Dict, Iterable, List, Mapping, Optional, Sequence, Set, Tuple
 
 from dagster import (
     DagsterInstance,
     _check as check,
 )
 from dagster._core.definitions.data_version import CachingStaleStatusResolver
-from dagster._core.definitions.events import AssetKey
-from dagster._core.events.log import EventLogEntry
-from dagster._core.host_representation import ExternalRepository
 from dagster._core.host_representation.external_data import (
     ExternalAssetDependedBy,
     ExternalAssetDependency,
@@ -21,7 +18,12 @@ from dagster._core.host_representation.external_data import (
 from dagster._core.scheduler.instigation import InstigatorState, InstigatorType
 from dagster._core.storage.dagster_run import JobBucket, RunRecord, RunsFilter, TagBucket
 from dagster._core.storage.tags import REPOSITORY_LABEL_TAG, SCHEDULE_NAME_TAG, SENSOR_NAME_TAG
-from dagster._core.workspace.context import WorkspaceRequestContext
+
+if TYPE_CHECKING:
+    from dagster._core.definitions.events import AssetKey
+    from dagster._core.events.log import EventLogEntry
+    from dagster._core.host_representation import ExternalRepository
+    from dagster._core.workspace.context import WorkspaceRequestContext
 
 
 class RepositoryDataType(Enum):

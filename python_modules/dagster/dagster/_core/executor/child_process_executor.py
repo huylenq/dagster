@@ -5,11 +5,7 @@ import os
 import queue
 import sys
 from abc import ABC, abstractmethod
-from multiprocessing import Queue
-from multiprocessing.context import BaseContext as MultiprocessingBaseContext
 from typing import TYPE_CHECKING, Iterator, NamedTuple, Optional, Union
-
-from typing_extensions import Literal
 
 import dagster._check as check
 from dagster._core.errors import DagsterExecutionInterruptedError
@@ -17,6 +13,11 @@ from dagster._utils.error import SerializableErrorInfo, serializable_error_info_
 from dagster._utils.interrupts import capture_interrupts
 
 if TYPE_CHECKING:
+    from multiprocessing import Queue
+    from multiprocessing.context import BaseContext as MultiprocessingBaseContext
+
+    from typing_extensions import Literal
+
     from dagster._core.events import DagsterEvent
 
 

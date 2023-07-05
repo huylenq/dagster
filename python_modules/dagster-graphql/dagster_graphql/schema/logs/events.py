@@ -5,7 +5,6 @@ from typing import TYPE_CHECKING, Optional, Union
 import dagster._check as check
 import graphene
 from dagster._core.events import AssetLineageInfo, DagsterEventType
-from dagster._core.events.log import EventLogEntry
 from dagster._core.execution.plan.objects import ErrorSource
 from dagster._core.execution.stats import RunStepKeyStatsSnapshot
 
@@ -22,6 +21,8 @@ from ..util import ResolveInfo, non_null_list
 from .log_level import GrapheneLogLevel
 
 if TYPE_CHECKING:
+    from dagster._core.events.log import EventLogEntry
+
     from dagster_graphql.schema.pipelines.pipeline import GrapheneRun
 
 

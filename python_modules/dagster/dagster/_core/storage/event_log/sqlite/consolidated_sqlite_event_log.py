@@ -4,11 +4,10 @@ import logging
 import os
 from collections import defaultdict
 from contextlib import contextmanager
-from typing import Any, Mapping, Optional
+from typing import TYPE_CHECKING, Any, Mapping, Optional
 
 import sqlalchemy as db
 from sqlalchemy.pool import NullPool
-from typing_extensions import Self
 from watchdog.events import PatternMatchingEventHandler
 from watchdog.observers import Observer
 
@@ -29,6 +28,9 @@ from dagster._utils import mkdir_p
 
 from ..schema import SqlEventLogStorageMetadata
 from ..sql_event_log import SqlDbConnection, SqlEventLogStorage
+
+if TYPE_CHECKING:
+    from typing_extensions import Self
 
 SQLITE_EVENT_LOG_FILENAME = "event_log"
 

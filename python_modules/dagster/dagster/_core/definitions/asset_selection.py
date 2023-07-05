@@ -4,9 +4,7 @@ import collections.abc
 import operator
 from abc import ABC, abstractmethod
 from functools import reduce
-from typing import AbstractSet, Iterable, Optional, Sequence, Union, cast
-
-from typing_extensions import TypeAlias
+from typing import TYPE_CHECKING, AbstractSet, Iterable, Optional, Sequence, Union, cast
 
 import dagster._check as check
 from dagster._annotations import deprecated, public
@@ -28,6 +26,9 @@ from .events import (
     key_prefix_from_coercible,
 )
 from .source_asset import SourceAsset
+
+if TYPE_CHECKING:
+    from typing_extensions import TypeAlias
 
 CoercibleToAssetSelection: TypeAlias = Union[
     str,

@@ -1,10 +1,12 @@
 from __future__ import annotations
 
 from time import sleep
-from typing import List, Tuple
+from typing import TYPE_CHECKING, List, Tuple
 
 from dagster import Field, Out, Output, graph, op
-from dagster._core.execution.context.compute import OpExecutionContext
+
+if TYPE_CHECKING:
+    from dagster._core.execution.context.compute import OpExecutionContext
 
 
 @op

@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from typing import TYPE_CHECKING
 from unittest.mock import Mock
 
 import dagster._check as check
@@ -17,10 +18,12 @@ from dagster_graphql.implementation.utils import (
     check_permission,
     require_permission_check,
 )
-from dagster_graphql.schema.util import ResolveInfo
 from dagster_graphql.test.utils import execute_dagster_graphql
 
 from .graphql_context_test_suite import NonLaunchableGraphQLContextTestMatrix
+
+if TYPE_CHECKING:
+    from dagster_graphql.schema.util import ResolveInfo
 
 PERMISSIONS_QUERY = """
     query PermissionsQuery {

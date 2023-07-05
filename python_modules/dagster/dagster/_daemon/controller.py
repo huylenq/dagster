@@ -1,17 +1,24 @@
 from __future__ import annotations
 
-import datetime
 import logging
 import sys
 import threading
 import time
 import uuid
 from contextlib import AbstractContextManager, ExitStack, contextmanager
-from types import TracebackType
-from typing import Callable, Dict, Iterable, Iterator, Mapping, Optional, Sequence, Type
+from typing import (
+    TYPE_CHECKING,
+    Callable,
+    Dict,
+    Iterable,
+    Iterator,
+    Mapping,
+    Optional,
+    Sequence,
+    Type,
+)
 
 import pendulum
-from typing_extensions import Self
 
 import dagster._check as check
 from dagster._core.host_representation.grpc_server_registry import GrpcServerRegistry
@@ -31,6 +38,12 @@ from dagster._daemon.run_coordinator.queued_run_coordinator_daemon import Queued
 from dagster._daemon.types import DaemonHeartbeat, DaemonStatus
 from dagster._utils.interrupts import raise_interrupts_as
 from dagster._utils.log import configure_loggers
+
+if TYPE_CHECKING:
+    import datetime
+    from types import TracebackType
+
+    from typing_extensions import Self
 
 # How long beyond the expected heartbeat will the daemon be considered healthy
 DEFAULT_DAEMON_HEARTBEAT_TOLERANCE_SECONDS = 300

@@ -2,9 +2,8 @@ from __future__ import annotations
 
 import datetime
 import json
-import logging
 import time
-from typing import Any, Mapping, Optional
+from typing import TYPE_CHECKING, Any, Mapping, Optional
 
 import requests
 from dagster import Failure, Field, StringSource, __version__, get_dagster_logger, resource
@@ -13,6 +12,9 @@ from requests.auth import HTTPBasicAuth
 from requests.exceptions import RequestException
 
 from .types import CensusOutput
+
+if TYPE_CHECKING:
+    import logging
 
 CENSUS_API_BASE = "app.getcensus.com/api"
 CENSUS_VERSION = "v1"

@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import shutil
 from pathlib import Path
-from typing import List, Optional
+from typing import TYPE_CHECKING, List, Optional
 
 import pytest
 from dagster import AssetObservation, FloatMetadataValue, Output, TextMetadataValue
@@ -13,9 +13,11 @@ from dagster_dbt.core.resources_v2 import (
     DbtManifest,
 )
 from dagster_dbt.errors import DagsterDbtCliRuntimeError
-from pytest_mock import MockerFixture
 
 from ..conftest import TEST_PROJECT_DIR
+
+if TYPE_CHECKING:
+    from pytest_mock import MockerFixture
 
 pytest.importorskip("dbt.version", minversion="1.4")
 

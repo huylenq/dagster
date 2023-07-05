@@ -1,12 +1,14 @@
 from __future__ import annotations
 
-from typing import Any, List, Mapping, NamedTuple, Optional, Sequence, Set, cast
+from typing import TYPE_CHECKING, Any, List, Mapping, NamedTuple, Optional, Sequence, Set, cast
 
 import dagster._check as check
 from dagster._serdes import whitelist_for_serdes
 
 from .config_type import ConfigScalarKind, ConfigType, ConfigTypeKind
-from .field import Field
+
+if TYPE_CHECKING:
+    from .field import Field
 
 
 def get_recursive_type_keys(

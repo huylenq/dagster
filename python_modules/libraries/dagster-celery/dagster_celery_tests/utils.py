@@ -4,17 +4,20 @@ import os
 import signal
 import subprocess
 import tempfile
-import threading
 from contextlib import contextmanager
-from typing import Any, Iterator, Mapping, Optional, Sequence
+from typing import TYPE_CHECKING, Any, Iterator, Mapping, Optional, Sequence
 
 from dagster._core.definitions.reconstruct import ReconstructableJob
-from dagster._core.events import DagsterEvent
 from dagster._core.execution.api import execute_job
-from dagster._core.execution.execution_result import ExecutionResult
 from dagster._core.instance import DagsterInstance
-from dagster._core.instance.ref import InstanceRef
 from dagster._core.test_utils import instance_for_test
+
+if TYPE_CHECKING:
+    import threading
+
+    from dagster._core.events import DagsterEvent
+    from dagster._core.execution.execution_result import ExecutionResult
+    from dagster._core.instance.ref import InstanceRef
 
 BUILDKITE = os.getenv("BUILDKITE")
 

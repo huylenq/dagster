@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from contextlib import contextmanager
-from typing import Any, List, Optional, Sequence, Union
+from typing import TYPE_CHECKING, Any, List, Optional, Sequence, Union
 
 from dagster import (
     AssetKey,
@@ -12,9 +12,11 @@ from dagster import (
     IOManager,
     OutputContext,
 )
-from dagster._core.definitions.events import CoercibleToAssetKey
 from dagster._core.event_api import EventLogRecord, EventRecordsFilter
 from dagster._core.events import DagsterEventType
+
+if TYPE_CHECKING:
+    from dagster._core.definitions.events import CoercibleToAssetKey
 
 
 class DefinitionsRunner:

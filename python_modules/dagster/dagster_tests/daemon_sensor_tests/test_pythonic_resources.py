@@ -3,7 +3,7 @@ from __future__ import annotations
 import os
 import sys
 from contextlib import contextmanager
-from typing import Iterator, Optional
+from typing import TYPE_CHECKING, Iterator, Optional
 
 import pendulum
 import pytest
@@ -26,13 +26,9 @@ from dagster._core.definitions.freshness_policy_sensor_definition import (
     FreshnessPolicySensorContext,
     freshness_policy_sensor,
 )
-from dagster._core.definitions.multi_asset_sensor_definition import (
-    MultiAssetSensorEvaluationContext,
-)
 from dagster._core.definitions.repository_definition.valid_definitions import (
     SINGLETON_REPOSITORY_NAME,
 )
-from dagster._core.definitions.resource_annotation import ResourceParam
 from dagster._core.definitions.run_request import InstigatorType
 from dagster._core.definitions.run_status_sensor_definition import (
     RunFailureSensorContext,
@@ -41,20 +37,26 @@ from dagster._core.definitions.run_status_sensor_definition import (
     run_status_sensor,
 )
 from dagster._core.definitions.sensor_definition import RunRequest
-from dagster._core.events.log import EventLogEntry
-from dagster._core.execution.context.compute import OpExecutionContext
-from dagster._core.instance import DagsterInstance
 from dagster._core.scheduler.instigation import InstigatorState, InstigatorStatus, TickStatus
 from dagster._core.storage.dagster_run import DagsterRunStatus
 from dagster._core.test_utils import (
     create_test_daemon_workspace_context,
 )
 from dagster._core.types.loadable_target_origin import LoadableTargetOrigin
-from dagster._core.workspace.context import WorkspaceProcessContext
 from dagster._core.workspace.load_target import ModuleTarget
 from dagster._seven.compat.pendulum import create_pendulum_time, to_timezone
 
 from .test_sensor_run import evaluate_sensors, validate_tick, wait_for_all_runs_to_start
+
+if TYPE_CHECKING:
+    from dagster._core.definitions.multi_asset_sensor_definition import (
+        MultiAssetSensorEvaluationContext,
+    )
+    from dagster._core.definitions.resource_annotation import ResourceParam
+    from dagster._core.events.log import EventLogEntry
+    from dagster._core.execution.context.compute import OpExecutionContext
+    from dagster._core.instance import DagsterInstance
+    from dagster._core.workspace.context import WorkspaceProcessContext
 
 
 @op(out={})

@@ -2,9 +2,8 @@ from __future__ import annotations
 
 import tempfile
 import time
-from concurrent.futures import ThreadPoolExecutor
 from contextlib import contextmanager
-from typing import Any, Dict, Iterator, Mapping, NamedTuple, Optional, Tuple
+from typing import TYPE_CHECKING, Any, Dict, Iterator, Mapping, NamedTuple, Optional, Tuple
 
 import pendulum
 import pytest
@@ -16,13 +15,10 @@ from dagster import (
 from dagster._core.definitions.instigation_logger import get_instigation_log_records
 from dagster._core.events import DagsterEvent, DagsterEventType
 from dagster._core.events.log import EventLogEntry
-from dagster._core.host_representation import CodeLocation, ExternalRepository
-from dagster._core.instance import DagsterInstance
 from dagster._core.log_manager import DAGSTER_META_KEY
 from dagster._core.scheduler.instigation import TickStatus
 from dagster._core.storage.event_log.base import EventRecordsFilter
 from dagster._core.test_utils import create_test_daemon_workspace_context, instance_for_test
-from dagster._core.workspace.context import WorkspaceProcessContext
 from dagster._core.workspace.load_target import WorkspaceFileTarget, WorkspaceLoadTarget
 
 from .conftest import create_workspace_load_target
@@ -37,6 +33,13 @@ from .test_sensor_run import (
     validate_tick,
     wait_for_all_runs_to_finish,
 )
+
+if TYPE_CHECKING:
+    from concurrent.futures import ThreadPoolExecutor
+
+    from dagster._core.host_representation import CodeLocation, ExternalRepository
+    from dagster._core.instance import DagsterInstance
+    from dagster._core.workspace.context import WorkspaceProcessContext
 
 
 @pytest.fixture(name="instance_module_scoped", scope="module")

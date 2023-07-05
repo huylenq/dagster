@@ -1,14 +1,16 @@
 from __future__ import annotations
 
 from collections import defaultdict
-from typing import AbstractSet, Dict, Iterable, List, Mapping, Tuple, cast
+from typing import TYPE_CHECKING, AbstractSet, Dict, Iterable, List, Mapping, Tuple, cast
 
-from dagster._core.definitions.events import AssetKey
 from dagster._core.errors import DagsterInvalidDefinitionError
 from dagster._utils.backcompat import experimental_warning
 
-from .assets import AssetsDefinition
-from .source_asset import SourceAsset
+if TYPE_CHECKING:
+    from dagster._core.definitions.events import AssetKey
+
+    from .assets import AssetsDefinition
+    from .source_asset import SourceAsset
 
 
 class ResolvedAssetDependencies:

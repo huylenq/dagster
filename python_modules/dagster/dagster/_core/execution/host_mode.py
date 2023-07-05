@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import logging
 import sys
-from typing import Iterator, Mapping, Optional, Sequence, Union
+from typing import TYPE_CHECKING, Iterator, Mapping, Optional, Sequence, Union
 
 import dagster._check as check
 from dagster._config import Field, process_config
@@ -20,7 +20,6 @@ from dagster._core.errors import (
 )
 from dagster._core.events import DagsterEvent
 from dagster._core.execution.plan.plan import ExecutionPlan
-from dagster._core.executor.base import Executor
 from dagster._core.executor.init import InitExecutorContext
 from dagster._core.instance import DagsterInstance
 from dagster._core.log_manager import DagsterLogManager
@@ -33,6 +32,9 @@ from .api import ExecuteRunWithPlanIterable, job_execution_iterator
 from .context.logger import InitLoggerContext
 from .context.system import PlanData, PlanOrchestrationContext
 from .context_creation_job import PlanOrchestrationContextManager
+
+if TYPE_CHECKING:
+    from dagster._core.executor.base import Executor
 
 
 def _get_host_mode_executor(

@@ -1,12 +1,14 @@
 from __future__ import annotations
 
 from enum import Enum
-from typing import Any, Dict, List, Optional
+from typing import TYPE_CHECKING, Any, Dict, List, Optional
 
 from pydantic import Extra, Field
 
-from ...utils import kubernetes
 from ...utils.utils import BaseModel, ConfigurableClass, create_json_schema_conditionals
+
+if TYPE_CHECKING:
+    from ...utils import kubernetes
 
 
 class RunLauncherType(str, Enum):

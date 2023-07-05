@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import sys
+from typing import TYPE_CHECKING
 
 import dagster._check as check
 import graphene
@@ -9,10 +10,12 @@ from dagster._core.launcher.base import RunLauncher
 from dagster._core.storage.captured_log_manager import CapturedLogManager
 from dagster._daemon.asset_daemon import get_auto_materialize_paused
 from dagster._daemon.types import DaemonStatus
-from dagster._utils.concurrency import ConcurrencyKeyInfo
 
 from .errors import GraphenePythonError
 from .util import ResolveInfo, non_null_list
+
+if TYPE_CHECKING:
+    from dagster._utils.concurrency import ConcurrencyKeyInfo
 
 
 class GrapheneRunLauncher(graphene.ObjectType):

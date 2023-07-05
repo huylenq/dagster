@@ -8,7 +8,6 @@ from collections import defaultdict
 from contextlib import contextmanager
 from typing import IO, TYPE_CHECKING, Generator, Iterator, Mapping, Optional, Sequence, Tuple
 
-from typing_extensions import Final
 from watchdog.events import PatternMatchingEventHandler
 from watchdog.observers.polling import PollingObserver
 
@@ -18,7 +17,6 @@ from dagster import (
     StringSource,
     _check as check,
 )
-from dagster._config.config_schema import UserConfigSchema
 from dagster._core.execution.compute_logs import mirror_stream_to_file
 from dagster._core.storage.dagster_run import DagsterRun
 from dagster._serdes import ConfigurableClass, ConfigurableClassData
@@ -41,6 +39,9 @@ from .compute_log_manager import (
 )
 
 if TYPE_CHECKING:
+    from typing_extensions import Final
+
+    from dagster._config.config_schema import UserConfigSchema
     from dagster._core.storage.cloud_storage_compute_log_manager import LogSubscription
 
 DEFAULT_WATCHDOG_POLLING_TIMEOUT: Final = 2.5

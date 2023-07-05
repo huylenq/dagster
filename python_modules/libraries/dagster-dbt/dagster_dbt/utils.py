@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from pathlib import Path
 from typing import (
+    TYPE_CHECKING,
     AbstractSet,
     Any,
     Callable,
@@ -23,9 +24,12 @@ from dagster import (
     Output,
     _check as check,
 )
-from dagster._core.definitions.metadata import RawMetadataValue
 
-from .types import DbtOutput
+if TYPE_CHECKING:
+    from dagster._core.definitions.metadata import RawMetadataValue
+    from dbt.graph import SelectionSpec
+
+    from .types import DbtOutput
 
 # dbt resource types that may be considered assets
 ASSET_RESOURCE_TYPES = ["model", "seed", "snapshot"]
@@ -254,7 +258,6 @@ def select_unique_ids_from_manifest(
     import dbt.graph.selector as graph_selector
     from dbt.contracts.graph.manifest import Manifest, WritableManifest
     from dbt.contracts.state import PreviousState
-    from dbt.graph import SelectionSpec
     from dbt.graph.selector_spec import IndirectSelection
     from networkx import DiGraph
 

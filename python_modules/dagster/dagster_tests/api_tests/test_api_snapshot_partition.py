@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import string
+from typing import TYPE_CHECKING
 
 import pytest
 from dagster._api.snapshot_partition import (
@@ -17,11 +18,13 @@ from dagster._core.host_representation import (
     ExternalPartitionSetExecutionParamData,
     ExternalPartitionTagsData,
 )
-from dagster._core.instance import DagsterInstance
 from dagster._grpc.types import PartitionArgs, PartitionNamesArgs, PartitionSetExecutionParamArgs
 from dagster._serdes import deserialize_value
 
 from .utils import get_bar_repo_code_location
+
+if TYPE_CHECKING:
+    from dagster._core.instance import DagsterInstance
 
 
 def test_external_partition_names_grpc(instance: DagsterInstance):

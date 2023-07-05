@@ -14,12 +14,11 @@ materialization it was derived from.
 from __future__ import annotations
 
 import datetime
-from typing import AbstractSet, Dict, Mapping, Optional, Sequence, Tuple, cast
+from typing import TYPE_CHECKING, AbstractSet, Dict, Mapping, Optional, Sequence, Tuple, cast
 
 import pendulum
 
 import dagster._check as check
-from dagster._core.definitions.asset_graph import AssetGraph
 from dagster._core.definitions.asset_selection import AssetSelection
 from dagster._core.definitions.data_version import (
     DATA_VERSION_TAG,
@@ -32,11 +31,14 @@ from dagster._core.definitions.time_window_partitions import (
     TimeWindowPartitionsSubset,
 )
 from dagster._core.errors import DagsterInvariantViolationError
-from dagster._core.event_api import EventLogRecord
 from dagster._core.storage.dagster_run import FINISHED_STATUSES, DagsterRunStatus, RunsFilter
 from dagster._utils import datetime_as_float, make_hashable
 from dagster._utils.cached_method import cached_method
-from dagster._utils.caching_instance_queryer import CachingInstanceQueryer
+
+if TYPE_CHECKING:
+    from dagster._core.definitions.asset_graph import AssetGraph
+    from dagster._core.event_api import EventLogRecord
+    from dagster._utils.caching_instance_queryer import CachingInstanceQueryer
 
 
 class CachingDataTimeResolver:

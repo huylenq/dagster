@@ -1,15 +1,12 @@
 from __future__ import annotations
 
 import multiprocessing
-from signal import Signals
+from typing import TYPE_CHECKING
 
 import pendulum
 import pytest
 from dagster import DagsterInstance
 from dagster._core.execution.backfill import BulkActionStatus, PartitionBackfill
-from dagster._core.host_representation import (
-    ExternalRepository,
-)
 from dagster._core.test_utils import (
     cleanup_test_instance,
     create_test_daemon_workspace_context,
@@ -21,6 +18,13 @@ from dagster._seven import IS_WINDOWS
 from dagster._seven.compat.pendulum import create_pendulum_time, to_timezone
 
 from .conftest import workspace_load_target
+
+if TYPE_CHECKING:
+    from signal import Signals
+
+    from dagster._core.host_representation import (
+        ExternalRepository,
+    )
 
 spawn_ctx = multiprocessing.get_context("spawn")
 

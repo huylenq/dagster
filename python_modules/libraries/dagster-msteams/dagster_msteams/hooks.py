@@ -1,11 +1,13 @@
 from __future__ import annotations
 
-from typing import Callable, Optional
+from typing import TYPE_CHECKING, Callable, Optional
 
 from dagster._core.definitions import failure_hook, success_hook
-from dagster._core.execution.context.hook import HookContext
 
 from dagster_msteams.card import Card
+
+if TYPE_CHECKING:
+    from dagster._core.execution.context.hook import HookContext
 
 
 def _default_status_message(context: HookContext, status: str) -> str:

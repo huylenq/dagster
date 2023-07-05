@@ -1,19 +1,15 @@
 from __future__ import annotations
 
 from enum import Enum
-from typing import Mapping, NamedTuple, Optional, Sequence, Union
+from typing import TYPE_CHECKING, Mapping, NamedTuple, Optional, Sequence, Union
 
 from dagster import _check as check
 from dagster._core.definitions import AssetKey
-from dagster._core.definitions.asset_graph import AssetGraph
 from dagster._core.definitions.external_asset_graph import ExternalAssetGraph
-from dagster._core.definitions.partition import PartitionsSubset
 from dagster._core.errors import DagsterDefinitionChangedDeserializationError
 from dagster._core.execution.bulk_actions import BulkActionType
 from dagster._core.host_representation.origin import ExternalPartitionSetOrigin
-from dagster._core.instance import DynamicPartitionsStore
 from dagster._core.storage.tags import USER_TAG
-from dagster._core.workspace.workspace import IWorkspace
 from dagster._serdes import whitelist_for_serdes
 from dagster._utils import utc_datetime_from_timestamp
 from dagster._utils.error import SerializableErrorInfo
@@ -23,6 +19,12 @@ from .asset_backfill import (
     PartitionedAssetBackfillStatus,
     UnpartitionedAssetBackfillStatus,
 )
+
+if TYPE_CHECKING:
+    from dagster._core.definitions.asset_graph import AssetGraph
+    from dagster._core.definitions.partition import PartitionsSubset
+    from dagster._core.instance import DynamicPartitionsStore
+    from dagster._core.workspace.workspace import IWorkspace
 
 
 @whitelist_for_serdes

@@ -9,7 +9,6 @@ from dagster._core.definitions.reconstruct import ReconstructableJob
 from dagster._core.errors import DagsterSubprocessError
 from dagster._core.events import DagsterEventType
 from dagster._core.execution.api import execute_job, execute_run_iterator
-from dagster._core.instance import DagsterInstance
 from dagster._utils import send_interrupt
 
 from .utils import (  # ruff: isort:skip
@@ -18,6 +17,10 @@ from .utils import (  # ruff: isort:skip
     execute_eagerly_on_celery,
     execute_job_on_celery,
 )
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from dagster._core.instance import DagsterInstance
 
 
 def test_execute_on_celery_default(dagster_celery_worker):

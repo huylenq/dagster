@@ -3,6 +3,7 @@ from __future__ import annotations
 import os
 import sys
 import time
+from typing import TYPE_CHECKING
 
 import pytest
 from dagster import (
@@ -23,7 +24,6 @@ from dagster._check import CheckError
 from dagster._core.definitions.metadata import MetadataValue
 from dagster._core.errors import DagsterUnmetExecutorRequirementsError
 from dagster._core.events import DagsterEvent, DagsterEventType
-from dagster._core.execution import execution_result
 from dagster._core.execution.api import execute_job
 from dagster._core.instance import DagsterInstance
 from dagster._core.storage.captured_log_manager import CapturedLogManager
@@ -38,6 +38,9 @@ from .retry_jobs import (
     get_dynamic_job_op_failure,
     get_dynamic_job_resource_init_failure,
 )
+
+if TYPE_CHECKING:
+    from dagster._core.execution import execution_result
 
 
 def test_diamond_simple_execution():

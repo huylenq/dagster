@@ -16,8 +16,6 @@ from typing import (
     cast,
 )
 
-from typing_extensions import TypeAlias
-
 import dagster._check as check
 from dagster._core.definitions import InputDefinition, JobDefinition, NodeHandle
 from dagster._core.definitions.version_strategy import ResourceVersionContext
@@ -28,7 +26,6 @@ from dagster._core.errors import (
     user_code_error_boundary,
 )
 from dagster._core.storage.io_manager import IOManager
-from dagster._core.system_config.objects import ResolvedRunConfig
 from dagster._serdes import whitelist_for_serdes
 
 from .objects import TypeCheckData
@@ -36,9 +33,12 @@ from .outputs import StepOutputHandle, UnresolvedStepOutputHandle
 from .utils import build_resources_for_manager, op_execution_error_boundary
 
 if TYPE_CHECKING:
+    from typing_extensions import TypeAlias
+
     from dagster._core.execution.context.input import InputContext
     from dagster._core.execution.context.system import StepExecutionContext
     from dagster._core.storage.input_manager import InputManager
+    from dagster._core.system_config.objects import ResolvedRunConfig
 
 StepInputUnion: TypeAlias = Union[
     "StepInput", "UnresolvedMappedStepInput", "UnresolvedCollectStepInput"
@@ -793,7 +793,7 @@ class FromMultipleSources(
 def _load_input_with_input_manager(
     input_manager: "InputManager", context: "InputContext"
 ) -> Iterator[object]:
-    step_context = cast(StepExecutionContext, context.step_context)
+    step_context = cast("StepExecutionContext", context.step_context)
     with op_execution_error_boundary(
         DagsterExecutionLoadInputError,
         msg_fn=lambda: f'Error occurred while loading input "{context.name}" of step "{step_context.step.key}":',

@@ -7,6 +7,7 @@ import os
 import random
 import sys
 from typing import (
+    TYPE_CHECKING,
     AbstractSet,
     Iterable,
     List,
@@ -48,26 +49,28 @@ from dagster._core.definitions.asset_reconciliation_sensor import (
     AutoMaterializeCondition,
     reconcile,
 )
-from dagster._core.definitions.auto_materialize_policy import AutoMaterializePolicy
 from dagster._core.definitions.data_version import DataVersionsByPartition
-from dagster._core.definitions.events import CoercibleToAssetKey
 from dagster._core.definitions.external_asset_graph import ExternalAssetGraph
-from dagster._core.definitions.freshness_policy import FreshnessPolicy
 from dagster._core.definitions.observe import observe
-from dagster._core.definitions.partition import (
-    PartitionsSubset,
-)
-from dagster._core.events.log import EventLogEntry
 from dagster._core.execution.asset_backfill import AssetBackfillData
 from dagster._core.execution.backfill import BulkActionStatus, PartitionBackfill
 from dagster._core.host_representation.origin import InProcessCodeLocationOrigin
-from dagster._core.storage.dagster_run import DagsterRun
 from dagster._core.test_utils import (
     InProcessTestWorkspaceLoadTarget,
     create_test_daemon_workspace_context,
 )
 from dagster._core.types.loadable_target_origin import LoadableTargetOrigin
 from dagster._daemon.asset_daemon import AssetDaemon
+
+if TYPE_CHECKING:
+    from dagster._core.definitions.auto_materialize_policy import AutoMaterializePolicy
+    from dagster._core.definitions.events import CoercibleToAssetKey
+    from dagster._core.definitions.freshness_policy import FreshnessPolicy
+    from dagster._core.definitions.partition import (
+        PartitionsSubset,
+    )
+    from dagster._core.events.log import EventLogEntry
+    from dagster._core.storage.dagster_run import DagsterRun
 
 
 class RunSpec(NamedTuple):

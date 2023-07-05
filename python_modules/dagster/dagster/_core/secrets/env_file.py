@@ -2,16 +2,19 @@ from __future__ import annotations
 
 import logging
 import os
-from typing import Any, Dict, Mapping, Optional
+from typing import TYPE_CHECKING, Any, Dict, Mapping, Optional
 
 from dotenv import dotenv_values
-from typing_extensions import Self
 
 from dagster._config import Field, StringSource
 from dagster._serdes import ConfigurableClass
-from dagster._serdes.config_class import ConfigurableClassData
 
 from .loader import SecretsLoader
+
+if TYPE_CHECKING:
+    from typing_extensions import Self
+
+    from dagster._serdes.config_class import ConfigurableClassData
 
 
 def get_env_var_dict(base_dir: str) -> Dict[str, str]:

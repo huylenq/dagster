@@ -4,7 +4,7 @@ import logging
 import uuid
 from collections import defaultdict
 from contextlib import contextmanager
-from typing import Callable, Optional
+from typing import TYPE_CHECKING, Callable, Optional
 
 import sqlalchemy as db
 from sqlalchemy.pool import NullPool
@@ -13,10 +13,12 @@ from dagster._core.storage.event_log.base import EventLogCursor
 from dagster._core.storage.sql import create_engine, get_alembic_config, stamp_alembic_rev
 from dagster._core.storage.sqlite import create_in_memory_conn_string
 from dagster._serdes import ConfigurableClass
-from dagster._serdes.config_class import ConfigurableClassData
 
 from .schema import SqlEventLogStorageMetadata
 from .sql_event_log import SqlEventLogStorage
+
+if TYPE_CHECKING:
+    from dagster._serdes.config_class import ConfigurableClassData
 
 
 class InMemoryEventLogStorage(SqlEventLogStorage, ConfigurableClass):

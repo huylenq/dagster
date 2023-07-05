@@ -1,12 +1,11 @@
 from __future__ import annotations
 
-from typing import ContextManager, Mapping, Optional, cast
+from typing import TYPE_CHECKING, ContextManager, Mapping, Optional, cast
 
 import dagster._check as check
 import sqlalchemy as db
 import sqlalchemy.dialects as db_dialects
 import sqlalchemy.pool as db_pool
-from dagster._config.config_schema import UserConfigSchema
 from dagster._core.storage.config import MySqlStorageConfig, mysql_config
 from dagster._core.storage.runs import (
     DaemonHeartbeatsTable,
@@ -22,10 +21,8 @@ from dagster._core.storage.sql import (
     run_alembic_upgrade,
     stamp_alembic_rev,
 )
-from dagster._daemon.types import DaemonHeartbeat
 from dagster._serdes import ConfigurableClass, ConfigurableClassData, serialize_value
 from dagster._utils import utc_datetime_from_timestamp
-from sqlalchemy.engine import Connection
 
 from ..utils import (
     create_mysql_connection,
@@ -36,6 +33,11 @@ from ..utils import (
     retry_mysql_connection_fn,
     retry_mysql_creation_fn,
 )
+
+if TYPE_CHECKING:
+    from dagster._config.config_schema import UserConfigSchema
+    from dagster._daemon.types import DaemonHeartbeat
+    from sqlalchemy.engine import Connection
 
 MINIMUM_MYSQL_BUCKET_VERSION = "8.0.0"
 MINIMUM_MYSQL_INTERSECT_VERSION = "8.0.31"

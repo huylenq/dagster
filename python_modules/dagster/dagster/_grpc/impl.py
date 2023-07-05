@@ -4,14 +4,22 @@ from __future__ import annotations
 import os
 import sys
 from contextlib import contextmanager
-from typing import AbstractSet, Any, Generator, Iterator, Optional, Sequence, Tuple, Union
+from typing import (
+    TYPE_CHECKING,
+    AbstractSet,
+    Any,
+    Generator,
+    Iterator,
+    Optional,
+    Sequence,
+    Tuple,
+    Union,
+)
 
 import pendulum
 
 import dagster._check as check
 from dagster._core.definitions import ScheduleEvaluationContext
-from dagster._core.definitions.events import AssetKey
-from dagster._core.definitions.job_definition import JobDefinition
 from dagster._core.definitions.multi_dimensional_partitions import MultiPartitionsDefinition
 from dagster._core.definitions.partition import (
     DynamicPartitionsDefinition,
@@ -19,7 +27,6 @@ from dagster._core.definitions.partition import (
     PartitionsDefinition,
 )
 from dagster._core.definitions.reconstruct import ReconstructableJob
-from dagster._core.definitions.repository_definition import RepositoryDefinition
 from dagster._core.definitions.sensor_definition import SensorEvaluationContext
 from dagster._core.errors import (
     DagsterExecutionInterruptedError,
@@ -45,13 +52,11 @@ from dagster._core.host_representation.external_data import (
     job_name_for_external_partition_set_name,
 )
 from dagster._core.instance import DagsterInstance
-from dagster._core.instance.ref import InstanceRef
 from dagster._core.snap.execution_plan_snapshot import (
     ExecutionPlanSnapshotErrorData,
     snapshot_from_execution_plan,
 )
 from dagster._core.storage.dagster_run import DagsterRun
-from dagster._grpc.types import ExecutionPlanSnapshotArgs
 from dagster._serdes import deserialize_value
 from dagster._serdes.ipc import IPCErrorMessage
 from dagster._seven import nullcontext
@@ -60,6 +65,13 @@ from dagster._utils.error import serializable_error_info_from_exc_info
 from dagster._utils.interrupts import capture_interrupts
 
 from .types import ExecuteExternalJobArgs
+
+if TYPE_CHECKING:
+    from dagster._core.definitions.events import AssetKey
+    from dagster._core.definitions.job_definition import JobDefinition
+    from dagster._core.definitions.repository_definition import RepositoryDefinition
+    from dagster._core.instance.ref import InstanceRef
+    from dagster._grpc.types import ExecutionPlanSnapshotArgs
 
 
 class RunInSubprocessComplete:

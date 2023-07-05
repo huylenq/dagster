@@ -3,6 +3,7 @@ from __future__ import annotations
 import warnings
 from inspect import Parameter
 from typing import (
+    TYPE_CHECKING,
     AbstractSet,
     Any,
     Callable,
@@ -18,11 +19,7 @@ from typing import (
 
 import dagster._check as check
 from dagster._builtins import Nothing
-from dagster._config import UserConfigSchema
 from dagster._core.decorator_utils import get_function_params, get_valid_name_permutations
-from dagster._core.definitions.auto_materialize_policy import AutoMaterializePolicy
-from dagster._core.definitions.freshness_policy import FreshnessPolicy
-from dagster._core.definitions.metadata import ArbitraryMetadataMapping, MetadataUserInput
 from dagster._core.definitions.resource_annotation import (
     get_resource_args,
 )
@@ -34,7 +31,6 @@ from dagster._utils.backcompat import (
     experimental_arg_warning,
 )
 
-from ..asset_in import AssetIn
 from ..asset_out import AssetOut
 from ..assets import AssetsDefinition
 from ..decorators.graph_decorator import graph
@@ -42,10 +38,18 @@ from ..decorators.op_decorator import _Op
 from ..events import AssetKey, CoercibleToAssetKey, CoercibleToAssetKeyPrefix
 from ..input import In
 from ..output import GraphOut, Out
-from ..partition import PartitionsDefinition
-from ..policy import RetryPolicy
-from ..resource_definition import ResourceDefinition
 from ..utils import DEFAULT_IO_MANAGER_KEY, NoValueSentinel
+
+if TYPE_CHECKING:
+    from dagster._config import UserConfigSchema
+    from dagster._core.definitions.auto_materialize_policy import AutoMaterializePolicy
+    from dagster._core.definitions.freshness_policy import FreshnessPolicy
+    from dagster._core.definitions.metadata import ArbitraryMetadataMapping, MetadataUserInput
+
+    from ..asset_in import AssetIn
+    from ..partition import PartitionsDefinition
+    from ..policy import RetryPolicy
+    from ..resource_definition import ResourceDefinition
 
 
 @overload

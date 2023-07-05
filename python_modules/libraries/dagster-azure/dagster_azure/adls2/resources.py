@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Any, Dict, Union
+from typing import TYPE_CHECKING, Any, Dict, Union
 
 from azure.identity import DefaultAzureCredential
 from azure.storage.filedatalake import DataLakeLeaseClient
@@ -17,12 +17,14 @@ from dagster._core.definitions.resource_definition import dagster_maintained_res
 from dagster._utils.cached_method import cached_method
 from dagster._utils.merger import merge_dicts
 from pydantic import Field
-from typing_extensions import Literal
 
 from dagster_azure.blob.utils import BlobServiceClient, create_blob_client
 
 from .file_manager import ADLS2FileManager
 from .utils import DataLakeServiceClient, create_adls2_client
+
+if TYPE_CHECKING:
+    from typing_extensions import Literal
 
 
 class ADLS2SASToken(Config):

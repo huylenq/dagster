@@ -14,7 +14,6 @@ from typing import TYPE_CHECKING, Any, ContextManager, Iterable, Iterator, Optio
 
 import sqlalchemy as db
 import sqlalchemy.exc as db_exc
-from sqlalchemy.engine import Connection, Engine
 from sqlalchemy.pool import NullPool
 from tqdm import tqdm
 from watchdog.events import FileSystemEvent, PatternMatchingEventHandler
@@ -23,10 +22,7 @@ from watchdog.observers import Observer
 import dagster._check as check
 import dagster._seven as seven
 from dagster._config import StringSource
-from dagster._config.config_schema import UserConfigSchema
-from dagster._core.definitions.events import AssetKey
 from dagster._core.errors import DagsterInvariantViolationError
-from dagster._core.event_api import EventHandlerFn
 from dagster._core.events import ASSET_EVENTS
 from dagster._core.events.log import EventLogEntry
 from dagster._core.storage.dagster_run import DagsterRunStatus, RunsFilter
@@ -53,6 +49,11 @@ from ..schema import SqlEventLogStorageMetadata, SqlEventLogStorageTable
 from ..sql_event_log import RunShardedEventsCursor, SqlEventLogStorage
 
 if TYPE_CHECKING:
+    from sqlalchemy.engine import Connection, Engine
+
+    from dagster._config.config_schema import UserConfigSchema
+    from dagster._core.definitions.events import AssetKey
+    from dagster._core.event_api import EventHandlerFn
     from dagster._core.storage.sqlite_storage import SqliteStorageConfig
 INDEX_SHARD_NAME = "index"
 

@@ -5,6 +5,7 @@ import random
 import string
 import sys
 import time
+from typing import TYPE_CHECKING
 
 import pendulum
 import pytest
@@ -47,12 +48,14 @@ from dagster._core.test_utils import (
     step_succeeded,
 )
 from dagster._core.types.loadable_target_origin import LoadableTargetOrigin
-from dagster._core.workspace.context import WorkspaceProcessContext
 from dagster._daemon import get_default_daemon_logger
 from dagster._daemon.backfill import execute_backfill_iteration
 from dagster._seven import IS_WINDOWS, get_system_temp_directory
 from dagster._utils import touch_file
 from dagster._utils.error import SerializableErrorInfo
+
+if TYPE_CHECKING:
+    from dagster._core.workspace.context import WorkspaceProcessContext
 
 default_resource_defs = resource_defs = {"io_manager": fs_io_manager}
 

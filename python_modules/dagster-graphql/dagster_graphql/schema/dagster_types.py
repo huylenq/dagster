@@ -1,13 +1,11 @@
 from __future__ import annotations
 
-from typing import Any, Dict, Optional, Union
+from typing import TYPE_CHECKING, Any, Dict, Optional, Union
 
 import dagster._check as check
 import graphene
 from dagster._core.snap import JobSnapshot
-from dagster._core.snap.dagster_types import DagsterTypeSnap
 from dagster._core.types.dagster_type import DagsterTypeKind
-from typing_extensions import TypeAlias
 
 from dagster_graphql.implementation.events import iterate_metadata_entries
 from dagster_graphql.schema.metadata import GrapheneMetadataEntry
@@ -19,6 +17,10 @@ from .errors import (
     GraphenePythonError,
 )
 from .util import non_null_list
+
+if TYPE_CHECKING:
+    from dagster._core.snap.dagster_types import DagsterTypeSnap
+    from typing_extensions import TypeAlias
 
 GrapheneDagsterTypeUnion: TypeAlias = Union[
     "GrapheneListDagsterType", "GrapheneNullableDagsterType", "GrapheneRegularDagsterType"

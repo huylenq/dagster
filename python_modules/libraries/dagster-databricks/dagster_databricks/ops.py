@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Optional
+from typing import TYPE_CHECKING, Optional
 
 from dagster import (
     In,
@@ -9,16 +9,18 @@ from dagster import (
     _check as check,
     op,
 )
-from dagster._core.definitions.op_definition import OpDefinition
 from databricks_cli.sdk import JobsService
 from pydantic import Field
-
-from .databricks import DatabricksClient
 
 DEFAULT_POLL_INTERVAL_SECONDS = 10
 # wait at most 24 hours by default for run execution
 DEFAULT_MAX_WAIT_TIME_SECONDS = 24 * 60 * 60
 from dagster import Config
+
+if TYPE_CHECKING:
+    from dagster._core.definitions.op_definition import OpDefinition
+
+    from .databricks import DatabricksClient
 
 
 def create_databricks_run_now_op(

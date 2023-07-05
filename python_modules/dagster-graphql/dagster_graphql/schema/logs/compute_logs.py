@@ -1,11 +1,15 @@
 from __future__ import annotations
 
+from typing import TYPE_CHECKING
+
 import dagster._check as check
 import graphene
-from dagster._core.storage.captured_log_manager import CapturedLogData
 from dagster._core.storage.compute_log_manager import ComputeIOType, ComputeLogFileData
 
 from dagster_graphql.schema.util import ResolveInfo, non_null_list
+
+if TYPE_CHECKING:
+    from dagster._core.storage.captured_log_manager import CapturedLogData
 
 
 class GrapheneComputeIOType(graphene.Enum):

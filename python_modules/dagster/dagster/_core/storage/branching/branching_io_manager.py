@@ -1,15 +1,17 @@
 from __future__ import annotations
 
-from typing import Any, Optional
+from typing import TYPE_CHECKING, Any, Optional
 
-from dagster import InputContext, OutputContext
-from dagster._core.definitions.events import AssetKey, AssetMaterialization
 from dagster._core.definitions.metadata import TextMetadataValue
 from dagster._core.event_api import EventRecordsFilter
 from dagster._core.events import DagsterEventType
-from dagster._core.events.log import EventLogEntry
-from dagster._core.instance import DagsterInstance
 from dagster._core.storage.io_manager import IOManager
+
+if TYPE_CHECKING:
+    from dagster import InputContext, OutputContext
+    from dagster._core.definitions.events import AssetKey, AssetMaterialization
+    from dagster._core.events.log import EventLogEntry
+    from dagster._core.instance import DagsterInstance
 
 
 def get_text_metadata_value(materialization: AssetMaterialization, key: str) -> Optional[str]:

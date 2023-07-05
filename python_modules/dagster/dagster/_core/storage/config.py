@@ -1,11 +1,13 @@
 from __future__ import annotations
 
-from typing import Dict
+from typing import TYPE_CHECKING, Dict
 
 from typing_extensions import TypedDict
 
 from dagster._config import Field, IntSource, Permissive, Selector, StringSource
-from dagster._config.config_schema import UserConfigSchema
+
+if TYPE_CHECKING:
+    from dagster._config.config_schema import UserConfigSchema
 
 
 class MySqlStorageConfig(TypedDict):

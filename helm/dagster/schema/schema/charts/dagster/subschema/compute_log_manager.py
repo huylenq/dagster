@@ -1,12 +1,14 @@
 from __future__ import annotations
 
 from enum import Enum
-from typing import Any, Dict, Optional, Type
+from typing import TYPE_CHECKING, Any, Dict, Optional, Type
 
 from pydantic import Extra
 
 from ...utils.utils import BaseModel, ConfigurableClass, create_json_schema_conditionals
-from .config import StringSource
+
+if TYPE_CHECKING:
+    from .config import StringSource
 
 
 class ComputeLogManagerType(str, Enum):

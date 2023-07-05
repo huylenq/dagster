@@ -1,9 +1,8 @@
 from __future__ import annotations
 
-import logging
 import sys
 import time
-from typing import Iterator, Optional
+from typing import TYPE_CHECKING, Iterator, Optional
 
 import pendulum
 
@@ -20,9 +19,13 @@ from dagster._core.storage.dagster_run import (
     RunsFilter,
 )
 from dagster._core.storage.tags import MAX_RUNTIME_SECONDS_TAG
-from dagster._core.workspace.context import IWorkspace, IWorkspaceProcessContext
 from dagster._utils import DebugCrashFlags, datetime_as_float
 from dagster._utils.error import SerializableErrorInfo, serializable_error_info_from_exc_info
+
+if TYPE_CHECKING:
+    import logging
+
+    from dagster._core.workspace.context import IWorkspace, IWorkspaceProcessContext
 
 RESUME_RUN_LOG_MESSAGE = "Launching a new run worker to resume run"
 

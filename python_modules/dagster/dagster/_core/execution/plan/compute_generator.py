@@ -4,6 +4,7 @@ import inspect
 import warnings
 from functools import wraps
 from typing import (
+    TYPE_CHECKING,
     Any,
     Callable,
     Dict,
@@ -29,11 +30,13 @@ from dagster._core.definitions import (
     OutputDefinition,
 )
 from dagster._core.definitions.decorators.op_decorator import DecoratedOpFunction
-from dagster._core.definitions.op_definition import OpDefinition
 from dagster._core.errors import DagsterInvariantViolationError
 from dagster._core.types.dagster_type import DagsterTypeKind, is_generic_output_annotation
 
-from ..context.compute import OpExecutionContext
+if TYPE_CHECKING:
+    from dagster._core.definitions.op_definition import OpDefinition
+
+    from ..context.compute import OpExecutionContext
 
 
 class NoAnnotationSentinel:

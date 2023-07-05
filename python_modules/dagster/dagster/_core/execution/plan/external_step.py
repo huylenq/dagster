@@ -14,7 +14,6 @@ from dagster._core.definitions.reconstruct import ReconstructableJob, Reconstruc
 from dagster._core.definitions.resource_definition import dagster_maintained_resource, resource
 from dagster._core.definitions.step_launcher import StepLauncher, StepRunRef
 from dagster._core.errors import raise_execution_interrupts
-from dagster._core.events import DagsterEvent
 from dagster._core.events.log import EventLogEntry
 from dagster._core.execution.api import create_execution_plan
 from dagster._core.execution.context.system import StepExecutionContext
@@ -29,6 +28,7 @@ PICKLED_EVENTS_FILE_NAME = "events.pkl"
 PICKLED_STEP_RUN_REF_FILE_NAME = "step_run_ref.pkl"
 
 if TYPE_CHECKING:
+    from dagster._core.events import DagsterEvent
     from dagster._core.execution.plan.step import ExecutionStep
 
 

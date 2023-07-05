@@ -2,7 +2,7 @@
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List
+from typing import TYPE_CHECKING, List
 
 import pytest
 from dagster import (
@@ -19,7 +19,9 @@ from dagster import (
 )
 from dagster._core.errors import DagsterInvalidInvocationError, DagsterInvalidSubsetError
 from dagster._core.events import DagsterEventType
-from dagster._core.execution.execute_in_process_result import ExecuteInProcessResult
+
+if TYPE_CHECKING:
+    from dagster._core.execution.execute_in_process_result import ExecuteInProcessResult
 
 
 @op

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import gc
+from typing import TYPE_CHECKING
 
 import objgraph
 from dagit.graphql import GraphQLWS
@@ -16,7 +17,9 @@ from dagster._serdes import unpack_value
 from dagster._seven import json
 from dagster._utils.error import SerializableErrorInfo
 from dagster_graphql.version import __version__ as dagster_graphql_version
-from starlette.testclient import TestClient
+
+if TYPE_CHECKING:
+    from starlette.testclient import TestClient
 
 EVENT_LOG_SUBSCRIPTION = """
 subscription PipelineRunLogsSubscription($runId: ID!) {

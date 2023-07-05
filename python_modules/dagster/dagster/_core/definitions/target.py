@@ -2,14 +2,14 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING, NamedTuple, Optional, Sequence, Union
 
-from typing_extensions import TypeAlias
-
 import dagster._check as check
 
 from .job_definition import JobDefinition
 from .unresolved_asset_job_definition import UnresolvedAssetJobDefinition
 
 if TYPE_CHECKING:
+    from typing_extensions import TypeAlias
+
     from .graph_definition import GraphDefinition
 
 ExecutableDefinition: TypeAlias = Union[

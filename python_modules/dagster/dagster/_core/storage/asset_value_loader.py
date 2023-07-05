@@ -1,18 +1,15 @@
 from __future__ import annotations
 
 from contextlib import ExitStack
-from typing import Any, Dict, Mapping, Optional, Type, cast
+from typing import TYPE_CHECKING, Any, Dict, Mapping, Optional, Type, cast
 
 import dagster._check as check
 from dagster._annotations import public
-from dagster._core.definitions.assets import AssetsDefinition
 from dagster._core.definitions.events import AssetKey, CoercibleToAssetKey
 from dagster._core.definitions.job_definition import (
     default_job_io_manager_with_fs_io_manager_schema,
 )
 from dagster._core.definitions.partition_key_range import PartitionKeyRange
-from dagster._core.definitions.resource_definition import ResourceDefinition
-from dagster._core.definitions.source_asset import SourceAsset
 from dagster._core.definitions.utils import DEFAULT_IO_MANAGER_KEY
 from dagster._core.execution.build_resources import build_resources, get_mapped_resource_config
 from dagster._core.execution.context.input import build_input_context
@@ -24,6 +21,11 @@ from dagster._core.types.dagster_type import resolve_dagster_type
 from dagster._utils.merger import merge_dicts
 
 from .io_manager import IOManager
+
+if TYPE_CHECKING:
+    from dagster._core.definitions.assets import AssetsDefinition
+    from dagster._core.definitions.resource_definition import ResourceDefinition
+    from dagster._core.definitions.source_asset import SourceAsset
 
 
 class AssetValueLoader:
