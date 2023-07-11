@@ -1,6 +1,5 @@
 import hashlib
 import textwrap
-<<<<<<< HEAD
 from typing import (
     TYPE_CHECKING,
     AbstractSet,
@@ -10,12 +9,10 @@ from typing import (
     List,
     Mapping,
     Optional,
+    Sequence,
     Set,
     Tuple,
 )
-=======
-from typing import AbstractSet, Any, Dict, FrozenSet, List, Mapping, Optional, Sequence, Set, Tuple
->>>>>>> 7fced53fd7 (start converting dbt integration)
 
 from dagster import (
     AssetKey,
