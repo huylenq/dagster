@@ -10,6 +10,7 @@ from typing import (
     Tuple,
     Union,
     cast,
+    Set,
 )
 
 import dagster._check as check
@@ -708,6 +709,7 @@ class AirbyteManagedElementCacheableAssetsDefinition(AirbyteInstanceCacheableAss
         connection_to_freshness_policy_fn: Optional[
             Callable[[AirbyteConnectionMetadata], Optional[FreshnessPolicy]]
         ],
+        upstream_assets: Optional[Set[AssetKey]] = None
     ):
         defined_conn_names = {conn.name for conn in connections}
         super().__init__(
@@ -720,6 +722,7 @@ class AirbyteManagedElementCacheableAssetsDefinition(AirbyteInstanceCacheableAss
             connection_filter=lambda conn: conn.name in defined_conn_names,
             connection_to_asset_key_fn=connection_to_asset_key_fn,
             connection_to_freshness_policy_fn=connection_to_freshness_policy_fn,
+            upstream_assets=upstream_assets,
         )
         self._connections: List[AirbyteConnection] = list(connections)
 
@@ -753,6 +756,7 @@ def load_assets_from_connections(
     connection_to_freshness_policy_fn: Optional[
         Callable[[AirbyteConnectionMetadata], Optional[FreshnessPolicy]]
     ] = None,
+    upstream_assets: Optional[Set[AssetKey]] = None
 ) -> CacheableAssetsDefinition:
     """Loads Airbyte connection assets from a configured AirbyteResource instance, checking against a list of AirbyteConnection objects.
     This method will raise an error on repo load if the passed AirbyteConnection objects are not in sync with the Airbyte instance.
@@ -827,4 +831,5 @@ def load_assets_from_connections(
         connections=check.iterable_param(connections, "connections", of_type=AirbyteConnection),
         connection_to_asset_key_fn=connection_to_asset_key_fn,
         connection_to_freshness_policy_fn=connection_to_freshness_policy_fn,
+        upstream_assets=upstream_assets,
     )

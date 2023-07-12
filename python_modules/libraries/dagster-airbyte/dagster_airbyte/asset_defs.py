@@ -101,6 +101,8 @@ def _build_airbyte_asset_defn_metadata(
 
     # All non-normalization tables depend on any user-provided upstream assets
     for table in destination_tables:
+        # Smelly naming to assume upstream_assets are always internal_deps,
+        # Even practically this class doesn't support explicit upstream_assets.
         internal_deps[table] = set(upstream_assets or [])
 
     return AssetsDefinitionCacheableData(
@@ -496,6 +498,7 @@ class AirbyteCoreCacheableAssetsDefinition(CacheableAssetsDefinition):
         connection_to_auto_materialize_policy_fn: Optional[
             Callable[[AirbyteConnectionMetadata], Optional[AutoMaterializePolicy]]
         ] = None,
+        upstream_assets: Optional[Set[AssetKey]] = None
     ):
         self._key_prefix = key_prefix
         self._create_assets_for_normalization_tables = create_assets_for_normalization_tables
@@ -517,6 +520,8 @@ class AirbyteCoreCacheableAssetsDefinition(CacheableAssetsDefinition):
         contents.update(str(create_assets_for_normalization_tables).encode("utf-8"))
         if connection_filter:
             contents.update(inspect.getsource(connection_filter).encode("utf-8"))
+
+        self._upstream_assets=upstream_assets
 
         super().__init__(unique_id=f"airbyte-{contents.hexdigest()}")
 
@@ -551,6 +556,7 @@ class AirbyteCoreCacheableAssetsDefinition(CacheableAssetsDefinition):
                 table_to_asset_key_fn=table_to_asset_key,
                 freshness_policy=self._connection_to_freshness_policy_fn(connection),
                 auto_materialize_policy=self._connection_to_auto_materialize_policy_fn(connection),
+                upstream_assets=self._upstream_assets
             )
 
             asset_defn_data.append(asset_data_for_conn)
@@ -587,6 +593,7 @@ class AirbyteInstanceCacheableAssetsDefinition(AirbyteCoreCacheableAssetsDefinit
         connection_to_auto_materialize_policy_fn: Optional[
             Callable[[AirbyteConnectionMetadata], Optional[AutoMaterializePolicy]]
         ] = None,
+        upstream_assets: Optional[Set[AssetKey]] = None
     ):
         super().__init__(
             key_prefix=key_prefix,
@@ -597,6 +604,7 @@ class AirbyteInstanceCacheableAssetsDefinition(AirbyteCoreCacheableAssetsDefinit
             connection_to_asset_key_fn=connection_to_asset_key_fn,
             connection_to_freshness_policy_fn=connection_to_freshness_policy_fn,
             connection_to_auto_materialize_policy_fn=connection_to_auto_materialize_policy_fn,
+            upstream_assets=upstream_assets,
         )
         self._workspace_id = workspace_id
         self._airbyte_instance: AirbyteResource = (
