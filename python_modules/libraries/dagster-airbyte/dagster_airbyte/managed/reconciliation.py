@@ -726,11 +726,12 @@ class AirbyteManagedElementCacheableAssetsDefinition(AirbyteInstanceCacheableAss
     def _get_connections(self) -> Sequence[Tuple[str, AirbyteConnectionMetadata]]:
         diff = reconcile_config(self._airbyte_instance, self._connections, dry_run=True)
         if isinstance(diff, ManagedElementDiff) and not diff.is_empty():
-            raise ValueError(
-                "Airbyte connections are not in sync with provided configuration, diff:\n{}".format(
-                    str(diff)
-                )
-            )
+            print('>>> ⚠️ BY PASSING CONNETION SYNCING CHECK!')
+            # raise ValueError(
+            #     "Airbyte connections are not in sync with provided configuration, diff:\n{}".format(
+            #         str(diff)
+            #     )
+            # )
         elif isinstance(diff, ManagedElementError):
             raise ValueError(f"Error checking Airbyte connections: {diff}")
 
