@@ -413,7 +413,7 @@ class AirbyteResource(BaseAirbyteResource):
         return {**auth_param, **self.request_additional_params}
 
     def make_request(
-        self, endpoint: str, data: Optional[Mapping[str, object]]
+        self, endpoint: str, data: Optional[Mapping[str, object]], timeout: Optional[int] = None
     ) -> Optional[Mapping[str, object]]:
         """Creates and sends a request to the desired Airbyte REST API endpoint.
 
@@ -437,7 +437,7 @@ class AirbyteResource(BaseAirbyteResource):
                             url=url,
                             headers=headers,
                             json=data,
-                            timeout=self.request_timeout,
+                            timeout=timeout or self.request_timeout,
                             auth=(self.username, self.password)
                             if self.username and self.password
                             else None,
@@ -513,7 +513,9 @@ class AirbyteResource(BaseAirbyteResource):
         return cast(
             Dict[str, Any],
             check.not_none(
-                self.make_request(endpoint="/sources/discover_schema", data={"sourceId": source_id})
+                self.make_request(endpoint="/sources/discover_schema",
+                                  data={"sourceId": source_id, "disable_cache": True},
+                                  timeout=120)
             ),
         )
 
